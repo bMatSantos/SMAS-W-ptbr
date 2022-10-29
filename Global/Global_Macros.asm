@@ -1020,12 +1020,19 @@ endmacro
 macro SetROMToAssembleForHack(ROMID, CurrentROMID)
 if !SetROMToAssembleForHackCalled == !FALSE
 	if defined("ROM_<CurrentROMID>")
-		!HackROMID = ""
-		!Define_Global_HackROMToAssemble = $0000
-	else
+		if !ROM_<CurrentROMID> > $3000
+			; This is a ROMhack
+			!HackROMID = !ROMID
+			!Define_Global_HackROMToAssemble = !ROM_<CurrentROMID>
+		else
+			; It's one of the official versions.
+			!HackROMID = ""
+			!Define_Global_HackROMToAssemble = $0000
+		endif
+	else	
 		!HackROMID = !ROMID
 		!ROMID = <ROMID>
-		!Define_Global_HackROMToAssemble = !ROM_<CurrentROMID>
+		!Define_Global_HackROMToAssemble = $0000
 	endif
 		!Define_Global_ROMToAssemble = !ROM_<ROMID>
 		!SetROMToAssembleForHackCalled = !TRUE

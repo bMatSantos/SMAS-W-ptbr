@@ -6,6 +6,9 @@ macro SMAS_GameSpecificAssemblySettings()
 	!ROM_SMAS_E = $0800							;|
 	!ROM_SMAS_J1 = $1000							;|
 	!ROM_SMAS_J2 = $2000							;/
+	
+	!ROM_HACK_SMAS_br = $4000					;[BR] Define for the translation
+
 	!ROM_SMB1_U = $0001							;\ These defines should match the component ROM versions from the respective games' ROM Map files.
 	!ROM_SMB1_E = $0002							;|
 	!ROM_SMB1_J = $0004							;|

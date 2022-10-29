@@ -27,6 +27,11 @@
 !RAM_SMAS_Global_ScratchRAM0E = $00000E
 !RAM_SMAS_Global_ScratchRAM0F = $00000F
 
+;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+!RAM_SMAS_Global_WarningDisplayTimer = $000012
+endif
+
 !RAM_SMAS_GameSelect_UnknownRAM000014 = $000014
 !RAM_SMAS_GameSelect_UnknownRAM000015 = !RAM_SMAS_GameSelect_UnknownRAM000014+$01
 !RAM_SMAS_GameSelect_UnknownRAM000016 = $000016
@@ -152,7 +157,7 @@
 	!SRAM_SMAS_Global_UnknownSRAM000153 = !SRAM_SMAS_Global_UnknownSRAM000152+$01
 	!SRAM_SMAS_Global_UnknownSRAM000154 = $000154
 	!SRAM_SMAS_Global_UnknownSRAM000155 = !SRAM_SMAS_Global_UnknownSRAM000154+$01
-	!RAM_SMAS_Global_StartOfStack = $0001FF
+!RAM_SMAS_Global_StartOfStack = $0001FF
 
 ; $000200-$0003FF
 ;--------------------------------------------------------------------

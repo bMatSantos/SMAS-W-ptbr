@@ -299,7 +299,10 @@
 !RAM_SMB3_Global_MosaicSizeAndBGEnableMirror = $00020D
 !RAM_SMB3_Global_SpecialLayerBGModeAndTileSizeSettingMirror = $00020E
 
-; $000210 = Layer 1 scroll X speed?
+; $000210 = Layer 1 scroll X speed? (Nope! it is:)
+!RAM_SMB3_Global_BG1HorizScrollOffsetMirrorLo = $000210
+	!RAM_SMB3_Global_BG1HorizScrollOffsetMirrorHi = !RAM_SMB3_Global_BG1HorizScrollOffsetMirrorLo+$01
+
 !RAM_SMB3_Global_OAMSizeAndDataAreaDesignationMirror = $00021E
 !RAM_SMB3_ErrorScreen_SpecialStartUpScreenColor4Hi = !RAM_SMB3_ErrorScreen_SpecialStartUpScreenColor4Lo+$01
 ; $000222 = Dynamic Player graphics low and high byte table 1?
@@ -775,6 +778,7 @@
 
 !RAM_SMB3_BattleMode_RoundNumberTextAnimationFrameCounter = $001A6A
 !RAM_SMB3_BattleMode_RoundNumberTextAnimationFrame = $001A6B
+!RAM_SMB3_BattleMode_RoundTextOffset = $001A6C	; [BR]
 
 !RAM_SMB3_Level_SpriteListData = $001B40
 

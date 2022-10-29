@@ -1,0 +1,14 @@
+*.cht
+*.msl
+*.mwf
+*.sfc
+*.srm
+*.sym
+Graphics/
+GFX/
+Music/
+Samples/
+Palettes/
+
+Framework Readme.txt
+Framework Readme.txt

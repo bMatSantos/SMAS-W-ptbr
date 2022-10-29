@@ -249,3 +249,9 @@ endif
 !Define_SMB1_SpriteID_NorSpr03D_SpawnTwoKoopasY70 = $3D
 !Define_SMB1_SpriteID_NorSpr03E_SpawnThreeKoopasY70 = $3E
 !Define_SMB1_SpriteID_NorSpr03F_UnusedSprite = $3F
+
+;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+!Define_SMB1_PauseMenuHDMA_Timer = $10
+!Define_SMB1_PauseMenuHDMA_EndingTimer = $0E
+endif

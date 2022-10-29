@@ -505,3 +505,7 @@ endif
 !Define_SMB3_ReservePowerupID_Hammer = $0B
 !Define_SMB3_ReservePowerupID_WarpWhistle = $0C
 !Define_SMB3_ReservePowerupID_MusicBox = $0D
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+!Define_SMB3_PauseMenuHDMA_Timer = $0010
+endif

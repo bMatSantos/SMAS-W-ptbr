@@ -143,8 +143,98 @@ CODE_00C11E:
 	RTS
 
 DATA_00C126:
-	dw $0000,$00A4,$0156,$01FA
+	dw DATA_00C12E-DATA_00C12E
+	dw DATA_00C1D2-DATA_00C12E
+	dw DATA_00C284-DATA_00C12E
+	dw DATA_00C328-DATA_00C12E
 
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+table "../SMB1/Tables/Fonts/SMB1_Layer3_br.txt"
+DATA_00C12E:
+	%drawStripeHeader(3, 2, 04,08, 0, !FALSE, 9*2)
+	dw "OBRIGADA,"
+	%drawStripeHeader(3, 2, 04,10, 0, !FALSE, 8*2)
+	dw "MARIO! O"
+	%drawStripeHeader(3, 2, 04,12, 0, !FALSE, 9*2)
+	dw "REINO FOI"
+	%drawStripeHeader(3, 2, 04,14, 0, !FALSE, 6*2)
+	dw "SALVO!"
+	%drawStripeHeader(3, 2, 04,16, 0, !FALSE, 5*2)
+	dw "TENTE"
+	%drawStripeHeader(3, 2, 04,18, 0, !FALSE, 9*2)
+	dw "AGORA UMA"
+	%drawStripeHeader(3, 2, 04,20, 0, !FALSE, 12*2)
+	dw "JORNADA MAIS"
+	%drawStripeHeader(3, 2,04+3,21, 0, !FALSE, 2)
+	dw    "_"
+	%drawStripeHeader(3, 2, 04,22, 0, !FALSE, 10*2)
+	dw "DIFICIL..."
+
+	db $FF,$FF
+
+DATA_00C1D2:
+	%drawStripeHeader(3, 2, 04,08, 0, !FALSE, 9*2)
+	dw "OBRIGADA,"
+	%drawStripeHeader(3, 2, 04,10, 0, !FALSE, 10*2)
+	dw "MARIO, POR"
+	%drawStripeHeader(3, 2, 04,12, 0, !FALSE, 11*2)
+	dw "RESTAURAR A"
+	%drawStripeHeader(3, 2, 04,14, 0, !FALSE, 12*2)
+	dw "PAZ EM NOSSO"
+	%drawStripeHeader(3, 2, 04,16, 0, !FALSE, 6*2)
+	dw "REINO."
+	%drawStripeHeader(3, 2, 04,18, 0, !FALSE, 13*2)
+	dw "VIVA O MARIO,"
+	%drawStripeHeader(3, 2, 04+9,19, 0, !FALSE, 2)
+	dw          "_"
+	%drawStripeHeader(3, 2, 04,20, 0, !FALSE, 12*2)
+	dw "NOSSO HEROI!"
+	
+	db $FF,$FF
+
+DATA_00C284:
+	%drawStripeHeader(3, 2, 04,08, 0, !FALSE, 9*2)
+	dw "OBRIGADA,"
+	%drawStripeHeader(3, 2, 04,10, 0, !FALSE, 8*2)
+	dw "LUIGI! O"
+	%drawStripeHeader(3, 2, 04,12, 0, !FALSE, 9*2)
+	dw "REINO FOI"
+	%drawStripeHeader(3, 2, 04,14, 0, !FALSE, 6*2)
+	dw "SALVO!"
+	%drawStripeHeader(3, 2, 04,16, 0, !FALSE, 5*2)
+	dw "TENTE"
+	%drawStripeHeader(3, 2, 04,18, 0, !FALSE, 9*2)
+	dw "AGORA UMA"
+	%drawStripeHeader(3, 2, 04,20, 0, !FALSE, 12*2)
+	dw "JORNADA MAIS"
+	%drawStripeHeader(3, 2,04+3,21, 0, !FALSE, 2)
+	dw    "_"
+	%drawStripeHeader(3, 2, 04,22, 0, !FALSE, 10*2)
+	dw "DIFICIL..."
+
+	db $FF,$FF
+
+DATA_00C328:
+	%drawStripeHeader(3, 2, 04,08, 0, !FALSE, 9*2)
+	dw "OBRIGADA,"
+	%drawStripeHeader(3, 2, 04,10, 0, !FALSE, 10*2)
+	dw "LUIGI, POR"
+	%drawStripeHeader(3, 2, 04,12, 0, !FALSE, 11*2)
+	dw "RESTAURAR A"
+	%drawStripeHeader(3, 2, 04,14, 0, !FALSE, 12*2)
+	dw "PAZ EM NOSSO"
+	%drawStripeHeader(3, 2, 04,16, 0, !FALSE, 6*2)
+	dw "REINO."
+	%drawStripeHeader(3, 2, 04,18, 0, !FALSE, 13*2)
+	dw "VIVA O LUIGI,"
+	%drawStripeHeader(3, 2, 04+9,19, 0, !FALSE, 2)
+	dw          "_"
+	%drawStripeHeader(3, 2, 04,20, 0, !FALSE, 12*2)
+	dw "NOSSO HEROI!"
+	
+	db $FF,$FF
+cleartable
+else
 DATA_00C12E:									;\ Info: "THANK YOU"
 	db $59,$05,$00,$11							;|
 	db $1D,$20,$11,$20,$0A,$20,$17,$20,$14,$20,$28,$20,$22,$20,$18,$20	;|
@@ -276,7 +366,7 @@ DATA_00C328:									;\ Info: "THANK YOU"
 	db $15,$20,$1E,$20,$12,$20,$10,$20,$12,$20,$26,$20			;|
 										;|
 	db $FF,$FF								;/
-
+endif
 ;--------------------------------------------------------------------
 
 CODE_00C3DA:
@@ -3442,12 +3532,29 @@ CODE_00E573:
 	RTS
 
 ;--------------------------------------------------------------------
+; Note: Something to do with displaying "Push Start" on the ending screen.
 
 CODE_00E574:
 	REP.b #$20
 	PHD
 	LDA.w #$1700
 	TCD
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+;[BR] Optimized drawing routine
+	LDX.b #$00
+-:
+	LDA.l Text_PushStart,x
+	CMP.w #$FFFF
+	BEQ.w +
+	STA.w SMBLL_StripeImageUploadTable[$00].LowByte,x
+	INX
+	BRA.b -
+
++:
+	SEP.b #$20
+	LDA.b #$FF
+	STA.w SMBLL_StripeImageUploadTable[$00].LowByte,x
+else
 	LDA.w #$F15A
 	STA.b $1702
 	LDA.w #$1300
@@ -3475,6 +3582,7 @@ CODE_00E574:
 	SEP.b #$20
 	LDA.b #$FF
 	STA.b $171A
+endif
 	PLD
 	LDA.b #!Define_SMAS_Sound0063_OverworldTileReveal
 	STA.w !RAM_SMBLL_Global_SoundCh3
@@ -5822,13 +5930,18 @@ CODE_0D8A53:
 CODE_0D8A56:
 	JSR.w CODE_0DBB2D
 	REP.b #$30
-	LDX.w $1700
+	LDX.w !RAM_SMBLL_Global_StripeImageUploadIndexLo
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+;[BR] World number position on status bar
+	LDA.w #$7258
+else
 	LDA.w #$7358
+endif
 	STA.w $1702,x
 	LDA.w #$0500
 	STA.w $1704,x
 	SEP.b #$20
-	LDA.w $075F
+	LDA.w !RAM_SMBLL_Player_CurrentWorld
 	INC
 	STA.w $1706,x
 	LDA.b #$20
@@ -6017,60 +6130,96 @@ CODE_0D8BD0:
 
 ;--------------------------------------------------------------------
 
-CODE_0D8BD4:
+SMBLL_UIText:
+.HUD_Mario:
+	; "MARIO"
 	db $58,$43,$00,$09
 	db $16,$20,$0A,$20,$1B,$20,$12,$20,$18,$20
 
+	; "WORLD  TIME"
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+table "../SMB1/Tables/Fonts/SMB1_Layer3_br.txt"
+	;			  Layer,Map, X,Y, Dir, RLE, Size in bytes
+	%drawStripeHeader(3, 2, 17,02, 0, !FALSE, 12*2)
+	dw "MUNDO  TEMPO"
+else
 	db $58,$52,$00,$15
 	db $20,$20,$18,$20,$1B,$20,$15,$20,$0D,$20,$28,$20,$28,$20,$1D,$20
 	db $12,$20,$16,$20,$0E,$20
-
+endif	
+	; "0  $x" (score unit + coin icon)
 	db $58,$68,$00,$09
 	db $00,$20,$28,$20,$28,$20,$27,$24,$25,$20
 
 	db $FF
 
+.HUD_Luigi: ; This goes unused by the game
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000
+	; "LUIGI"
 	db $58,$43,$00,$09
 	db $15,$20,$1E,$20,$12,$20,$10,$20,$12,$20
 
+	; "WORLD  TIME"
 	db $58,$52,$00,$15
 	db $20,$20,$18,$20,$1B,$20,$15,$20,$0D,$20,$28,$20,$28,$20,$1D,$20
 	db $12,$20,$16,$20,$0E,$20
-
+	
+	; "0  $x" (score unit + coin icon)
 	db $58,$68,$00,$09
 	db $00,$20,$28,$20,$28,$20,$27,$24,$25,$20
-
+endif
 	db $FF
 
+.LevelPreview:
+	; "   x    "
 	db $59,$6D,$00,$0F
 	db $28,$20,$28,$20,$28,$20,$25,$20,$28,$20,$28,$20,$28,$20,$28,$20
-
+	
+	; " "x254
 	db $59,$E0,$40,$FE
 	db $28,$00
-
+	
+	; "WORLD  - "
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+	%drawStripeHeader(3, 2, 11,08, 0, !FALSE, 10*2)
+	dw "MUNDO   - "
+else
 	db $59,$0B,$00,$11
 	db $20,$20,$18,$20,$1B,$20,$15,$20,$0D,$20,$28,$20,$28,$20,$24,$20
 	db $28,$20
-
+endif	
+	; " "x13
 	db $58,$AC,$40,$0D
 	db $28,$20
 
 	db $FF
 
+.TimeUp_PlayerName:
 	db $09,$6D,$00,$09
 	db $E0,$19,$E1,$19,$E2,$19,$E3,$19,$E4,$19
 
 	db $09,$8D,$00,$09
 	db $F0,$19,$F1,$19,$F2,$19,$F3,$19,$F4,$19
 
+.TimeUpMsg:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+	%drawStripeHeader(0, 2, 09,13, 0, !FALSE, 14*2)
+	db $CA,$19,$CB,$19,$E0,$19,$CD,$19,$CE,$19,$CF,$19
+	db $CB,$19,$EB,$19,$E8,$19,$E4,$19,$CA,$19,$ED,$19,$EE,$19,$E4,$19
+
+	%drawStripeHeader(0, 2, 09,14, 0, !FALSE, 14*2)
+	db $DA,$19,$DB,$19,$F0,$19,$F0,$19,$DE,$19,$DF,$19
+	db $DB,$19,$FB,$19,$F8,$19,$F4,$19,$DA,$19,$FD,$19,$FE,$19,$F4,$19
+else
 	db $09,$AC,$00,$0D
 	db $CA,$19,$CB,$19,$CC,$19,$CD,$19,$24,$00,$CE,$19,$CF,$19
 
 	db $09,$CC,$00,$0D
 	db $DA,$19,$DB,$19,$DC,$19,$DD,$19,$24,$00,$DE,$19,$DF,$19
-
+endif
 	db $FF
 
+.GameOver:
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMBLL_J) != $00
 	db $09,$CC,$40,$0C
 	db $24,$00
@@ -6103,21 +6252,59 @@ if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMBLL_J) != $00
 	db $09,$2B,$00,$13
 	db $D0,$19,$D1,$19,$D2,$19,$D3,$19,$D4,$19,$D5,$19,$D6,$19,$D7,$19
 	db $D8,$19,$D9,$19
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+	table "../SMB1/Tables/Fonts/SMB1_Global_br.txt"
+	%drawStripeHeader(0, 2, 09,13, 0, !TRUE, 15*2)
+	db $24,$00
+	%drawStripeHeader(0, 2, 09,14, 0, !TRUE, 15*2)
+	db $24,$00
+
+	; "CONTINUAR"
+	%drawStripeHeader(0, 2, 11,13, 0, !FALSE, 9*2)
+	dw "CONT"
+	db $A9,$02,$AA,$02,$AB,$02,$AC,$02,$AD,$02
+
+	; "SALVAR & CONTINUAR"
+	%drawStripeHeader(0, 2, 11,15, 0, !FALSE, 16*2)
+	dw "SA"
+	db $A4,$02,$A5,$02,$A6,$02,$A7,$02,$A8,$02
+	dw "CONT"
+	db $A9,$02,$AA,$02,$AB,$02,$AC,$02,$AD,$02
+
+	; "SALVAR & SAIR"
+	%drawStripeHeader(0, 2, 11,17, 0, !FALSE, 11*2)
+	dw "SA"
+	db $A4,$02,$A5,$02,$A6,$02,$A7,$02,$A8,$02
+	dw "SA"
+	db $A9,$02,$AD,$02
+	
+	; "FIM DE JOGO"
+	%drawStripeHeader(0, 2, 11,08, 0, !FALSE, 10*2)
+	db $C0,$19,$C1,$19,$C2,$19,$C3,$19,$C4,$19,$C5,$19
+	db $E5,$19,$E4,$19,$E8,$19,$E4,$19
+
+	%drawStripeHeader(0, 2, 11,09, 0, !FALSE, 10*2)
+	db $D0,$19,$F0,$19,$F0,$19,$D3,$19,$D4,$19,$D5,$19
+	db $D6,$19,$F4,$19,$F8,$19,$F4,$19
 else
 	db $09,$CC,$40,$0C
 	db $24,$00
-
+	
+	; "CONTINUE"
 	db $09,$AB,$00,$0F
 	db $A1,$02,$A2,$02,$A3,$02,$A4,$02,$A5,$02,$A6,$02,$A7,$02,$A8,$02
 
+	; "SAVE&CONTINUE"
 	db $09,$EB,$00,$19
 	db $AE,$02,$AF,$02,$B0,$02,$B1,$02,$AD,$02,$A1,$02,$A2,$02,$A3,$02
 	db $A4,$02,$A5,$02,$A6,$02,$A7,$02,$A8,$02
 
+	; "SAVE&QUIT"
 	db $0A,$2B,$00,$11
 	db $AE,$02,$AF,$02,$B0,$02,$B1,$02,$AD,$02,$A9,$02,$AA,$02,$AB,$02
 	db $AC,$02
 
+	; "GAME OVER"
 	db $09,$0B,$00,$13
 	db $C0,$19,$C1,$19,$C2,$19,$C3,$19,$C4,$19,$C5,$19,$C6,$19,$C7,$19
 	db $C8,$19,$C9,$19
@@ -6128,7 +6315,19 @@ else
 endif
 	db $FF
 
-DATA_0D8D39:
+.WarpZoneMsg:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+	%drawStripeHeader(0, 1,07+12,10, 0, !FALSE, 2)
+	            dw "`"
+	%drawStripeHeader(0, 1, 07,11, 0, !FALSE, 13*2)
+	dw "BOAS-VINDAS A"
+
+	%drawStripeHeader(0, 1, 06,13, 0, !FALSE, 16*2)
+	dw "ZONA TRANSPORTE!"
+	cleartable
+
+	%drawStripeHeader(0, 1, 13,16, 0, !FALSE, 2)
+else
 	db $05,$84,$00,$29
 	db $20,$08,$0E,$08,$15,$08,$0C,$08,$18,$08,$16,$08,$0E,$08,$24,$00
 	db $1D,$08,$18,$08,$24,$00,$20,$08,$0A,$08,$1B,$08,$19,$08,$24,$00
@@ -6138,10 +6337,14 @@ DATA_0D8D39:
 	db $24,$08
 
 	db $05,$ED,$00,$01
+endif
+.WarpZoneNumber:
 	db $24,$08
 
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000
 	db $05,$F5,$00,$01
 	db $24,$08
+endif
 
 	db $FF
 
@@ -6157,21 +6360,24 @@ DATA_0D8D8E:
 	db $15,$20,$1E,$20,$12,$20,$10,$20
 	db $12,$20
 
+;The warp zone numbers
 DATA_0D8D98:
 	db $02,$03,$04,$01,$06,$07,$08,$05
 	db $0B,$0C,$0D
 
 DATA_0D8DA3:
-	db $00,$37,$6E,$6E,$A5,$C1,$E6,$E6
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMBLL_J) != $00
-	db $7F,$7F
-else
-	db $65,$65
-endif
+	db SMBLL_UIText_HUD_Mario-SMBLL_UIText,SMBLL_UIText_HUD_Luigi-SMBLL_UIText
+	db SMBLL_UIText_LevelPreview-SMBLL_UIText,SMBLL_UIText_LevelPreview-SMBLL_UIText
+	db SMBLL_UIText_TimeUp_PlayerName-SMBLL_UIText,SMBLL_UIText_TimeUpMsg-SMBLL_UIText
+	db SMBLL_UIText_GameOver-SMBLL_UIText,SMBLL_UIText_GameOver-SMBLL_UIText
+	db SMBLL_UIText_WarpZoneMsg-SMBLL_UIText,SMBLL_UIText_WarpZoneMsg-SMBLL_UIText
 
 DATA_0D8DAD:
-	db $00,$00,$00,$00,$00,$00,$00,$00
-	db $01,$01
+	db SMBLL_UIText_HUD_Mario-SMBLL_UIText>>8,SMBLL_UIText_HUD_Luigi-SMBLL_UIText>>8
+	db SMBLL_UIText_LevelPreview-SMBLL_UIText>>8,SMBLL_UIText_LevelPreview-SMBLL_UIText>>8
+	db SMBLL_UIText_TimeUp_PlayerName-SMBLL_UIText>>8,SMBLL_UIText_TimeUpMsg-SMBLL_UIText>>8
+	db SMBLL_UIText_GameOver-SMBLL_UIText>>8,SMBLL_UIText_GameOver-SMBLL_UIText>>8
+	db SMBLL_UIText_WarpZoneMsg-SMBLL_UIText>>8,SMBLL_UIText_WarpZoneMsg-SMBLL_UIText>>8
 
 CODE_0D8DB7:
 	LDA.w $077A
@@ -6217,7 +6423,7 @@ CODE_0D8DEA:
 	LDY.w #$0000
 	SEP.b #$20
 CODE_0D8E01:
-	LDA.w CODE_0D8BD4,x
+	LDA.w SMBLL_UIText,x
 	CMP.b #$FF
 	BEQ.b CODE_0D8E0F
 	STA.w $1702,y
@@ -6274,12 +6480,22 @@ CODE_0D8E4F:
 	LDA.b $E6
 CODE_0D8E56:
 	STA.w $1712
-	LDY.w $075F
+	LDY.w !RAM_SMBLL_Player_CurrentWorld
 	INY
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+;[BR] World number position on level preview
+	STY.w $172C+2
+else
 	STY.w $172C
+endif
 	LDY.w $075C
 	INY
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+; Level number position on level preview
+	STY.w $1730+2
+else
 	STY.w $1730
+endif
 	RTS
 
 CODE_0D8E68:
@@ -6331,7 +6547,7 @@ CODE_0D8EB3:
 	PHX
 	LDX.b #$00
 CODE_0D8EBA:
-	LDA.w DATA_0D8D39,x
+	LDA.w SMBLL_UIText_WarpZoneMsg,x
 	STA.w $1702,y
 	INX
 	INY
@@ -6344,7 +6560,13 @@ CODE_0D8EBA:
 	TAX
 	STY.w $1700
 	LDA.w DATA_0D8D98,x
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+;[BR] Stripe table's offset for the Warp Zone's first pipe number
+	STA.w SMBLL_StripeImageUploadTable\
+	[(SMBLL_UIText_WarpZoneNumber-SMBLL_UIText_WarpZoneMsg)/2].LowByte
+else
 	STA.w $16F9,y
+endif
 	RTS
 
 ;--------------------------------------------------------------------
@@ -7281,6 +7503,8 @@ elseif !Define_Global_ROMToAssemble&(!ROM_SMASW_E|!ROM_SMAS_E) != $00
 	%FREE_BYTES(NULLROM, 10, $FF)
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	%FREE_BYTES(NULLROM, 88, $FF)
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+	%FREE_BYTES(NULLROM, 80-36, $FF)
 else
 	%FREE_BYTES(NULLROM, 80, $FF)
 endif
@@ -12843,7 +13067,11 @@ CODE_0DBD8F:
 	STA.w !RAM_SMBLL_Global_SoundCh3
 CODE_0DBDA1:
 	JSR.w CODE_0DBDDB
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+	LDA.b #$01
+else
 	LDA.b #$FE					; Glitch: This should be #$01, because this value results in Mario rising when breaking a brick.
+endif
 	STA.b $A0
 	LDA.b #$05
 	STA.w $014A
@@ -24286,7 +24514,7 @@ CODE_0E8D2E:
 	AND.w #$00FF
 	BEQ.b CODE_0E8D51
 CODE_0E8D42:
-	LDA.w DATA_0E9B11,x
+	LDA.w SMBLL_GameOverScreenStripeImage_Luigi,x
 	STA.w $1A02,y
 	INC
 	BEQ.b CODE_0E8D60
@@ -24297,7 +24525,7 @@ CODE_0E8D42:
 	BRA.b CODE_0E8D42
 
 CODE_0E8D51:
-	LDA.w DATA_0E9A9F,x
+	LDA.w SMBLL_GameOverScreenStripeImage_Mario,x
 	STA.w $1A02,y
 	INC
 	BEQ.b CODE_0E8D60
@@ -24310,7 +24538,7 @@ CODE_0E8D51:
 CODE_0E8D60:
 	LDX.w #$0000
 CODE_0E8D63:
-	LDA.w DATA_0E9BA3,x
+	LDA.w SMBLL_GameOverScreenStripeImage_TitleLogo,x
 	STA.w $1A02,y
 	INC
 	BEQ.b CODE_0E8D72
@@ -25448,8 +25676,8 @@ CODE_0E9A5D:
 	RTS
 
 ;--------------------------------------------------------------------
-
-DATA_0E9A9F:
+SMBLL_GameOverScreenStripeImage:
+.Mario:
 	db $0A,$8D,$00,$0B
 	db $24,$00,$24,$00,$45,$1E,$46,$1E,$47,$1E,$24,$00
 
@@ -25473,7 +25701,7 @@ DATA_0E9A9F:
 
 	db $FF,$FF
 
-DATA_0E9B11:
+.Luigi:
 	db $0A,$4D,$00,$0B
 	db $24,$00,$80,$16,$81,$16,$82,$16,$24,$00,$24,$00
 
@@ -25503,7 +25731,7 @@ DATA_0E9B11:
 
 	db $FF,$FF
 
-DATA_0E9BA3:
+.TitleLogo:
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMBLL_J) != $00
 	db $0A,$F3,$00,$09
 	db $40,$1A,$41,$1A,$42,$1A,$43,$1A,$44,$1A
@@ -25519,6 +25747,30 @@ if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMBLL_J) != $00
 	db $0B,$53,$00,$15
 	db $70,$1A,$71,$1A,$72,$1A,$73,$1A,$74,$1A,$75,$1A,$76,$1A,$77,$1A
 	db $78,$1A,$FA,$19,$FB,$19
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+;				  Layer,Map, X,Y, Dir, RLE, Size in bytes
+	%drawStripeHeader(0, 2, 19,22, 0, !FALSE, 5*2)
+	db $40,$1A,$41,$1A,$42,$1A,$43,$1A,$44,$1A
+
+	%drawStripeHeader(0, 2, 19,23, 0, !FALSE, 5*2)
+	db $50,$1A,$51,$1A,$52,$1A,$53,$1A,$54,$1A;
+
+	%drawStripeHeader(0, 2, 19,24, 0, !FALSE, 11*2)
+	db $60,$1A,$61,$1A,$62,$1A,$63,$1A,$64,$1A,$65,$1A,$66,$1A,$67,$1A
+	db $68,$1A,$AE,$1A,$AF,$1A;
+
+	%drawStripeHeader(0, 2, 19,25, 0, !FALSE, 11*2)
+	db $70,$1A,$71,$1A,$72,$1A,$73,$1A,$74,$1A,$75,$1A,$76,$1A,$77,$1A
+	db $78,$1A,$79,$1A,$BF,$1A;
+
+	%drawStripeHeader(0, 2, 29,22, 0, !FALSE, 2*2)
+	db $A2,$1A,$A3,$1A
+	%drawStripeHeader(0, 2, 29,23, 0, !FALSE, 2*2)
+	db $B2,$1A,$B3,$1A
+	
+	%drawStripeHeader(0, 2, 19,26, 0, !FALSE, 11*2)
+	db $B4,$1A,$B5,$1A,$B6,$1A,$B7,$1A,$B8,$1A,$B9,$1A,$BA,$1A,$BB,$1A
+	db $BC,$1A,$BD,$1A,$BE,$1A;
 else
 	db $0A,$D3,$00,$09
 	db $40,$1A,$41,$1A,$42,$1A,$43,$1A,$44,$1A
@@ -26633,6 +26885,8 @@ elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 %FREE_BYTES(NULLROM, 289, $FF)
 elseif !Define_Global_ROMToAssemble&(!ROM_SMBLL_J) != $00
 %FREE_BYTES(NULLROM, 334, $FF)
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+%FREE_BYTES(NULLROM, 1555-16, $FF)
 else
 %FREE_BYTES(NULLROM, 1555, $FF)
 endif
@@ -27981,7 +28235,12 @@ DATA_0EE404:
 	db $1F,$01,$E6,$11,$FF
 
 DATA_0EE409:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+;[BR] Moving Hammer Bro 1 tile to the left (so he doesn't get stuck on the O)
+	db $3B,$86,$7B,$00,$BB,$02,$2B,$8E,$6A,$05,$57,$87,$27,$8F,$9A,$0C
+else
 	db $3B,$86,$7B,$00,$BB,$02,$2B,$8E,$7A,$05,$57,$87,$27,$8F,$9A,$0C
+endif
 	db $FF
 
 DATA_0EE41A:
@@ -28036,11 +28295,22 @@ DATA_0EE5C4:
 	db $F6,$20,$6D,$C7,$FD
 
 DATA_0EE619:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+;[BR] "アリガトウ!" (Arigatō!)
+	db $57,$00,$0B,$3F,$0B,$BF,$0B,$BE,$74,$65,$83,$32,$8A,$32,$B4,$65
+	db $E3,$67,$F3,$32,$F6,$32,$FA,$61,$0A,$E1,$1A,$61,$24,$61,$27,$62
+	db $2B,$3D,$43,$67,$53,$32,$56,$32,$84,$61,$87,$63,$A3,$67,$D4,$65
+	db $E3,$33,$EA,$32,$0B,$BF,$16,$64,$34,$66,$43,$32,$47,$32,$74,$66
+	db $A3,$67,$B3,$32,$BA,$32,$E4,$65,$04,$E5,$0B,$3F,$13,$32,$1A,$32
+									db $44,$65,$63,$65,$6A,$60,$0B,$BF
+	db $0F,$F8,$30,$0B,$BF,$1D,$41,$3E,$42,$3F,$F0,$20,$0B,$BF,$3D,$47
+else
 	db $57,$00,$0B,$3F,$0B,$BF,$0B,$BF,$73,$36,$9A,$30,$A5,$64,$B6,$31
 	db $D4,$61,$0B,$BF,$13,$63,$4A,$60,$53,$66,$A5,$34,$B3,$67,$E5,$65
 	db $F4,$60,$0B,$BF,$14,$60,$53,$67,$67,$32,$C4,$62,$D4,$31,$F3,$61
 	db $FA,$60,$0B,$BF,$04,$30,$09,$61,$14,$65,$63,$65,$6A,$60,$0B,$BF
 	db $0F,$F8,$30,$0B,$BF,$1D,$41,$3E,$42,$3F,$F0,$20,$0B,$BF,$3D,$47
+endif
 	db $FD
 
 DATA_0EE66A:
@@ -28368,6 +28638,8 @@ DATA_0EF3EF:
 
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMBLL_J) != $00
 %FREE_BYTES(NULLROM, 2360, $FF)
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+%FREE_BYTES(NULLROM, 2872-24, $FF)
 else
 %FREE_BYTES(NULLROM, 2872, $FF)
 endif
@@ -32027,8 +32299,11 @@ if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMBLL_J) != $00
 else
 	dw $E3F0,$E091,$E042,$E013,$E04D,$E000,$E000,$E000,$E000,$E000,$E000,$E000,$E000,$E000,$E000,$E3F0
 	dw $E091,$E04F,$E020,$8000,$E000,$8002,$E000,$8002,$E3F0,$E3F0
-
-%FREE_BYTES(NULLROM, 899, $FF)
+	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+	%FREE_BYTES(NULLROM, 899-64, $FF)
+	else
+	%FREE_BYTES(NULLROM, 899, $FF)
+	endif
 endif
 endif
 
@@ -33400,19 +33675,45 @@ DATA_0FDA44:
 	dw CODE_0FDD6A
 
 ;--------------------------------------------------------------------
+; Note: Initial values of pause menu's window HDMA.
+; They'll "grow" in size frame-by-frame in order to make
+; the zoom-in effect. Think of these as 0s keyframes.
 
 CODE_0FDA4C:
 	REP.b #$20
-	LDA.w #$0010
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000
+	LDA.w #$0010					; Animation timer (in frames)
 	STA.w $0B6B
-	LDA.w #$0064
+	LDA.w #$0064					;\ Window's left border (X)
+	STA.w $0B6D						;/ Minus (2 * TIMER) = final value
+	LDA.w #$00A4					;\ Window's right border (X)
+	STA.w $0B6F						;/ Plus (2 * TIMER) = final value
+	LDA.w #$00C4					;\ Scanline index (Y * 2) on the HDMA table
+	STA.w $0B71						;/ Minus (4 * TIMER) = final value
+	LDA.w #$00D0					;\ First scanline (Y * 2) after the window
+	STA.w $0B73						;/ Plus (4 * TIMER) = final value
+else ;[BR]
+	LDA.w #!Define_SMBLL_PauseMenuHDMA_Timer
+	STA.w $0B6B
+	
+	; Window's left border
+	;       Xpos.
+	LDA.w #$003A+(2*!Define_SMBLL_PauseMenuHDMA_Timer)
 	STA.w $0B6D
-	LDA.w #$00A4
+	
+	; Window's right border
+	LDA.w #$00C5-(2*!Define_SMBLL_PauseMenuHDMA_Timer)
 	STA.w $0B6F
-	LDA.w #$00C4
+	
+	; Scanline index on the HDMA table
+	;      (Ypos.*2)
+	LDA.w #($0042*2)+(4*!Define_SMBLL_PauseMenuHDMA_Timer)
 	STA.w $0B71
-	LDA.w #$00D0
+	
+	; First scanline after the window
+	LDA.w #($0086*2)-(4*!Define_SMBLL_PauseMenuHDMA_Timer)
 	STA.w $0B73
+endif
 	SEP.b #$20
 	RTS
 
@@ -33490,11 +33791,16 @@ CODE_0FDAEB:
 	STA.w !RAM_SMBLL_Global_SoundCh3
 	STZ.w $0B78
 CODE_0FDAF3:
+;[BR] Cursor's X position after moving it
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+	LDA.b #$40
+else
 	LDA.b #$4C
-	STA.w $0800
+endif
+	STA.w SMBLL_OAMBuffer[$00].XDisp
 	LDX.w $0B77
 	LDA.w DATA_0FDB91,x
-	STA.w $0801
+	STA.w SMBLL_OAMBuffer[$00].YDisp
 	LDA.w $0B78
 	AND.b #$10
 	LSR
@@ -33503,14 +33809,14 @@ CODE_0FDAF3:
 	LSR
 	TAX
 	LDA.w DATA_0FDB94,x
-	STA.w $0802
+	STA.w SMBLL_OAMBuffer[$00].Tile
 	LDA.b #$21
-	STA.w $0803
+	STA.w SMBLL_OAMBuffer[$00].Prop
 	LDA.b #$00
-	STA.w $0C00
+	STA.w SMBLL_OAMTileSizeBuffer[$00].Slot
 	INC.w $0B78
-	LDA.b $F2
-	AND.b #$10
+	LDA.b !RAM_SMB1_Global_ScratchRAMF2
+	AND.b #!Joypad_Start>>8
 	BEQ.b CODE_0FDB90
 	LDA.b #!Define_SMBLL_LevelMusic_RestoreVolumeCommand
 	STA.w !RAM_SMBLL_Global_MusicCh1
@@ -33565,13 +33871,18 @@ CODE_0FDB90:
 	RTS
 
 ;--------------------------------------------------------------------
+; Note: Pause menu routine
 
-DATA_0FDB91:
+DATA_0FDB91:									; Y pos. list for each option
 	db $50,$60,$70
 
-DATA_0FDB94:
-	db $D0,$DE
+DATA_0FDB94:									; Cursor's tile index:
+	db $D0										; - Cursor
+	db $DE										; - Blank tile for blinking
 
+; Every tile index in a sort of grid order.
+; $AA = No object for 8px. Everything else is relative
+; to $C0, the PauseMenuGFX tile offset in VRAM.
 DATA_0FDB96:
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMBLL_J) != $00
 	db $AA,$AA,$0C,$AA,$AA,$AA,$0C,$AA
@@ -33584,6 +33895,8 @@ if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMBLL_J) != $00
 	db $AA,$AA,$AA,$AA,$00,$01,$02,$03
 	db $04,$AA,$08,$09,$07,$AA,$AA,$AA
 	db $FF
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+	%CUSTOMDATA_SMAS_PauseMenuLettersData(NULLROM)
 else
 	db $AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA
 	db $AA,$AA,$AA,$AA,$AA,$14,$15,$16
@@ -33597,6 +33910,7 @@ else
 	db $26,$27,$AA,$AA,$AA,$AA,$FF
 endif
 
+; Final pause menu on World D-4
 DATA_0FDBE5:
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMBLL_J) != $00
 	db $AA,$AA,$0C,$AA,$AA,$AA,$0C,$AA
@@ -33609,6 +33923,13 @@ if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMBLL_J) != $00
 	db $AA,$AA,$AA,$AA,$00,$01,$02,$03
 	db $04,$AA,$08,$09,$07,$AA,$AA,$AA
 	db $FF
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+	db $AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA
+	db $28,$29,$3B,$1C,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA
+	db $AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA
+	db $AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA
+	db $AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA
+	db $28,$29,$2A,$2B,$26,$2C,$24,$25,$26,$27,$AA,$AA,$AA,$AA,$AA,$FF
 else
 	db $AA,$AA,$AA,$AA,$AA,$AA,$AA,$AA
 	db $AA,$AA,$AA,$AA,$AA,$24,$25,$26
@@ -33628,57 +33949,64 @@ CODE_0FDC34:
 	LDX.w #$0000
 	LDA.b #$48
 	STA.b $01
-CODE_0FDC40:
+CODE_0FDC40:					; X pos. of the options (relative to 1st tile)
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+	LDA.b #$48
+else
 	LDA.b #$58
+endif
 	STA.b $00
 CODE_0FDC44:
-	LDA.w $1680
-	BEQ.b CODE_0FDC5A
-	AND.b #$10
-	CMP.b #$10
-	BEQ.b CODE_0FDC5A
-	LDA.w DATA_0FDBE5,x
-	BPL.b CODE_0FDC77
+	LDA.w $1680							;\ If it's not the World D ending,
+	BEQ.b CODE_0FDC5A					;| go draw the default pause menu
+	AND.b #$10							;|
+	CMP.b #$10							;|
+	BEQ.b CODE_0FDC5A					;/
+	LDA.w DATA_0FDBE5,x					; Draw D-4's final menu
+	BPL.b CODE_0FDC77					; Branch to write the OAM
 	INX
 	INC
-	BEQ.b CODE_0FDC98
+	BEQ.b CODE_0FDC98					; Branch to the menu BG routine
 	BRA.b CODE_0FDC63
 
-CODE_0FDC5A:
+CODE_0FDC5A:							; Draw default pause menu
 	LDA.w DATA_0FDB96,x
-	BPL.b CODE_0FDC77
+	BPL.b CODE_0FDC77					; Branch to write the OAM
 	INX
 	INC
-	BEQ.b CODE_0FDC98
-CODE_0FDC63:
+	BEQ.b CODE_0FDC98					; Branch to the menu BG routine
+CODE_0FDC63:						; Set next object
 	LDA.b $00
 	CLC
-	ADC.b #$08
+	ADC.b #$08							; Increment X position
 	STA.b $00
+										; Max. X position
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMBLL_J) != $00
 	CMP.b #$B8
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+	CMP.b #$BB
 else
 	CMP.b #$C0
 endif
 	BCC.b CODE_0FDC44
-	LDA.b $01
-	CLC
+	LDA.b $01							;\ If current Xpos is greater
+	CLC									;/ than that, break a new line
 	ADC.b #$08
 	STA.b $01
 	BRA.b CODE_0FDC40
 
-CODE_0FDC77:
+CODE_0FDC77:						; Letters OAM data
 	CLC
 	ADC.b #$C0
-	STA.w $0802,y
+	STA.w SMBLL_OAMBuffer[$00].Tile,y
 	LDA.b $00
-	STA.w $0800,y
+	STA.w SMBLL_OAMBuffer[$00].XDisp,y
 	LDA.b $01
-	STA.w $0801,y
+	STA.w SMBLL_OAMBuffer[$00].YDisp,y
 	LDA.b #$21
-	STA.w $0803,y
+	STA.w SMBLL_OAMBuffer[$00].Prop,y
 	LDA.b #$00
-	STA.w $0C00,y
+	STA.w SMBLL_OAMTileSizeBuffer[$00].Slot,y
 	INX
 	INY
 	INY
@@ -33686,49 +34014,63 @@ CODE_0FDC77:
 	INY
 	BRA.b CODE_0FDC63
 
-CODE_0FDC98:
-	LDA.b #$40
+CODE_0FDC98:						; Draw BG sprites
+	LDA.b #$40							; Set initial Y position
 	STA.b $01
-CODE_0FDC9C:
+CODE_0FDC9C:							; Set initial X position
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+	LDA.b #$38
+else
 	LDA.b #$40
+endif
 	STA.b $00
-CODE_0FDCA0:
+CODE_0FDCA0:						; Background OAM data
 	LDA.b $00
-	STA.w $0800,y
+	STA.w SMBLL_OAMBuffer[$00].XDisp,y
 	CLC
 	ADC.b #$10
 	STA.b $00
 	LDA.b $01
-	STA.w $0801,y
+	STA.w SMBLL_OAMBuffer[$00].YDisp,y
 	LDA.b #$CD
-	STA.w $0802,y
+	STA.w SMBLL_OAMBuffer[$00].Tile,y
 	LDA.b #$21
-	STA.w $0803,y
+	STA.w SMBLL_OAMBuffer[$00].Prop,y
 	LDA.b #$02
-	STA.w $0C00,y
+	STA.w SMBLL_OAMTileSizeBuffer[$00].Slot,y
 	INY
 	INY
 	INY
 	INY
 	LDA.b $00
+										; Continue if reached max. X position
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+	CMP.b #$C8
+else
 	CMP.b #$C0
+endif
 	BCC.b CODE_0FDCA0
 	LDA.b $01
-	CMP.b #$80
-	BCS.b CODE_0FDCD5
+	CMP.b #$80							;\ If reached last line,
+	BCS.b CODE_0FDCD5					;/ go draw the cursor
 	CLC
-	ADC.b #$10
-	STA.b $01
-	BRA.b CODE_0FDC9C
+	ADC.b #$10							;\ Otherwise, add 16px to Y position
+	STA.b $01							;| then go draw next line
+	BRA.b CODE_0FDC9C					;/
 
-CODE_0FDCD5:
+CODE_0FDCD5:						; Cursor OAM data
 	SEP.b #$10
+										; Cursor's initial X position
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+	LDA.b #$40
+else
 	LDA.b #$4C
-	STA.w $0800
+endif
+	STA.w SMBLL_OAMBuffer[$00].XDisp
 	LDX.w $0B77
 	LDA.w DATA_0FDB91,x
-	STA.w $0801
-	LDA.w $0B78
+	STA.w SMBLL_OAMBuffer[$00].YDisp
+	LDA.w $0B78							; Check for blinking anim
 	AND.b #$10
 	LSR
 	LSR
@@ -33736,43 +34078,49 @@ CODE_0FDCD5:
 	LSR
 	TAX
 	LDA.w DATA_0FDB94,x
-	STA.w $0802
+	STA.w SMBLL_OAMBuffer[$00].Tile
 	LDA.b #$21
-	STA.w $0803
+	STA.w SMBLL_OAMBuffer[$00].Prop
 	LDA.b #$00
-	STA.w $0C00
+	STA.w SMBLL_OAMTileSizeBuffer[$00].Slot
 	RTS
 
 ;--------------------------------------------------------------------
+; Note: Pause menu's open animation
 
 CODE_0FDD00:
-	LDA.w $0B6B
-	BEQ.b CODE_0FDD63
-	BMI.b CODE_0FDD63
+	LDA.w $0B6B						;\ When the timer hits 0,
+	BEQ.b CODE_0FDD63				;| the animation will stop
+	BMI.b CODE_0FDD63				;/
+; Values update
 	REP.b #$30
-	DEC.w $0B6B
-	DEC.w $0B6D
-	DEC.w $0B6D
-	INC.w $0B6F
-	INC.w $0B6F
-	DEC.w $0B71
-	DEC.w $0B71
-	DEC.w $0B71
-	DEC.w $0B71
-	INC.w $0B73
-	INC.w $0B73
-	INC.w $0B73
-	INC.w $0B73
+	DEC.w $0B6B						; Decrease timer
+	DEC.w $0B6D						;\ Move left border twice to the left
+	DEC.w $0B6D						;/
+	INC.w $0B6F						;\ Move right border twice to the right
+	INC.w $0B6F						;/
+	DEC.w $0B71						;\ Move 1st scanline up
+	DEC.w $0B71						;|
+	DEC.w $0B71						;|
+	DEC.w $0B71						;/
+	INC.w $0B73						;\ Move last scanline down
+	INC.w $0B73						;|
+	INC.w $0B73						;|
+	INC.w $0B73						;/
+
+; Reset HDMA table
 	LDX.w #$007E
 	LDA.w #$00FF
 CODE_0FDD36:
-	STA.l $7FF000,x
-	STA.l $7FF080,x
-	STA.l $7FF100,x
-	STA.l $7FF180,x
+	STA.l $7FF000,x					;\ Done in four simultaneous points
+	STA.l $7FF080,x					;| to speed it up
+	STA.l $7FF100,x					;|
+	STA.l $7FF180,x					;/
 	DEX
 	DEX
 	BPL.b CODE_0FDD36
+
+; Upload current values through each defined scanline index
 	LDA.w $0B6F
 	XBA
 	ORA.w $0B6D
@@ -33781,10 +34129,10 @@ CODE_0FDD54:
 	STA.l $7FF000,x
 	INX
 	INX
-	CPX.w $0B73
-	BNE.b CODE_0FDD54
-	SEP.b #$30
-	BRA.b CODE_0FDD66
+	CPX.w $0B73					;\ If the index hits the 1st line after
+	BNE.b CODE_0FDD54			;| the window, finish this animation frame
+	SEP.b #$30					;|
+	BRA.b CODE_0FDD66			;/
 
 CODE_0FDD63:
 	INC.w $0B75
@@ -33793,25 +34141,30 @@ CODE_0FDD66:
 	RTS
 
 ;--------------------------------------------------------------------
+; Note: Pause menu's closing animation when
+; the player chooses Continue or Save&Continue
 
 CODE_0FDD6A:
-	LDA.w $0B6B
-	BEQ.b CODE_0FDDCD
-	BMI.b CODE_0FDDCD
+	LDA.w $0B6B						;\ When the timer hits 0,
+	BEQ.b CODE_0FDDCD				;| the animation will stop
+	BMI.b CODE_0FDDCD				;/
+; Values update
 	REP.b #$30
-	INC.w $0B6D
-	INC.w $0B6D
-	DEC.w $0B6F
-	DEC.w $0B6F
-	INC.w $0B71
-	INC.w $0B71
-	INC.w $0B71
-	INC.w $0B71
-	DEC.w $0B73
-	DEC.w $0B73
-	DEC.w $0B73
-	DEC.w $0B73
-	DEC.w $0B6B
+	INC.w $0B6D						;\ Move left border twice to the right	
+	INC.w $0B6D						;/
+	DEC.w $0B6F						;\ Move right border twice to the left
+	DEC.w $0B6F						;/
+	INC.w $0B71						;\ Move down 1st scanline
+	INC.w $0B71						;|
+	INC.w $0B71						;|
+	INC.w $0B71						;/
+	DEC.w $0B73						;\ Move last scanline up
+	DEC.w $0B73						;|
+	DEC.w $0B73						;|
+	DEC.w $0B73						;/
+	DEC.w $0B6B						; Decrease timer
+
+; Reset HDMA table
 	LDX.w #$007E
 	LDA.w #$00FF
 CODE_0FDDA0:
@@ -33822,6 +34175,8 @@ CODE_0FDDA0:
 	DEX
 	DEX
 	BPL.b CODE_0FDDA0
+
+; Upload current values through each defined scanline index
 	LDA.w $0B6F
 	XBA
 	ORA.w $0B6D
@@ -33830,11 +34185,12 @@ CODE_0FDDBE:
 	STA.l $7FF000,x
 	INX
 	INX
-	CPX.w $0B73
-	BNE.b CODE_0FDDBE
-	SEP.b #$30
-	BRA.b CODE_0FDDF8
+	CPX.w $0B73					;\ If the index hits the 1st line after
+	BNE.b CODE_0FDDBE			;| the window, finish this animation frame
+	SEP.b #$30					;|
+	BRA.b CODE_0FDDF8			;/
 
+; Reset window HDMA
 CODE_0FDDCD:
 	STZ.w $0B75
 	LDA.b #$0F
@@ -33884,6 +34240,7 @@ CODE_0FDE1E:
 	RTS
 
 ;--------------------------------------------------------------------
+; Set up pause menu's window HDMA
 
 CODE_0FDE22:
 	PHB
@@ -34856,7 +35213,9 @@ CODE_0FE58E:
 ;--------------------------------------------------------------------
 
 UNK_0FE594:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR] freeing some space
 	db $1C,$0E,$06,$08
+endif
 
 DATA_0FE598:
 	db $18,$16,$1A,$14
@@ -35088,10 +35447,140 @@ else
 	db $02,$F5,$00,$01
 	db $00,$08
 endif
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+;				  Layer,Map, X,Y, Dir, RLE, Size in bytes
+	%drawStripeHeader(0, 0, 03,04, 0, !TRUE, 25*2)
+	; Top border
+	db $82,$39
+
+
+	; Fill to the right of SUPER
+	%drawStripeHeader(0, 0, 13,05, 0, !TRUE, 15*2)
+	db $84,$39
+
+	%drawStripeHeader(0, 0, 13,06, 0, !TRUE, 15*2)
+	db $84,$39
+
+	%drawStripeHeader(0, 0, 13,07, 0, !TRUE, 15*2)
+	db $84,$39
+
+
+	; Left border
+	%drawStripeHeader(0, 0, 02,05, 1, !TRUE, 8*2)
+	db $83,$39
+
+
+	; SUPER
+	%drawStripeHeader(0, 0, 03,05, 0, !FALSE, 10*2)
+	db $85,$39,$86,$39,$87,$39,$87,$39,$88,$39,$89,$39,$8A,$39,$8B,$39
+	db $88,$39,$89,$39
+
+	%drawStripeHeader(0, 0, 03,06, 0, !FALSE, 10*2)
+	db $8C,$39,$8D,$39,$8E,$39,$8F,$39,$90,$39,$91,$39,$92,$39,$93,$39
+	db $90,$39,$94,$39
+
+	%drawStripeHeader(0, 0, 03,07, 0, !FALSE, 10*2)
+	db $95,$39,$96,$39,$95,$39,$96,$39,$97,$39,$84,$39,$E4,$39,$98,$39
+	db $97,$39,$99,$39
+
+
+	; MARIO BROS 
+	%drawStripeHeader(0, 0, 03,08, 0, !FALSE, 26*2)
+	db $9B,$39,$88,$39,$8A,$79,$8A,$39,$9A,$39,$8A,$79,$E5,$39,$E6,$39
+	db $8A,$39,$8A,$79,$8A,$39,$8A,$79,$84,$39
+	db $8A,$39,$9A,$39,$8A,$79,$8A,$39,$8A,$79,$88,$39,$8A,$79,$9B,$39
+	db $8A,$39,$8A,$79,$84,$39,$E7,$39,$E8,$39
+
+	
+	%drawStripeHeader(0, 0, 03,09, 0, !FALSE, 26*2)
+	db $9C,$39,$9C,$39,$C7,$39,$9C,$39,$9D,$39,$9D,$39,$9C,$39,$9D,$39
+	db $9C,$39,$9D,$39,$C8,$39,$C9,$39,$84,$39
+	db $9C,$39,$9D,$39,$9D,$39,$9C,$39,$9D,$39,$9C,$39,$9E,$39,$9C,$39
+	db $9C,$39,$9D,$39,$84,$39,$E9,$39,$EA,$39
+
+	
+	%drawStripeHeader(0, 0, 03,10, 0, !FALSE, 26*2)
+	db $9F,$39,$9F,$39,$A2,$39,$9F,$39,$9F,$39,$9F,$39,$A0,$39,$A1,$39
+	db $9F,$39,$9F,$39,$CA,$39,$CB,$39,$84,$39
+	db $9F,$39,$9F,$39,$9F,$39,$A0,$39,$A1,$39,$9F,$39,$A2,$39,$9F,$39
+	db $9F,$39,$9F,$39,$84,$39,$EB,$39,$EC,$39
+
+	
+	%drawStripeHeader(0, 0, 03,11, 0, !TRUE, 20*2)
+	db $A3,$39
+	
+	%drawStripeHeader(0, 0, 09,11, 0, !FALSE, 7*2)
+	db $A4,$39,$A5,$39,$A6,$39,$A7,$39,$A6,$39,$A7,$39,$84,$39
+	
+	%drawStripeHeader(0, 0, 19,11, 0, !FALSE, 2*2)
+	db $A4,$39,$A5,$39
+
+	%drawStripeHeader(0, 0, 24,11, 0, !FALSE, 5*2)
+	db $A6,$39,$A7,$39,$84,$39,$84,$39,$84,$39
+
+
+	; THE LOST LEVELS
+	%drawStripeHeader(0, 0, 03,12, 0, !FALSE, 26*2)
+	db $A8,$39,$A9,$39,$AA,$39,$AB,$39,$AC,$39,$AD,$39,$AE,$39,$AF,$39
+	db $B0,$39,$B1,$39,$B2,$39,$B3,$39,$B4,$39,$B5,$39,$AA,$39,$B6,$39
+	db $AC,$39,$B7,$39,$B6,$39,$AC,$39,$B8,$39,$B9,$39,$BA,$39
+	db $84,$39,$84,$39,$84,$39
+
+	%drawStripeHeader(0, 0, 03,13, 0, !FALSE, 26*2)
+	db $CE,$39,$CF,$39,$D0,$39,$D1,$39,$D2,$39,$D3,$39,$D4,$39,$D5,$39
+	db $84,$39,$84,$39,$D6,$39,$D7,$39,$D8,$39,$CF,$39,$D9,$39,$DA,$39
+	db $DB,$39,$DC,$39,$DA,$39,$DB,$39,$DD,$39,$DE,$39,$DF,$39
+	db $84,$39,$84,$39,$84,$39
+
+
+	; Right border
+	%drawStripeHeader(0, 0, 29,05, 1, !TRUE, 8*2)
+	db $C6,$39
+
+
+	; Bottom border and corners
+	%drawStripeHeader(0, 0, 02,14, 0, !FALSE, 28*2)
+	db $BB,$39,$BC,$39,$BD,$39,$BE,$39,$BF,$39,$C0,$39,$C1,$39,$C2,$39
+	db $C3,$39,$BD,$39,$BD,$39,$C4,$39,$BD,$39,$E0,$39,$BD,$39,$BE,$39
+	db $E1,$39,$C0,$39,$BC,$79,$E1,$39,$C0,$39,$BC,$79,$E1,$79,$E2,$39
+	db $BD,$39,$BD,$39,$BD,$39,$80,$39
+
+
+	; Top corners
+	%drawStripeHeader(0, 0, 02,04, 0, !FALSE, 2)
+	db $81,$39
+
+	%drawStripeHeader(0, 0, 29,04, 0, !FALSE, 2)
+	db $C5,$39
+
+
+	table "../SMB1/Tables/Fonts/SMB1_copyright_br.txt"
+
+	%drawStripeHeader(0, 0, 09,15, 0, !FALSE, 21*2)
+	dw "@1986,1993   NINTENDO"
+	%drawStripeHeader(0, 0, 10,16, 0, !FALSE, 20*2)
+	dw "2020,2022 BMATSANTOS"
+	
+	table "../SMB1/Tables/Fonts/SMB1_Global_br.txt"
+	%drawStripeHeader(0, 0, 14,18, 0, !FALSE, 5*2)
+	dw "MARIO"
+
+	%drawStripeHeader(0, 0, 14,20, 0, !FALSE, 5*2)
+	dw "LUIGI"
+
+	%drawStripeHeader(0, 0, 12,22, 0, !FALSE, 6*2)
+	dw "MAIOR-"
+
+	; Top score tens digit
+	%drawStripeHeader(0, 0, 21,23, 0, !FALSE, 2)
+	dW "0"
+	cleartable
 else
+	; Top border
 	db $00,$A5,$40,$2A
 	db $82,$39
 
+	; Fill to the right of SUPER
 	db $00,$D0,$40,$14
 	db $84,$39
 
@@ -35101,12 +35590,15 @@ else
 	db $01,$10,$40,$14
 	db $84,$39
 
+	; Left border
 	db $00,$C4,$C0,$10
 	db $83,$39
 
+	; Left padding
 	db $00,$C5,$C0,$10
 	db $84,$39
 
+	; SUPER
 	db $00,$C6,$00,$13
 	db $85,$39,$86,$39,$87,$39,$87,$39,$88,$39,$89,$39,$8A,$39,$8B,$39
 	db $88,$39,$89,$39
@@ -35119,6 +35611,7 @@ else
 	db $95,$39,$96,$39,$95,$39,$96,$39,$97,$39,$84,$39,$95,$39,$98,$39
 	db $97,$39,$99,$39
 
+	; MARIO BROS
 	db $01,$26,$00,$29
 	db $8A,$39,$9A,$39,$8A,$79,$8A,$39,$8A,$79,$88,$39,$8A,$79,$9B,$39
 	db $8A,$39,$8A,$79,$84,$39,$88,$39,$8A,$79,$88,$39,$8A,$79,$8A,$39
@@ -35134,14 +35627,17 @@ else
 	db $9F,$39,$9F,$39,$84,$39,$9F,$39,$A2,$39,$9F,$39,$A2,$39,$9F,$39
 	db $9F,$39,$CA,$39,$CB,$39,$84,$39,$84,$39
 
+	; TM
 	db $01,$19,$00,$03
 	db $E4,$39,$E5,$39
 
+	; MARIO BROS. (dot row)
 	db $01,$86,$00,$29
 	db $A3,$39,$A3,$39,$A3,$39,$A4,$39,$A5,$39,$A3,$39,$A3,$39,$A3,$39
 	db $A6,$39,$A7,$39,$84,$39,$A3,$39,$CC,$39,$A3,$39,$A3,$39,$A6,$39
 	db $A7,$39,$A6,$39,$A7,$39,$CD,$39,$84,$39
 
+	; THE LOST LEVELS
 	db $01,$A6,$00,$29
 	db $A8,$39,$A9,$39,$AA,$39,$AB,$39,$AC,$39,$AD,$39,$AE,$39,$AF,$39
 	db $B0,$39,$B1,$39,$CE,$39,$AC,$39,$CF,$39,$AD,$39,$D0,$39,$D1,$39
@@ -35152,20 +35648,24 @@ else
 	db $B9,$39,$BA,$39,$D6,$39,$84,$39,$D7,$39,$D8,$39,$D9,$39,$DA,$39
 	db $DB,$39,$DC,$39,$DD,$39,$DE,$39,$84,$39
 
+	; Right border
 	db $00,$DB,$C0,$10
 	db $C6,$39
 
+	; Bottom border and corners
 	db $01,$E4,$00,$2F
 	db $BB,$39,$BC,$39,$BD,$39,$BE,$39,$BF,$39,$C0,$39,$BC,$39,$C1,$39
 	db $C2,$39,$C3,$39,$C4,$39,$C4,$79,$BF,$39,$BC,$39,$DF,$39,$E0,$39
 	db $C2,$39,$BF,$79,$E1,$39,$E1,$79,$E2,$39,$E3,$39,$BC,$39,$80,$39
 
+	; Top corners
 	db $00,$A4,$00,$01
 	db $81,$39
 
 	db $00,$BB,$00,$01
 	db $C5,$39
 
+	; (c)1986 1993 NINTENDO
 	db $02,$0A,$00,$25
 	db $2F,$06,$01,$04,$09,$04,$08,$04,$06,$04,$24,$04,$01,$04,$09,$04
 	db $09,$04,$03,$04,$24,$04,$17,$04,$12,$04,$17,$04,$1D,$04,$0E,$04
@@ -35184,17 +35684,21 @@ if !Define_Global_ROMToAssemble&(!ROM_SMBLL_U|!ROM_SMBLL_E) != $00
 	db $02,$9B,$C0,$0A
 	db $24,$08
 else
+	; MARIO
 	db $02,$4E,$00,$15
 	db $16,$08,$0A,$08,$1B,$08,$12,$08,$18,$08,$24,$08,$10,$08,$0A,$08
 	db $16,$08,$0E,$08,$24,$08
 
+	; LUIGI
 	db $02,$8E,$00,$15
 	db $15,$08,$1E,$08,$12,$08,$10,$08,$12,$08,$24,$08,$10,$08,$0A,$08
 	db $16,$08,$0E,$08,$24,$08
 
+	; TOP-
 	db $02,$EB,$00,$07
 	db $1D,$08,$18,$08,$19,$08,$28,$08
 
+	; Top score tens digit
 	db $02,$F5,$00,$01
 	db $00,$08
 endif
@@ -36586,10 +37090,11 @@ DATA_0FF3D6:
 	db $FF
 
 DATA_0FF3D7:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR] freeing soome space.
 	db $04,$E8,$00,$1F
 	db $1D,$08,$11,$08,$0A,$08,$17,$08,$14,$08,$24,$08,$22,$08,$18,$08
 	db $1E,$08,$24,$08,$16,$08,$0A,$08,$1B,$08,$12,$08,$18,$08,$2B,$08
-
+endif
 	db $FF
 
 DATA_0FF3FC:
@@ -36712,6 +37217,31 @@ DATA_0FF60C:
 DATA_0FF69F:
 	db $FF
 
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+table "../SMB1/Tables/Fonts/SMB1_Global_br.txt"
+DATA_0FF6A0:
+;				  Layer,Map, X,Y, Dir, RLE, Size in bytes
+	%drawStripeHeader(0, 1, 08,10, 0, !FALSE, 16*2)
+	dw "OBRIGADO, MARIO!"
+	db $FF
+
+DATA_0FF6C5:
+	%drawStripeHeader(0, 1, 08,10, 0, !FALSE, 16*2)
+	dw "OBRIGADO, LUIGI!"
+	db $FF
+
+DATA_0FF6EA:
+	%drawStripeHeader(0, 1,06+18,13, 0, !FALSE, 2)
+	                  dw "_"
+	%drawStripeHeader(0, 1, 06,14, 0, !FALSE, 19*2)
+	dw "MAS A PRINCESA ESTA"
+
+	%drawStripeHeader(0, 1, 06,16, 0, !FALSE, 17*2)
+	dw "EM OUTRO CASTELO!"
+
+	db $FF
+cleartable
+else
 DATA_0FF6A0:
 	db $05,$48,$00,$1F
 	db $1D,$08,$11,$08,$0A,$08,$17,$08,$14,$08,$24,$00,$22,$08,$18,$08
@@ -36737,6 +37267,7 @@ DATA_0FF6EA:
 	db $0C,$08,$0A,$08,$1C,$08,$1D,$08,$15,$08,$0E,$08,$2B,$08
 
 	db $FF
+endif
 
 ;--------------------------------------------------------------------
 
@@ -37484,7 +38015,11 @@ macro SMBLLBank10Macros(StartBank, EndBank)
 %BANK_START(<StartBank>)
 SMBLL_UncompressedGFX_FG_GlobalTiles:
 ;$108000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+	incbin "../SMB1/Graphics/GFX_FG_SMBLL_GlobalTiles_br.bin"
+else
 	incbin "../SMB1/Graphics/GFX_FG_SMBLL_GlobalTiles.bin"
+endif
 
 SMBLL_UncompressedGFX_BG_HillsAndTrees:
 ;$10A000
@@ -37494,6 +38029,8 @@ SMBLL_UncompressedGFX_FG_TitleLogo:
 ;$10B000
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMBLL_J) != $00
 	incbin "../SMB1/Graphics/GFX_FG_SMBLL_TitleLogo_SMAS_J.bin"
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+	incbin "../SMB1/Graphics/GFX_FG_SMBLL_TitleLogo_SMAS_br.bin"
 else
 	incbin "../SMB1/Graphics/GFX_FG_SMBLL_TitleLogo_SMAS_U.bin"
 endif

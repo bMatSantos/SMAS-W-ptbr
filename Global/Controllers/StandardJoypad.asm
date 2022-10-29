@@ -16,3 +16,5 @@
 !Joypad_A = $0080
 
 !Joypad_Signature = $0000		; Note: This refers to the lower 4 bits of the low byte.
+
+!Joypad_Any = $00FF 			; [BR] For whenever any button can be pressed

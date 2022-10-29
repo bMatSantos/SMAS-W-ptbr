@@ -100,6 +100,7 @@ echo Assembling SMB3 SPC700 overworld music bank...
 %asarVer% --define GameID="%GAMDID%" --define ROMID="%Input1%" --define FileType=4 --define PathToFile="../SMB3/SPC700/SMB3_Overworld_MusicBank.asm" ..\Global\AssembleFile.asm ..\SMB3\SPC700\SMB3_Overworld_MusicBank.bin
 
 if "%Input1%" equ "SMAS_U" goto :NoSMW1
+if "%Input1%" equ "HACK_SMAS_br" goto :NoSMW1
 if "%Input1%" equ "SMAS_E" goto :NoSMW1
 if "%Input1%" equ "SMAS_J1" goto :NoSMW1
 if "%Input1%" equ "SMAS_J2" goto :NoSMW1
@@ -152,6 +153,7 @@ if exist ..\SMB3\SPC700\SMB3_Level_MusicBank.bin del ..\SMB3\SPC700\SMB3_Level_M
 if exist ..\SMB3\SPC700\SMB3_Overworld_MusicBank.bin del ..\SMB3\SPC700\SMB3_Overworld_MusicBank.bin
 
 if "%Input1%" equ "SMAS_U" goto :NoSMW2
+if "%Input1%" equ "HACK_SMAS_br" goto :NoSMW2
 if "%Input1%" equ "SMAS_E" goto :NoSMW2
 if "%Input1%" equ "SMAS_J1" goto :NoSMW2
 if "%Input1%" equ "SMAS_J2" goto :NoSMW2

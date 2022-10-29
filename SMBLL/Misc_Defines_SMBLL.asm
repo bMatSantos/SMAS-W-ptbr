@@ -183,3 +183,7 @@ endif
 !Define_SMBLL_LevelMusic_LowerVolumeCommand = $F1
 !Define_SMBLL_LevelMusic_RestoreVolumeCommand = $F2
 !Define_SMBLL_LevelMusic_CopyOfMusicFade = $F3
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+!Define_SMBLL_PauseMenuHDMA_Timer = $0010
+endif
