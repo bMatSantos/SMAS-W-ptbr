@@ -24,6 +24,10 @@ macro SMAS_GameSpecificAssemblySettings()
 	!ROM_SMW_E2 = $0008							;|
 	!ROM_SMW_ARCADE = $0010							;/
 
+	!ROM_HACK_SMAS_br = $4000					;\[BR] Defines for the translation
+	!ROM_HACK_SMASW_br = $8000					;|
+	!ROM_HACK_SMW_br = $0020					;/
+
 !Define_Global_SMASGames = !SMASGames_SMB1|!SMASGames_SMBLL|!SMASGames_SMB2U|!SMASGames_SMB3|!SMASGames_SMW		; Which games to assemble when generating a SMAS ROM.
 	!SMASGames_None = $00
 	!SMASGames_SMB1 = $01

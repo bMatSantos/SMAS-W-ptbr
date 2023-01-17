@@ -1,7 +1,9 @@
 *.cht
 *.msl
 *.mwf
+*.mwl
 *.sfc
+*.smc
 *.srm
 *.sym
 Graphics/

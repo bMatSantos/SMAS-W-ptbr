@@ -127,6 +127,15 @@ base $7E0000
 !RAM_SMW_Camera_LastScreenHoriz = $00005E
 !RAM_SMW_Camera_LastScreenVert = $00005F
 ;Empty $000060-$000063
+	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br) != $00 ;[BR]
+		!RAM_Timer_ErrorMsg = $000060
+		!RAM_Timer_FrameCounter = $000062
+		!RAM_ErrorNextColor = SMW_PaletteMirror[$0F].LowByte
+	elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+		!RAM_SMW_Timer_TheEndPrompt = $000060
+		!RAM_SMW_Flag_ShowPressStart = $000062
+	endif
+
 !RAM_SMW_Sprites_TilePriority = $000064
 !RAM_SMW_Misc_ScratchRAM7E0065 = $000065
 	!RAM_SMW_Pointer_Layer1DataLo = !RAM_SMW_Misc_ScratchRAM7E0065

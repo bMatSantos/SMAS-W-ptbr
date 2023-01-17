@@ -413,6 +413,36 @@ endmacro
 
 ;---------------------------------------------------------------------------
 
+macro SMAS_DrawStripeHeader(layer, screen, x, y, dir, RLE, length)
+	!MapIndex = 0
+	!LayerBits = 0
+
+	if <layer> == 1
+		!LayerBits = 2
+	elseif <layer> == 2
+		!LayerBits = 3
+	elseif <layer> == 3
+		!LayerBits = 5
+	endif
+
+	if <screen> > 0
+		!MapIndex = <screen>
+	endif
+
+	if <RLE> == !TRUE
+		!Length = <length>
+	else
+		!Length = <length>-1
+	endif
+
+	!Word1 #= (!LayerBits<<12)|(!MapIndex<<10)|(<y><<5)|(<x>)
+	!Word2 #= (<dir><<15)|(<RLE><<14)|(!Length)
+
+	db !Word1>>8, !Word1, !Word2>>8, !Word2
+endmacro
+
+;---------------------------------------------------------------------------
+
 macro InitializeROMSettings(GameID)
 !SNESHeaderBank = !BANK_00
 
@@ -1020,7 +1050,7 @@ endmacro
 macro SetROMToAssembleForHack(ROMID, CurrentROMID)
 if !SetROMToAssembleForHackCalled == !FALSE
 	if defined("ROM_<CurrentROMID>")
-		if !ROM_<CurrentROMID> > $3000
+		if !ROM_<CurrentROMID> == $0020 || !ROM_<CurrentROMID> > $3000
 			; This is a ROMhack
 			!HackROMID = !ROMID
 			!Define_Global_HackROMToAssemble = !ROM_<CurrentROMID>
@@ -1080,7 +1110,7 @@ endmacro
 ;---------------------------------------------------------------------------
 
 macro CalculateFreespaceRemaining()
-%GetROMSize
+%GetROMSize()
 print "Freespace used by integrated patches: ",freespaceuse
 print "Total Freespace: ", dec(!TotalFreespace)
 reset freespaceuse

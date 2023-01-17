@@ -18,181 +18,196 @@
 
 macro SMWBank00Macros(StartBank, EndBank)
 %BANK_START(<StartBank>)								; Info: Start addresses of each macro (USA version only)
-ROUTINE_RT00_SMW_InitAndMainLoop:	%ROUTINE_RT00_SMW_InitAndMainLoop(NULLROM)					; $008000
-ROUTINE_RT00_SMW_HandleSPCUploads:	%ROUTINE_RT00_SMW_HandleSPCUploads(NULLROM)					; $008079
-ROUTINE_SMW_VBlankRoutine:		%ROUTINE_SMW_VBlankRoutine(NULLROM)						; $00816A
-ROUTINE_SMW_IRQRoutine:			%ROUTINE_SMW_IRQRoutine(NULLROM)						; $008374
-ROUTINE_SMW_Mode7Layer1Scroll:		%ROUTINE_SMW_Mode7Layer1Scroll(NULLROM)					; $0083F3
-ROUTINE_SMW_SetMode7PPUPointersAndLayer1Scroll:	%ROUTINE_SMW_SetMode7PPUPointersAndLayer1Scroll(NULLROM)			; $008416
-ROUTINE_SMW_WaitForHBlank:	%ROUTINE_SMW_WaitForHBlank(NULLROM)						; $008439
-ROUTINE_SMW_UploadOAMBuffer:	%ROUTINE_SMW_UploadOAMBuffer(NULLROM)						; $008449
-ROUTINE_SMW_CompressOAMTileSizeBuffer:	%ROUTINE_SMW_CompressOAMTileSizeBuffer(NULLROM)				; $008475
-ROUTINE_RT00_SMW_LoadStripeImage:	%ROUTINE_RT00_SMW_LoadStripeImage(NULLROM)					; $0084C8
-ROUTINE_SMW_ClearLayer3Tilemap:	%ROUTINE_SMW_ClearLayer3Tilemap(NULLROM)					; $0085FA
-ROUTINE_SMW_PollJoypadInputs:	%ROUTINE_SMW_PollJoypadInputs(NULLROM)						; $008650
-ROUTINE_RT01_SMW_GameMode14_InLevel:	%ROUTINE_RT01_SMW_GameMode14_InLevel(NULLROM)					; $0086C7
-ROUTINE_SMW_ExecutePtr:	%ROUTINE_SMW_ExecutePtr(NULLROM)						; $0086DF
-ROUTINE_RT01_SMW_LoadStripeImage:	%ROUTINE_RT01_SMW_LoadStripeImage(NULLROM)					; $00871E
-ROUTINE_SMW_UploadLevelLayer1And2Tilemaps:	%ROUTINE_SMW_UploadLevelLayer1And2Tilemaps(NULLROM)				; $0087AD
-ROUTINE_SMW_InitializeFirst8KBOfRAM:	%ROUTINE_SMW_InitializeFirst8KBOfRAM(NULLROM)					; $008A4E
-ROUTINE_SMW_SetStandardPPUSettings:	%ROUTINE_SMW_SetStandardPPUSettings(NULLROM)					; $008A79
-ROUTINE_SMW_ManipulateMode7Image:	%ROUTINE_SMW_ManipulateMode7Image(NULLROM)					; $008AB4
-DATATABLE_SMW_StatusBarTilemap:	%DATATABLE_SMW_StatusBarTilemap(NULLROM)					; $008C81
-ROUTINE_SMW_InitializeStatusBarTilemap:	%ROUTINE_SMW_InitializeStatusBarTilemap(NULLROM)				; $008CFF
-ROUTINE_SMW_UploadStatusBarTilemap:	%ROUTINE_SMW_UploadStatusBarTilemap(NULLROM)					; $008DAC
-ROUTINE_RT00_SMW_UpdateStatusBarCounters:	%ROUTINE_RT00_SMW_UpdateStatusBarCounters(NULLROM)				; $008DF5
-ROUTINE_RT00_SMW_HexToDec:	%ROUTINE_RT00_SMW_HexToDec(NULLROM)						; $009045
-ROUTINE_RT01_SMW_UpdateStatusBarCounters:	%ROUTINE_RT01_SMW_UpdateStatusBarCounters(NULLROM)				; $009051
-ROUTINE_RT01_SMW_DrawLoadingLetters:	%ROUTINE_RT01_SMW_DrawLoadingLetters(NULLROM)					; $0090D1
-ROUTINE_RT01_SMW_GameMode12_PrepareLevel:	%ROUTINE_RT01_SMW_GameMode12_PrepareLevel(NULLROM)				; $00919B
-ROUTINE_RT00_SMW_DrawLoadingLetters:	%ROUTINE_RT00_SMW_DrawLoadingLetters(NULLROM)					; $0091B1
-ROUTINE_SMW_UpdateEntirePalette:	%ROUTINE_SMW_UpdateEntirePalette(NULLROM)					; $00922F
-ROUTINE_SMW_SetupHDMAWindowingEffects:	%ROUTINE_SMW_SetupHDMAWindowingEffects(NULLROM)				; $009250
-ROUTINE_SMW_SetEnemyRollcallParallaxHDMA:	%ROUTINE_SMW_SetEnemyRollcallParallaxHDMA(NULLROM)				; $0092B2
-ROUTINE_RT01_SMW_InitAndMainLoop:	%ROUTINE_RT01_SMW_InitAndMainLoop(NULLROM)					; $009322
-ROUTINE_SMW_TurnOffIO:	%ROUTINE_SMW_TurnOffIO(NULLROM)						; $00937D
-ROUTINE_SMW_GameMode00_LoadNintendoPresents:	%ROUTINE_SMW_GameMode00_LoadNintendoPresents(NULLROM)				; $009389
-ROUTINE_SMW_SetVisibleLayers:	%ROUTINE_SMW_SetVisibleLayers(NULLROM)						; $0093FD
-ROUTINE_SMW_GameMode01_ShowNintendoPresents:	%ROUTINE_SMW_GameMode01_ShowNintendoPresents(NULLROM)				; $00940F
-ROUTINE_SMW_GameMode06_CircleEffect:	%ROUTINE_SMW_GameMode06_CircleEffect(NULLROM)					; $00941B
-ROUTINE_RT00_SMW_GameMode19_Cutscene:	%ROUTINE_RT00_SMW_GameMode19_Cutscene(NULLROM)					; $009451
-ROUTINE_SMW_UploadBigLayer3LettersToVRAM:	%ROUTINE_SMW_UploadBigLayer3LettersToVRAM(NULLROM)				; $00955E
-ROUTINE_RT00_SMW_GameMode1D_LoadYoshisHouse:	%ROUTINE_RT00_SMW_GameMode1D_LoadYoshisHouse(NULLROM)				; $009583
-ROUTINE_RT00_SMW_GameMode21_DelayEnemyRollcall:	%ROUTINE_RT00_SMW_GameMode21_DelayEnemyRollcall(NULLROM)			; $0095BC
-ROUTINE_SMW_GameMode23_LoadEnemyRollcallScreen:	%ROUTINE_SMW_GameMode23_LoadEnemyRollcallScreen(NULLROM)			; $0095C1
-ROUTINE_RT00_SMW_GameMode25_ShowEnemyRollcallScreen:	%ROUTINE_RT00_SMW_GameMode25_ShowEnemyRollcallScreen(NULLROM)			; $00962C
-ROUTINE_SMW_GameMode27_LoadTheEnd:	%ROUTINE_SMW_GameMode27_LoadTheEnd(NULLROM)					; $00963D
-ROUTINE_SMW_GameMode29_DoNothingOnTheEndScreen:	%ROUTINE_SMW_GameMode29_DoNothingOnTheEndScreen(NULLROM)			; $00968D
-ROUTINE_SMW_GameMode10_BufferLevelLoadMessage:	%ROUTINE_SMW_GameMode10_BufferLevelLoadMessage(NULLROM)			; $00968E
-ROUTINE_RT00_SMW_GameMode11_LoadSublevel:	%ROUTINE_RT00_SMW_GameMode11_LoadSublevel(NULLROM)				; $0096AE
-ROUTINE_RT01_SMW_OverworldPrompt03_OverworldLifeExchanger:	%ROUTINE_RT01_SMW_OverworldPrompt03_OverworldLifeExchanger(NULLROM)		; $00974C
-ROUTINE_SMW_GameMode16_LoadDeathMessage:	%ROUTINE_SMW_GameMode16_LoadDeathMessage(NULLROM)				; $009750
-ROUTINE_SMW_GameMode17_ShowDeathMessage:	%ROUTINE_SMW_GameMode17_ShowDeathMessage(NULLROM)				; $009759
-ROUTINE_RT02_SMW_GameMode12_PrepareLevel:	%ROUTINE_RT02_SMW_GameMode12_PrepareLevel(NULLROM)				; $0097BC
-ROUTINE_RT02_SMW_GameMode14_InLevel:	%ROUTINE_RT02_SMW_GameMode14_InLevel(NULLROM)					; $009875
-ROUTINE_SMW_UploadMode7KoopaBossesAndLavaAnimation:	%ROUTINE_SMW_UploadMode7KoopaBossesAndLavaAnimation(NULLROM)			; $009891
-ROUTINE_RT03_SMW_GameMode12_PrepareLevel:	%ROUTINE_RT03_SMW_GameMode12_PrepareLevel(NULLROM)				; $009925
-ROUTINE_RT03_SMW_GameMode14_InLevel:	%ROUTINE_RT03_SMW_GameMode14_InLevel(NULLROM)					; $009A4E
-ROUTINE_SMW_CheckWhichControllersArePluggedIn:	%ROUTINE_SMW_CheckWhichControllersArePluggedIn(NULLROM)			; $009A74
-ROUTINE_RT00_SMW_GameMode04_PrepareTitleScreen:	%ROUTINE_RT00_SMW_GameMode04_PrepareTitleScreen(NULLROM)			; $009A8B
-ROUTINE_RT00_SMW_HandleMenuCursor:	%ROUTINE_RT00_SMW_HandleMenuCursor(NULLROM)					; $009AC8
-ROUTINE_SMW_GameMode09_EraseFile:	%ROUTINE_SMW_GameMode09_EraseFile(NULLROM)					; $009B17
-ROUTINE_SMW_DisplayingContinueEnd:	%ROUTINE_SMW_DisplayingContinueEnd(NULLROM)					; $009B80
-ROUTINE_RT01_SMW_OverworldPrompt07_DisplayingSavePrompt:	%ROUTINE_RT01_SMW_OverworldPrompt07_DisplayingSavePrompt(NULLROM)		; $009BA8
-ROUTINE_RT01_SMW_OverworldPrompt0B_ShowQuitToTitleScreenPrompt:	%ROUTINE_RT01_SMW_OverworldPrompt0B_ShowQuitToTitleScreenPrompt(NULLROM)	; N/A
-ROUTINE_SMW_SaveGame:	%ROUTINE_SMW_SaveGame(NULLROM)							; $009BC9
-ROUTINE_SMW_CloseOverworldPrompt:	%ROUTINE_SMW_CloseOverworldPrompt(NULLROM)					; $009C13
-ROUTINE_SMW_GameMode07_TitleScreenDemo:	%ROUTINE_SMW_GameMode07_TitleScreenDemo(NULLROM)				; $009C1F
-DATATABLE_SMW_SaveFileLocations:	%DATATABLE_SMW_SaveFileLocations(NULLROM)					; $009CCB
-ROUTINE_SMW_GameMode08_FileSelect:	%ROUTINE_SMW_GameMode08_FileSelect(NULLROM)					; $009CD1
-ROUTINE_SMW_FileSelectColorMath:	%ROUTINE_SMW_FileSelectColorMath(NULLROM)					; $009D30
-ROUTINE_SMW_BufferFileSelectText:	%ROUTINE_SMW_BufferFileSelectText(NULLROM)					; $009D38
-ROUTINE_SMW_GameMode0A_PlayerSelect:	%ROUTINE_SMW_GameMode0A_PlayerSelect(NULLROM)					; $009DFA
-ROUTINE_RT01_SMW_HandleMenuCursor:	%ROUTINE_RT01_SMW_HandleMenuCursor(NULLROM)					; $009E6A
-ROUTINE_SMW_InitializeSaveData:	%ROUTINE_SMW_InitializeSaveData(NULLROM)					; $009EE0
-ROUTINE_SMW_SetKeepGameModeActiveTimer:	%ROUTINE_SMW_SetKeepGameModeActiveTimer(NULLROM)				; $009F29
-ROUTINE_SMW_GameModeXX_FadeInOrOut:	%ROUTINE_SMW_GameModeXX_FadeInOrOut(NULLROM)					; $009F2F
-ROUTINE_SMW_GameMode28_ShowTheEnd:	%ROUTINE_SMW_GameMode28_ShowTheEnd(NULLROM)					; $009F7C
-ROUTINE_RT00_SMW_InitializeLevelLayer3:	%ROUTINE_RT00_SMW_InitializeLevelLayer3(NULLROM)				; $009F88
-ROUTINE_RT00_SMW_GameMode0C_LoadOverworld:	%ROUTINE_RT00_SMW_GameMode0C_LoadOverworld(NULLROM)				; $00A06B
-ROUTINE_SMW_LoadSaveBufferData:	%ROUTINE_SMW_LoadSaveBufferData(NULLROM)					; $00A195
-ROUTINE_SMW_ClearOverworldAndCutsceneRAM:	%ROUTINE_SMW_ClearOverworldAndCutsceneRAM(NULLROM)				; $00A1A6
-ROUTINE_RT00_SMW_GameMode0E_ShowOverworld:	%ROUTINE_RT00_SMW_GameMode0E_ShowOverworld(NULLROM)				; $00A1BE
-ROUTINE_RT00_SMW_GameMode14_InLevel:	%ROUTINE_RT00_SMW_GameMode14_InLevel(NULLROM)					; $00A1CE
-ROUTINE_SMW_UpdateCurrentPlayerPositionRAM:	%ROUTINE_SMW_UpdateCurrentPlayerPositionRAM(NULLROM)				; $00A2F3
-ROUTINE_RT00_SMW_UploadPlayerGFX:	%ROUTINE_RT00_SMW_UploadPlayerGFX(NULLROM)					; $00A300
-ROUTINE_SMW_UploadLevelAnimations:	%ROUTINE_SMW_UploadLevelAnimations(NULLROM)					; $00A390
-ROUTINE_SMW_RestoreSP1AfterMarioStart:	%ROUTINE_SMW_RestoreSP1AfterMarioStart(NULLROM)				; $00A436
-ROUTINE_RT00_SMW_UpdatePaletteFromIndexedTable:	%ROUTINE_RT00_SMW_UpdatePaletteFromIndexedTable(NULLROM)			; $00A47F
-ROUTINE_SMW_UploadOverworldAnimations:	%ROUTINE_SMW_UploadOverworldAnimations(NULLROM)				; $00A4E3
-ROUTINE_SMW_UploadOverworldLayer1And2Tilemaps:	%ROUTINE_SMW_UploadOverworldLayer1And2Tilemaps(NULLROM)			; $00A521
-ROUTINE_RT00_SMW_BufferPalettesRoutines:	%ROUTINE_RT00_SMW_BufferPalettesRoutines(NULLROM)				; $00A594
-ROUTINE_RT00_SMW_GameMode12_PrepareLevel:	%ROUTINE_RT00_SMW_GameMode12_PrepareLevel(NULLROM)				; $00A59C
-ROUTINE_SMW_InitializeLevelTileAnimations:	%ROUTINE_SMW_InitializeLevelTileAnimations(NULLROM)				; $00A5F9
-ROUTINE_SMW_InitializeLevelRAM:	%ROUTINE_SMW_InitializeLevelRAM(NULLROM)					; $00A60D
-ROUTINE_RT01_SMW_GameMode11_LoadSublevel:	%ROUTINE_RT01_SMW_GameMode11_LoadSublevel(NULLROM)				; $00A796
-ROUTINE_SMW_UploadLoadingLettersTiles:	%ROUTINE_SMW_UploadLoadingLettersTiles(NULLROM)				; $00A7C2
-ROUTINE_SMW_BufferLoadingLetterTiles:	%ROUTINE_SMW_BufferLoadingLetterTiles(NULLROM)					; $00A82D
-ROUTINE_SMW_UploadGraphicsFiles:	%ROUTINE_SMW_UploadGraphicsFiles(NULLROM)					; $00A8C3
-ROUTINE_RT01_SMW_BufferPalettesRoutines:	%ROUTINE_RT01_SMW_BufferPalettesRoutines(NULLROM)				; $00ABD3
-ROUTINE_RT01_SMW_UpdatePaletteFromIndexedTable:	%ROUTINE_RT01_SMW_UpdatePaletteFromIndexedTable(NULLROM)			; $00AE41
-ROUTINE_SMW_HandlePaletteFades:	%ROUTINE_SMW_HandlePaletteFades(NULLROM)					; $00AE65
-ROUTINE_RT02_SMW_OverworldEventProcess04_FadeInLayer2Tile:	%ROUTINE_RT02_SMW_OverworldEventProcess04_FadeInLayer2Tile(NULLROM)		; $00B006
-ROUTINE_RT01_SMW_PlayerState00_Normal:	%ROUTINE_RT01_SMW_PlayerState00_Normal(NULLROM)				; $00B03E
-INLINEDATATABLE_RT00_SMW_EmptySpace:	%INLINEDATATABLE_RT00_SMW_EmptySpace(NULLROM)					; $00B091
-DATATABLE_SMW_GlobalPalettes:	%DATATABLE_SMW_GlobalPalettes(NULLROM)						; $00B0A0
-ROUTINE_SMW_GraphicsDecompressionRoutines:	%ROUTINE_SMW_GraphicsDecompressionRoutines(NULLROM)				; $00B882
-INLINEDATATABLE_RT01_SMW_EmptySpace:	%INLINEDATATABLE_RT01_SMW_EmptySpace(NULLROM)					; $00BA4D
-DATATABLE_SMW_LevelDataLayoutTables:	%DATATABLE_SMW_LevelDataLayoutTables(NULLROM)					; $00BA60
-ROUTINE_SMW_GenerateTile:	%ROUTINE_SMW_GenerateTile(NULLROM)						; $00BEB0
-ROUTINE_SMW_SetItemMemoryBit:	%ROUTINE_SMW_SetItemMemoryBit(NULLROM)						; $00BFFF
-ROUTINE_SMW_GenericPage00Tile:	%ROUTINE_SMW_GenericPage00Tile(NULLROM)					; $00C063
-ROUTINE_SMW_GenericPage01Tile:	%ROUTINE_SMW_GenericPage01Tile(NULLROM)					; $00C0AA
-ROUTINE_SMW_EraseYoshiCoin:	%ROUTINE_SMW_EraseYoshiCoin(NULLROM)						; $00C1AC
-ROUTINE_SMW_ChangeNetDoorTiles:	%ROUTINE_SMW_ChangeNetDoorTiles(NULLROM)					; $00C29E
-ROUTINE_SMW_EraseLargeSwitch:	%ROUTINE_SMW_EraseLargeSwitch(NULLROM)						; $00C3D1
-INLINEDATATABLE_RT02_SMW_EmptySpace:	%INLINEDATATABLE_RT02_SMW_EmptySpace(NULLROM)					; $00C453
-ROUTINE_RT04_SMW_GameMode14_InLevel:	%ROUTINE_RT04_SMW_GameMode14_InLevel(NULLROM)					; $00C460
-ROUTINE_SMW_PlayerState0B_RescuedPeach:	%ROUTINE_SMW_PlayerState0B_RescuedPeach(NULLROM)				; $00C5B5
-ROUTINE_SMW_PlayerState0C_CastleDestructionMoves:	%ROUTINE_SMW_PlayerState0C_CastleDestructionMoves(NULLROM)			; $00C5E1
-ROUTINE_SMW_PlayerState08_WarpToYoshiWingsBonus:	%ROUTINE_SMW_PlayerState08_WarpToYoshiWingsBonus(NULLROM)			; $00C7F9
-ROUTINE_SMW_PlayerState0A_NoYoshiCutscene:	%ROUTINE_SMW_PlayerState0A_NoYoshiCutscene(NULLROM)				; $00C848
-ROUTINE_RT02_SMW_PlayerState00_Normal:	%ROUTINE_RT02_SMW_PlayerState00_Normal(NULLROM)				; $00C915
-ROUTINE_SMW_UpdateHDMAWindowBuffer:	%ROUTINE_SMW_UpdateHDMAWindowBuffer(NULLROM)					; $00CA61
-ROUTINE_RT00_SMW_PlayerState00_Normal:	%ROUTINE_RT00_SMW_PlayerState00_Normal(NULLROM)				; $00CC5C
-ROUTINE_RT00_SMW_SetPlayerPose:	%ROUTINE_RT00_SMW_SetPlayerPose(NULLROM)					; $00CE79
-ROUTINE_SMW_InitializeCapeSwingOrNetPunch:	%ROUTINE_SMW_InitializeCapeSwingOrNetPunch(NULLROM)				; $00D034
-ROUTINE_SMW_CheckForPowerUpSpecificPlayerAttacks:	%ROUTINE_SMW_CheckForPowerUpSpecificPlayerAttacks(NULLROM)			; $00D062
-ROUTINE_SMW_PlayerState09_Death:	%ROUTINE_SMW_PlayerState09_Death(NULLROM)					; $00D0AE
-ROUTINE_SMW_PlayerStateXX_PowerupAnimations:	%ROUTINE_SMW_PlayerStateXX_PowerupAnimations(NULLROM)				; $00D11D
-ROUTINE_SMW_PlayerStateXX_EnterPipe:	%ROUTINE_SMW_PlayerStateXX_EnterPipe(NULLROM)					; $00D18D
-ROUTINE_SMW_IncrementSublevelsEnteredAndPrepareToLoadSublevel:	%ROUTINE_SMW_IncrementSublevelsEnteredAndPrepareToLoadSublevel(NULLROM)	; $00D273
-ROUTINE_SMW_UnusedAddToWarpPipeTimerRoutine:	%ROUTINE_SMW_UnusedAddToWarpPipeTimerRoutine(NULLROM)				; $00D27C
-ROUTINE_SMW_PlayerState07_ShootOutOfPipe:	%ROUTINE_SMW_PlayerState07_ShootOutOfPipe(NULLROM)				; $00D287
-ROUTINE_SMW_HandlePlayerPhysics:	%ROUTINE_SMW_HandlePlayerPhysics(NULLROM)					; $00D2BD
-ROUTINE_SMW_UpdatePlayerSpritePosition:	%ROUTINE_SMW_UpdatePlayerSpritePosition(NULLROM)				; $00DC2D
-ROUTINE_RT01_SMW_SetPlayerPose:	%ROUTINE_RT01_SMW_SetPlayerPose(NULLROM)					; $00DC78
-ROUTINE_RT00_SMW_PlayerGFXRt:	%ROUTINE_RT00_SMW_PlayerGFXRt(NULLROM)						; $00DCEC
-DATATABLE_RT00_SMW_SlopeDataTables:	%DATATABLE_RT00_SMW_SlopeDataTables(NULLROM)					; $00E4B9
-ROUTINE_RT02_SMW_InitializeMap16Pointers:	%ROUTINE_RT02_SMW_InitializeMap16Pointers(NULLROM)				; $00E55E
-DATATABLE_RT01_SMW_SlopeDataTables:	%DATATABLE_RT01_SMW_SlopeDataTables(NULLROM)					; $00E632
-ROUTINE_RT01_SMW_GetPlayerLevelCollisionMap16ID:	%ROUTINE_RT01_SMW_GetPlayerLevelCollisionMap16ID(NULLROM)			; $00E832
-ROUTINE_RT01_SMW_RunPlayerBlockCode:	%ROUTINE_RT01_SMW_RunPlayerBlockCode(NULLROM)					; $00E8A4
-ROUTINE_SMW_HandlePlayerLevelCollision:	%ROUTINE_SMW_HandlePlayerLevelCollision(NULLROM)				; $00E90A
-ROUTINE_SMW_ResetPlayerLevelCollisionRAM:	%ROUTINE_SMW_ResetPlayerLevelCollisionRAM(NULLROM)				; $00EAA6
-ROUTINE_RT00_SMW_RunPlayerBlockCode:	%ROUTINE_RT00_SMW_RunPlayerBlockCode(NULLROM)					; $00EAB9
-ROUTINE_SMW_CheckForWaterSlope:	%ROUTINE_SMW_CheckForWaterSlope(NULLROM)					; $00F04D
-ROUTINE_RT01_SMW_CheckIfBlockWasHit:	%ROUTINE_RT01_SMW_CheckIfBlockWasHit(NULLROM)					; $00F05C
-ROUTINE_RT02_SMW_RunPlayerBlockCode:	%ROUTINE_RT02_SMW_RunPlayerBlockCode(NULLROM)					; $00F120
-ROUTINE_RT00_SMW_CheckIfBlockWasHit:	%ROUTINE_RT00_SMW_CheckIfBlockWasHit(NULLROM)					; $00F15F
-ROUTINE_RT03_SMW_RunPlayerBlockCode:	%ROUTINE_RT03_SMW_RunPlayerBlockCode(NULLROM)					; $00F267
-ROUTINE_SMW_SpawnScoreSpriteAtPlayerPosition:	%ROUTINE_SMW_SpawnScoreSpriteAtPlayerPosition(NULLROM)				; $00F388
-ROUTINE_RT04_SMW_RunPlayerBlockCode:	%ROUTINE_RT04_SMW_RunPlayerBlockCode(NULLROM)					; $00F3B2
-ROUTINE_RT00_SMW_GetPlayerLevelCollisionMap16ID:	%ROUTINE_RT00_SMW_GetPlayerLevelCollisionMap16ID(NULLROM)			; $00F44D
-ROUTINE_SMW_ModifyMap16IDForSpecialBlocks:	%ROUTINE_SMW_ModifyMap16IDForSpecialBlocks(NULLROM)				; $00F545
-ROUTINE_RT03_SMW_PlayerState00_Normal:	%ROUTINE_RT03_SMW_PlayerState00_Normal(NULLROM)				; $00F595
-ROUTINE_SMW_DamagePlayer:	%ROUTINE_SMW_DamagePlayer(NULLROM)						; $00F5B7
-ROUTINE_RT01_SMW_PlayerGFXRt:	%ROUTINE_RT01_SMW_PlayerGFXRt(NULLROM)						; $00F636
-ROUTINE_SMW_HandleStandardLevelCameraScroll:	%ROUTINE_SMW_HandleStandardLevelCameraScroll(NULLROM)				; $00F69F
-ROUTINE_RT04_SMW_PlayerState00_Normal:	%ROUTINE_RT04_SMW_PlayerState00_Normal(NULLROM)				; $00F8DF
-INLINEDATATABLE_RT03_SMW_EmptySpace:	%INLINEDATATABLE_RT03_SMW_EmptySpace(NULLROM)					; $00F9F5
-ROUTINE_RT01_SMW_ClearOutNormalSpriteSlots:	%ROUTINE_RT01_SMW_ClearOutNormalSpriteSlots(NULLROM)				; $00FA10
-ROUTINE_SMW_CheckWhatSlopeSpriteIsOn:	%ROUTINE_SMW_CheckWhatSlopeSpriteIsOn(NULLROM)					; $00FA19
-ROUTINE_RT05_SMW_RunPlayerBlockCode:	%ROUTINE_RT05_SMW_RunPlayerBlockCode(NULLROM)					; $00FA45
-ROUTINE_RT02_SMW_NorSpr07B_GoalTape_Status08:	%ROUTINE_RT02_SMW_NorSpr07B_GoalTape_Status08(NULLROM)				; $00FA80
-ROUTINE_RT01_SMW_NorSprStatus06_GoalCoins:	%ROUTINE_RT01_SMW_NorSprStatus06_GoalCoins(NULLROM)				; $00FBA4
-ROUTINE_SMW_UnusedYoshiRelatedRoutine:	%ROUTINE_SMW_UnusedYoshiRelatedRoutine(NULLROM)				; $00FC23
-ROUTINE_SMW_SpawnMountedYoshiOnLevelLoad:	%ROUTINE_SMW_SpawnMountedYoshiOnLevelLoad(NULLROM)				; $00FC7A
-ROUTINE_RT00_SMW_ClearOutNormalSpriteSlots:	%ROUTINE_RT00_SMW_ClearOutNormalSpriteSlots(NULLROM)				; $00FCEC
-ROUTINE_RT01_SMW_NorSpr029_KoopaKid_Status01:	%ROUTINE_RT01_SMW_NorSpr029_KoopaKid_Status01(NULLROM)				; $00FCF5
-ROUTINE_SMW_SpawnPlayerBreathBubble:	%ROUTINE_SMW_SpawnPlayerBreathBubble(NULLROM)					; $00FD08
-ROUTINE_SMW_SpawnGlitterEffectForCoin:	%ROUTINE_SMW_SpawnGlitterEffectForCoin(NULLROM)				; $00FD5A
-ROUTINE_SMW_SpawnPlayerWaterSplashAndManyBreathBubbles:	%ROUTINE_SMW_SpawnPlayerWaterSplashAndManyBreathBubbles(NULLROM)		; $00FD9D
-ROUTINE_SMW_SpawnPlayerTurnAroundSmoke:	%ROUTINE_SMW_SpawnPlayerTurnAroundSmoke(NULLROM)				; $00FE4A
-ROUTINE_SMW_SpawnPlayerFireball:	%ROUTINE_SMW_SpawnPlayerFireball(NULLROM)					; $00FE94
-ROUTINE_RT02_SMW_NorSpr088_WingedCage_Status08:	%ROUTINE_RT02_SMW_NorSpr088_WingedCage_Status08(NULLROM)			; $00FF07
-ROUTINE_RT02_SMW_NorSpr089_Layer3Smasher_Status08:	%ROUTINE_RT02_SMW_NorSpr089_Layer3Smasher_Status08(NULLROM)			; $00FF61
-INLINEDATATABLE_RT04_SMW_EmptySpace:	%INLINEDATATABLE_RT04_SMW_EmptySpace(NULLROM)					; $00FF93
+	ROUTINE_RT00_SMW_InitAndMainLoop:	%ROUTINE_RT00_SMW_InitAndMainLoop(NULLROM)					; $008000
+	ROUTINE_RT00_SMW_HandleSPCUploads:	%ROUTINE_RT00_SMW_HandleSPCUploads(NULLROM)					; $008079
+	ROUTINE_SMW_VBlankRoutine:		%ROUTINE_SMW_VBlankRoutine(NULLROM)						; $00816A
+	ROUTINE_SMW_IRQRoutine:			%ROUTINE_SMW_IRQRoutine(NULLROM)						; $008374
+	ROUTINE_SMW_Mode7Layer1Scroll:		%ROUTINE_SMW_Mode7Layer1Scroll(NULLROM)					; $0083F3
+	ROUTINE_SMW_SetMode7PPUPointersAndLayer1Scroll:	%ROUTINE_SMW_SetMode7PPUPointersAndLayer1Scroll(NULLROM)			; $008416
+	ROUTINE_SMW_WaitForHBlank:	%ROUTINE_SMW_WaitForHBlank(NULLROM)						; $008439
+	ROUTINE_SMW_UploadOAMBuffer:	%ROUTINE_SMW_UploadOAMBuffer(NULLROM)						; $008449
+	ROUTINE_SMW_CompressOAMTileSizeBuffer:	%ROUTINE_SMW_CompressOAMTileSizeBuffer(NULLROM)				; $008475
+	ROUTINE_RT00_SMW_LoadStripeImage:	%ROUTINE_RT00_SMW_LoadStripeImage(NULLROM)					; $0084C8
+	ROUTINE_SMW_ClearLayer3Tilemap:	%ROUTINE_SMW_ClearLayer3Tilemap(NULLROM)					; $0085FA
+	ROUTINE_SMW_PollJoypadInputs:	%ROUTINE_SMW_PollJoypadInputs(NULLROM)						; $008650
+	ROUTINE_RT01_SMW_GameMode14_InLevel:	%ROUTINE_RT01_SMW_GameMode14_InLevel(NULLROM)					; $0086C7
+	ROUTINE_SMW_ExecutePtr:	%ROUTINE_SMW_ExecutePtr(NULLROM)						; $0086DF
+	ROUTINE_RT01_SMW_LoadStripeImage:	%ROUTINE_RT01_SMW_LoadStripeImage(NULLROM)					; $00871E
+	ROUTINE_SMW_UploadLevelLayer1And2Tilemaps:	%ROUTINE_SMW_UploadLevelLayer1And2Tilemaps(NULLROM)				; $0087AD
+	ROUTINE_SMW_InitializeFirst8KBOfRAM:	%ROUTINE_SMW_InitializeFirst8KBOfRAM(NULLROM)					; $008A4E
+	ROUTINE_SMW_SetStandardPPUSettings:	%ROUTINE_SMW_SetStandardPPUSettings(NULLROM)					; $008A79
+	ROUTINE_SMW_ManipulateMode7Image:	%ROUTINE_SMW_ManipulateMode7Image(NULLROM)					; $008AB4
+	DATATABLE_SMW_StatusBarTilemap:	%DATATABLE_SMW_StatusBarTilemap(NULLROM)					; $008C81
+	ROUTINE_SMW_InitializeStatusBarTilemap:	%ROUTINE_SMW_InitializeStatusBarTilemap(NULLROM)				; $008CFF
+	ROUTINE_SMW_UploadStatusBarTilemap:	%ROUTINE_SMW_UploadStatusBarTilemap(NULLROM)					; $008DAC
+	ROUTINE_RT00_SMW_UpdateStatusBarCounters:	%ROUTINE_RT00_SMW_UpdateStatusBarCounters(NULLROM)				; $008DF5
+	ROUTINE_RT00_SMW_HexToDec:	%ROUTINE_RT00_SMW_HexToDec(NULLROM)						; $009045
+	ROUTINE_RT01_SMW_UpdateStatusBarCounters:	%ROUTINE_RT01_SMW_UpdateStatusBarCounters(NULLROM)				; $009051
+	ROUTINE_RT01_SMW_DrawLoadingLetters:	%ROUTINE_RT01_SMW_DrawLoadingLetters(NULLROM)					; $0090D1
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) == $00 ;[BR]
+	ROUTINE_RT01_SMW_GameMode12_PrepareLevel:	%ROUTINE_RT01_SMW_GameMode12_PrepareLevel(NULLROM)				; $00919B
+endif
+
+	ROUTINE_RT00_SMW_DrawLoadingLetters:	%ROUTINE_RT00_SMW_DrawLoadingLetters(NULLROM)					; $0091B1
+	ROUTINE_SMW_UpdateEntirePalette:	%ROUTINE_SMW_UpdateEntirePalette(NULLROM)					; $00922F
+	ROUTINE_SMW_SetupHDMAWindowingEffects:	%ROUTINE_SMW_SetupHDMAWindowingEffects(NULLROM)				; $009250
+	ROUTINE_SMW_SetEnemyRollcallParallaxHDMA:	%ROUTINE_SMW_SetEnemyRollcallParallaxHDMA(NULLROM)				; $0092B2
+	ROUTINE_RT01_SMW_InitAndMainLoop:	%ROUTINE_RT01_SMW_InitAndMainLoop(NULLROM)					; $009322
+	ROUTINE_SMW_TurnOffIO:	%ROUTINE_SMW_TurnOffIO(NULLROM)						; $00937D
+	ROUTINE_SMW_GameMode00_LoadNintendoPresents:	%ROUTINE_SMW_GameMode00_LoadNintendoPresents(NULLROM)				; $009389
+	ROUTINE_SMW_SetVisibleLayers:	%ROUTINE_SMW_SetVisibleLayers(NULLROM)						; $0093FD
+	ROUTINE_SMW_GameMode01_ShowNintendoPresents:	%ROUTINE_SMW_GameMode01_ShowNintendoPresents(NULLROM)				; $00940F
+	ROUTINE_SMW_GameMode06_CircleEffect:	%ROUTINE_SMW_GameMode06_CircleEffect(NULLROM)					; $00941B
+	ROUTINE_RT00_SMW_GameMode19_Cutscene:	%ROUTINE_RT00_SMW_GameMode19_Cutscene(NULLROM)					; $009451
+	ROUTINE_SMW_UploadBigLayer3LettersToVRAM:	%ROUTINE_SMW_UploadBigLayer3LettersToVRAM(NULLROM)				; $00955E
+	ROUTINE_RT00_SMW_GameMode1D_LoadYoshisHouse:	%ROUTINE_RT00_SMW_GameMode1D_LoadYoshisHouse(NULLROM)				; $009583
+	ROUTINE_RT00_SMW_GameMode21_DelayEnemyRollcall:	%ROUTINE_RT00_SMW_GameMode21_DelayEnemyRollcall(NULLROM)			; $0095BC
+	ROUTINE_SMW_GameMode23_LoadEnemyRollcallScreen:	%ROUTINE_SMW_GameMode23_LoadEnemyRollcallScreen(NULLROM)			; $0095C1
+	ROUTINE_RT00_SMW_GameMode25_ShowEnemyRollcallScreen:	%ROUTINE_RT00_SMW_GameMode25_ShowEnemyRollcallScreen(NULLROM)			; $00962C
+	ROUTINE_SMW_GameMode27_LoadTheEnd:	%ROUTINE_SMW_GameMode27_LoadTheEnd(NULLROM)					; $00963D
+	ROUTINE_SMW_GameMode29_DoNothingOnTheEndScreen:	%ROUTINE_SMW_GameMode29_DoNothingOnTheEndScreen(NULLROM)			; $00968D
+	ROUTINE_SMW_GameMode10_BufferLevelLoadMessage:	%ROUTINE_SMW_GameMode10_BufferLevelLoadMessage(NULLROM)			; $00968E
+	ROUTINE_RT00_SMW_GameMode11_LoadSublevel:	%ROUTINE_RT00_SMW_GameMode11_LoadSublevel(NULLROM)				; $0096AE
+	ROUTINE_RT01_SMW_OverworldPrompt03_OverworldLifeExchanger:	%ROUTINE_RT01_SMW_OverworldPrompt03_OverworldLifeExchanger(NULLROM)		; $00974C
+	ROUTINE_SMW_GameMode16_LoadDeathMessage:	%ROUTINE_SMW_GameMode16_LoadDeathMessage(NULLROM)				; $009750
+	ROUTINE_SMW_GameMode17_ShowDeathMessage:	%ROUTINE_SMW_GameMode17_ShowDeathMessage(NULLROM)				; $009759
+	ROUTINE_RT02_SMW_GameMode12_PrepareLevel:	%ROUTINE_RT02_SMW_GameMode12_PrepareLevel(NULLROM)				; $0097BC
+	ROUTINE_RT02_SMW_GameMode14_InLevel:	%ROUTINE_RT02_SMW_GameMode14_InLevel(NULLROM)					; $009875
+	ROUTINE_SMW_UploadMode7KoopaBossesAndLavaAnimation:	%ROUTINE_SMW_UploadMode7KoopaBossesAndLavaAnimation(NULLROM)			; $009891
+	ROUTINE_RT03_SMW_GameMode12_PrepareLevel:	%ROUTINE_RT03_SMW_GameMode12_PrepareLevel(NULLROM)				; $009925
+	ROUTINE_RT03_SMW_GameMode14_InLevel:	%ROUTINE_RT03_SMW_GameMode14_InLevel(NULLROM)					; $009A4E
+	ROUTINE_SMW_CheckWhichControllersArePluggedIn:	%ROUTINE_SMW_CheckWhichControllersArePluggedIn(NULLROM)			; $009A74
+	ROUTINE_RT00_SMW_GameMode04_PrepareTitleScreen:	%ROUTINE_RT00_SMW_GameMode04_PrepareTitleScreen(NULLROM)			; $009A8B
+	ROUTINE_RT00_SMW_HandleMenuCursor:	%ROUTINE_RT00_SMW_HandleMenuCursor(NULLROM)					; $009AC8
+	ROUTINE_SMW_GameMode09_EraseFile:	%ROUTINE_SMW_GameMode09_EraseFile(NULLROM)					; $009B17
+	ROUTINE_SMW_DisplayingContinueEnd:	%ROUTINE_SMW_DisplayingContinueEnd(NULLROM)					; $009B80
+	ROUTINE_RT01_SMW_OverworldPrompt07_DisplayingSavePrompt:	%ROUTINE_RT01_SMW_OverworldPrompt07_DisplayingSavePrompt(NULLROM)		; $009BA8
+	ROUTINE_RT01_SMW_OverworldPrompt0B_ShowQuitToTitleScreenPrompt:	%ROUTINE_RT01_SMW_OverworldPrompt0B_ShowQuitToTitleScreenPrompt(NULLROM)	; N/A
+	ROUTINE_SMW_SaveGame:	%ROUTINE_SMW_SaveGame(NULLROM)							; $009BC9
+	ROUTINE_SMW_CloseOverworldPrompt:	%ROUTINE_SMW_CloseOverworldPrompt(NULLROM)					; $009C13
+	ROUTINE_SMW_GameMode07_TitleScreenDemo:	%ROUTINE_SMW_GameMode07_TitleScreenDemo(NULLROM)				; $009C1F
+	DATATABLE_SMW_SaveFileLocations:	%DATATABLE_SMW_SaveFileLocations(NULLROM)					; $009CCB
+	ROUTINE_SMW_GameMode08_FileSelect:	%ROUTINE_SMW_GameMode08_FileSelect(NULLROM)					; $009CD1
+	ROUTINE_SMW_FileSelectColorMath:	%ROUTINE_SMW_FileSelectColorMath(NULLROM)					; $009D30
+	ROUTINE_SMW_BufferFileSelectText:	%ROUTINE_SMW_BufferFileSelectText(NULLROM)					; $009D38
+	ROUTINE_SMW_GameMode0A_PlayerSelect:	%ROUTINE_SMW_GameMode0A_PlayerSelect(NULLROM)					; $009DFA
+	ROUTINE_RT01_SMW_HandleMenuCursor:	%ROUTINE_RT01_SMW_HandleMenuCursor(NULLROM)					; $009E6A
+	ROUTINE_SMW_InitializeSaveData:	%ROUTINE_SMW_InitializeSaveData(NULLROM)					; $009EE0
+	ROUTINE_SMW_SetKeepGameModeActiveTimer:	%ROUTINE_SMW_SetKeepGameModeActiveTimer(NULLROM)				; $009F29
+	ROUTINE_SMW_GameModeXX_FadeInOrOut:	%ROUTINE_SMW_GameModeXX_FadeInOrOut(NULLROM)					; $009F2F
+	ROUTINE_SMW_GameMode28_ShowTheEnd:	%ROUTINE_SMW_GameMode28_ShowTheEnd(NULLROM)					; $009F7C
+	ROUTINE_RT00_SMW_InitializeLevelLayer3:	%ROUTINE_RT00_SMW_InitializeLevelLayer3(NULLROM)				; $009F88
+	ROUTINE_RT00_SMW_GameMode0C_LoadOverworld:	%ROUTINE_RT00_SMW_GameMode0C_LoadOverworld(NULLROM)				; $00A06B
+	ROUTINE_SMW_LoadSaveBufferData:	%ROUTINE_SMW_LoadSaveBufferData(NULLROM)					; $00A195
+	ROUTINE_SMW_ClearOverworldAndCutsceneRAM:	%ROUTINE_SMW_ClearOverworldAndCutsceneRAM(NULLROM)				; $00A1A6
+	ROUTINE_RT00_SMW_GameMode0E_ShowOverworld:	%ROUTINE_RT00_SMW_GameMode0E_ShowOverworld(NULLROM)				; $00A1BE
+	ROUTINE_RT00_SMW_GameMode14_InLevel:	%ROUTINE_RT00_SMW_GameMode14_InLevel(NULLROM)					; $00A1CE
+	ROUTINE_SMW_UpdateCurrentPlayerPositionRAM:	%ROUTINE_SMW_UpdateCurrentPlayerPositionRAM(NULLROM)				; $00A2F3
+	ROUTINE_RT00_SMW_UploadPlayerGFX:	%ROUTINE_RT00_SMW_UploadPlayerGFX(NULLROM)					; $00A300
+	ROUTINE_SMW_UploadLevelAnimations:	%ROUTINE_SMW_UploadLevelAnimations(NULLROM)					; $00A390
+	ROUTINE_SMW_RestoreSP1AfterMarioStart:	%ROUTINE_SMW_RestoreSP1AfterMarioStart(NULLROM)				; $00A436
+	ROUTINE_RT00_SMW_UpdatePaletteFromIndexedTable:	%ROUTINE_RT00_SMW_UpdatePaletteFromIndexedTable(NULLROM)			; $00A47F
+	ROUTINE_SMW_UploadOverworldAnimations:	%ROUTINE_SMW_UploadOverworldAnimations(NULLROM)				; $00A4E3
+	ROUTINE_SMW_UploadOverworldLayer1And2Tilemaps:	%ROUTINE_SMW_UploadOverworldLayer1And2Tilemaps(NULLROM)			; $00A521
+	ROUTINE_RT00_SMW_BufferPalettesRoutines:	%ROUTINE_RT00_SMW_BufferPalettesRoutines(NULLROM)				; $00A594
+	ROUTINE_RT00_SMW_GameMode12_PrepareLevel:	%ROUTINE_RT00_SMW_GameMode12_PrepareLevel(NULLROM)				; $00A59C
+	ROUTINE_SMW_InitializeLevelTileAnimations:	%ROUTINE_SMW_InitializeLevelTileAnimations(NULLROM)				; $00A5F9
+	ROUTINE_SMW_InitializeLevelRAM:	%ROUTINE_SMW_InitializeLevelRAM(NULLROM)					; $00A60D
+	ROUTINE_RT01_SMW_GameMode11_LoadSublevel:	%ROUTINE_RT01_SMW_GameMode11_LoadSublevel(NULLROM)				; $00A796
+	ROUTINE_SMW_UploadLoadingLettersTiles:	%ROUTINE_SMW_UploadLoadingLettersTiles(NULLROM)				; $00A7C2
+	ROUTINE_SMW_BufferLoadingLetterTiles:	%ROUTINE_SMW_BufferLoadingLetterTiles(NULLROM)					; $00A82D
+	ROUTINE_SMW_UploadGraphicsFiles:	%ROUTINE_SMW_UploadGraphicsFiles(NULLROM)					; $00A8C3
+	ROUTINE_RT01_SMW_BufferPalettesRoutines:	%ROUTINE_RT01_SMW_BufferPalettesRoutines(NULLROM)				; $00ABD3
+	ROUTINE_RT01_SMW_UpdatePaletteFromIndexedTable:	%ROUTINE_RT01_SMW_UpdatePaletteFromIndexedTable(NULLROM)			; $00AE41
+	ROUTINE_SMW_HandlePaletteFades:	%ROUTINE_SMW_HandlePaletteFades(NULLROM)					; $00AE65
+	ROUTINE_RT02_SMW_OverworldEventProcess04_FadeInLayer2Tile:	%ROUTINE_RT02_SMW_OverworldEventProcess04_FadeInLayer2Tile(NULLROM)		; $00B006
+	ROUTINE_RT01_SMW_PlayerState00_Normal:	%ROUTINE_RT01_SMW_PlayerState00_Normal(NULLROM)				; $00B03E
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	ROUTINE_CUSTOM_FixScreenTiming:	%ROUTINE_CUSTOM_FixScreenTiming(NULLROM)
+else
+	INLINEDATATABLE_RT00_SMW_EmptySpace:	%INLINEDATATABLE_RT00_SMW_EmptySpace(NULLROM)					; $00B091
+endif
+
+	DATATABLE_SMW_GlobalPalettes:	%DATATABLE_SMW_GlobalPalettes(NULLROM)						; $00B0A0
+	ROUTINE_SMW_GraphicsDecompressionRoutines:	%ROUTINE_SMW_GraphicsDecompressionRoutines(NULLROM)				; $00B882
+	INLINEDATATABLE_RT01_SMW_EmptySpace:	%INLINEDATATABLE_RT01_SMW_EmptySpace(NULLROM)					; $00BA4D
+	DATATABLE_SMW_LevelDataLayoutTables:	%DATATABLE_SMW_LevelDataLayoutTables(NULLROM)					; $00BA60
+	ROUTINE_SMW_GenerateTile:	%ROUTINE_SMW_GenerateTile(NULLROM)						; $00BEB0
+	ROUTINE_SMW_SetItemMemoryBit:	%ROUTINE_SMW_SetItemMemoryBit(NULLROM)						; $00BFFF
+	ROUTINE_SMW_GenericPage00Tile:	%ROUTINE_SMW_GenericPage00Tile(NULLROM)					; $00C063
+	ROUTINE_SMW_GenericPage01Tile:	%ROUTINE_SMW_GenericPage01Tile(NULLROM)					; $00C0AA
+	ROUTINE_SMW_EraseYoshiCoin:	%ROUTINE_SMW_EraseYoshiCoin(NULLROM)						; $00C1AC
+	ROUTINE_SMW_ChangeNetDoorTiles:	%ROUTINE_SMW_ChangeNetDoorTiles(NULLROM)					; $00C29E
+	ROUTINE_SMW_EraseLargeSwitch:	%ROUTINE_SMW_EraseLargeSwitch(NULLROM)						; $00C3D1
+	INLINEDATATABLE_RT02_SMW_EmptySpace:	%INLINEDATATABLE_RT02_SMW_EmptySpace(NULLROM)					; $00C453
+	ROUTINE_RT04_SMW_GameMode14_InLevel:	%ROUTINE_RT04_SMW_GameMode14_InLevel(NULLROM)					; $00C460
+	ROUTINE_SMW_PlayerState0B_RescuedPeach:	%ROUTINE_SMW_PlayerState0B_RescuedPeach(NULLROM)				; $00C5B5
+	ROUTINE_SMW_PlayerState0C_CastleDestructionMoves:	%ROUTINE_SMW_PlayerState0C_CastleDestructionMoves(NULLROM)			; $00C5E1
+	ROUTINE_SMW_PlayerState08_WarpToYoshiWingsBonus:	%ROUTINE_SMW_PlayerState08_WarpToYoshiWingsBonus(NULLROM)			; $00C7F9
+	ROUTINE_SMW_PlayerState0A_NoYoshiCutscene:	%ROUTINE_SMW_PlayerState0A_NoYoshiCutscene(NULLROM)				; $00C848
+	ROUTINE_RT02_SMW_PlayerState00_Normal:	%ROUTINE_RT02_SMW_PlayerState00_Normal(NULLROM)				; $00C915
+	ROUTINE_SMW_UpdateHDMAWindowBuffer:	%ROUTINE_SMW_UpdateHDMAWindowBuffer(NULLROM)					; $00CA61
+	ROUTINE_RT00_SMW_PlayerState00_Normal:	%ROUTINE_RT00_SMW_PlayerState00_Normal(NULLROM)				; $00CC5C
+	ROUTINE_RT00_SMW_SetPlayerPose:	%ROUTINE_RT00_SMW_SetPlayerPose(NULLROM)					; $00CE79
+	ROUTINE_SMW_InitializeCapeSwingOrNetPunch:	%ROUTINE_SMW_InitializeCapeSwingOrNetPunch(NULLROM)				; $00D034
+	ROUTINE_SMW_CheckForPowerUpSpecificPlayerAttacks:	%ROUTINE_SMW_CheckForPowerUpSpecificPlayerAttacks(NULLROM)			; $00D062
+	ROUTINE_SMW_PlayerState09_Death:	%ROUTINE_SMW_PlayerState09_Death(NULLROM)					; $00D0AE
+	ROUTINE_SMW_PlayerStateXX_PowerupAnimations:	%ROUTINE_SMW_PlayerStateXX_PowerupAnimations(NULLROM)				; $00D11D
+	ROUTINE_SMW_PlayerStateXX_EnterPipe:	%ROUTINE_SMW_PlayerStateXX_EnterPipe(NULLROM)					; $00D18D
+	ROUTINE_SMW_IncrementSublevelsEnteredAndPrepareToLoadSublevel:	%ROUTINE_SMW_IncrementSublevelsEnteredAndPrepareToLoadSublevel(NULLROM)	; $00D273
+	ROUTINE_SMW_UnusedAddToWarpPipeTimerRoutine:	%ROUTINE_SMW_UnusedAddToWarpPipeTimerRoutine(NULLROM)				; $00D27C
+	ROUTINE_SMW_PlayerState07_ShootOutOfPipe:	%ROUTINE_SMW_PlayerState07_ShootOutOfPipe(NULLROM)				; $00D287
+	ROUTINE_SMW_HandlePlayerPhysics:	%ROUTINE_SMW_HandlePlayerPhysics(NULLROM)					; $00D2BD
+	ROUTINE_SMW_UpdatePlayerSpritePosition:	%ROUTINE_SMW_UpdatePlayerSpritePosition(NULLROM)				; $00DC2D
+	ROUTINE_RT01_SMW_SetPlayerPose:	%ROUTINE_RT01_SMW_SetPlayerPose(NULLROM)					; $00DC78
+	ROUTINE_RT00_SMW_PlayerGFXRt:	%ROUTINE_RT00_SMW_PlayerGFXRt(NULLROM)						; $00DCEC
+	DATATABLE_RT00_SMW_SlopeDataTables:	%DATATABLE_RT00_SMW_SlopeDataTables(NULLROM)					; $00E4B9
+	ROUTINE_RT02_SMW_InitializeMap16Pointers:	%ROUTINE_RT02_SMW_InitializeMap16Pointers(NULLROM)				; $00E55E
+	DATATABLE_RT01_SMW_SlopeDataTables:	%DATATABLE_RT01_SMW_SlopeDataTables(NULLROM)					; $00E632
+	ROUTINE_RT01_SMW_GetPlayerLevelCollisionMap16ID:	%ROUTINE_RT01_SMW_GetPlayerLevelCollisionMap16ID(NULLROM)			; $00E832
+	ROUTINE_RT01_SMW_RunPlayerBlockCode:	%ROUTINE_RT01_SMW_RunPlayerBlockCode(NULLROM)					; $00E8A4
+	ROUTINE_SMW_HandlePlayerLevelCollision:	%ROUTINE_SMW_HandlePlayerLevelCollision(NULLROM)				; $00E90A
+	ROUTINE_SMW_ResetPlayerLevelCollisionRAM:	%ROUTINE_SMW_ResetPlayerLevelCollisionRAM(NULLROM)				; $00EAA6
+	ROUTINE_RT00_SMW_RunPlayerBlockCode:	%ROUTINE_RT00_SMW_RunPlayerBlockCode(NULLROM)					; $00EAB9
+	ROUTINE_SMW_CheckForWaterSlope:	%ROUTINE_SMW_CheckForWaterSlope(NULLROM)					; $00F04D
+	ROUTINE_RT01_SMW_CheckIfBlockWasHit:	%ROUTINE_RT01_SMW_CheckIfBlockWasHit(NULLROM)					; $00F05C
+	ROUTINE_RT02_SMW_RunPlayerBlockCode:	%ROUTINE_RT02_SMW_RunPlayerBlockCode(NULLROM)					; $00F120
+	ROUTINE_RT00_SMW_CheckIfBlockWasHit:	%ROUTINE_RT00_SMW_CheckIfBlockWasHit(NULLROM)					; $00F15F
+	ROUTINE_RT03_SMW_RunPlayerBlockCode:	%ROUTINE_RT03_SMW_RunPlayerBlockCode(NULLROM)					; $00F267
+	ROUTINE_SMW_SpawnScoreSpriteAtPlayerPosition:	%ROUTINE_SMW_SpawnScoreSpriteAtPlayerPosition(NULLROM)				; $00F388
+	ROUTINE_RT04_SMW_RunPlayerBlockCode:	%ROUTINE_RT04_SMW_RunPlayerBlockCode(NULLROM)					; $00F3B2
+	ROUTINE_RT00_SMW_GetPlayerLevelCollisionMap16ID:	%ROUTINE_RT00_SMW_GetPlayerLevelCollisionMap16ID(NULLROM)			; $00F44D
+	ROUTINE_SMW_ModifyMap16IDForSpecialBlocks:	%ROUTINE_SMW_ModifyMap16IDForSpecialBlocks(NULLROM)				; $00F545
+	ROUTINE_RT03_SMW_PlayerState00_Normal:	%ROUTINE_RT03_SMW_PlayerState00_Normal(NULLROM)				; $00F595
+	ROUTINE_SMW_DamagePlayer:	%ROUTINE_SMW_DamagePlayer(NULLROM)						; $00F5B7
+	ROUTINE_RT01_SMW_PlayerGFXRt:	%ROUTINE_RT01_SMW_PlayerGFXRt(NULLROM)						; $00F636
+	ROUTINE_SMW_HandleStandardLevelCameraScroll:	%ROUTINE_SMW_HandleStandardLevelCameraScroll(NULLROM)				; $00F69F
+	ROUTINE_RT04_SMW_PlayerState00_Normal:	%ROUTINE_RT04_SMW_PlayerState00_Normal(NULLROM)				; $00F8DF
+	INLINEDATATABLE_RT03_SMW_EmptySpace:	%INLINEDATATABLE_RT03_SMW_EmptySpace(NULLROM)					; $00F9F5
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	ROUTINE_RT01_SMW_GameMode12_PrepareLevel:	%ROUTINE_RT01_SMW_GameMode12_PrepareLevel(NULLROM)
+endif
+
+	ROUTINE_RT01_SMW_ClearOutNormalSpriteSlots:	%ROUTINE_RT01_SMW_ClearOutNormalSpriteSlots(NULLROM)				; $00FA10
+	ROUTINE_SMW_CheckWhatSlopeSpriteIsOn:	%ROUTINE_SMW_CheckWhatSlopeSpriteIsOn(NULLROM)					; $00FA19
+	ROUTINE_RT05_SMW_RunPlayerBlockCode:	%ROUTINE_RT05_SMW_RunPlayerBlockCode(NULLROM)					; $00FA45
+	ROUTINE_RT02_SMW_NorSpr07B_GoalTape_Status08:	%ROUTINE_RT02_SMW_NorSpr07B_GoalTape_Status08(NULLROM)				; $00FA80
+	ROUTINE_RT01_SMW_NorSprStatus06_GoalCoins:	%ROUTINE_RT01_SMW_NorSprStatus06_GoalCoins(NULLROM)				; $00FBA4
+	ROUTINE_SMW_UnusedYoshiRelatedRoutine:	%ROUTINE_SMW_UnusedYoshiRelatedRoutine(NULLROM)				; $00FC23
+	ROUTINE_SMW_SpawnMountedYoshiOnLevelLoad:	%ROUTINE_SMW_SpawnMountedYoshiOnLevelLoad(NULLROM)				; $00FC7A
+	ROUTINE_RT00_SMW_ClearOutNormalSpriteSlots:	%ROUTINE_RT00_SMW_ClearOutNormalSpriteSlots(NULLROM)				; $00FCEC
+	ROUTINE_RT01_SMW_NorSpr029_KoopaKid_Status01:	%ROUTINE_RT01_SMW_NorSpr029_KoopaKid_Status01(NULLROM)				; $00FCF5
+	ROUTINE_SMW_SpawnPlayerBreathBubble:	%ROUTINE_SMW_SpawnPlayerBreathBubble(NULLROM)					; $00FD08
+	ROUTINE_SMW_SpawnGlitterEffectForCoin:	%ROUTINE_SMW_SpawnGlitterEffectForCoin(NULLROM)				; $00FD5A
+	ROUTINE_SMW_SpawnPlayerWaterSplashAndManyBreathBubbles:	%ROUTINE_SMW_SpawnPlayerWaterSplashAndManyBreathBubbles(NULLROM)		; $00FD9D
+	ROUTINE_SMW_SpawnPlayerTurnAroundSmoke:	%ROUTINE_SMW_SpawnPlayerTurnAroundSmoke(NULLROM)				; $00FE4A
+	ROUTINE_SMW_SpawnPlayerFireball:	%ROUTINE_SMW_SpawnPlayerFireball(NULLROM)					; $00FE94
+	ROUTINE_RT02_SMW_NorSpr088_WingedCage_Status08:	%ROUTINE_RT02_SMW_NorSpr088_WingedCage_Status08(NULLROM)			; $00FF07
+	ROUTINE_RT02_SMW_NorSpr089_Layer3Smasher_Status08:	%ROUTINE_RT02_SMW_NorSpr089_Layer3Smasher_Status08(NULLROM)			; $00FF61
+	INLINEDATATABLE_RT04_SMW_EmptySpace:	%INLINEDATATABLE_RT04_SMW_EmptySpace(NULLROM)					; $00FF93
 %BANK_END(<EndBank>)
 endmacro
 
@@ -733,6 +748,9 @@ ROUTINE_RT06_SMW_NorSpr0A0_ActivateBowserBattle_Status08:	%ROUTINE_RT06_SMW_NorS
 if !Define_Global_ROMToAssemble&(!ROM_SMASW_U) != $00
 ROUTINE_RT02_SMW_UploadPlayerGFX:	%ROUTINE_RT02_SMW_UploadPlayerGFX(NULLROM)					; N/A
 endif
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	ROUTINE_CUSTOM_PressStartToSMASW:	%ROUTINE_CUSTOM_PressStartToSMASW(NULLROM)
+endif
 INLINEDATATABLE_RT14_SMW_EmptySpace:	%INLINEDATATABLE_RT14_SMW_EmptySpace(NULLROM)					; $03E05C
 ROUTINE_RT01_SMW_HandleSPCUploads:	%ROUTINE_RT01_SMW_HandleSPCUploads(NULLROM)					; $03E400
 INLINEDATATABLE_RT15_SMW_EmptySpace:	%INLINEDATATABLE_RT15_SMW_EmptySpace(NULLROM)					; $03FDE0
@@ -857,109 +875,124 @@ endmacro
 
 macro SMWBank05Macros(StartBank, EndBank)
 %BANK_START(<StartBank>)
-ROUTINE_RT01_SMW_InitializeMap16Pointers:	%ROUTINE_RT01_SMW_InitializeMap16Pointers(NULLROM)				; $058000
-ROUTINE_RT00_SMW_LoadSublevel:	%ROUTINE_RT00_SMW_LoadSublevel(NULLROM)					; $05801E
-ROUTINE_SMW_InitializeLevelLayer1And2Tilemaps:	%ROUTINE_SMW_InitializeLevelLayer1And2Tilemaps(NULLROM)			; $05809E
-ROUTINE_SMW_BufferBGTilemap:	%ROUTINE_SMW_BufferBGTilemap(NULLROM)						; $058126
-ROUTINE_RT00_SMW_InitializeMap16Pointers:	%ROUTINE_RT00_SMW_InitializeMap16Pointers(NULLROM)				; $0581BB
-ROUTINE_SMW_InitializeLevelData:	%ROUTINE_SMW_InitializeLevelData(NULLROM)					; $0582C8
-ROUTINE_SMW_BeginLoadingLevelData:	%ROUTINE_SMW_BeginLoadingLevelData(NULLROM)					; $0583AC
-ROUTINE_SMW_LoadLevelHeader:	%ROUTINE_SMW_LoadLevelHeader(NULLROM)						; $058417
-ROUTINE_SMW_LoadLevelDataObject:	%ROUTINE_SMW_LoadLevelDataObject(NULLROM)					; $0585D8
-ROUTINE_SMW_CheckIfLevelTilemapsNeedScrollUpdate:	%ROUTINE_SMW_CheckIfLevelTilemapsNeedScrollUpdate(NULLROM)			; $0586F1
-ROUTINE_SMW_CalculateRowOrColumnOfTilemapToUpdate:	%ROUTINE_SMW_CalculateRowOrColumnOfTilemapToUpdate(NULLROM)			; $058776
-ROUTINE_RT00_SMW_BufferScrollingTiles:	%ROUTINE_RT00_SMW_BufferScrollingTiles(NULLROM)				; $05881A
-DATATABLE_RT04_SMW_BitTable:	%DATATABLE_RT04_SMW_BitTable(NULLROM)						; $0589BE
-ROUTINE_RT01_SMW_BufferScrollingTiles:	%ROUTINE_RT01_SMW_BufferScrollingTiles(NULLROM)				; $0589CE
-INLINEDATATABLE_RT19_SMW_EmptySpace:	%INLINEDATATABLE_RT19_SMW_EmptySpace(NULLROM)					; $058E19
-ROUTINE_RT01_SMW_InitializeLevelLayer3:	%ROUTINE_RT01_SMW_InitializeLevelLayer3(NULLROM)				; $059000
-DATATABLE_RT00_SMW_Backgrounds:	%DATATABLE_RT00_SMW_Backgrounds(NULLROM)					; $059087
-INLINEDATATABLE_RT20_SMW_EmptySpace:	%INLINEDATATABLE_RT20_SMW_EmptySpace(NULLROM)					; $05A562
-ROUTINE_SMW_DisplayMessage:	%ROUTINE_SMW_DisplayMessage(NULLROM)						; $05A580
-ROUTINE_SMW_GiveCoins:	%ROUTINE_SMW_GiveCoins(NULLROM)						; $05B329
-DATATABLE_RT03_SMW_BitTable:	%DATATABLE_RT03_SMW_BitTable(NULLROM)						; $05B35B
-ROUTINE_SMW_UnusedOverworldEventPassedCheck:	%ROUTINE_SMW_UnusedOverworldEventPassedCheck(NULLROM)				; $05B363
-ROUTINE_RT01_SMW_GameMode04_PrepareTitleScreen:	%ROUTINE_RT01_SMW_GameMode04_PrepareTitleScreen(NULLROM)			; $05B375
-DATATABLE_SMW_FileSelectText:	%DATATABLE_SMW_FileSelectText(NULLROM)						; $05B6FE
-DATATABLE_SMW_XPlayerGameText:	%DATATABLE_SMW_XPlayerGameText(NULLROM)					; $05B872
-DATATABLE_SMW_SaveMenuText:	%DATATABLE_SMW_SaveMenuText(NULLROM)						; $05B8C7
-DATATABLE_SMW_ContinueEndText:	%DATATABLE_SMW_ContinueEndText(NULLROM)					; $05B91C
-ROUTINE_SMW_LevelTileAnimations:	%ROUTINE_SMW_LevelTileAnimations(NULLROM)					; $05B93B
-INLINEDATATABLE_RT21_SMW_EmptySpace:	%INLINEDATATABLE_RT21_SMW_EmptySpace(NULLROM)					; $05BBA6
-ROUTINE_SMW_HandleScrollSpriteAndLayer3Scrolling:	%ROUTINE_SMW_HandleScrollSpriteAndLayer3Scrolling(NULLROM)			; $05BC00
-ROUTINE_RT01_SMW_ProcessScrollSprites:	%ROUTINE_RT01_SMW_ProcessScrollSprites(NULLROM)				; $05BC49
-ROUTINE_SMW_ScrollSecondInteractiveLayer:	%ROUTINE_SMW_ScrollSecondInteractiveLayer(NULLROM)				; $05BC4A
-ROUTINE_RT00_SMW_ProcessScrollSprites:	%ROUTINE_RT00_SMW_ProcessScrollSprites(NULLROM)				; $05BC76
-ROUTINE_SMW_InitializeScrollSprites:	%ROUTINE_SMW_InitializeScrollSprites(NULLROM)					; $05BCD6
-ROUTINE_RT00_SMW_NorSpr0E7_SpecialAutoScroll:	%ROUTINE_RT00_SMW_NorSpr0E7_SpecialAutoScroll(NULLROM)				; $05BD36
-ROUTINE_RT00_SMW_MostlyUnusedScrollSpriteRoutine:	%ROUTINE_RT00_SMW_MostlyUnusedScrollSpriteRoutine(NULLROM)			; $05BD7B
-ROUTINE_RT00_SMW_NorSpr0EB_UnusedSprite:	%ROUTINE_RT00_SMW_NorSpr0EB_UnusedSprite(NULLROM)				; $05BDDD
-ROUTINE_RT00_SMW_NorSpr0F1_UnusedSprite:	%ROUTINE_RT00_SMW_NorSpr0F1_UnusedSprite(NULLROM)				; $05BE3A
-ROUTINE_RT05_SMW_GameMode12_PrepareLevel:	%ROUTINE_RT05_SMW_GameMode12_PrepareLevel(NULLROM)				; $05BE8A
-ROUTINE_RT00_SMW_NorSpr0EF_Layer2ScrollSOrL:	%ROUTINE_RT00_SMW_NorSpr0EF_Layer2ScrollSOrL(NULLROM)				; $05BEA6
-ROUTINE_RT00_SMW_NorSpr0EA_Layer2Scroll:	%ROUTINE_RT00_SMW_NorSpr0EA_Layer2Scroll(NULLROM)				; $05BF0A
-ROUTINE_RT00_SMW_NorSpr0E9_Layer2Smash:	%ROUTINE_RT00_SMW_NorSpr0E9_Layer2Smash(NULLROM)				; $05BF6A
-ROUTINE_SMW_NorSpr0ED_Layer2Falls:	%ROUTINE_SMW_NorSpr0ED_Layer2Falls(NULLROM)					; $05BF97
-ROUTINE_SMW_NorSpr0EC_UnusedSprite:	%ROUTINE_SMW_NorSpr0EC_UnusedSprite(NULLROM)					; $05BFBA
-ROUTINE_SMW_NorSpr0F2_Layer2OnOffControlled:	%ROUTINE_SMW_NorSpr0F2_Layer2OnOffControlled(NULLROM)				; $05BFF6
-ROUTINE_SMW_NorSpr0F3_RegularAutoScroll:	%ROUTINE_SMW_NorSpr0F3_RegularAutoScroll(NULLROM)				; $05BFFD
-ROUTINE_SMW_NorSpr0F4_FastBGScroll:	%ROUTINE_SMW_NorSpr0F4_FastBGScroll(NULLROM)					; $05C01A
-ROUTINE_RT00_SMW_NorSpr0F5_Layer2ScrollWhenTouched:	%ROUTINE_RT00_SMW_NorSpr0F5_Layer2ScrollWhenTouched(NULLROM)			; $05C036
-ROUTINE_RT00_SMW_Layer1SpecialScrolling01_VariableScroll:	%ROUTINE_RT00_SMW_Layer1SpecialScrolling01_VariableScroll(NULLROM)		; $05C04D
-ROUTINE_SMW_Layer2SpecialScrolling01_VariableScroll:	%ROUTINE_SMW_Layer2SpecialScrolling01_VariableScroll(NULLROM)			; $05C198
-ROUTINE_RT00_SMW_UnusedScrollSpriteRoutine:	%ROUTINE_RT00_SMW_UnusedScrollSpriteRoutine(NULLROM)				; $05C1AE
-ROUTINE_RT00_SMW_Layer2SpecialScrolling04_Unused:	%ROUTINE_RT00_SMW_Layer2SpecialScrolling04_Unused(NULLROM)			; $05C283
-ROUTINE_RT00_SMW_Layer2SpecialScrolling0A_Unused:	%ROUTINE_RT00_SMW_Layer2SpecialScrolling0A_Unused(NULLROM)			; $05C32E
-ROUTINE_RT00_SMW_ScrollLayer3:	%ROUTINE_RT00_SMW_ScrollLayer3(NULLROM)					; $05C406
-ROUTINE_SMW_UpdateLayerPositionWithScrollSprite:	%ROUTINE_SMW_UpdateLayerPositionWithScrollSprite(NULLROM)			; $05C4F9
-ROUTINE_SMW_Layer2SpecialScrolling08_Layer2ScrollSOrL:	%ROUTINE_SMW_Layer2SpecialScrolling08_Layer2ScrollSOrL(NULLROM)		; $05C51F
-ROUTINE_SMW_Layer2SpecialScrolling03_Layer2Scroll:	%ROUTINE_SMW_Layer2SpecialScrolling03_Layer2Scroll(NULLROM)			; $05C5BB
-ROUTINE_SMW_Layer2SpecialScrolling06_Unused:	%ROUTINE_SMW_Layer2SpecialScrolling06_Unused(NULLROM)				; $05C659
-ROUTINE_SMW_Layer1SpecialScrolling05_Unused:	%ROUTINE_SMW_Layer1SpecialScrolling05_Unused(NULLROM)				; $05C69E
-ROUTINE_SMW_Layer2SpecialScrolling0B_Layer2OnOffControlled:	%ROUTINE_SMW_Layer2SpecialScrolling0B_Layer2OnOffControlled(NULLROM)		; $05C71B
-ROUTINE_SMW_Layer1SpecialScrolling0C_RegularAutoScroll:	%ROUTINE_SMW_Layer1SpecialScrolling0C_RegularAutoScroll(NULLROM)		; $05C787
-ROUTINE_SMW_Layer2SpecialScrolling0D_FastBGScroll:	%ROUTINE_SMW_Layer2SpecialScrolling0D_FastBGScroll(NULLROM)			; $05C7BC
-ROUTINE_RT01_SMW_Layer2SpecialScrolling0E_Layer2ScrollWhenTouched:	%ROUTINE_RT01_SMW_Layer2SpecialScrolling0E_Layer2ScrollWhenTouched(NULLROM)	; $05C7F0
-ROUTINE_RT01_SMW_NorSpr0F5_Layer2ScrollWhenTouched:	%ROUTINE_RT01_SMW_NorSpr0F5_Layer2ScrollWhenTouched(NULLROM)			; $05C808
-ROUTINE_RT00_SMW_Layer2SpecialScrolling0E_Layer2ScrollWhenTouched:	%ROUTINE_RT00_SMW_Layer2SpecialScrolling0E_Layer2ScrollWhenTouched(NULLROM)	; $05C80E
-ROUTINE_RT01_SMW_Layer2SpecialScrolling02_Layer2Smash:	%ROUTINE_RT01_SMW_Layer2SpecialScrolling02_Layer2Smash(NULLROM)		; $05C880
-ROUTINE_RT01_SMW_NorSpr0E9_Layer2Smash:	%ROUTINE_RT01_SMW_NorSpr0E9_Layer2Smash(NULLROM)				; $05C94F
-ROUTINE_RT00_SMW_Layer2SpecialScrolling02_Layer2Smash:	%ROUTINE_RT00_SMW_Layer2SpecialScrolling02_Layer2Smash(NULLROM)		; $05C955
-ROUTINE_RT01_SMW_NorSpr0E7_SpecialAutoScroll:	%ROUTINE_RT01_SMW_NorSpr0E7_SpecialAutoScroll(NULLROM)				; $05C9D1
-ROUTINE_RT01_SMW_MostlyUnusedScrollSpriteRoutine:	%ROUTINE_RT01_SMW_MostlyUnusedScrollSpriteRoutine(NULLROM)			; $05C9E5
-ROUTINE_RT01_SMW_NorSpr0EB_UnusedSprite:	%ROUTINE_RT01_SMW_NorSpr0EB_UnusedSprite(NULLROM)				; $05CA08
-ROUTINE_RT01_SMW_NorSpr0F1_UnusedSprite:	%ROUTINE_RT01_SMW_NorSpr0F1_UnusedSprite(NULLROM)				; $05CA16
-ROUTINE_RT01_SMW_NorSpr0EF_Layer2ScrollSOrL:	%ROUTINE_RT01_SMW_NorSpr0EF_Layer2ScrollSOrL(NULLROM)				; $05CA3E
-ROUTINE_RT01_SMW_NorSpr0EA_Layer2Scroll:	%ROUTINE_RT01_SMW_NorSpr0EA_Layer2Scroll(NULLROM)				; $05CA48
-ROUTINE_RT02_SMW_NorSpr0E7_SpecialAutoScroll:	%ROUTINE_RT02_SMW_NorSpr0E7_SpecialAutoScroll(NULLROM)				; $05CA61
-ROUTINE_RT01_SMW_Layer1SpecialScrolling01_VariableScroll:	%ROUTINE_RT01_SMW_Layer1SpecialScrolling01_VariableScroll(NULLROM)		; $05CA6F
-ROUTINE_RT01_SMW_UnusedScrollSpriteRoutine:	%ROUTINE_RT01_SMW_UnusedScrollSpriteRoutine(NULLROM)				; $05CB7B
-ROUTINE_RT01_SMW_Layer2SpecialScrolling04_Unused:	%ROUTINE_RT01_SMW_Layer2SpecialScrolling04_Unused(NULLROM)			; $05CB9B
-ROUTINE_RT01_SMW_Layer2SpecialScrolling0A_Unused:	%ROUTINE_RT01_SMW_Layer2SpecialScrolling0A_Unused(NULLROM)			; $05CBA3
-ROUTINE_RT01_SMW_ScrollLayer3:	%ROUTINE_RT01_SMW_ScrollLayer3(NULLROM)					; $05CBBB
-DATATABLE_RT00_SMW_SharedScrollSpriteTables:	%DATATABLE_RT00_SMW_SharedScrollSpriteTables(NULLROM)				; $05CBC3
-ROUTINE_RT02_SMW_Layer2SpecialScrolling04_Unused:	%ROUTINE_RT02_SMW_Layer2SpecialScrolling04_Unused(NULLROM)			; $05CBE3
-ROUTINE_RT02_SMW_Layer2SpecialScrolling0A_Unused:	%ROUTINE_RT02_SMW_Layer2SpecialScrolling0A_Unused(NULLROM)			; $05CBE5
-ROUTINE_RT02_SMW_ScrollLayer3:	%ROUTINE_RT02_SMW_ScrollLayer3(NULLROM)					; $05CBEB
-DATATABLE_RT01_SMW_SharedScrollSpriteTables:	%DATATABLE_RT01_SMW_SharedScrollSpriteTables(NULLROM)				; $05CBED
-ROUTINE_SMW_ProcessLevelEndRoutines:	%ROUTINE_SMW_ProcessLevelEndRoutines(NULLROM)					; $05CBFF
-DATATABLE_SMW_CourseClearText:	%DATATABLE_SMW_CourseClearText(NULLROM)					; $05CC16
-ROUTINE_SMW_ShowCourseClearText:	%ROUTINE_SMW_ShowCourseClearText(NULLROM)					; $05CC66
-DATATABLE_SMW_GotBonusStarsText:	%DATATABLE_SMW_GotBonusStarsText(NULLROM)					; $05CD3F
-ROUTINE_SMW_DisplayCourseClearTextBonusStars:	%ROUTINE_SMW_DisplayCourseClearTextBonusStars(NULLROM)				; $05CD62
-ROUTINE_SMW_AdjustTimeBonusDisplay:	%ROUTINE_SMW_AdjustTimeBonusDisplay(NULLROM)					; $05CDE9
-ROUTINE_SMW_CalculateTimeBonusDigits:	%ROUTINE_SMW_CalculateTimeBonusDigits(NULLROM)					; $05CE3A
-DATATABLE_SMW_NoBonusStarsText:	%DATATABLE_SMW_NoBonusStarsText(NULLROM)					; $05CEA3
-ROUTINE_SMW_GiveTimeBonusAndBonusStars:	%ROUTINE_SMW_GiveTimeBonusAndBonusStars(NULLROM)				; $05CEC2
-INLINEDATATABLE_RT22_SMW_EmptySpace:	%INLINEDATATABLE_RT22_SMW_EmptySpace(NULLROM)					; $05CFEA
-DATATABLE_RT05_SMW_Map16Data:	%DATATABLE_RT05_SMW_Map16Data(NULLROM)						; $05D000
-ROUTINE_RT00_SMW_SpecifySublevelToLoad:	%ROUTINE_RT00_SMW_SpecifySublevelToLoad(NULLROM)				; $05D608
-INLINEDATATABLE_RT23_SMW_EmptySpace:	%INLINEDATATABLE_RT23_SMW_EmptySpace(NULLROM)					; $05D668
-ROUTINE_RT01_SMW_SpecifySublevelToLoad:	%ROUTINE_RT01_SMW_SpecifySublevelToLoad(NULLROM)				; $05D708
-ROUTINE_SMW_LoadOverworldLifeCounter:	%ROUTINE_SMW_LoadOverworldLifeCounter(NULLROM)					; $05DBC9
-ROUTINE_RT02_SMW_HexToDec:	%ROUTINE_RT02_SMW_HexToDec(NULLROM)						; $05DC3A
-INLINEDATATABLE_RT24_SMW_EmptySpace:	%INLINEDATATABLE_RT24_SMW_EmptySpace(NULLROM)					; $05DC46
-ROUTINE_RT02_SMW_SpecifySublevelToLoad:	%ROUTINE_RT02_SMW_SpecifySublevelToLoad(NULLROM)				; $05E000
+	ROUTINE_RT01_SMW_InitializeMap16Pointers:	%ROUTINE_RT01_SMW_InitializeMap16Pointers(NULLROM)				; $058000
+	ROUTINE_RT00_SMW_LoadSublevel:	%ROUTINE_RT00_SMW_LoadSublevel(NULLROM)					; $05801E
+	ROUTINE_SMW_InitializeLevelLayer1And2Tilemaps:	%ROUTINE_SMW_InitializeLevelLayer1And2Tilemaps(NULLROM)			; $05809E
+	ROUTINE_SMW_BufferBGTilemap:	%ROUTINE_SMW_BufferBGTilemap(NULLROM)						; $058126
+	ROUTINE_RT00_SMW_InitializeMap16Pointers:	%ROUTINE_RT00_SMW_InitializeMap16Pointers(NULLROM)				; $0581BB
+	ROUTINE_SMW_InitializeLevelData:	%ROUTINE_SMW_InitializeLevelData(NULLROM)					; $0582C8
+	ROUTINE_SMW_BeginLoadingLevelData:	%ROUTINE_SMW_BeginLoadingLevelData(NULLROM)					; $0583AC
+	ROUTINE_SMW_LoadLevelHeader:	%ROUTINE_SMW_LoadLevelHeader(NULLROM)						; $058417
+	ROUTINE_SMW_LoadLevelDataObject:	%ROUTINE_SMW_LoadLevelDataObject(NULLROM)					; $0585D8
+	ROUTINE_SMW_CheckIfLevelTilemapsNeedScrollUpdate:	%ROUTINE_SMW_CheckIfLevelTilemapsNeedScrollUpdate(NULLROM)			; $0586F1
+	ROUTINE_SMW_CalculateRowOrColumnOfTilemapToUpdate:	%ROUTINE_SMW_CalculateRowOrColumnOfTilemapToUpdate(NULLROM)			; $058776
+	ROUTINE_RT00_SMW_BufferScrollingTiles:	%ROUTINE_RT00_SMW_BufferScrollingTiles(NULLROM)				; $05881A
+	DATATABLE_RT04_SMW_BitTable:	%DATATABLE_RT04_SMW_BitTable(NULLROM)						; $0589BE
+	ROUTINE_RT01_SMW_BufferScrollingTiles:	%ROUTINE_RT01_SMW_BufferScrollingTiles(NULLROM)				; $0589CE
+	INLINEDATATABLE_RT19_SMW_EmptySpace:	%INLINEDATATABLE_RT19_SMW_EmptySpace(NULLROM)					; $058E19
+	ROUTINE_RT01_SMW_InitializeLevelLayer3:	%ROUTINE_RT01_SMW_InitializeLevelLayer3(NULLROM)				; $059000
+	DATATABLE_RT00_SMW_Backgrounds:	%DATATABLE_RT00_SMW_Backgrounds(NULLROM)					; $059087
+	INLINEDATATABLE_RT20_SMW_EmptySpace:	%INLINEDATATABLE_RT20_SMW_EmptySpace(NULLROM)					; $05A562
+	ROUTINE_SMW_DisplayMessage:	%ROUTINE_SMW_DisplayMessage(NULLROM)						; $05A580
+	ROUTINE_SMW_GiveCoins:	%ROUTINE_SMW_GiveCoins(NULLROM)						; $05B329
+	DATATABLE_RT03_SMW_BitTable:	%DATATABLE_RT03_SMW_BitTable(NULLROM)						; $05B35B
+	ROUTINE_SMW_UnusedOverworldEventPassedCheck:	%ROUTINE_SMW_UnusedOverworldEventPassedCheck(NULLROM)				; $05B363
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	CUSTOMDATA_SMW_SwitchPalaceText:	%CUSTOMDATA_SMW_SwitchPalaceText(NULLROM)
+	DATATABLE_SMW_CourseClearText:	%DATATABLE_SMW_CourseClearText(NULLROM)
+	DATATABLE_SMW_GotBonusStarsText:	%DATATABLE_SMW_GotBonusStarsText(NULLROM)
+	fillbyte $FF : fill $26B
+else
+	ROUTINE_RT01_SMW_GameMode04_PrepareTitleScreen:	%ROUTINE_RT01_SMW_GameMode04_PrepareTitleScreen(NULLROM)			; $05B375
+endif
+
+	DATATABLE_SMW_FileSelectText:	%DATATABLE_SMW_FileSelectText(NULLROM)						; $05B6FE
+	DATATABLE_SMW_XPlayerGameText:	%DATATABLE_SMW_XPlayerGameText(NULLROM)					; $05B872
+	DATATABLE_SMW_SaveMenuText:	%DATATABLE_SMW_SaveMenuText(NULLROM)						; $05B8C7
+	DATATABLE_SMW_ContinueEndText:	%DATATABLE_SMW_ContinueEndText(NULLROM)					; $05B91C
+	ROUTINE_SMW_LevelTileAnimations:	%ROUTINE_SMW_LevelTileAnimations(NULLROM)					; $05B93B
+	INLINEDATATABLE_RT21_SMW_EmptySpace:	%INLINEDATATABLE_RT21_SMW_EmptySpace(NULLROM)					; $05BBA6
+	ROUTINE_SMW_HandleScrollSpriteAndLayer3Scrolling:	%ROUTINE_SMW_HandleScrollSpriteAndLayer3Scrolling(NULLROM)			; $05BC00
+	ROUTINE_RT01_SMW_ProcessScrollSprites:	%ROUTINE_RT01_SMW_ProcessScrollSprites(NULLROM)				; $05BC49
+	ROUTINE_SMW_ScrollSecondInteractiveLayer:	%ROUTINE_SMW_ScrollSecondInteractiveLayer(NULLROM)				; $05BC4A
+	ROUTINE_RT00_SMW_ProcessScrollSprites:	%ROUTINE_RT00_SMW_ProcessScrollSprites(NULLROM)				; $05BC76
+	ROUTINE_SMW_InitializeScrollSprites:	%ROUTINE_SMW_InitializeScrollSprites(NULLROM)					; $05BCD6
+	ROUTINE_RT00_SMW_NorSpr0E7_SpecialAutoScroll:	%ROUTINE_RT00_SMW_NorSpr0E7_SpecialAutoScroll(NULLROM)				; $05BD36
+	ROUTINE_RT00_SMW_MostlyUnusedScrollSpriteRoutine:	%ROUTINE_RT00_SMW_MostlyUnusedScrollSpriteRoutine(NULLROM)			; $05BD7B
+	ROUTINE_RT00_SMW_NorSpr0EB_UnusedSprite:	%ROUTINE_RT00_SMW_NorSpr0EB_UnusedSprite(NULLROM)				; $05BDDD
+	ROUTINE_RT00_SMW_NorSpr0F1_UnusedSprite:	%ROUTINE_RT00_SMW_NorSpr0F1_UnusedSprite(NULLROM)				; $05BE3A
+	ROUTINE_RT05_SMW_GameMode12_PrepareLevel:	%ROUTINE_RT05_SMW_GameMode12_PrepareLevel(NULLROM)				; $05BE8A
+	ROUTINE_RT00_SMW_NorSpr0EF_Layer2ScrollSOrL:	%ROUTINE_RT00_SMW_NorSpr0EF_Layer2ScrollSOrL(NULLROM)				; $05BEA6
+	ROUTINE_RT00_SMW_NorSpr0EA_Layer2Scroll:	%ROUTINE_RT00_SMW_NorSpr0EA_Layer2Scroll(NULLROM)				; $05BF0A
+	ROUTINE_RT00_SMW_NorSpr0E9_Layer2Smash:	%ROUTINE_RT00_SMW_NorSpr0E9_Layer2Smash(NULLROM)				; $05BF6A
+	ROUTINE_SMW_NorSpr0ED_Layer2Falls:	%ROUTINE_SMW_NorSpr0ED_Layer2Falls(NULLROM)					; $05BF97
+	ROUTINE_SMW_NorSpr0EC_UnusedSprite:	%ROUTINE_SMW_NorSpr0EC_UnusedSprite(NULLROM)					; $05BFBA
+	ROUTINE_SMW_NorSpr0F2_Layer2OnOffControlled:	%ROUTINE_SMW_NorSpr0F2_Layer2OnOffControlled(NULLROM)				; $05BFF6
+	ROUTINE_SMW_NorSpr0F3_RegularAutoScroll:	%ROUTINE_SMW_NorSpr0F3_RegularAutoScroll(NULLROM)				; $05BFFD
+	ROUTINE_SMW_NorSpr0F4_FastBGScroll:	%ROUTINE_SMW_NorSpr0F4_FastBGScroll(NULLROM)					; $05C01A
+	ROUTINE_RT00_SMW_NorSpr0F5_Layer2ScrollWhenTouched:	%ROUTINE_RT00_SMW_NorSpr0F5_Layer2ScrollWhenTouched(NULLROM)			; $05C036
+	ROUTINE_RT00_SMW_Layer1SpecialScrolling01_VariableScroll:	%ROUTINE_RT00_SMW_Layer1SpecialScrolling01_VariableScroll(NULLROM)		; $05C04D
+	ROUTINE_SMW_Layer2SpecialScrolling01_VariableScroll:	%ROUTINE_SMW_Layer2SpecialScrolling01_VariableScroll(NULLROM)			; $05C198
+	ROUTINE_RT00_SMW_UnusedScrollSpriteRoutine:	%ROUTINE_RT00_SMW_UnusedScrollSpriteRoutine(NULLROM)				; $05C1AE
+	ROUTINE_RT00_SMW_Layer2SpecialScrolling04_Unused:	%ROUTINE_RT00_SMW_Layer2SpecialScrolling04_Unused(NULLROM)			; $05C283
+	ROUTINE_RT00_SMW_Layer2SpecialScrolling0A_Unused:	%ROUTINE_RT00_SMW_Layer2SpecialScrolling0A_Unused(NULLROM)			; $05C32E
+	ROUTINE_RT00_SMW_ScrollLayer3:	%ROUTINE_RT00_SMW_ScrollLayer3(NULLROM)					; $05C406
+	ROUTINE_SMW_UpdateLayerPositionWithScrollSprite:	%ROUTINE_SMW_UpdateLayerPositionWithScrollSprite(NULLROM)			; $05C4F9
+	ROUTINE_SMW_Layer2SpecialScrolling08_Layer2ScrollSOrL:	%ROUTINE_SMW_Layer2SpecialScrolling08_Layer2ScrollSOrL(NULLROM)		; $05C51F
+	ROUTINE_SMW_Layer2SpecialScrolling03_Layer2Scroll:	%ROUTINE_SMW_Layer2SpecialScrolling03_Layer2Scroll(NULLROM)			; $05C5BB
+	ROUTINE_SMW_Layer2SpecialScrolling06_Unused:	%ROUTINE_SMW_Layer2SpecialScrolling06_Unused(NULLROM)				; $05C659
+	ROUTINE_SMW_Layer1SpecialScrolling05_Unused:	%ROUTINE_SMW_Layer1SpecialScrolling05_Unused(NULLROM)				; $05C69E
+	ROUTINE_SMW_Layer2SpecialScrolling0B_Layer2OnOffControlled:	%ROUTINE_SMW_Layer2SpecialScrolling0B_Layer2OnOffControlled(NULLROM)		; $05C71B
+	ROUTINE_SMW_Layer1SpecialScrolling0C_RegularAutoScroll:	%ROUTINE_SMW_Layer1SpecialScrolling0C_RegularAutoScroll(NULLROM)		; $05C787
+	ROUTINE_SMW_Layer2SpecialScrolling0D_FastBGScroll:	%ROUTINE_SMW_Layer2SpecialScrolling0D_FastBGScroll(NULLROM)			; $05C7BC
+	ROUTINE_RT01_SMW_Layer2SpecialScrolling0E_Layer2ScrollWhenTouched:	%ROUTINE_RT01_SMW_Layer2SpecialScrolling0E_Layer2ScrollWhenTouched(NULLROM)	; $05C7F0
+	ROUTINE_RT01_SMW_NorSpr0F5_Layer2ScrollWhenTouched:	%ROUTINE_RT01_SMW_NorSpr0F5_Layer2ScrollWhenTouched(NULLROM)			; $05C808
+	ROUTINE_RT00_SMW_Layer2SpecialScrolling0E_Layer2ScrollWhenTouched:	%ROUTINE_RT00_SMW_Layer2SpecialScrolling0E_Layer2ScrollWhenTouched(NULLROM)	; $05C80E
+	ROUTINE_RT01_SMW_Layer2SpecialScrolling02_Layer2Smash:	%ROUTINE_RT01_SMW_Layer2SpecialScrolling02_Layer2Smash(NULLROM)		; $05C880
+	ROUTINE_RT01_SMW_NorSpr0E9_Layer2Smash:	%ROUTINE_RT01_SMW_NorSpr0E9_Layer2Smash(NULLROM)				; $05C94F
+	ROUTINE_RT00_SMW_Layer2SpecialScrolling02_Layer2Smash:	%ROUTINE_RT00_SMW_Layer2SpecialScrolling02_Layer2Smash(NULLROM)		; $05C955
+	ROUTINE_RT01_SMW_NorSpr0E7_SpecialAutoScroll:	%ROUTINE_RT01_SMW_NorSpr0E7_SpecialAutoScroll(NULLROM)				; $05C9D1
+	ROUTINE_RT01_SMW_MostlyUnusedScrollSpriteRoutine:	%ROUTINE_RT01_SMW_MostlyUnusedScrollSpriteRoutine(NULLROM)			; $05C9E5
+	ROUTINE_RT01_SMW_NorSpr0EB_UnusedSprite:	%ROUTINE_RT01_SMW_NorSpr0EB_UnusedSprite(NULLROM)				; $05CA08
+	ROUTINE_RT01_SMW_NorSpr0F1_UnusedSprite:	%ROUTINE_RT01_SMW_NorSpr0F1_UnusedSprite(NULLROM)				; $05CA16
+	ROUTINE_RT01_SMW_NorSpr0EF_Layer2ScrollSOrL:	%ROUTINE_RT01_SMW_NorSpr0EF_Layer2ScrollSOrL(NULLROM)				; $05CA3E
+	ROUTINE_RT01_SMW_NorSpr0EA_Layer2Scroll:	%ROUTINE_RT01_SMW_NorSpr0EA_Layer2Scroll(NULLROM)				; $05CA48
+	ROUTINE_RT02_SMW_NorSpr0E7_SpecialAutoScroll:	%ROUTINE_RT02_SMW_NorSpr0E7_SpecialAutoScroll(NULLROM)				; $05CA61
+	ROUTINE_RT01_SMW_Layer1SpecialScrolling01_VariableScroll:	%ROUTINE_RT01_SMW_Layer1SpecialScrolling01_VariableScroll(NULLROM)		; $05CA6F
+	ROUTINE_RT01_SMW_UnusedScrollSpriteRoutine:	%ROUTINE_RT01_SMW_UnusedScrollSpriteRoutine(NULLROM)				; $05CB7B
+	ROUTINE_RT01_SMW_Layer2SpecialScrolling04_Unused:	%ROUTINE_RT01_SMW_Layer2SpecialScrolling04_Unused(NULLROM)			; $05CB9B
+	ROUTINE_RT01_SMW_Layer2SpecialScrolling0A_Unused:	%ROUTINE_RT01_SMW_Layer2SpecialScrolling0A_Unused(NULLROM)			; $05CBA3
+	ROUTINE_RT01_SMW_ScrollLayer3:	%ROUTINE_RT01_SMW_ScrollLayer3(NULLROM)					; $05CBBB
+	DATATABLE_RT00_SMW_SharedScrollSpriteTables:	%DATATABLE_RT00_SMW_SharedScrollSpriteTables(NULLROM)				; $05CBC3
+	ROUTINE_RT02_SMW_Layer2SpecialScrolling04_Unused:	%ROUTINE_RT02_SMW_Layer2SpecialScrolling04_Unused(NULLROM)			; $05CBE3
+	ROUTINE_RT02_SMW_Layer2SpecialScrolling0A_Unused:	%ROUTINE_RT02_SMW_Layer2SpecialScrolling0A_Unused(NULLROM)			; $05CBE5
+	ROUTINE_RT02_SMW_ScrollLayer3:	%ROUTINE_RT02_SMW_ScrollLayer3(NULLROM)					; $05CBEB
+	DATATABLE_RT01_SMW_SharedScrollSpriteTables:	%DATATABLE_RT01_SMW_SharedScrollSpriteTables(NULLROM)				; $05CBED
+	ROUTINE_SMW_ProcessLevelEndRoutines:	%ROUTINE_SMW_ProcessLevelEndRoutines(NULLROM)					; $05CBFF
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) == $00 ;[BR] Reallocated texts.
+	DATATABLE_SMW_CourseClearText:	%DATATABLE_SMW_CourseClearText(NULLROM)					; $05CC16
+endif
+	ROUTINE_SMW_ShowCourseClearText:	%ROUTINE_SMW_ShowCourseClearText(NULLROM)					; $05CC66
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) == $00 ;[BR]
+	DATATABLE_SMW_GotBonusStarsText:	%DATATABLE_SMW_GotBonusStarsText(NULLROM)					; $05CD3F
+endif
+
+	ROUTINE_SMW_DisplayCourseClearTextBonusStars:	%ROUTINE_SMW_DisplayCourseClearTextBonusStars(NULLROM)				; $05CD62
+	ROUTINE_SMW_AdjustTimeBonusDisplay:	%ROUTINE_SMW_AdjustTimeBonusDisplay(NULLROM)					; $05CDE9
+	ROUTINE_SMW_CalculateTimeBonusDigits:	%ROUTINE_SMW_CalculateTimeBonusDigits(NULLROM)					; $05CE3A
+	DATATABLE_SMW_NoBonusStarsText:	%DATATABLE_SMW_NoBonusStarsText(NULLROM)					; $05CEA3
+	ROUTINE_SMW_GiveTimeBonusAndBonusStars:	%ROUTINE_SMW_GiveTimeBonusAndBonusStars(NULLROM)				; $05CEC2
+	INLINEDATATABLE_RT22_SMW_EmptySpace:	%INLINEDATATABLE_RT22_SMW_EmptySpace(NULLROM)					; $05CFEA
+	DATATABLE_RT05_SMW_Map16Data:	%DATATABLE_RT05_SMW_Map16Data(NULLROM)						; $05D000
+	ROUTINE_RT00_SMW_SpecifySublevelToLoad:	%ROUTINE_RT00_SMW_SpecifySublevelToLoad(NULLROM)				; $05D608
+	INLINEDATATABLE_RT23_SMW_EmptySpace:	%INLINEDATATABLE_RT23_SMW_EmptySpace(NULLROM)					; $05D668
+	ROUTINE_RT01_SMW_SpecifySublevelToLoad:	%ROUTINE_RT01_SMW_SpecifySublevelToLoad(NULLROM)				; $05D708
+	ROUTINE_SMW_LoadOverworldLifeCounter:	%ROUTINE_SMW_LoadOverworldLifeCounter(NULLROM)					; $05DBC9
+	ROUTINE_RT02_SMW_HexToDec:	%ROUTINE_RT02_SMW_HexToDec(NULLROM)						; $05DC3A
+	INLINEDATATABLE_RT24_SMW_EmptySpace:	%INLINEDATATABLE_RT24_SMW_EmptySpace(NULLROM)					; $05DC46
+	ROUTINE_RT02_SMW_SpecifySublevelToLoad:	%ROUTINE_RT02_SMW_SpecifySublevelToLoad(NULLROM)				; $05E000
 %BANK_END(<EndBank>)
 endmacro
 
@@ -968,15 +1001,22 @@ endmacro
 
 macro SMWBank06Macros(StartBank, EndBank)
 %BANK_START(<StartBank>)
-DATATABLE_RT00_SMW_LevelData:	%DATATABLE_RT00_SMW_LevelData(NULLROM)						; $068000
-INLINEDATATABLE_RT25_SMW_EmptySpace:	%INLINEDATATABLE_RT25_SMW_EmptySpace(NULLROM)					; $06A5B9
-DATATABLE_RT01_SMW_LevelData:	%DATATABLE_RT01_SMW_LevelData(NULLROM)						; $06A600
-INLINEDATATABLE_RT26_SMW_EmptySpace:	%INLINEDATATABLE_RT26_SMW_EmptySpace(NULLROM)					; $06C964
-DATATABLE_RT02_SMW_LevelData:	%DATATABLE_RT02_SMW_LevelData(NULLROM)						; $06D000
-INLINEDATATABLE_RT27_SMW_EmptySpace:	%INLINEDATATABLE_RT27_SMW_EmptySpace(NULLROM)				; $06F539
+	DATATABLE_RT00_SMW_LevelData:	%DATATABLE_RT00_SMW_LevelData(NULLROM)						; $068000
+	INLINEDATATABLE_RT25_SMW_EmptySpace:	%INLINEDATATABLE_RT25_SMW_EmptySpace(NULLROM)					; $06A5B9
+	DATATABLE_RT01_SMW_LevelData:	%DATATABLE_RT01_SMW_LevelData(NULLROM)						; $06A600
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	ROUTINE_CUSTOM_LevelNamesLong:	%ROUTINE_CUSTOM_LevelNamesLong(NULLROM)
+else
+	INLINEDATATABLE_RT26_SMW_EmptySpace:	%INLINEDATATABLE_RT26_SMW_EmptySpace(NULLROM)					; $06C964
+endif
+
+	DATATABLE_RT02_SMW_LevelData:	%DATATABLE_RT02_SMW_LevelData(NULLROM)						; $06D000
+	INLINEDATATABLE_RT27_SMW_EmptySpace:	%INLINEDATATABLE_RT27_SMW_EmptySpace(NULLROM)				; $06F539
 if !Define_Global_ROMToAssemble&(!ROM_SMASW_E) != $00
-ROUTINE_RT03_SMW_UploadPlayerGFX:	%ROUTINE_RT03_SMW_UploadPlayerGFX(NULLROM)					; N/A
-INLINEDATATABLE_RT28_SMW_EmptySpace:	%INLINEDATATABLE_RT28_SMW_EmptySpace(NULLROM)					; N/A
+	ROUTINE_RT03_SMW_UploadPlayerGFX:	%ROUTINE_RT03_SMW_UploadPlayerGFX(NULLROM)					; N/A
+	INLINEDATATABLE_RT28_SMW_EmptySpace:	%INLINEDATATABLE_RT28_SMW_EmptySpace(NULLROM)					; N/A
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	ROUTINE_CUSTOM_StaffCreditsLong:	%ROUTINE_CUSTOM_StaffCreditsLong(NULLROM)
 endif
 %BANK_END(<EndBank>)
 endmacro
@@ -986,21 +1026,27 @@ endmacro
 
 macro SMWBank07Macros(StartBank, EndBank)
 %BANK_START(<StartBank>)
-DATATABLE_RT03_SMW_LevelData:	%DATATABLE_RT03_SMW_LevelData(NULLROM)						; $078000
-INLINEDATATABLE_RT29_SMW_EmptySpace:	%INLINEDATATABLE_RT29_SMW_EmptySpace(NULLROM)					; $0780ED
-DATATABLE_RT04_SMW_LevelData:	%DATATABLE_RT04_SMW_LevelData(NULLROM)						; $078100
-INLINEDATATABLE_RT30_SMW_EmptySpace:	%INLINEDATATABLE_RT30_SMW_EmptySpace(NULLROM)					; $07A179
-DATATABLE_RT05_SMW_LevelData:	%DATATABLE_RT05_SMW_LevelData(NULLROM)						; $07A600
-INLINEDATATABLE_RT31_SMW_EmptySpace:	%INLINEDATATABLE_RT31_SMW_EmptySpace(NULLROM)					; $07C226
-DATATABLE_RT06_SMW_LevelData:	%DATATABLE_RT06_SMW_LevelData(NULLROM)						; $07C300
-INLINEDATATABLE_RT32_SMW_EmptySpace:	%INLINEDATATABLE_RT32_SMW_EmptySpace(NULLROM)					; $07E76F
-ROUTINE_RT02_SMW_ProcessNormalSprites:	%ROUTINE_RT02_SMW_ProcessNormalSprites(NULLROM)				; $07F000
-ROUTINE_RT01_SMW_NorSpr07B_GoalTape_Status08:	%ROUTINE_RT01_SMW_NorSpr07B_GoalTape_Status08(NULLROM)				; $07F0C8
-ROUTINE_SMW_InitializeNormalSpriteRAMTables:	%ROUTINE_SMW_InitializeNormalSpriteRAMTables(NULLROM)				; $07F26C
-DATATABLE_SMW_CircleCoordinates:	%DATATABLE_SMW_CircleCoordinates(NULLROM)					; $07F7DB
-DATATABLE_SMW_LineGuideSpeedTable:	%DATATABLE_SMW_LineGuideSpeedTable(NULLROM)					; $07F9DB
-ROUTINE_SMW_SpawnSpinJumpStars:	%ROUTINE_SMW_SpawnSpinJumpStars(NULLROM)					; $07FC33
-INLINEDATATABLE_RT33_SMW_EmptySpace:	%INLINEDATATABLE_RT33_SMW_EmptySpace(NULLROM)					; $07FC90
+	DATATABLE_RT03_SMW_LevelData:	%DATATABLE_RT03_SMW_LevelData(NULLROM)						; $078000
+	INLINEDATATABLE_RT29_SMW_EmptySpace:	%INLINEDATATABLE_RT29_SMW_EmptySpace(NULLROM)					; $0780ED
+	DATATABLE_RT04_SMW_LevelData:	%DATATABLE_RT04_SMW_LevelData(NULLROM)						; $078100
+	INLINEDATATABLE_RT30_SMW_EmptySpace:	%INLINEDATATABLE_RT30_SMW_EmptySpace(NULLROM)					; $07A179
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR] Reallocated title screen.
+	ROUTINE_RT01_SMW_GameMode04_PrepareTitleScreen:	%ROUTINE_RT01_SMW_GameMode04_PrepareTitleScreen(NULLROM)			; $05B375
+endif
+
+	DATATABLE_RT05_SMW_LevelData:	%DATATABLE_RT05_SMW_LevelData(NULLROM)						; $07A600
+
+	INLINEDATATABLE_RT31_SMW_EmptySpace:	%INLINEDATATABLE_RT31_SMW_EmptySpace(NULLROM)					; $07C226
+	DATATABLE_RT06_SMW_LevelData:	%DATATABLE_RT06_SMW_LevelData(NULLROM)						; $07C300
+	INLINEDATATABLE_RT32_SMW_EmptySpace:	%INLINEDATATABLE_RT32_SMW_EmptySpace(NULLROM)					; $07E76F
+	ROUTINE_RT02_SMW_ProcessNormalSprites:	%ROUTINE_RT02_SMW_ProcessNormalSprites(NULLROM)				; $07F000
+	ROUTINE_RT01_SMW_NorSpr07B_GoalTape_Status08:	%ROUTINE_RT01_SMW_NorSpr07B_GoalTape_Status08(NULLROM)				; $07F0C8
+	ROUTINE_SMW_InitializeNormalSpriteRAMTables:	%ROUTINE_SMW_InitializeNormalSpriteRAMTables(NULLROM)				; $07F26C
+	DATATABLE_SMW_CircleCoordinates:	%DATATABLE_SMW_CircleCoordinates(NULLROM)					; $07F7DB
+	DATATABLE_SMW_LineGuideSpeedTable:	%DATATABLE_SMW_LineGuideSpeedTable(NULLROM)					; $07F9DB
+	ROUTINE_SMW_SpawnSpinJumpStars:	%ROUTINE_SMW_SpawnSpinJumpStars(NULLROM)					; $07FC33
+	INLINEDATATABLE_RT33_SMW_EmptySpace:	%INLINEDATATABLE_RT33_SMW_EmptySpace(NULLROM)					; $07FC90
 %BANK_END(<EndBank>)
 endmacro
 
@@ -5001,7 +5047,9 @@ CODE_008034:
 #LM000Hijack_Bank00RTL:
 	LDA.b #$6B
 	STA.l !RAM_SMW_Sprites_ResetSpriteOAMRt+$0182
-if !Define_Global_ROMToAssemble&(!ROM_SMASW_U|!ROM_SMASW_E) == $00
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br) != $00 ;[BR]
+	JSR.w SMW_DisplayCopyDetectionErrorMessage_Entry
+elseif !Define_Global_ROMToAssemble&(!ROM_SMASW_U|!ROM_SMASW_E) == $00
 	JSR.w SMW_HandleSPCUploads_UploadSPCEngine
 endif
 	STZ.w !RAM_SMW_Misc_GameMode
@@ -5409,7 +5457,7 @@ namespace SMW_UploadPlayerGFX
 %InsertMacroAtXPosition(<Address>)
 
 Main:
-if !Define_Global_ROMToAssemble&(!ROM_SMASW_E) != $00
+if !Define_Global_ROMToAssemble&(!ROM_SMASW_E) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br) != $00 ;[BR]
 	JSL.l MarioAndLuigi
 	RTS
 else
@@ -5505,7 +5553,11 @@ namespace SMW_UploadPlayerGFX
 %InsertMacroAtXPosition(<Address>)
 
 LuigiGFX:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	incbin "GFX/Luigi_fix.bin"
+else
 	incbin "GFX/Luigi.bin"
+endif
 	incbin "GFX/BlankLuigiTiles.bin"
 namespace off
 endmacro
@@ -5593,7 +5645,11 @@ MarioAndLuigi:
 	LDA.w !RAM_SMW_Player_CurrentCharacter
 	AND.w #$00FF
 	BEQ.b CODE_36F613
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br) != $00 ;[BR]
+	LDA.w #LuigiGFX-$2000
+else
 	LDA.w #LuigiGFX&$8000
+endif
 	LDX.b #LuigiGFX>>16
 	STX.b !RAM_SMW_Misc_ScratchRAM02
 	BRA.b CODE_36F617
@@ -5613,7 +5669,8 @@ CODE_36F617:
 	STA.w DMA[$02].Parameters
 	LDA.w !RAM_SMW_Pointer_PlayerPaletteLo
 	STA.w DMA[$02].SourceLo
-	LDY.b #$30
+	;LDY.b #$30
+	LDY.b #SMW_GlobalPalettes_Mario>>16
 	STY.w DMA[$02].SourceBank
 	LDA.w #$0014
 	STA.w DMA[$02].SizeLo
@@ -5888,6 +5945,7 @@ Main:
 	REP.b #$20
 	LDX.b #$80
 	STX.w !REGISTER_VRAMAddressIncrementValue
+	
 	LDA.w #!VRAM_SMW_SpriteGFXLocationLo
 	STA.w !REGISTER_VRAMAddressLo
 	LDA.w #(!REGISTER_WriteToVRAMPortLo&$0000FF<<8)+$01
@@ -5900,6 +5958,7 @@ Main:
 	STA.w DMA[$02].SizeLo
 	LDX.b #$04
 	STX.w !REGISTER_DMAEnable
+	
 	LDA.w #!VRAM_SMW_SpriteGFXLocationLo+$0100
 	STA.w !REGISTER_VRAMAddressLo
 	LDA.w #!RAM_SMW_Graphics_DecompressedLoadingLetters+$C0
@@ -5907,6 +5966,7 @@ Main:
 	LDA.w #$00C0
 	STA.w DMA[$02].SizeLo
 	STX.w !REGISTER_DMAEnable
+	
 	LDA.w #!VRAM_SMW_SpriteGFXLocationLo+$04A0
 	STA.w !REGISTER_VRAMAddressLo
 	LDA.w #!RAM_SMW_Graphics_DecompressedLoadingLetters+$0180
@@ -5914,6 +5974,7 @@ Main:
 	LDA.w #$00C0
 	STA.w DMA[$02].SizeLo
 	STX.w !REGISTER_DMAEnable
+	
 	LDA.w #!VRAM_SMW_SpriteGFXLocationLo+$05A0
 	STA.w !REGISTER_VRAMAddressLo
 	LDA.w #!RAM_SMW_Graphics_DecompressedLoadingLetters+$0240
@@ -5921,6 +5982,7 @@ Main:
 	LDA.w #$00C0
 	STA.w DMA[$02].SizeLo
 	STX.w !REGISTER_DMAEnable
+	
 	SEP.b #$20
 	RTS
 namespace off
@@ -6083,10 +6145,16 @@ namespace SMW_RestoreSP1AfterMarioStart
 %InsertMacroAtXPosition(<Address>)
 
 Main:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR] Changed the check value so that this is only executed when it matters.
+	LDA.w !RAM_SMW_Flag_ActiveBonusGame
+else
 	LDA.w !RAM_SMW_Flag_RestoreSP1TilesAfterMarioStart
+endif
 #LM221Hijack_DisableSP1VRAMBackup1:
 	BEQ.b Return00A47E							; LM: Changes the BEQ.b into BRA.b so this junk routine is skipped over. (2.21+)
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) == $00
 	STZ.w !RAM_SMW_Flag_RestoreSP1TilesAfterMarioStart
+endif
 	REP.b #$20
 	LDY.b #$80
 	STY.w !REGISTER_VRAMAddressIncrementValue
@@ -6102,6 +6170,7 @@ Main:
 	STA.w DMA[$02].SizeLo
 	LDX.b #$04
 	STX.w !REGISTER_DMAEnable
+	
 	LDA.w #!VRAM_SMW_SpriteGFXLocationLo+$05A0
 	STA.w !REGISTER_VRAMAddressLo
 	LDA.w #!RAM_SMW_Graphics_DecompressedOverworldGFX+$01C0
@@ -6109,6 +6178,7 @@ Main:
 	LDA.w #$00C0
 	STA.w DMA[$02].SizeLo
 	STX.w !REGISTER_DMAEnable
+	
 	SEP.b #$20
 Return00A47E:
 	RTS
@@ -6421,7 +6491,11 @@ StripeImagePtrs:
 #LM000Hijack_CustomCastleDestructionText:								;\ LM: Edit Boss Sequence Text...
 .CastleDestructionText:											;| Lunar Magic will modify these pointers to point to the extended area.
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) == $00							;| Otherwise, there wouldn't be enough room to use all 56 lines.
+	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+				dl SMW_CastleDestructionText_Iggy_Line8
+	else
 				dl SMW_CastleDestructionText_BlankLine					;| $21
+	endif
 				dl SMW_CastleDestructionText_Iggy_Line7					;| $24
 				dl SMW_CastleDestructionText_Iggy_Line6					;| $27
 				dl SMW_CastleDestructionText_Iggy_Line5					;| $2A
@@ -6441,7 +6515,11 @@ endif													;|
 				dl SMW_CastleDestructionText_Morton_Line2				;| $4B
 				dl SMW_CastleDestructionText_Morton_Line1				;| $4E
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) == $00							;|
+	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+				dl SMW_CastleDestructionText_Lemmy_Line8
+	else
 				dl SMW_CastleDestructionText_BlankLine					;| $51
+	endif
 				dl SMW_CastleDestructionText_Lemmy_Line7				;| $54
 				dl SMW_CastleDestructionText_Lemmy_Line6				;| $57
 				dl SMW_CastleDestructionText_Lemmy_Line5				;| $5A
@@ -6461,7 +6539,11 @@ endif													;|
 				dl SMW_CastleDestructionText_Ludwig_Line2				;| $7B
 				dl SMW_CastleDestructionText_Ludwig_Line1				;| $7E
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) == $00							;|
+	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+				dl SMW_CastleDestructionText_Roy_Line8
+	else
 				dl SMW_CastleDestructionText_BlankLine					;| $81
+	endif
 				dl SMW_CastleDestructionText_Roy_Line7					;| $84
 				dl SMW_CastleDestructionText_Roy_Line6					;| $87
 				dl SMW_CastleDestructionText_Roy_Line5					;| $8A
@@ -10550,19 +10632,77 @@ macro DATATABLE_SMW_CompressedGraphics(Address)
 check bankcross off
 %InsertMacroAtXPosition(<Address>)
 
-	%SMW_INCGFX(GFX32)	:	%SMW_INCGFX(GFX33)	:	%SMW_INCGFX(GFX00)	:	%SMW_INCGFX(GFX01)
+	%SMW_INCGFX(GFX32)
+	
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00
+	%SMW_INCGFX_BR(GFX33)	:	%SMW_INCGFX_BR(GFX00)
+else
+	%SMW_INCGFX(GFX33)	:	%SMW_INCGFX(GFX00)
+endif
+
+	%SMW_INCGFX(GFX01)
 	%SMW_INCGFX(GFX02)	:	%SMW_INCGFX(GFX03)	:	%SMW_INCGFX(GFX04)	:	%SMW_INCGFX(GFX05)
-	%SMW_INCGFX(GFX06)	:	%SMW_INCGFX(GFX07)	:	%SMW_INCGFX(GFX08)	:	%SMW_INCGFX(GFX09)
-	%SMW_INCGFX(GFX0A)	:	%SMW_INCGFX(GFX0B)	:	%SMW_INCGFX(GFX0C)	:	%SMW_INCGFX(GFX0D)
-	%SMW_INCGFX(GFX0E)	:	%SMW_INCGFX(GFX0F)	:	%SMW_INCGFX(GFX10)	:	%SMW_INCGFX(GFX11)
+	%SMW_INCGFX(GFX06)
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00
+	%SMW_INCGFX_BR(GFX07)
+else
+	%SMW_INCGFX(GFX07)
+endif
+
+	%SMW_INCGFX(GFX08)	:	%SMW_INCGFX(GFX09)
+	%SMW_INCGFX(GFX0A)	:	%SMW_INCGFX(GFX0B)	:	%SMW_INCGFX(GFX0C)
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00
+	%SMW_INCGFX_BR(GFX0D)	:	%SMW_INCGFX(GFX0E)	:	%SMW_INCGFX_BR(GFX0F)	:	%SMW_INCGFX_BR(GFX10)
+else
+	%SMW_INCGFX(GFX0D)	:	%SMW_INCGFX(GFX0E)	:	%SMW_INCGFX(GFX0F)	:	%SMW_INCGFX(GFX10)
+endif
+
+	%SMW_INCGFX(GFX11)
 	%SMW_INCGFX(GFX12)	:	%SMW_INCGFX(GFX13)	:	%SMW_INCGFX(GFX14)	:	%SMW_INCGFX(GFX15)
 	%SMW_INCGFX(GFX16)	:	%SMW_INCGFX(GFX17)	:	%SMW_INCGFX(GFX18)	:	%SMW_INCGFX(GFX19)
-	%SMW_INCGFX(GFX1A)	:	%SMW_INCGFX(GFX1B)	:	%SMW_INCGFX(GFX1C)	:	%SMW_INCGFX(GFX1D)
-	%SMW_INCGFX(GFX1E)	:	%SMW_INCGFX(GFX1F)	:	%SMW_INCGFX(GFX20)	:	%SMW_INCGFX(GFX21)
-	%SMW_INCGFX(GFX22)	:	%SMW_INCGFX(GFX23)	:	%SMW_INCGFX(GFX24)	:	%SMW_INCGFX(GFX25)
-	%SMW_INCGFX(GFX26)	:	%SMW_INCGFX(GFX27)	:	%SMW_INCGFX(GFX28)	:	%SMW_INCGFX(GFX29)
-	%SMW_INCGFX(GFX2A)	:	%SMW_INCGFX(GFX2B)	:	%SMW_INCGFX(GFX2C)	:	%SMW_INCGFX(GFX2D)
-	%SMW_INCGFX(GFX2E)	:	%SMW_INCGFX(GFX2F)	:	%SMW_INCGFX(GFX30)	:	%SMW_INCGFX(GFX31)
+	%SMW_INCGFX(GFX1A)	:	%SMW_INCGFX(GFX1B)	:	%SMW_INCGFX(GFX1C)
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00
+	%SMW_INCGFX_BR(GFX1D)
+else
+	%SMW_INCGFX(GFX1D)
+endif
+
+	%SMW_INCGFX(GFX1E)	:	%SMW_INCGFX(GFX1F)	:	%SMW_INCGFX(GFX20)
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00
+	%SMW_INCGFX_BR(GFX21)	:	%SMW_INCGFX_BR(GFX22)
+else
+	%SMW_INCGFX(GFX21)	:	%SMW_INCGFX(GFX22)
+endif
+	
+	%SMW_INCGFX(GFX23)
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00
+	%SMW_INCGFX_BR(GFX24)	:	%SMW_INCGFX(GFX25)	:	%SMW_INCGFX_BR(GFX26)
+else
+	%SMW_INCGFX(GFX24)	:	%SMW_INCGFX(GFX25)	:	%SMW_INCGFX(GFX26)
+endif
+
+	%SMW_INCGFX(GFX27)
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ; Layer 3 graphics
+	%SMW_INCGFX_BR(GFX28)	:	%SMW_INCGFX_BR(GFX29)	:	%SMW_INCGFX_BR(GFX2A)	:	%SMW_INCGFX_BR(GFX2B)
+else
+	%SMW_INCGFX(GFX28)	:	%SMW_INCGFX(GFX29)	:	%SMW_INCGFX(GFX2A)	:	%SMW_INCGFX(GFX2B)
+endif
+
+	%SMW_INCGFX(GFX2C)
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00
+	%SMW_INCGFX_BR(GFX2D)	:	%SMW_INCGFX_BR(GFX2E)	:	%SMW_INCGFX_BR(GFX2F)	:	%SMW_INCGFX_BR(GFX30)
+else
+	%SMW_INCGFX(GFX2D)	:	%SMW_INCGFX(GFX2E)	:	%SMW_INCGFX(GFX2F)	:	%SMW_INCGFX(GFX30)
+endif
+
+	%SMW_INCGFX(GFX31)
 check bankcross on
 endmacro
 
@@ -10687,7 +10827,8 @@ CODE_05CC84:
 	REP.b #$30
 	STZ.b !RAM_SMW_Mirror_Layer3XPosLo
 	STZ.b !RAM_SMW_Mirror_Layer3YPosLo
-	LDY.w #$004A
+	;LDY.w #$004A (stripe image data length)
+	LDY.w #SMW_CourseClearText_Main_End-SMW_CourseClearText_Main
 	TYA
 	CLC
 	ADC.l !RAM_SMW_Misc_StripeImageUploadIndexLo
@@ -10903,7 +11044,8 @@ Main:
 	BEQ.b CODE_05CDD5
 	DEC.w !RAM_SMW_Timer_DisplayBonusStars
 	BPL.b Return05CDE8
-	LDY.b #$22
+	;LDY.b #$22 (stripe image data length)
+	LDY.b #SMW_GotBonusStarsText_Main_End-SMW_GotBonusStarsText_Main
 	TYA
 	CLC
 	ADC.l !RAM_SMW_Misc_StripeImageUploadIndexLo
@@ -10914,6 +11056,7 @@ CODE_05CD89:
 	DEX
 	DEY
 	BPL.b CODE_05CD89
+
 	LDA.l !RAM_SMW_Misc_StripeImageUploadIndexLo
 	TAX
 	LDA.w !RAM_SMW_Counter_BonusStarsEarned
@@ -10924,6 +11067,7 @@ CODE_05CD89:
 	STA.l SMW_StripeImageUploadTable[$0C].LowByte,x
 	LDA.w DATA_05CD62,y
 	STA.l SMW_StripeImageUploadTable[$10].LowByte,x
+
 	LDA.w !RAM_SMW_Counter_BonusStarsEarned
 	AND.b #$F0
 	LSR
@@ -11282,28 +11426,32 @@ endif
 	JMP.w SMW_SubmapSwitchProcess00_InitializeWindowHDMA_CODE_04DB95
 
 ClearPromptWindowImage:
+	;                 (Label, XPos, YPos, Dir, RLE, Layer)
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
 	%StripeImageHeader(.ClearLine1, $09, $0E, 0, $0015, 3)
-elseif !Define_Global_ROMToAssemble&(!ROM_SMASW_U|!ROM_SMASW_E) != $00
+elseif !Define_Global_ROMToAssemble&(!ROM_SMASW_U|!ROM_SMASW_E) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
 	%StripeImageHeader(.ClearLine1, $04, $0E, 0, $002D, 3)
 else
 	%StripeImageHeader(.ClearLine1, $04, $0E, 0, $0025, 3)
 endif
 	db $FC,$38
-.ClearLine1End
+	;.ClearLine1End:
+
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
 	%StripeImageHeader(.ClearLine2, $08, $10, 0, $001F, 3)
 else
 	%StripeImageHeader(.ClearLine2, $04, $10, 0, $002D, 3)
 endif
-.ClearLine2End
 	db $FC,$38
+	;.ClearLine2End:
+
 	%StripeImageHeader(.ClearLine3, $0F, $11, 0, $0003, 3)
 	db $FC,$38
-.ClearLine3End
+	;.ClearLine3End:
+
 	%StripeImageHeader(.ClearLine4, $08, $12, 0, $001D, 3)
 	db $FC,$38
-.ClearLine4End
+	;.ClearLine4End:
 	db $FF
 
 namespace off
@@ -12105,7 +12253,8 @@ CODE_009D41:
 	PLX
 	INX
 	INY
-	CPY.w #$00CC
+	;CPY.w #$00CC (Biggest text's size, i.e. Erase File's)
+	CPY.w #SMW_FileSelectText_SelectFile-SMW_FileSelectText_Main
 	BNE.b CODE_009D41
 	SEP.b #$10
 	LDA.b #$84
@@ -13275,16 +13424,20 @@ endmacro
 macro ROUTINE_SMW_DisplayMessage(Address)
 namespace SMW_DisplayMessage
 %InsertMacroAtXPosition(<Address>)
+;[BR] Message windows expanded to 24 chars per line.
 
-DATA_05A580:
+DATA_05A580:					; Note: Stripe image headers' bytes 1 and 2 for each line, in reverse order.
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
 	dw $6751,$2751,$E750,$A750
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	dw $A451,$8451,$6451,$4451
+	dw $2451,$0451,$E450,$C450
 else
 	dw $A751,$8751,$6751,$4751
 	dw $2751,$0751,$E750,$C750
 endif
 
-DATA_05A590:
+DATA_05A590:					; Note: Lookup table for checking the level number.
 	db $14,$45,$3F,$08,$00,$29,$AA,$27
 	db $26,$84,$95,$A9,$15,$13,$CE,$A7
 	db $A4,$25,$A5,$05,$A6,$2A,$28
@@ -13298,6 +13451,18 @@ if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
 	dw LevelMsg0D,LevelMsg0E,LevelMsg0F,LevelMsg10
 	dw LevelMsg11,LevelMsg12,LevelMsg13,LevelMsg14
 	dw LevelMsg15
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	dw SMW_SwitchPalaceText_LevelMsg01-DATA_05A5D9
+	dw SMW_SwitchPalaceText_LevelMsg01-DATA_05A5D9
+	dw SMW_SwitchPalaceText_LevelMsg01-DATA_05A5D9
+	dw SMW_SwitchPalaceText_LevelMsg01-DATA_05A5D9
+
+	dw LevelMsg00,LevelMsg05,LevelMsg08,LevelMsg0A
+	dw LevelMsg0C,LevelMsg11,LevelMsg0F,LevelMsg06
+	dw LevelMsg10,LevelMsg13,LevelMsg15,LevelMsg09
+	dw LevelMsg14,LevelMsg0D,LevelMsg0E,LevelMsg12
+	dw LevelMsg0B,LevelMsg07,LevelMsg02,LevelMsg04
+	dw LevelMsg03
 else
 	dw LevelMsg01,LevelMsg01,LevelMsg01,LevelMsg01
 	dw LevelMsg00,LevelMsg05,LevelMsg08,LevelMsg0A
@@ -13312,6 +13477,10 @@ DATA_05A5D9:
 	base $0000
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
 	%InsertVersionExclusiveFile(incsrc, ../SMW/strings/LevelMessageText_, SMW_J.asm, )
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	%InsertVersionExclusiveFile(incsrc, ../SMW/strings/LevelMessageText_, SMW_br.asm, )
+
+	fillbyte $FF : fill $2C
 else
 	%InsertVersionExclusiveFile(incsrc, ../SMW/strings/LevelMessageText_, SMW_U.asm, )
 endif
@@ -13320,17 +13489,29 @@ endif
 RemoveTextBox:
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
 	%InsertVersionExclusiveFile(incbin, ../SMW/images/menus/NoText_, SMW_J.bin, )
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	%StripeImageHeader(.Stripe, $00, $05, 0, $0240, 3)
+	db $FC,$38
+	db $FF
 else
 	%InsertVersionExclusiveFile(incbin, ../SMW/images/menus/NoText_, SMW_U.bin, )
 endif
 
-DATA_05B106:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+MessageShowAndHideLayer3Timings:
+	db $64,$68
+
+MessageWindowWidths:
+	db $68,$00
+else
+MessageShowAndHideLayer3Timings:
 	db $4C,$50
 
-DATA_05B108:
+MessageWindowWidths:						; Note: Value in pixels. Must be a multiple of the next two bytes.
 	db $50,$00
+endif
 
-DATA_05B10A:
+MessageWindowExpandAndShrinkSpeed:
 	db $04,$FC
 
 Main:
@@ -13340,7 +13521,7 @@ Main:
 	PLB
 	LDX.w !RAM_SMW_Flag_MessageWindowSizeChangeDirection
 	LDA.w !RAM_SMW_Timer_WaitBeforeMessageWindowSizeChange
-	CMP.w DATA_05B108,x
+	CMP.w MessageWindowWidths,x
 	BNE.b CODE_05B191
 	TXA
 	BEQ.b ExpandingMessage
@@ -13349,10 +13530,20 @@ Main:
 	STZ.b !RAM_SMW_Mirror_BG1And2WindowMaskSettings
 	STZ.b !RAM_SMW_Mirror_BG3And4WindowMaskSettings
 	STZ.b !RAM_SMW_Mirror_ObjectAndColorWindowSettings
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	LDA.b #$80
+	TRB.w !RAM_SMW_Mirror_HDMAEnable
+else
 	STZ.w !RAM_SMW_Mirror_HDMAEnable				; Glitch: This STZ should be TRB and an LDA.b #$80 should be added before this line, or else displaying a message will disable other HDMA channels.
+endif
 	LDA.b #$02
 	STA.b !RAM_SMW_Mirror_ColorMathInitialSettings
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00
+	PLB
+	RTL
+else
 	BRA.b CODE_05B18E						; Optimization: PLB : RTL would do the same thing in fewer cycles.
+endif
 
 ExpandingMessage:
 	LDA.w !RAM_SMW_Misc_IntroLevelFlag
@@ -13441,10 +13632,15 @@ else
 endif
 	INC.w !RAM_SMW_Flag_MessageWindowSizeChangeDirection
 CODE_05B18E:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00
+	PLB
+	RTL
+else
 	JMP.w CODE_05B299						; Optimization: PLB : RTL would do the same thing in 1 fewer byte.
+endif
 
 CODE_05B191:
-	CMP.w DATA_05B106,x
+	CMP.w MessageShowAndHideLayer3Timings,x
 	BNE.b CODE_05B1A0
 	TXA
 	BEQ.b DisplayText
@@ -13470,19 +13666,20 @@ CODE_05B1AF:								;|
 CODE_05B1B9:								;|
 	DEX								;|
 	BNE.b CODE_05B1A5						;|
+
 CODE_05B1BC:								;|
 	LDY.w !RAM_SMW_Misc_DisplayMessage				;|
 	CPY.b #$03							;|
 	BNE.b CODE_05B1C5						;|
 	LDX.b #$18							;|
-CODE_05B1C5:								;|
+CODE_05B1C5:								;| Note: Check if it's the Switch Palace message.
 	CPX.b #$04							;|
 	BCS.b CODE_05B1D1						;|
 	INX								;|
 	STX.w !RAM_SMW_Misc_ColorOfPalaceSwitchPressed1			;|
 	DEX								;|
 	JSR.w DrawSwitchBlocks						;|
-CODE_05B1D1:								;|
+CODE_05B1D1:								;| Note: Check for the 2nd message on Yoshi's House, depending on whether Mario is riding Yoshi or not.
 	CPX.b #$16							;|
 	BNE.b CODE_05B1DB						;|
 	LDA.w !RAM_SMW_Player_RidingYoshiFlag				;|
@@ -13514,14 +13711,33 @@ CODE_05B1EF:								;|
 else									;|
 	LDY.w #$000E							;|
 CODE_05B1EF:								;|
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR] Check for the new table for the Switch Palaces text.
+	LDA.w !RAM_SMW_Misc_ColorOfPalaceSwitchPressed1
+	BNE.b +
+
+	LDA.w DATA_05A580,y
+	BRA.b ++
++:
+	LDA.w SMW_SwitchPalaceText_LinesTable,y
+++:
+else
 	LDA.w DATA_05A580,y						;|
+endif
 	STA.l SMW_StripeImageUploadTable[$00].LowByte,x			;|
-	LDA.w #$2300							;|
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	LDA.w #$2F00
+else
+	LDA.w #$2300							;| Note: Stripe image headers' bytes 3 and 4.
+endif
 	STA.l SMW_StripeImageUploadTable[$01].LowByte,x			;|
 endif									;|
 	PHY								;|
 	SEP.b #$20							;|
-	LDA.b #$12							;|
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	LDA.b #$18
+else
+	LDA.b #$12							;| Note: Length of the line.
+endif
 	STA.b !RAM_SMW_Misc_ScratchRAM02				;|
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00			;|
 	LDY.b !RAM_SMW_Misc_ScratchRAM00				;|
@@ -13557,23 +13773,46 @@ else									;|
 	STZ.b !RAM_SMW_Misc_ScratchRAM03				;|
 	LDY.b !RAM_SMW_Misc_ScratchRAM00				;|
 CODE_05B208:								;|
-	LDA.b #$1F							;|
-	BIT.w !RAM_SMW_Misc_ScratchRAM03				;|
-	BMI.b CODE_05B218						;|
-	LDA.w DATA_05A5D9,y						;|
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	LDA.w DATA_05A5D9,y
+	CMP.b #$9F						; If it's a "\", fill the rest of the line with blank tiles
+	BEQ.b +	
+	INY
+	BRA.b CODE_05B218
++:
+	LDA.b #$01							;\ And set up an index skip so that it draws the next line when the loop ends.
+	STA.b !RAM_SMW_Misc_ScratchRAM03	;/
+	LDA.b #$1F
+else
+	LDA.b #$1F								;| \ If the previous letter has bit 7 set, fill the rest of the line with blank tiles.
+	BIT.w !RAM_SMW_Misc_ScratchRAM03		;| |
+	BMI.b CODE_05B218						;| /
+
+	LDA.w DATA_05A5D9,y						;| Note: Letter tile.
 	STA.w !RAM_SMW_Misc_ScratchRAM03				;|
-	AND.b #$7F							;|
+	AND.b #$7F								;|
 	INY								;|
+endif
 CODE_05B218:								;|
 	STA.l SMW_StripeImageUploadTable[$02].LowByte,x			;|
-	LDA.b #$39							;|
+	
+	LDA.b #$39							;| Note: Property byte.
 	STA.l SMW_StripeImageUploadTable[$02].HighByte,x		;|
+	
 	INX								;|
 	INX								;|
 	DEC.b !RAM_SMW_Misc_ScratchRAM02				;|
 	BNE.b CODE_05B208						;|
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	REP.b #$20
+	TYA
+	CLC
+	ADC.b !RAM_SMW_Misc_ScratchRAM03
+	STA.b !RAM_SMW_Misc_ScratchRAM00
+else
 	STY.b !RAM_SMW_Misc_ScratchRAM00				;|
 	REP.b #$20							;|
+endif
 	INX								;|
 	INX								;|
 	INX								;|
@@ -13583,6 +13822,7 @@ endif									;|
 	DEY								;|
 	DEY								;|
 	BPL.b CODE_05B1EF						;|
+
 	LDA.w #$00FF							;|
 	STA.l SMW_StripeImageUploadTable[$00].LowByte,x			;|
 	TXA								;|
@@ -13598,7 +13838,7 @@ CODE_05B250:
 	LDX.w !RAM_SMW_Flag_MessageWindowSizeChangeDirection
 	LDA.w !RAM_SMW_Timer_WaitBeforeMessageWindowSizeChange
 	CLC
-	ADC.w DATA_05B10A,x
+	ADC.w MessageWindowExpandAndShrinkSpeed,x
 	STA.w !RAM_SMW_Timer_WaitBeforeMessageWindowSizeChange
 	CLC
 	ADC.b #$80
@@ -13632,7 +13872,11 @@ CODE_05B28E:
 	LDA.b #$22
 	STA.b !RAM_SMW_Mirror_ColorMathInitialSettings
 	LDA.b #$80
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	TSB.w !RAM_SMW_Mirror_HDMAEnable
+else
 	STA.w !RAM_SMW_Mirror_HDMAEnable				; Glitch: This STA should be TSB, or else displaying a message will disable other HDMA channels.
+endif
 CODE_05B299:
 	PLB
 	RTL
@@ -13661,9 +13905,14 @@ if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
 elseif !Define_Global_ROMToAssemble&(!ROM_SMW_ARCADE) != $00
 	db $50,$57,$58,$57,$50,$5F,$58,$5F
 	db $92,$57,$9A,$57,$92,$5F,$9A,$5F
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	;    X,Y     X,Y     X,Y     X,Y
+	db $68,$4F,$70,$4F,$68,$57,$70,$57		; Dotted-line block
+	db $98,$4F,$A0,$4F,$98,$57,$A0,$57		; Filled block
 else
-	db $50,$4F,$58,$4F,$50,$57,$58,$57
-	db $92,$4F,$9A,$4F,$92,$57,$9A,$57
+	;    X,Y     X,Y     X,Y     X,Y
+	db $50,$4F,$58,$4F,$50,$57,$58,$57		; Dotted-line block
+	db $92,$4F,$9A,$4F,$92,$57,$9A,$57		; Filled block
 endif
 
 DrawSwitchBlocks:
@@ -22106,10 +22355,10 @@ Layer3:
 	STZ.w !REGISTER_VRAMAddressLo
 	LDA.b #!VRAM_SMW_Layer3GFXVRAMLocation>>8
 	STA.w !REGISTER_VRAMAddressHi
-	LDA.b #$03
-	STA.b !RAM_SMW_Misc_ScratchRAM0F
-	LDA.b #$28
-	STA.b !RAM_SMW_Misc_ScratchRAM0E
+	LDA.b #$03							;\ Note: How many graphics files to upload (minus 1).
+	STA.b !RAM_SMW_Misc_ScratchRAM0F	;/
+	LDA.b #$28							;\ Note: Graphics file number (GFXxx)
+	STA.b !RAM_SMW_Misc_ScratchRAM0E	;/
 CODE_00A9A3:
 	LDA.b !RAM_SMW_Misc_ScratchRAM0E
 	TAY
@@ -22249,11 +22498,11 @@ SkipSpecial:
 	CPX.b #$11
 	BCC.b CODE_00AA90
 #LM000Hijack_Unknown00AA8C:
-	CPY.b #$08
-	BEQ.b JumpTo_____
-CODE_00AA90:
-#LM000Hijack_Unknown00AA90:
-	CPY.b #$1E
+	CPY.b #$08									;\ LM: both CPY values become $32.
+	BEQ.b JumpTo_____							;|
+CODE_00AA90:									;|
+#LM000Hijack_Unknown00AA90:						;|
+	CPY.b #$1E									;/
 	BEQ.b JumpTo_____
 	BNE.b CODE_00AA99
 JumpTo_____:
@@ -22289,7 +22538,7 @@ CODE_00AAC8:
 	LDA.w #$0000
 	STA.b !RAM_SMW_Misc_ScratchRAM0A
 CODE_00AACD:
-#LM000Hijack_Unknown00AACD:
+#LM000Hijack_Unknown00AACD:						; Note: this is related to the 3bpp to 4bpp conversion.
 	LDX.b #$07
 CODE_00AACF:
 	LDA.b [!RAM_SMW_Misc_ScratchRAM00]
@@ -24209,6 +24458,9 @@ namespace SMW_GameMode29_DoNothingOnTheEndScreen
 %InsertMacroAtXPosition(<Address>)
 
 Main:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR] New PRESS START prompt to be consistent with the other games.
+	JSL.l SMW_CUSTOM_PressStartToSMASW_Main
+endif
 	RTS
 namespace off
 endmacro
@@ -25545,8 +25797,8 @@ namespace SMW_GameMode1B_EndingCinema
 Tilemaps:											;\ LM: This becomes freespace in ROMs with custom credits images.
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00						;|
 	%InsertVersionExclusiveFile(incbin, ../SMW/images/ending/Credits_, SMW_J.bin, )		;|
-else												;|
-	%InsertVersionExclusiveFile(incbin, ../SMW/images/ending/Credits_, SMW_U.bin, )		;/
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) == $00 ;[BR]
+	%InsertVersionExclusiveFile(incbin, ../SMW/images/ending/Credits_, SMW_U.bin, )		;/ $751 bytes long
 endif
 
 RowPointers:
@@ -25577,6 +25829,113 @@ if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
 	dw $0026,$0026,$0026,$0026,$0026,$0026,$0026,$0026			;|
 	dw $0026,$0026,$0026,$0026,$0026,$0026,$0026,$0026			;|
 	dw $0026,$0026								;|
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_MainProducerAccent-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_MainProducer-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_MainProducerCedilla-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_TakashiTezukaA-2,SMW_CUSTOM_StaffCreditsLong_BG3_TakashiTezukaB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_MapDirectorAccent-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_MapDirector-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_MapDirectorCedilla-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_HidequiKonnoA-2,SMW_CUSTOM_StaffCreditsLong_BG3_HidequiKonnoB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_AreaDirectorAccent-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_AreaDirector-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_AreaDirectorCedilla-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_KatsuyaEguchiA-2,SMW_CUSTOM_StaffCreditsLong_BG3_KatsuyaEguchiB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_PrgDirectorAccent-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_PrgDirector-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_PrgDirectorCedilla-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_ToshihikoNakagoA-2,SMW_CUSTOM_StaffCreditsLong_BG3_ToshihikoNakagoB-2
+	dw $0000,$0000,$0000,$0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_PlayerSysProgrammer-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_ToshioIwawakiA-2,SMW_CUSTOM_StaffCreditsLong_BG3_ToshioIwawakiB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_ObjProgrammerAccent-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_ObjProgrammer-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_ObjProgrammerCedilla-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_KazuakiMoritaA-2,SMW_CUSTOM_StaffCreditsLong_BG3_KazuakiMoritaB-2
+	dw $0000,$0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_BgProgrammer-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_ShigehiroKasamatsuA-2,SMW_CUSTOM_StaffCreditsLong_BG3_ShigehiroKasamatsuB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_TatsunoriTakakuraA-2,SMW_CUSTOM_StaffCreditsLong_BG3_TatsunoriTakakuraB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_MapProgrammerAccent-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_MapProgrammer-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_MapProgrammerCedilla-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_TatsuoNishiyamaA-2,SMW_CUSTOM_StaffCreditsLong_BG3_TatsuoNishiyamaB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_AreaDataInputAccent-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_AreaDataInput-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_AreaDataInputCedilla-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_YoshihiroNomotoA-2,SMW_CUSTOM_StaffCreditsLong_BG3_YoshihiroNomotoB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_EijiNotoA-2,SMW_CUSTOM_StaffCreditsLong_BG3_EijiNotoB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_SatoruTakahataA-2,SMW_CUSTOM_StaffCreditsLong_BG3_SatoruTakahataB-2
+	dw $0000,$0000,$0000,$0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_CGDesigner-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_ShigefumiHinoA-2,SMW_CUSTOM_StaffCreditsLong_BG3_ShigefumiHinoB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_SoundComposerAccent-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_SoundComposer-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_SoundComposerCedilla-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_KojKondoA-2,SMW_CUSTOM_StaffCreditsLong_BG3_KojKondoB-2
+	dw $0000,$0000,$0000,$0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_SpecialThanks-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_YoichiKotabeA-2,SMW_CUSTOM_StaffCreditsLong_BG3_YoichiKotabeB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_YasuhiroSakaiA-2,SMW_CUSTOM_StaffCreditsLong_BG3_YasuhiroSakaiB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_MieYoshimuraA-2,SMW_CUSTOM_StaffCreditsLong_BG3_MieYoshimuraB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_HironobuKakuiA-2,SMW_CUSTOM_StaffCreditsLong_BG3_HironobuKakuiB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_KeizoKatoA-2,SMW_CUSTOM_StaffCreditsLong_BG3_KeizoKatoB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_TakaoShimizuA-2,SMW_CUSTOM_StaffCreditsLong_BG3_TakaoShimizuB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_DayvBrooksA-2,SMW_CUSTOM_StaffCreditsLong_BG3_DayvBrooksB-2
+	dw $0000,$0000,$0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_ProducerAccent-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_Producer-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_ProducerCedilla-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_ShigeruMiyamotoA-2,SMW_CUSTOM_StaffCreditsLong_BG3_ShigeruMiyamotoB-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_ExecProducerAccent-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_ExecProducer-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_ExecProducerCedilla-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_HiroshiYamauchiA-2,SMW_CUSTOM_StaffCreditsLong_BG3_HiroshiYamauchiB-2
+	dw $0000,$0000,$0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_TlVersionByAccent-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_TlVersionBy-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_bMatSantosA-2,SMW_CUSTOM_StaffCreditsLong_BG3_bMatSantosB-2
+	dw $0000,$0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_TlThanks-2
+	dw $0000
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_YoshiCentralA-2,SMW_CUSTOM_StaffCreditsLong_BG3_YoshiCentralB-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_UaoCentralA-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_UaoCentralB-2
+	dw SMW_CUSTOM_StaffCreditsLong_BG3_UaoCentralC-2
+	dw $0000,$0000,$0000
+	; Screen stops scrolling here.
+	dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+	dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+	dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+	dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+	dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+	dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+	dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+	dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+	dw $0000
 else										;|
 	dw $00C1,$0026,$00DD,$00FB,$0026,$0026,$0026,$0119			;|
 	dw $0026,$0133,$014F,$0026,$0026,$0026,$016B,$0026			;|
@@ -25606,8 +25965,10 @@ else										;|
 	dw $0026,$0026								;/
 endif
 
-DATA_0C9EAC:
-	db $40,$3E,$FC,$00,$FF
+StripeImageRowCleaner:
+; $0C9EAC
+	db $40,$3E				; Stripe header bytes 3 and 4.
+	db $FC,$00,$FF
 
 BufferNextRowOfCredits:
 	REP.b #$30
@@ -25615,19 +25976,20 @@ BufferNextRowOfCredits:
 	TAX
 	LDY.w #$0000
 	SEP.b #$20
-	LDA.b !RAM_SMW_Misc_CreditsStripeImageHeaderHi
-	STA.l SMW_StripeImageUploadTable[$00].LowByte,x
-	LDA.b !RAM_SMW_Misc_CreditsStripeImageHeaderLo
-	STA.l SMW_StripeImageUploadTable[$00].HighByte,x
+	LDA.b !RAM_SMW_Misc_CreditsStripeImageHeaderHi		;\ Note: buffer stripe header bytes 1 and 2.
+	STA.l SMW_StripeImageUploadTable[$00].LowByte,x		;|
+	LDA.b !RAM_SMW_Misc_CreditsStripeImageHeaderLo		;|
+	STA.l SMW_StripeImageUploadTable[$00].HighByte,x	;/
 	INX
 	INX
 CODE_0C9ECB:
-	LDA.w DATA_0C9EAC,y
+	LDA.w StripeImageRowCleaner,y
 	STA.l SMW_StripeImageUploadTable[$00].LowByte,x
 	INX
 	INY
 	CPY.w #$0005
 	BNE.b CODE_0C9ECB
+
 	REP.b #$20
 	DEX
 	TXA
@@ -25638,34 +26000,44 @@ CODE_0C9ECB:
 	TAY
 	LDA.w RowPointers,y
 	TAY							;\ LM: Optimizes and modifies this routine to support having a custom credits image.
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR] Realloacted this chunk of the routine to the same bank as the expanded credits data, due to the long version of LDA not accepting Y index adressing.
+	JSL.l SMW_CUSTOM_StaffCreditsLong_Main
+else
+
 	SEP.b #$20						;| The custom credits data can be found by using read3($0C9F17)
 	INC.b !RAM_SMW_Misc_CreditsStripeImageIndex		;|
 	LDA.w Tilemaps,y					;|
-	CMP.b #$FF						;|
-	BEQ.b CODE_0C9F43					;|
-	LDA.w Tilemaps,y					;|
-	STA.b !RAM_SMW_Misc_ScratchRAM02			;|
-	LDA.w Tilemaps+$01,y					;|
+	CMP.b #$FF						;|\ Note: final byte check.
+	BEQ.b CODE_0C9F43					;|/
+
+	LDA.w Tilemaps,y					;|\ Note: Xpos of current stripe image.
+	STA.b !RAM_SMW_Misc_ScratchRAM02			;|/
+	LDA.w Tilemaps+$01,y					;|\ Note: Length of current stripe image minus 1 (in bytes).
 	STA.b !RAM_SMW_Misc_ScratchRAM00			;|
 	STZ.b !RAM_SMW_Misc_ScratchRAM01			;|
 	INY							;|
 	INY							;|
+
 	LDA.b !RAM_SMW_Misc_CreditsStripeImageHeaderHi		;|
 	STA.l SMW_StripeImageUploadTable[$00].LowByte,x		;|
-	LDA.b !RAM_SMW_Misc_CreditsStripeImageHeaderLo		;|
-	CLC							;|
-	ADC.b !RAM_SMW_Misc_ScratchRAM02			;|
-	STA.l SMW_StripeImageUploadTable[$00].HighByte,x		;|
+
+	LDA.b !RAM_SMW_Misc_CreditsStripeImageHeaderLo		;|\ Note: Stripe header byte 2.
+	CLC							;||
+	ADC.b !RAM_SMW_Misc_ScratchRAM02			;||
+	STA.l SMW_StripeImageUploadTable[$00].HighByte,x		;|/
 	INX							;|
 	INX							;|
-	LDA.b !RAM_SMW_Misc_ScratchRAM01			;|
-	STA.l SMW_StripeImageUploadTable[$00].LowByte,x		;|
-	LDA.b !RAM_SMW_Misc_ScratchRAM00			;|
-	STA.l SMW_StripeImageUploadTable[$00].HighByte,x		;|
+
+	LDA.b !RAM_SMW_Misc_ScratchRAM01			;|\ Note: Stripe header byte 3.
+	STA.l SMW_StripeImageUploadTable[$00].LowByte,x		;|/ Hardcoded as 0 (horizontal, no RLE, max length of 256 bytes.)
+	LDA.b !RAM_SMW_Misc_ScratchRAM00			;|\ Note: Stripe header byte 4.
+	STA.l SMW_StripeImageUploadTable[$00].HighByte,x		;|/
 	INX							;|
 	INX							;|
+
 	REP.b #$20						;|
-CODE_0C9F26:							;|
+CODE_0C9F26:							;| Note: Tiles data loop.
 	LDA.w Tilemaps,y					;|
 	STA.l SMW_StripeImageUploadTable[$00].LowByte,x		;|
 	INX							;|
@@ -25675,22 +26047,26 @@ CODE_0C9F26:							;|
 	DEC.b !RAM_SMW_Misc_ScratchRAM00			;|
 	DEC.b !RAM_SMW_Misc_ScratchRAM00			;|
 	BPL.b CODE_0C9F26					;|
-	LDA.w #$00FF						;|
-	STA.l SMW_StripeImageUploadTable[$00].LowByte,x		;|
+
+	LDA.w #$00FF						;|\ End stripe image.
+	STA.l SMW_StripeImageUploadTable[$00].LowByte,x		;|/
 	TXA							;|
 	STA.l !RAM_SMW_Misc_StripeImageUploadIndexLo		;|
-CODE_0C9F43:							;|
-	REP.b #$20						;|
-	SEP.b #$10						;|
-	LDA.b !RAM_SMW_Misc_CreditsStripeImageHeaderLo		;|
-	CLC							;|
-	ADC.w #$0020						;|
-	STA.b !RAM_SMW_Misc_CreditsStripeImageHeaderLo		;|
-	AND.w #$03FF						;|
-	BNE.b Return0C9F5B					;|
-	LDA.b !RAM_SMW_Misc_CreditsStripeImageHeaderLo		;|
-	EOR.w #$0C00						;|
-	STA.b !RAM_SMW_Misc_CreditsStripeImageHeaderLo		;|
+endif
+
+CODE_0C9F43:							;|\ Note: Update Ypos for next row.
+	REP.b #$20						;||
+	SEP.b #$10						;||
+	LDA.b !RAM_SMW_Misc_CreditsStripeImageHeaderLo		;||
+	CLC							;||
+	ADC.w #$0020						;||
+	STA.b !RAM_SMW_Misc_CreditsStripeImageHeaderLo		;|/
+
+	AND.w #$03FF						;|\ If it reached the last Ypos possible, go back to the 1st one.
+	BNE.b Return0C9F5B					;||
+	LDA.b !RAM_SMW_Misc_CreditsStripeImageHeaderLo		;||
+	EOR.w #$0C00						;||
+	STA.b !RAM_SMW_Misc_CreditsStripeImageHeaderLo		;|/
 Return0C9F5B:							;|
 	RTS							;/
 
@@ -25933,7 +26309,11 @@ CODE_0C9409:
 	LDA.w !RAM_SMW_Pointer_CreditsBackgroundIndex
 	CMP.w #$0007
 	BNE.b CODE_0C93E2
-	LDA.w #$5840
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	LDA.w #$5820
+else
+	LDA.w #$5840			; Note: Position of the 1st row of the staff credits.
+endif
 	STA.b !RAM_SMW_Misc_CreditsStripeImageHeaderLo
 	SEP.b #$30
 	STZ.b !RAM_SMW_Misc_CreditsStripeImageIndex
@@ -26802,6 +27182,9 @@ CODE_009660:
 	JSR.w SMW_LoadStripeImage_Sub
 	JSL.l SMW_DrawingTheEndMarioLuigiAndPeach_Main
 	JSR.w SMW_CompressOAMTileSizeBuffer_Main
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	JSL.l SMW_CUSTOM_PressStartToSMASW_SetUpTimer
+endif
 	LDX.b #$14
 	LDY.b #$00
 	JMP.w SMW_GameMode23_LoadEnemyRollcallScreen_CODE_009622
@@ -28197,15 +28580,26 @@ TileData:				;\ Note: The following sprite tile data is mostly in the same forma
 	db $99,$9C,$B6,$29		;|
 	db $86,$A0,$B6,$29		;|
 	db $A3,$A0,$B6,$29		;/
-	db $CB,$A4,$06,$77		;\ Chargin' Chuck head and shoulder (Note: Chargin Chucks use palette D, not B with the exception of tile 1C for some reason)
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	db $CB,$A4,$06,$7B		;\ Chargin' Chuck head and shoulder, now with palette 5
+	db $C0,$A7,$1D,$6B		;|
+	db $C8,$A7,$1C,$6B		;/
+else
+	db $CB,$A4,$06,$77		;\ Chargin' Chuck head and shoulder (Note: Chargin Chucks use palette 3, not 5 with the exception of tile 1C for some reason)
 	db $C0,$A7,$1D,$67		;|
 	db $C8,$A7,$1C,$67		;/
+endif
 	db $88,$AF,$CE,$3B		;\ Volcano Lotus
 	db $90,$AF,$E2,$29		;|
 	db $98,$AF,$E3,$29		;|
 	db $98,$AF,$CE,$7B		;/
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	db $C0,$AF,$21,$7B		;\ Chargin' Chuck body, now with palette 5
+	db $C8,$AF,$20,$7B		;/
+else
 	db $C0,$AF,$21,$77		;\ Chargin' Chuck body
 	db $C8,$AF,$20,$77		;/
+endif
 	db $38,$8F,$AE,$38		;\ Jumpin' Piranha Plant
 	db $38,$9F,$C5,$2A		;|
 	db $40,$9F,$C5,$6A		;/
@@ -29284,7 +29678,9 @@ namespace SMW_GameMode04_PrepareTitleScreen
 %InsertMacroAtXPosition(<Address>)
 
 TitlescreenLayer3:
-if !Define_Global_ROMToAssemble&(!ROM_SMW_J|!ROM_SMW_E2|!ROM_SMASW_U|!ROM_SMASW_E) != $00
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	%InsertVersionExclusiveFile(incsrc, ../SMW/images/other/Titlescreen_, HACK_SMW_br.asm, )
+elseif !Define_Global_ROMToAssemble&(!ROM_SMW_J|!ROM_SMW_E2|!ROM_SMASW_U|!ROM_SMASW_E) != $00
 	%InsertVersionExclusiveFile(incbin, ../SMW/images/other/Titlescreen_, !ROMID.bin, )
 else
 	%InsertVersionExclusiveFile(incbin, ../SMW/images/other/Titlescreen_, SMW_U.bin, )
@@ -31925,27 +32321,50 @@ namespace SMW_DrawLoadingLetters
 
 Main:
 	JSR.w SMW_BufferLoadingLetterTiles_Main
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR] New Luigi check 1
+	LDX.b #TileData_TopTiles_MARIO-TileData
+	LDA.w !RAM_SMW_Player_CurrentCharacter
+	BEQ.b +
+	LDX.b #TileData_TopTiles_LUIGI-TileData
++:
+	LDA.b #$A0
+else
 	LDX.b #TileData_TopTiles_START-TileData
-	LDA.b #$B0
+	LDA.b #$B0							; Note: X position of MARIO START! (relative to the last object)
+endif
+	
 	LDY.w !RAM_SMW_Flag_ActiveBonusGame
 	BEQ.b CODE_0091CA
 	STZ.w !RAM_SMW_Counter_TimerHundreds
 	STZ.w !RAM_SMW_Counter_TimerTens
 	STZ.w !RAM_SMW_Counter_TimerOnes
 	LDX.b #TileData_TopTiles_BONUSGAME-TileData
-	LDA.b #$A4
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) == $00
+	LDA.b #$A4							; Note: X position of BONUS GAME (relative to the last object)
+endif
 CODE_0091CA:
 	STA.b !RAM_SMW_Misc_ScratchRAM00
 	STZ.b !RAM_SMW_Misc_ScratchRAM01
-	LDY.b #$70
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	LDY.b #(TileData_TopTiles_START_End-TileData_TopTiles_MARIO)*8
+else
+	LDY.b #$70							; Note: Decrement for the OAM positions. (Number of sprite pairs * 8)
+endif
 CODE_0091D0:
 	JSR.w GFXRt
 	INX
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR] New Luigi check 2: If it just finished buffering "LUIGI!", jump back to the "VAI," index.
+	CPX.b #(TileData_TopTiles_LUIGI_End)-TileData
+	BNE.b CODE_0091DF
+	LDX.b #TileData_TopTiles_START-TileData
+else
 	CPX.b #(TileData_TopTiles_MARIO)-TileData
 	BNE.b CODE_0091DF
 	LDA.w !RAM_SMW_Player_CurrentCharacter
 	BEQ.b CODE_0091DF
 	LDX.b #TileData_TopTiles_LUIGI-TileData
+endif
 CODE_0091DF:
 	TYA
 	SEC
@@ -31959,14 +32378,17 @@ GFXRt:
 	STA.w SMW_OAMBuffer[$42].Prop,y
 	LDA.w TileData_BottomProp,x
 	STA.w SMW_OAMBuffer[$43].Prop,y
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) == $00 ;[BR]
 	LDA.b !RAM_SMW_Misc_ScratchRAM00
 	STA.w SMW_OAMBuffer[$42].XDisp,y
 	STA.w SMW_OAMBuffer[$43].XDisp,y
-	SEC
-	SBC.b #$08
-	STA.b !RAM_SMW_Misc_ScratchRAM00
-	BCS.b CODE_009206
-	DEC.b !RAM_SMW_Misc_ScratchRAM01
+	SEC									;\ Glitch: The fact that the ScratchRAM01 value is updated before being loaded onto the Tile Size Buffer makes the letters coming from the right appear for a brief moment on the left side of the screen.
+	SBC.b #$08							;| To fix this, move this block to the end of the subroutine.
+	STA.b !RAM_SMW_Misc_ScratchRAM00	;| [BR] Done below.
+	BCS.b CODE_009206					;|
+	DEC.b !RAM_SMW_Misc_ScratchRAM01	;/
+endif
 CODE_009206:
 	PHY
 	TYA
@@ -31977,17 +32399,30 @@ CODE_009206:
 	AND.b #$01
 	STA.w SMW_OAMTileSizeBuffer[$42].Slot,y
 	STA.w SMW_OAMTileSizeBuffer[$43].Slot,y
+	
 	PLY
 	LDA.w TileData_TopTiles,x
 	BMI.b Return00922E
 	STA.w SMW_OAMBuffer[$42].Tile,y
 	LDA.w TileData_BottomTiles,x
 	STA.w SMW_OAMBuffer[$43].Tile,y
+
 	LDA.b #$68
 	STA.w SMW_OAMBuffer[$42].YDisp,y
 	LDA.b #$70
 	STA.w SMW_OAMBuffer[$43].YDisp,y
 Return00922E:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR] 
+	LDA.b !RAM_SMW_Misc_ScratchRAM00
+	STA.w SMW_OAMBuffer[$42].XDisp,y
+	STA.w SMW_OAMBuffer[$43].XDisp,y
+	SEC
+	SBC.b #$08
+	STA.b !RAM_SMW_Misc_ScratchRAM00
+	BCS.b +
+	DEC.b !RAM_SMW_Misc_ScratchRAM01
++:
+endif
 	RTS
 namespace off
 endmacro
@@ -31996,84 +32431,179 @@ macro ROUTINE_RT01_SMW_DrawLoadingLetters(Address)
 namespace SMW_DrawLoadingLetters
 %InsertMacroAtXPosition(<Address>)
 
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
 TileData:
-.TopTiles:							; Note: The below 4 tables store their data in reverse order (ex. "! TRATS")
-..START:
-	db $00,$FF,$4D,$4C,$03,$4D,$5D,$FF
-..MARIO:
-	db $03,$00,$4C,$03,$04,$15
-..LUIGI:
-	db $00,$02,$00,$4A,$4E,$FF
-..OVER:
-	db $4C,$4B,$4A,$03
-..GAME:
-	db $5F,$05,$04,$03,$02
-..UP:
-	db $00,$FF,$01,$4A
-..TIME:
-	db $5F,$05,$04,$00,$4D
-..BONUSGAME:
-	db $5D,$03,$02,$01,$00,$FF,$5B,$14			;\ Note: These tile numbers correspond to different graphics than the other sets of loading letters.
-	db $5F,$01,$5E,$FF,$FF,$FF				;/ Also, these last 3 $FFs seem to have been a leftover. They're still used however.
+	.TopTiles:							; Note: The below 4 tables store their data in reverse order (ex. "! TRATS")
+	..MARIO:
+		; "!IORAM"
+		db $00,$03,$00,$4C,$03,$04
+	..START:							
+		; ",IAV"
+		db $FF,$4F,$03,$4A
+		...End:
+	..LUIGI:
+		; "!IGIUL"
+		db $00,$00,$02,$00,$4A,$4E
+		...End:
 
-.BottomTiles:
-..START:
-	db $10,$FF,$00,$5C,$13,$00,$5D,$FF
-..MARIO:
-	db $03,$00,$5C,$13,$14,$15
-..LUIGI:
-	db $00,$12,$00,$03,$5E,$FF
-..OVER:
-	db $5C,$4B,$5A,$03
-..GAME:
-	db $5F,$05,$14,$13,$12
-..UP:
-	db $10,$FF,$11,$03
-..TIME:
-	db $5F,$05,$14,$00,$00
-..BONUSGAME:
-	db $5D,$03,$12,$11,$10,$FF,$5B,$01			;\ Note: Same deal as above.
-	db $5F,$01,$5E,$FF,$FF,$FF				;/
+	..OVER:
+		db $FF,$FF,$03,$02,$03,$4E,$FF,$4B
+	..GAME:
+		db $01,$FF,$04,$00,$4B,$FF,$FF
+		...End:
+	..UP:
+		db $00,$03,$01,$03,$4D,$03,$02,$5D
+	..TIME:
+		db $4B,$FF,$03,$01,$04,$4B,$4D
 
-.TopProp:
-..START:
-#LM182Hijack_SPaletteFix1:
-	db $34,$00,$34,$34,$34,$34,$30,$00			; Glitch: Change the $30 to $34 fix the S's palette in Mario/Luigi Start! (LM: Which Lunar Magic does for you. (1.82+))
-..MARIO:
-	db $34,$34,$34,$34,$74,$34
-..LUIGI:
-	db $34,$34,$34,$34,$34,$00
-..OVER:
-	db $34,$34,$34,$34
-..GAME:
-	db $34,$34,$34,$34,$34
-..UP:
-	db $34,$00,$34,$34
-..TIME:
-	db $34,$34,$34,$34,$34
-..BONUSGAME:
-	db $34,$34,$34,$34,$34,$34,$34,$34
-	db $34,$34,$34
+	..BONUSGAME:
+		; "SUNÔB OGOJ"
+		db $5D,$4A,$15,$05,$4C,$FF
+		db $03,$02,$03,$4E
 
-.BottomProp:
-..START:
-#LM182Hijack_SPaletteFix2:
-	db $34,$00,$B4,$34,$34,$B4,$F0,$00			; Glitch: Change the $F0 to $F4 to fix the S's palette in Mario/Luigi Start! (LM: Which Lunar Magic does for you. (1.82+))
-..MARIO:
-	db $B4,$B4,$34,$34,$74,$B4
-..LUIGI:
-	db $B4,$34,$B4,$B4,$34,$00
-..OVER:
-	db $34,$B4,$34,$B4
-..GAME:
-	db $B4,$B4,$34,$34,$34
-..UP:
-	db $34,$00,$34,$B4
-..TIME:
-	db $B4,$B4,$34,$B4,$B4
-..BONUSGAME:
-	db $B4,$B4,$34,$34,$34,$34,$F4,$B4
-	db $F4,$B4,$B4
+	.BottomTiles:
+	..MARIO:
+		db $10,$03,$00,$5C,$13,$14
+	..START:
+		db $FF,$5F,$13,$5A
+	..LUIGI:
+		db $10,$00,$12,$00,$03,$5E
+
+	..OVER:
+		db $FF,$FF,$03,$12,$03,$02,$FF,$4B
+	..GAME:
+		db $01,$FF,$14,$00,$5B,$FF,$FF
+	..UP:
+		db $10,$03,$01,$13,$00,$03,$12,$5D
+	..TIME:
+		db $4B,$FF,$03,$11,$14,$4B,$00
+
+	..BONUSGAME:
+		db $5D,$03,$15,$03,$4C,$FF
+		db $03,$12,$03,$02
+
+	.TopProp:
+	..MARIO:
+		db $34,$34,$34,$34,$34,$34
+	..START:
+		db $34,$34,$34,$34
+	..LUIGI:
+		db $34,$34,$34,$34,$34,$34
+
+	..OVER:
+		db $34,$34,$34,$34,$34,$74,$34,$34
+	..GAME:
+		db $34,$34,$74,$34,$34,$34,$34
+	..UP:
+		db $34,$34,$34,$34,$34,$34,$34,$34
+	..TIME:
+		db $34,$34,$34,$34,$34,$34,$34
+
+	..BONUSGAME:
+		db $34,$34,$34,$34,$34,$34
+		db $34,$34,$34,$74
+
+	.BottomProp:
+	..MARIO:
+		db $34,$B4,$B4,$34,$34,$34
+	..START:
+		db $34,$34,$34,$34
+	..LUIGI:
+		db $34,$B4,$34,$B4,$B4,$34
+
+	..OVER:
+		db $34,$B4,$B4,$34,$B4,$F4,$34,$B4
+	..GAME:
+		db $B4,$34,$74,$B4,$34,$34,$34
+	..UP:
+		db $34,$B4,$B4,$34,$B4,$B4,$34,$F4
+	..TIME:
+		db $B4,$34,$B4,$34,$34,$B4,$B4
+
+	..BONUSGAME:
+		db $F4,$B4,$F4,$B4,$B4,$34
+		db $B4,$34,$B4,$F4
+else
+TileData:
+	.TopTiles:							; Note: The below 4 tables store their data in reverse order (ex. "! TRATS")
+	..START:
+		db $00,$FF,$4D,$4C,$03,$4D,$5D,$FF
+	..MARIO:
+		db $03,$00,$4C,$03,$04,$15
+	..LUIGI:
+		db $00,$02,$00,$4A,$4E,$FF
+	..OVER:
+		db $4C,$4B,$4A,$03
+	..GAME:
+		db $5F,$05,$04,$03,$02
+	..UP:
+		db $00,$FF,$01,$4A
+	..TIME:
+		db $5F,$05,$04,$00,$4D
+	..BONUSGAME:
+		db $5D,$03,$02,$01,$00,$FF,$5B,$14			;\ Note: These tile numbers correspond to different graphics than the other sets of loading letters.
+		db $5F,$01,$5E,$FF,$FF,$FF				;/ Also, these last 3 $FFs seem to have been a leftover. They're still used however.
+
+	.BottomTiles:
+	..START:
+		db $10,$FF,$00,$5C,$13,$00,$5D,$FF
+	..MARIO:
+		db $03,$00,$5C,$13,$14,$15
+	..LUIGI:
+		db $00,$12,$00,$03,$5E,$FF
+	..OVER:
+		db $5C,$4B,$5A,$03
+	..GAME:
+		db $5F,$05,$14,$13,$12
+	..UP:
+		db $10,$FF,$11,$03
+	..TIME:
+		db $5F,$05,$14,$00,$00
+	..BONUSGAME:
+		db $5D,$03,$12,$11,$10,$FF,$5B,$01			;\ Note: Same deal as above.
+		db $5F,$01,$5E,$FF,$FF,$FF				;/
+
+	.TopProp:
+	..START:
+	#LM182Hijack_SPaletteFix1:
+		db $34,$00,$34,$34,$34,$34,$30,$00			; Glitch: Change the $30 to $34 fix the S's palette in Mario/Luigi Start! (LM: Which Lunar Magic does for you. (1.82+))
+	..MARIO:
+		db $34,$34,$34,$34,$74,$34
+	..LUIGI:
+		db $34,$34,$34,$34,$34,$00
+	..OVER:
+		db $34,$34,$34,$34
+	..GAME:
+		db $34,$34,$34,$34,$34
+	..UP:
+		db $34,$00,$34,$34
+	..TIME:
+		db $34,$34,$34,$34,$34
+	..BONUSGAME:
+		db $34,$34,$34,$34,$34,$34,$34,$34
+		db $34,$34,$34
+
+	.BottomProp:
+	..START:
+	#LM182Hijack_SPaletteFix2:
+		db $34,$00,$B4,$34,$34,$B4,$F0,$00			; Glitch: Change the $F0 to $F4 to fix the S's palette in Mario/Luigi Start! (LM: Which Lunar Magic does for you. (1.82+))
+	..MARIO:
+		db $B4,$B4,$34,$34,$74,$B4
+	..LUIGI:
+		db $B4,$34,$B4,$B4,$34,$00
+	..OVER:
+		db $34,$B4,$34,$B4
+	..GAME:
+		db $B4,$B4,$34,$34,$34
+	..UP:
+		db $34,$00,$34,$B4
+	..TIME:
+		db $B4,$B4,$34,$B4,$B4
+	..BONUSGAME:
+		db $B4,$B4,$34,$34,$34,$34,$F4,$B4
+		db $F4,$B4,$B4
+endif
+
 namespace off
 endmacro
 
@@ -32088,13 +32618,17 @@ Main:
 	LDY.b #$0F
 #LM000Hijack_DecompressAndConverGFXTo3BPP1:
 	JSL.l SMW_GraphicsDecompressionRoutines_Main				; LM: Changes this to a JSL.l to $0EFC00
-	LDA.w !RAM_SMW_Flag_ActiveBonusGame
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
 	REP.b #$30
-	BEQ.b CODE_00A842
-	LDA.b !RAM_SMW_Misc_ScratchRAM00
-	CLC
-	ADC.w #$0030
-	STA.b !RAM_SMW_Misc_ScratchRAM00
+else	
+	LDA.w !RAM_SMW_Flag_ActiveBonusGame			;\ Note: This realocates the tiles sent to VRAM so that the last two tiles can be used for "BONUS GAME".
+	REP.b #$30									;| This is why the data for the Bonus Game letters use different tile indexes.
+	BEQ.b CODE_00A842							;|
+	LDA.b !RAM_SMW_Misc_ScratchRAM00			;|
+	CLC											;|
+	ADC.w #$0030								;|
+	STA.b !RAM_SMW_Misc_ScratchRAM00			;/
+endif
 CODE_00A842:
 	LDX.w #$0000
 CODE_00A845:
@@ -32121,6 +32655,12 @@ CODE_00A85A:
 	CPX.w #$0300
 	BCC.b CODE_00A845
 	SEP.b #$30
+
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR] Only do the following backup if it's a Bonus Game loading.
+	LDA.w !RAM_SMW_Flag_ActiveBonusGame
+	BNE.b +
+endif
+
 	LDY.b #$00
 #LM221Hijack_DisableSP1VRAMBackup2:
 	JSL.l SMW_GraphicsDecompressionRoutines_Main				;\ LM: Skips the code indicated by this comment block. (2.21+)
@@ -32141,6 +32681,7 @@ CODE_00A889:									;|
 	INC.b !RAM_SMW_Misc_ScratchRAM00					;|
 	DEY									;|
 	BNE.b CODE_00A889							;|
+
 	LDY.w #$0008								;|
 CODE_00A89A:									;|
 	LDA.b [!RAM_SMW_Misc_ScratchRAM00]					;|
@@ -32159,9 +32700,12 @@ CODE_00A8B3:									;|
 	CPX.w #$0180								;|
 	BCC.b CODE_00A886							;|
 	SEP.b #$30								;/
-	LDA.b #$01
+
++:	LDA.b #$01
 	STA.w !RAM_SMW_Flag_UploadLoadScreenLettersToVRAM
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) == $00 ;[BR]
 	STA.w !RAM_SMW_Flag_RestoreSP1TilesAfterMarioStart			; Optimization: Junk
+endif
 	RTS
 namespace off
 endmacro
@@ -32212,18 +32756,34 @@ CODE_00978B:
 CODE_00978E:
 	STA.w !RAM_SMW_Timer_DisplayDeathMessageAnimation
 	CLC
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	ADC.b #$B4
+else
 	ADC.b #$A0
-	STA.b !RAM_SMW_Misc_ScratchRAM00
+endif
+	STA.b !RAM_SMW_Misc_ScratchRAM00				; Note: ScratchRAM00 is used for manipulating the objs' X positions.
 	ROL.b !RAM_SMW_Misc_ScratchRAM01
 	LDX.w !RAM_SMW_Misc_DeathMessageToDisplay
-	LDY.b #$48
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR] Dynamic values, baby!
+	LDY.b #(SMW_DrawLoadingLetters_TileData_TopTiles_GAME_End\
+		-SMW_DrawLoadingLetters_TileData_TopTiles_OVER)*8
 CODE_00979D:
-	CPY.b #$28
-	BNE.b CODE_0097AE
-	LDA.b #$78
-	SEC
-	SBC.w !RAM_SMW_Timer_DisplayDeathMessageAnimation
-	STA.b !RAM_SMW_Misc_ScratchRAM00
+	CPY.b #(SMW_DrawLoadingLetters_TileData_TopTiles_GAME_End\
+		-SMW_DrawLoadingLetters_TileData_TopTiles_GAME)*8
+else
+	LDY.b #$48							; Note: Decrement for the OAM positions. (Number of obj pairs * 8)
+CODE_00979D:
+	CPY.b #$28										;\ Note: The letter object to be in this OAM slot will have their X position set to the LDA.b below, effectively pushing the leftmost letters away from the rightmost ones.
+endif
+	BNE.b CODE_0097AE								;| This is what creates the middle space in both messages.
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	LDA.b #$74
+else
+	LDA.b #$78										;|
+endif
+	SEC												;|
+	SBC.w !RAM_SMW_Timer_DisplayDeathMessageAnimation	;|
+	STA.b !RAM_SMW_Misc_ScratchRAM00				;/
 	ROL
 	EOR.b #$01
 	STA.b !RAM_SMW_Misc_ScratchRAM01
@@ -32311,15 +32871,19 @@ CODE_0093CA:
 CODE_0093EA:
 	LDA.b #$01
 	STA.w !RAM_SMW_Misc_NMIToUseFlag
-	LDA.b #$20
+	LDA.b #!ColorMathSelectAndEnable_EnableBackdrop	; $20
 	JSR.w SMW_SetVisibleLayers_Main
 CODE_0093F4:
 	INC.w !RAM_SMW_Misc_GameMode
 Mode04Finish:
 #LM221Hijack_TurnOnScreenTimingFix:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	JMP.w SMW_CUSTOM_FixScreenTiming_Main
+else
 	LDA.b #$81
 	STA.w !REGISTER_IRQNMIAndJoypadEnableFlags
 	RTS
+endif
 namespace off
 endmacro
 
@@ -38198,6 +38762,12 @@ CODE_049CD9:
 	RTS
 
 else
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR] No more triple table.
+ThirdRowCleaner:
+	db $FE,$FE,$FE,$FE,$FE,$95,$FE,$FE,$FE,$FE,$96,$FE,$FE,$FE,$FE,$FE
+	db $FE,$FE,$FE
+	.End:
+else
 LevelNameStrings:
 	base $0000
 	incsrc "strings/LevelNameStrings.asm"
@@ -38224,84 +38794,196 @@ DATA_049CED:
 	dw LevelStr_0004,LevelStr_0005,LevelStr_0006,LevelStr_0007
 	dw LevelStr_0008,LevelStr_0009,LevelStr_000A,LevelStr_000B
 	dw LevelStr_000C
+endif
 
 Main:
-	LDA.l !RAM_SMW_Misc_StripeImageUploadIndexLo
-	TAX
-	CLC
-	ADC.w #$0026
-	STA.b !RAM_SMW_Misc_ScratchRAM02
+	LDA.l !RAM_SMW_Misc_StripeImageUploadIndexLo	;\ Sets up the max length of the level name data. 
+	TAX												;|
+	CLC												;|
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	ADC.w #$007E
+else
+	ADC.w #$0026									;| Note: Length
+	STA.b !RAM_SMW_Misc_ScratchRAM02				;/
 	CLC
 	ADC.w #$0004
+endif
 	STA.l !RAM_SMW_Misc_StripeImageUploadIndexLo
+	
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	; Stripe image for cleaning the third row from any possible accents.
 	LDA.w #$2500
 	STA.l SMW_StripeImageUploadTable[$01].LowByte,x
-	LDA.w #$8B50
+	LDA.w #$4B50
 	STA.l SMW_StripeImageUploadTable[$00].LowByte,x
-	LDA.b !RAM_SMW_Misc_ScratchRAM01
-	AND.w #$007F
-	ASL
-	TAY
-	LDA.w DATA_049C91,y
-	TAY
+	LDY.w #$0000
 	SEP.b #$20
-	LDA.w LevelNameStrings,y
+-:
+	LDA.w ThirdRowCleaner,y
+	STA.l SMW_StripeImageUploadTable[$02].LowByte,x
+	LDA.b #$38
+	STA.l SMW_StripeImageUploadTable[$02].HighByte,x
+	INX #2
+	INY
+	CPY.w #ThirdRowCleaner_End-ThirdRowCleaner
+	BCC.b -
+	REP.b #$20
+
+	INX #4									; Adjust index for next header.
+	TXA										;\ Then, setup Scratch RAM for the length check.
+	CLC										;|
+	ADC.w #$0026							;|
+	STA.b !RAM_SMW_Misc_ScratchRAM02		;/
+	
+	LDA.w #$2500									;\ Header for the top line.
+	STA.l SMW_StripeImageUploadTable[$01].LowByte,x	;|
+	LDA.w #$6B50									;|
+	STA.l SMW_StripeImageUploadTable[$00].LowByte,x	;/
+	LDY.b !RAM_SMW_Misc_ScratchRAM00	; Grab the level name index.
+	SEP.b #$20
+	JSR.w Loop_TilesData
+	REP.b #$20
+
+	LDA.b !RAM_SMW_Misc_ScratchRAM06	;\ If the last character uploaded was "\", adjust index for the the next line.
+	BEQ.b +								;|
+	INY									;/
++:
+	INX #4									; Adjust index for next header.
+	TXA										;\ Then, setup Scratch RAM for the length check.
+	CLC										;|
+	ADC.w #$0026							;|
+	STA.b !RAM_SMW_Misc_ScratchRAM02		;/
+	
+	LDA.w #$2500									;\ Header for the bottom line.
+	STA.l SMW_StripeImageUploadTable[$01].LowByte,x	;|
+	LDA.w #$8B50									;|
+	STA.l SMW_StripeImageUploadTable[$00].LowByte,x	;/
+	SEP.b #$20
+	JSR.w Loop_TilesData
+	STZ.b !RAM_SMW_Misc_ScratchRAM06
+else	
+	LDA.w #$2500									;\ Note: Stripe image header.
+	STA.l SMW_StripeImageUploadTable[$01].LowByte,x	;|
+	LDA.w #$8B50									;|
+	STA.l SMW_StripeImageUploadTable[$00].LowByte,x	;/
+
+	LDA.b !RAM_SMW_Misc_ScratchRAM01	;\ Note: Load pointer for the 1st part of the string.
+	AND.w #$007F						;|
+	ASL									;|
+	TAY									;|
+	LDA.w DATA_049C91,y					;|
+	TAY									;|
+	SEP.b #$20							;|
+	LDA.w LevelNameStrings,y			;/
 	BMI.b CODE_049D3D
-	JSR.w CODE_049D7F
+	JSR.w Loop_TilesData
 CODE_049D3D:
 	REP.b #$20
-	LDA.b !RAM_SMW_Misc_ScratchRAM00
-	AND.w #$00F0
-	LSR
-	LSR
-	LSR
-	TAY
-	LDA.w DATA_049CCF,y
-	TAY
-	SEP.b #$20
-	LDA.w LevelNameStrings,y
+	LDA.b !RAM_SMW_Misc_ScratchRAM00		;\ Note: Load pointer for the 2nd part of the string.
+	AND.w #$00F0							;|
+	LSR										;|
+	LSR										;|
+	LSR										;|
+	TAY										;|
+	LDA.w DATA_049CCF,y						;|
+	TAY										;|
+	SEP.b #$20								;|
+	LDA.w LevelNameStrings,y				;/
 	CMP.b #$9F
 	BEQ.b CODE_049D58
-	JSR.w CODE_049D7F
+	JSR.w Loop_TilesData
 CODE_049D58:
 	REP.b #$20
-	LDA.b !RAM_SMW_Misc_ScratchRAM00
-	AND.w #$000F
-	ASL
-	TAY
-	LDA.w DATA_049CED,y
-	TAY
-	SEP.b #$20
-	JSR.w CODE_049D7F
-CODE_049D6A:
+	LDA.b !RAM_SMW_Misc_ScratchRAM00	;\ Note: Load pointer for the 3rd part of the string.
+	AND.w #$000F						;|
+	ASL									;|
+	TAY									;|
+	LDA.w DATA_049CED,y					;|
+	TAY									;|
+	SEP.b #$20							;|
+	JSR.w Loop_TilesData				;/
+CODE_049D6A:		; Note: This loop fills the rest of the stripe image with a blank tile.
 	CPX.b !RAM_SMW_Misc_ScratchRAM02
 	BCS.b CODE_049D76
 	LDY.w #$01CB
-	JSR.w CODE_049D7F
+	JSR.w Loop_TilesData
 	BRA.b CODE_049D6A
 
 CODE_049D76:
-	LDA.b #$FF
-	STA.l SMW_StripeImageUploadTable[$02].LowByte,x
+endif
+	LDA.b #$FF										;\ Note: End stripe image.
+	STA.l SMW_StripeImageUploadTable[$02].LowByte,x	;/
 	REP.b #$20
 	RTS
 
-CODE_049D7F:
-	LDA.w LevelNameStrings,y
-	PHP
-	CPX.b !RAM_SMW_Misc_ScratchRAM02
-	BCS.b CODE_049D95
+Loop_TilesData:
+; $049D7F
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	LDA.b #SMW_CUSTOM_LevelNamesLong_Strings>>16	;\ Change data bank to where the strings are.
+	PHA												;|
+	PLB												;/
+-:
+	LDA.w SMW_CUSTOM_LevelNamesLong_Strings,y
+	CPX.b !RAM_SMW_Misc_ScratchRAM02	;\ Row length check.
+	BCS.b ++++							;/
+
+	CMP.b #$B0				;\ The accents range.
+	BCS.b DrawAccent		;/ (Value >= $B0)
+
+	CMP.b #$9F					;\ If it's a "\", don't increment string index and fill the rest of the line with blank tiles.
+	BEQ.b +						;/
+	INY
+	BRA.b ++
++:
 	AND.b #$7F
+	STA.b !RAM_SMW_Misc_ScratchRAM06
+++:
+	STA.l SMW_StripeImageUploadTable[$02].LowByte,x
+	LDA.b #$39											;\ Property byte.
+	STA.l SMW_StripeImageUploadTable[$02].HighByte,x	;/
+	INX #2
+	BRA.b -
+++++:
+	PHK		;\ Revert data bank.
+	PLB		;/
+	RTS
+
+DrawAccent:
+	PHX
+	PHA
+	REP.b #$20
+
+	TXA				;\ Move index back to the previous stripe image, on the same position.
+	SEC				;|
+	SBC.w #$002A	;|
+	TAX				;/
+	
+	SEP.b #$20
+	PLA
 	STA.l SMW_StripeImageUploadTable[$02].LowByte,x
 	LDA.b #$39
 	STA.l SMW_StripeImageUploadTable[$02].HighByte,x
+	
+	PLX
+	INY
+	BRA.b -
+else
+	LDA.w LevelNameStrings,y
+	PHP
+	CPX.b !RAM_SMW_Misc_ScratchRAM02				;\ Note: Don't upload anything if the stripe index reached the max length.
+	BCS.b CODE_049D95								;/
+	AND.b #$7F										;\ Tile byte. This AND limits the range to the 1st half of page 2.
+	STA.l SMW_StripeImageUploadTable[$02].LowByte,x	;/
+	LDA.b #$39											;\ Property byte.
+	STA.l SMW_StripeImageUploadTable[$02].HighByte,x	;/
 	INX
 	INX
 CODE_049D95:
 	INY
 	PLP
-	BPL.b CODE_049D7F
+	BPL.b Loop_TilesData
 	RTS
+endif
 endif
 namespace off
 endmacro
@@ -44508,15 +45190,19 @@ endmacro
 macro ROUTINE_RT01_SMW_HandleMenuCursor(Address)
 namespace SMW_HandleMenuCursor
 %InsertMacroAtXPosition(<Address>)
+	; Menus order:
+	; Continue,Files,1P/2P,Save,Erase
 
 DATA_009E6A:
 	dw $0002,$0004,$0002,$0002,$0004
 
-DATA_009E74:
+DATA_009E74:										; Cursor coordinates
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
 	dw $51CC,$5208,$5228,$5208,$5208
 elseif !Define_Global_ROMToAssemble&(!ROM_SMW_ARCADE) != $00
 	dw $51CB,$5208,$5208,$51C4,$5205
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	dw $51CB,$51E8,$5208,$51C4,$51E4
 else
 	dw $51CB,$51E8,$5208,$51C4,$51E5
 endif
@@ -50339,11 +51025,19 @@ namespace SMW_LoadOverworldLayer2AndEventsTilemaps
 %InsertMacroAtXPosition(<Address>)
 
 OverworldLayer2Tilemap:
-.Tiles:
-	incbin "overworld/layer2/tiles.bin"
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	.Tiles:
+		incbin "overworld/layer2/tiles_br.bin"
 
-.Prop:
-	incbin "overworld/layer2/properties.bin"
+	.Prop:
+		incbin "overworld/layer2/properties_br.bin"
+else
+	.Tiles:
+		incbin "overworld/layer2/tiles.bin"
+
+	.Prop:
+		incbin "overworld/layer2/properties.bin"
+endif
 namespace off
 endmacro
 
@@ -52376,10 +53070,10 @@ EraseFile:
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
 	%StripeImageHeader(.ClearLine1, $08, $11, 0, $001D, 3)
 	db $FC,$38
-.ClearLine1End:
+	.ClearLine1End:
 	%StripeImageHeader(.ClearLine2, $08, $13, 0, $001D, 3)
 	db $FC,$38
-.ClearLine2End:
+	.ClearLine2End:
 
 SelectFile:
 	%InsertVersionExclusiveFile(incbin, ../SMW/strings/FileSelectText_, SMW_J.bin, )
@@ -52387,176 +53081,257 @@ SelectFileEnd:
 	db $FF
 
 elseif !Define_Global_ROMToAssemble&(!ROM_SMW_ARCADE) != $00
-	%StripeImageHeader(.ClearLine1, $05, $10, 0, $002F, 3)
-	db $FC,$38
-.ClearLine1End:
-	%StripeImageHeader(.ClearLine2, $08, $11, 0, $001D, 3)
-	db $FC,$38
-.ClearLine2End:
-	%StripeImageHeader(.ClearLine3, $05, $12, 0, $002F, 3)
-	db $FC,$38
-.ClearLine3End:
-	%StripeImageHeader(.ClearLine4, $08, $13, 0, $001D, 3)
-	db $FC,$38
-.ClearLine4End:
-	%StripeImageHeader(.ClearLine5, $05, $14, 0, $002F, 3)
-	db $FC,$38
-.ClearLine5End:
-	%StripeImageHeader(.ClearLine6, $05, $16, 0, $001D, 3)
-	db $FC,$38
-.ClearLine6End:
-	%StripeImageHeader(.MarioA, $0D, $10, 0, $0000, 3)
-	;dw "MARIO A ...EMPTY"
-	db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$71,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
-.MarioAEnd:
-	%StripeImageHeader(.MarioB, $0D, $12, 0, $0000, 3)
-	;dw "MARIO B ...EMPTY"
-	db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$2C,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
-.MarioBEnd:
-	%StripeImageHeader(.MarioC, $0D, $14, 0, $0000, 3)
-	;dw "MARIO C ...EMPTY"
-	db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$2D,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
-.MarioCEnd:
-	%StripeImageHeader(.EraseA, $07, $10, 0, $0000, 3)		;\ Note: Why not pair these up with the above 3 lines of text?
-	;dw "ERASE "							;|
-	db $73,$31,$74,$31,$71,$31,$31,$31,$73,$31,$FC,$38		;|
-.EraseAEnd:								;|
-	%StripeImageHeader(.EraseB, $07, $12, 0, $0000, 3)		;|
-	;dw "ERASE "							;|
-	db $73,$31,$74,$31,$71,$31,$31,$31,$73,$31,$FC,$38		;|
-.EraseBEnd:								;|
-	%StripeImageHeader(.EraseC, $07, $14, 0, $0000, 3)		;|
-	;dw "ERASE "							;|
-	db $73,$31,$74,$31,$71,$31,$31,$31,$73,$31,$FC,$38		;|
-.EraseCEnd:								;/
-	%StripeImageHeader(.End, $07, $16, 0, $0000, 3)
-	;dw "END"
-	db $73,$31,$79,$30,$7C,$30
-.EndEnd:
-	db $FF
+		%StripeImageHeader(.ClearLine1, $05, $10, 0, $002F, 3)
+		db $FC,$38
+	.ClearLine1End:
+		%StripeImageHeader(.ClearLine2, $08, $11, 0, $001D, 3)
+		db $FC,$38
+	.ClearLine2End:
+		%StripeImageHeader(.ClearLine3, $05, $12, 0, $002F, 3)
+		db $FC,$38
+	.ClearLine3End:
+		%StripeImageHeader(.ClearLine4, $08, $13, 0, $001D, 3)
+		db $FC,$38
+	.ClearLine4End:
+		%StripeImageHeader(.ClearLine5, $05, $14, 0, $002F, 3)
+		db $FC,$38
+	.ClearLine5End:
+		%StripeImageHeader(.ClearLine6, $05, $16, 0, $001D, 3)
+		db $FC,$38
+	.ClearLine6End:
+		%StripeImageHeader(.MarioA, $0D, $10, 0, $0000, 3)
+		;dw "MARIO A ...EMPTY"
+		db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$71,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
+	.MarioAEnd:
+		%StripeImageHeader(.MarioB, $0D, $12, 0, $0000, 3)
+		;dw "MARIO B ...EMPTY"
+		db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$2C,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
+	.MarioBEnd:
+		%StripeImageHeader(.MarioC, $0D, $14, 0, $0000, 3)
+		;dw "MARIO C ...EMPTY"
+		db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$2D,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
+	.MarioCEnd:
+		%StripeImageHeader(.EraseA, $07, $10, 0, $0000, 3)		;\ Note: Why not pair these up with the above 3 lines of text?
+		;dw "ERASE "							;|
+		db $73,$31,$74,$31,$71,$31,$31,$31,$73,$31,$FC,$38		;|
+	.EraseAEnd:								;|
+		%StripeImageHeader(.EraseB, $07, $12, 0, $0000, 3)		;|
+		;dw "ERASE "							;|
+		db $73,$31,$74,$31,$71,$31,$31,$31,$73,$31,$FC,$38		;|
+	.EraseBEnd:								;|
+		%StripeImageHeader(.EraseC, $07, $14, 0, $0000, 3)		;|
+		;dw "ERASE "							;|
+		db $73,$31,$74,$31,$71,$31,$31,$31,$73,$31,$FC,$38		;|
+	.EraseCEnd:								;/
+		%StripeImageHeader(.End, $07, $16, 0, $0000, 3)
+		;dw "END"
+		db $73,$31,$79,$30,$7C,$30
+	.EndEnd:
+		db $FF
 
 SelectFile:
-	%StripeImageHeader(.ClearLine1, $05, $10, 0, $002F, 3)
-	db $FC,$38
-.ClearLine1End:
-	%StripeImageHeader(.ClearLine2, $08, $11, 0, $001D, 3)
-	db $FC,$38
-.ClearLine2End:
-	%StripeImageHeader(.ClearLine3, $05, $12, 0, $002F, 3)
-	db $FC,$38
-.ClearLine3End:
-	%StripeImageHeader(.ClearLine4, $08, $13, 0, $001D, 3)
-	db $FC,$38
-.ClearLine4End:
-	%StripeImageHeader(.ClearLine5, $05, $14, 0, $002F, 3)
-	db $FC,$38
-.ClearLine5End:
-	%StripeImageHeader(.ClearLine6, $05, $16, 0, $001D, 3)
-	db $FC,$38
-.ClearLine6End:
-	%StripeImageHeader(.Row1, $08, $10, 0, $0000, 3)
-	;dw "ZONE 1    ZONE 5"
-	db $21,$31,$3E,$31,$30,$31,$73,$31,$FC,$38,$6D,$31,$FC,$38,$FC,$38,$FC,$38,$FC,$38,$21,$31,$3E,$31,$30,$31,$73,$31,$FC,$38,$51,$30
-.Row1End:
-	%StripeImageHeader(.Row2, $08, $12, 0, $0000, 3)
-	;dw "ZONE 2    ZONE 6"
-	db $21,$31,$3E,$31,$30,$31,$73,$31,$FC,$38,$6E,$31,$FC,$38,$FC,$38,$FC,$38,$FC,$38,$21,$31,$3E,$31,$30,$31,$73,$31,$FC,$38,$52,$30
-.Row2End:
-	%StripeImageHeader(.Row3, $08, $14, 0, $0000, 3)
-	;dw "ZONE 3    ZONE 7"
-	db $21,$31,$3E,$31,$30,$31,$73,$31,$FC,$38,$4E,$30,$FC,$38,$FC,$38,$FC,$38,$FC,$38,$21,$31,$3E,$31,$30,$31,$73,$31,$FC,$38,$53,$30
-.Row3End:
-	%StripeImageHeader(.Row4, $08, $16, 0, $0000, 3)
-	;dw "ZONE 4"
-	db $21,$31,$3E,$31,$30,$31,$73,$31,$FC,$38,$50,$30
-.Row4End:
-	db $FF
+		%StripeImageHeader(.ClearLine1, $05, $10, 0, $002F, 3)
+		db $FC,$38
+	.ClearLine1End:
+		%StripeImageHeader(.ClearLine2, $08, $11, 0, $001D, 3)
+		db $FC,$38
+	.ClearLine2End:
+		%StripeImageHeader(.ClearLine3, $05, $12, 0, $002F, 3)
+		db $FC,$38
+	.ClearLine3End:
+		%StripeImageHeader(.ClearLine4, $08, $13, 0, $001D, 3)
+		db $FC,$38
+	.ClearLine4End:
+		%StripeImageHeader(.ClearLine5, $05, $14, 0, $002F, 3)
+		db $FC,$38
+	.ClearLine5End:
+		%StripeImageHeader(.ClearLine6, $05, $16, 0, $001D, 3)
+		db $FC,$38
+	.ClearLine6End:
+		%StripeImageHeader(.Row1, $08, $10, 0, $0000, 3)
+		;dw "ZONE 1    ZONE 5"
+		db $21,$31,$3E,$31,$30,$31,$73,$31,$FC,$38,$6D,$31,$FC,$38,$FC,$38,$FC,$38,$FC,$38,$21,$31,$3E,$31,$30,$31,$73,$31,$FC,$38,$51,$30
+	.Row1End:
+		%StripeImageHeader(.Row2, $08, $12, 0, $0000, 3)
+		;dw "ZONE 2    ZONE 6"
+		db $21,$31,$3E,$31,$30,$31,$73,$31,$FC,$38,$6E,$31,$FC,$38,$FC,$38,$FC,$38,$FC,$38,$21,$31,$3E,$31,$30,$31,$73,$31,$FC,$38,$52,$30
+	.Row2End:
+		%StripeImageHeader(.Row3, $08, $14, 0, $0000, 3)
+		;dw "ZONE 3    ZONE 7"
+		db $21,$31,$3E,$31,$30,$31,$73,$31,$FC,$38,$4E,$30,$FC,$38,$FC,$38,$FC,$38,$FC,$38,$21,$31,$3E,$31,$30,$31,$73,$31,$FC,$38,$53,$30
+	.Row3End:
+		%StripeImageHeader(.Row4, $08, $16, 0, $0000, 3)
+		;dw "ZONE 4"
+		db $21,$31,$3E,$31,$30,$31,$73,$31,$FC,$38,$50,$30
+	.Row4End:
+		db $FF
 
-else
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	table "tables/fonts/Menus_br.txt"
+	;                 (Label, XPos, YPos, Dir, RLE, Layer)
 	%StripeImageHeader(.ClearLine1, $05, $0F, 0, $002F, 3)
 	db $FC,$38
-.ClearLine1End:
+	.ClearLine1End:
 	%StripeImageHeader(.ClearLine2, $08, $10, 0, $001D, 3)
 	db $FC,$38
-.ClearLine2End:
+	.ClearLine2End:
 	%StripeImageHeader(.ClearLine3, $05, $11, 0, $002F, 3)
 	db $FC,$38
-.ClearLine3End:
+	.ClearLine3End:
 	%StripeImageHeader(.ClearLine4, $08, $12, 0, $001D, 3)
 	db $FC,$38
-.ClearLine4End:
+	.ClearLine4End:
 	%StripeImageHeader(.ClearLine5, $05, $13, 0, $002F, 3)
 	db $FC,$38
-.ClearLine5End:
-	%StripeImageHeader(.ClearLine6, $05, $15, 0, $001D, 3)
+	.ClearLine5End:
+	%StripeImageHeader(.ClearLine6, $05, $15, 0, $002F, 3)
 	db $FC,$38
-.ClearLine6End:
+	.ClearLine6End:
+
 	%StripeImageHeader(.MarioA, $0D, $0F, 0, $0000, 3)
-	;dw "MARIO A ...EMPTY"
-	db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$71,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
-.MarioAEnd:
+	dw "MARIO A ...VAZIO"
+	.MarioAEnd:	
 	%StripeImageHeader(.MarioB, $0D, $11, 0, $0000, 3)
-	;dw "MARIO B ...EMPTY"
-	db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$2C,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
-.MarioBEnd:
+	dw "MARIO B ...VAZIO"
+	.MarioBEnd:	
 	%StripeImageHeader(.MarioC, $0D, $13, 0, $0000, 3)
-	;dw "MARIO C ...EMPTY"
-	db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$2D,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
-.MarioCEnd:
-	%StripeImageHeader(.EraseA, $07, $0F, 0, $0000, 3)		;\ Note: Why not pair these up with the above 3 lines of text?
-	;dw "ERASE "							;|
-	db $73,$31,$74,$31,$71,$31,$31,$31,$73,$31,$FC,$38		;|
-.EraseAEnd:								;|
-	%StripeImageHeader(.EraseB, $07, $11, 0, $0000, 3)		;|
-	;dw "ERASE "							;|
-	db $73,$31,$74,$31,$71,$31,$31,$31,$73,$31,$FC,$38		;|
-.EraseBEnd:								;|
-	%StripeImageHeader(.EraseC, $07, $13, 0, $0000, 3)		;|
-	;dw "ERASE "							;|
-	db $73,$31,$74,$31,$71,$31,$31,$31,$73,$31,$FC,$38		;|
-.EraseCEnd:								;/
-	%StripeImageHeader(.End, $07, $15, 0, $0000, 3)
-	;dw "END"
-	db $73,$31,$79,$30,$7C,$30
-.EndEnd:
+	dw "MARIO C ...VAZIO"
+	.MarioCEnd:	
+	%StripeImageHeader(.EraseA, $06, $0F, 0, $0000, 3)
+	dw "APAGAR"
+	.EraseAEnd:
+	%StripeImageHeader(.EraseB, $06, $11, 0, $0000, 3)
+	dw "APAGAR"
+	.EraseBEnd:
+	%StripeImageHeader(.EraseC, $06, $13, 0, $0000, 3)
+	dw "APAGAR"
+	.EraseCEnd:
+	%StripeImageHeader(.End, $06, $15, 0, $0000, 3)
+	dw "SAIR"
+	.EndEnd:
 	db $FF
 
 SelectFile:
 	%StripeImageHeader(.ClearLine1, $05, $0F, 0, $002F, 3)
 	db $FC,$38
-.ClearLine1End:
+	.ClearLine1End:
 	%StripeImageHeader(.ClearLine2, $08, $10, 0, $001D, 3)
 	db $FC,$38
-.ClearLine2End:
+	.ClearLine2End:
 	%StripeImageHeader(.ClearLine3, $05, $11, 0, $002F, 3)
 	db $FC,$38
-.ClearLine3End:
+	.ClearLine3End:
 	%StripeImageHeader(.ClearLine4, $08, $12, 0, $001D, 3)
 	db $FC,$38
-.ClearLine4End:
+	.ClearLine4End:
 	%StripeImageHeader(.ClearLine5, $05, $13, 0, $002F, 3)
 	db $FC,$38
-.ClearLine5End:
-	%StripeImageHeader(.ClearLine6, $05, $15, 0, $001D, 3)
+	.ClearLine5End:
+	%StripeImageHeader(.ClearLine6, $05, $15, 0, $002F, 3)
 	db $FC,$38
-.ClearLine6End:
+	.ClearLine6End:
+
 	%StripeImageHeader(.MarioA, $0A, $0F, 0, $0000, 3)
-	;dw "MARIO A ...EMPTY"
-	db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$71,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
-.MarioAEnd:
+	dw "MARIO A ...VAZIO"
+	.MarioAEnd:
 	%StripeImageHeader(.MarioB, $0A, $11, 0, $0000, 3)
-	;dw "MARIO B ...EMPTY"
-	db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$2C,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
-.MarioBEnd:
+	dw "MARIO B ...VAZIO"
+	.MarioBEnd:
 	%StripeImageHeader(.MarioC, $0A, $13, 0, $0000, 3)
-	;dw "MARIO C ...EMPTY"
-	db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$2D,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
-.MarioCEnd:
+	dw "MARIO C ...VAZIO"
+	.MarioCEnd:
 	%StripeImageHeader(.EraseData, $0A, $15, 0, $0000, 3)
-	;dw "ERASE DATA"
-	db $73,$31,$74,$31,$71,$31,$31,$31,$73,$31,$FC,$38,$7C,$30,$71,$31,$2F,$31,$71,$31
-.EraseDataEnd:
+	dw "APAGAR DADOS"
+	.EraseDataEnd:
 	db $FF
+
+	cleartable
+else
+		%StripeImageHeader(.ClearLine1, $05, $0F, 0, $002F, 3)
+		db $FC,$38
+	.ClearLine1End:
+		%StripeImageHeader(.ClearLine2, $08, $10, 0, $001D, 3)
+		db $FC,$38
+	.ClearLine2End:
+		%StripeImageHeader(.ClearLine3, $05, $11, 0, $002F, 3)
+		db $FC,$38
+	.ClearLine3End:
+		%StripeImageHeader(.ClearLine4, $08, $12, 0, $001D, 3)
+		db $FC,$38
+	.ClearLine4End:
+		%StripeImageHeader(.ClearLine5, $05, $13, 0, $002F, 3)
+		db $FC,$38
+	.ClearLine5End:
+		%StripeImageHeader(.ClearLine6, $05, $15, 0, $001D, 3)
+		db $FC,$38
+	.ClearLine6End:
+		%StripeImageHeader(.MarioA, $0D, $0F, 0, $0000, 3)
+		;dw "MARIO A ...EMPTY"
+		db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$71,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
+	.MarioAEnd:
+		%StripeImageHeader(.MarioB, $0D, $11, 0, $0000, 3)
+		;dw "MARIO B ...EMPTY"
+		db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$2C,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
+	.MarioBEnd:
+		%StripeImageHeader(.MarioC, $0D, $13, 0, $0000, 3)
+		;dw "MARIO C ...EMPTY"
+		db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$2D,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
+	.MarioCEnd:
+		%StripeImageHeader(.EraseA, $07, $0F, 0, $0000, 3)		;\ Note: Why not pair these up with the above 3 lines of text?
+		; A: The pointer for drawing the exits number on-screen is used in both File Select and Erase File menus. Unifying the lines misaligns the Erase numbers, and changing the pointer value corrupts the File Select.
+		;dw "ERASE "							;|
+		db $73,$31,$74,$31,$71,$31,$31,$31,$73,$31,$FC,$38		;|
+	.EraseAEnd:								;|
+		%StripeImageHeader(.EraseB, $07, $11, 0, $0000, 3)		;|
+		;dw "ERASE "							;|
+		db $73,$31,$74,$31,$71,$31,$31,$31,$73,$31,$FC,$38		;|
+	.EraseBEnd:								;|
+		%StripeImageHeader(.EraseC, $07, $13, 0, $0000, 3)		;|
+		;dw "ERASE "							;|
+		db $73,$31,$74,$31,$71,$31,$31,$31,$73,$31,$FC,$38		;|
+	.EraseCEnd:								;/
+		%StripeImageHeader(.End, $07, $15, 0, $0000, 3)
+		;dw "END"
+		db $73,$31,$79,$30,$7C,$30
+	.EndEnd:
+		db $FF
+
+SelectFile:
+		%StripeImageHeader(.ClearLine1, $05, $0F, 0, $002F, 3)
+		db $FC,$38
+	.ClearLine1End:
+		%StripeImageHeader(.ClearLine2, $08, $10, 0, $001D, 3)
+		db $FC,$38
+	.ClearLine2End:
+		%StripeImageHeader(.ClearLine3, $05, $11, 0, $002F, 3)
+		db $FC,$38
+	.ClearLine3End:
+		%StripeImageHeader(.ClearLine4, $08, $12, 0, $001D, 3)
+		db $FC,$38
+	.ClearLine4End:
+		%StripeImageHeader(.ClearLine5, $05, $13, 0, $002F, 3)
+		db $FC,$38
+	.ClearLine5End:
+		%StripeImageHeader(.ClearLine6, $05, $15, 0, $001D, 3)
+		db $FC,$38
+	.ClearLine6End:
+		%StripeImageHeader(.MarioA, $0A, $0F, 0, $0000, 3)
+		;dw "MARIO A ...EMPTY"
+		db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$71,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
+	.MarioAEnd:
+		%StripeImageHeader(.MarioB, $0A, $11, 0, $0000, 3)
+		;dw "MARIO B ...EMPTY"
+		db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$2C,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
+	.MarioBEnd:
+		%StripeImageHeader(.MarioC, $0A, $13, 0, $0000, 3)
+		;dw "MARIO C ...EMPTY"
+		db $76,$31,$71,$31,$74,$31,$82,$30,$83,$30,$FC,$38,$2D,$31,$FC,$38,$24,$38,$24,$38,$24,$38,$73,$31,$76,$31,$6F,$31,$2F,$31,$72,$31
+	.MarioCEnd:
+		%StripeImageHeader(.EraseData, $0A, $15, 0, $0000, 3)
+		;dw "ERASE DATA"
+		db $73,$31,$74,$31,$71,$31,$31,$31,$73,$31,$FC,$38,$7C,$30,$71,$31,$2F,$31,$71,$31
+	.EraseDataEnd:
+		db $FF
 endif
 cleartable
 namespace off
@@ -52576,46 +53351,70 @@ if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
 elseif !Define_Global_ROMToAssemble&(!ROM_SMW_ARCADE) != $00
 	%StripeImageHeader(ClearLine1, $05, $10, 0, $0030, 3)
 	db $FC,$38
-ClearLine1End:
+	ClearLine1End:
 	%StripeImageHeader(ClearLine2, $05, $12, 0, $0030, 3)
 	db $FC,$38
-ClearLine2End:
+	ClearLine2End:
 	%StripeImageHeader(ClearLine3, $05, $14, 0, $0030, 3)
 	db $FC,$38
-ClearLine3End:
+	ClearLine3End:
 	%StripeImageHeader(ClearLine4, $05, $16, 0, $001D, 3)
 	db $FC,$38
-ClearLine4End:
+	ClearLine4End:
 	%StripeImageHeader(OnePlayer, $0A, $10, 0, $0000, 3)
 	;dw "1 PLAYER GAME"
 	db $6D,$31,$FC,$38,$6F,$31,$70,$31,$71,$31,$72,$31,$73,$31,$74,$31,$FC,$38,$75,$31,$71,$31,$76,$31,$73,$31
-OnePlayerEnd:
+	OnePlayerEnd:
 	%StripeImageHeader(TwoPlayer, $0A, $12, 0, $0000, 3)
 	;dw "2 PLAYER GAME"
 	db $6E,$31,$FC,$38,$6F,$31,$70,$31,$71,$31,$72,$31,$73,$31,$74,$31,$FC,$38,$75,$31,$71,$31,$76,$31,$73,$31
-TwoPlayerEnd:
+	TwoPlayerEnd:
 	db $FF
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	table "tables/fonts/Menus_br.txt"
+	;                 (Label, XPos, YPos, Dir, RLE, Layer)
+	%StripeImageHeader(ClearLine1, $05, $0F, 0, $0030, 3)
+	db $FC,$38
+	ClearLine1End:
+	%StripeImageHeader(ClearLine2, $05, $11, 0, $0030, 3)
+	db $FC,$38
+	ClearLine2End:
+	%StripeImageHeader(ClearLine3, $05, $13, 0, $0030, 3)
+	db $FC,$38
+	ClearLine3End:
+	%StripeImageHeader(ClearLine4, $05, $15, 0, $0021, 3)
+	db $FC,$38
+	ClearLine4End:
+	%StripeImageHeader(OnePlayer, $0A, $10, 0, $0000, 3)
+	dw "1 JOGADOR"
+	OnePlayerEnd:
+	%StripeImageHeader(TwoPlayer, $0A, $12, 0, $0000, 3)
+	dw "2 JOGADORES"
+	TwoPlayerEnd:
+	db $FF
+
+	cleartable
 else
 	%StripeImageHeader(ClearLine1, $05, $0F, 0, $0030, 3)
 	db $FC,$38
-ClearLine1End:
+	ClearLine1End:
 	%StripeImageHeader(ClearLine2, $05, $11, 0, $0030, 3)
 	db $FC,$38
-ClearLine2End:
+	ClearLine2End:
 	%StripeImageHeader(ClearLine3, $05, $13, 0, $0030, 3)
 	db $FC,$38
-ClearLine3End:
+	ClearLine3End:
 	%StripeImageHeader(ClearLine4, $05, $15, 0, $001D, 3)
 	db $FC,$38
-ClearLine4End:
+	ClearLine4End:
 	%StripeImageHeader(OnePlayer, $0A, $10, 0, $0000, 3)
 	;dw "1 PLAYER GAME"
 	db $6D,$31,$FC,$38,$6F,$31,$70,$31,$71,$31,$72,$31,$73,$31,$74,$31,$FC,$38,$75,$31,$71,$31,$76,$31,$73,$31
-OnePlayerEnd:
+	OnePlayerEnd:
 	%StripeImageHeader(TwoPlayer, $0A, $12, 0, $0000, 3)
 	;dw "2 PLAYER GAME"
 	db $6E,$31,$FC,$38,$6F,$31,$70,$31,$71,$31,$72,$31,$73,$31,$74,$31,$FC,$38,$75,$31,$71,$31,$76,$31,$73,$31
-TwoPlayerEnd:
+	TwoPlayerEnd:
 	db $FF
 endif
 cleartable
@@ -52632,6 +53431,17 @@ cleartable
 Main:
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
 	%InsertVersionExclusiveFile(incbin, ../SMW/strings/SaveMenuText_, SMW_J.bin, )
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	table "tables/fonts/Overworld_menus_br.txt"
+	;                 (Label, XPos, YPos, Dir, RLE, Layer)
+	%StripeImageHeader(ContinueAndSave, $06, $0E, 0, $0000, 3)
+	dw "SALVAR E CONTINUAR"
+ContinueAndSaveEnd:
+	%StripeImageHeader(ContinueWithoutSave, $06, $10, 0, $0000, 3)
+	dw "CONTINUAR SEM SALVAR"
+ContinueWithoutSaveEnd:
+	db $FF
+	cleartable
 else
 	%StripeImageHeader(ContinueAndSave, $06, $0E, 0, $0000, 3)
 	;dw "CONTINUE AND SAVE"
@@ -52658,6 +53468,17 @@ cleartable
 Main:
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
 	%InsertVersionExclusiveFile(incbin, ../SMW/strings/ContinueEndText_, SMW_J.bin, )
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	table "tables/fonts/Overworld_menus_br.txt"
+	;                 (Label, XPos, YPos, Dir, RLE, Layer)
+	%StripeImageHeader(Continue, $0D, $0E, 0, $0000, 3)
+	dw "CONTINUAR"
+	ContinueEnd:
+	%StripeImageHeader(End, $0D, $10, 0, $0000, 3)
+	dw "SAIR"
+	EndEnd:
+	db $FF
+	cleartable
 else
 	%StripeImageHeader(Continue, $0D, $0E, 0, $0000, 3)
 	;dw "CONTINUE"
@@ -52680,17 +53501,37 @@ namespace SMW_CourseClearText
 %InsertMacroAtXPosition(<Address>)
 
 cleartable
-
+	;                 (Label, XPos,YPos,Dir, RLE, Layer)
 Main:
 	%StripeImageHeader(Mario, $0D, $08, 0, $0000, 3)
 	db $30,$28,$31,$28,$32,$28,$33,$28,$34,$28
-MarioEnd:
+	MarioEnd:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00
+; [BR] Split this string here so that TimeBonus keeps the same offset on the stripe image table. This reduces the need to change lots of values along the routine.
+; Make sure this section is 30 bytes long, then draw the rest of it inbetween TimeBonusEnd and Main_End.
+	table "tables/fonts/AllUppercase_br.txt"
+	
+	%StripeImageHeader(CourseClearAccent, $0D+6, $09, 0, $0000, 3)
+	      dw "/"
+	CourseClearAccentEnd:
+	%StripeImageHeader(CourseClear2, $0D, $0A, 0, $0000, 3)
+	dw "CONCLUIDA!"
+	CourseClear2End:
+else
 	%StripeImageHeader(CourseClear, $09, $0A, 0, $0000, 3)
+	;dw "COURSE CLEAR!"
 	db $0C,$38,$18,$38,$1E,$38,$1B,$38,$1C,$38,$0E,$38,$FC,$38,$0C,$38,$15,$38,$0E,$38,$0A,$38,$1B,$38,$28,$38
-CourseClearEnd:
+	CourseClearEnd:
+endif
 	%StripeImageHeader(TimeBonus, $09, $0D, 0, $0000, 3)
 	db $76,$38,$FC,$38,$FC,$38,$FC,$38,$26,$38,$05,$38,$00,$38,$77,$38,$FC,$38,$FC,$38,$FC,$38,$FC,$38,$FC,$38
-TimeBonusEnd:
+	TimeBonusEnd:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	%StripeImageHeader(CourseClear1, $08, $0A, 0, $0000, 3)
+	dw "FASE"
+	CourseClear1End:
+endif
+Main_End:
 	db $FF
 Luigi:
 ;$05CC61
@@ -52707,7 +53548,11 @@ namespace SMW_CreditsEnemyNames
 %InsertMacroAtXPosition(<Address>)
 
 cleartable
-table "tables/fonts/AllUppercase.txt"
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	table "tables/fonts/AllUppercase_br.txt"
+else
+	table "tables/fonts/AllUppercase.txt"
+endif
 
 Main:
 Screen01:
@@ -52715,507 +53560,871 @@ if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
 	incbin "images/ending/1/layer3.bin"
 	%StripeImageHeader(.FishinLakitu, $11, $03, 0, $0000, 3)
 	dw "FISHING JUGEM"
-.FishinLakituEnd:
+	.FishinLakituEnd:
 	%StripeImageHeader(.ParaBomb, $02, $04, 0, $0000, 3)
 	dw "PARA BOM"
-.ParaBombEnd:
+	.ParaBombEnd:
 	%StripeImageHeader(.ParaGoomba, $07, $0B, 0, $0000, 3)
 	dw "PARA KURI"
-.ParaGoombaEnd:
+	.ParaGoombaEnd:
 	%StripeImageHeader(.Lakitu, $13, $0D, 0, $0000, 3)
 	dw "JUGEM"
-.LakituEnd:
+	.LakituEnd:
 	%StripeImageHeader(.Spiny, $07, $11, 0, $0000, 3)
 	dw "TOGEZO"
-.SpinyEnd:
+	.SpinyEnd:
 	%StripeImageHeader(.Wiggler, $13, $14, 0, $0000, 3)
 	dw "HANACHAN"
-.WigglerEnd:
+	.WigglerEnd:
 	%StripeImageHeader(.BobOmb, $0E, $19, 0, $0000, 3)
 	dw "BOMHEI"
-.BobOmbEnd:
+	.BobOmbEnd:
 	db $FF
 
-Screen02:
+	Screen02:
 	incbin "images/ending/2/layer3.bin"
 	%StripeImageHeader(.HammerBrother, $05, $04, 0, $0000, 3)
 	dw "APPARE"
-.HammerBrotherEnd:
+	.HammerBrotherEnd:
 	%StripeImageHeader(.SuperKoopa, $15, $08, 0, $0000, 3)
 	dw "MANTOGAME"
-.SuperKoopaEnd:
+	.SuperKoopaEnd:
 	%StripeImageHeader(.Chuck, $18, $12, 0, $0000, 3)
 	dw "BUL"
-.ChuckEnd:
+	.ChuckEnd:
 	%StripeImageHeader(.PirhanaPlant, $04, $16, 0, $0000, 3)
 	dw "P-PAKKUN"
-.PirhanaPlantEnd:
+	.PirhanaPlantEnd:
 	%StripeImageHeader(.Lotus, $10, $19, 0, $0000, 3)
 	dw "PONKEY"
-.LotusEnd:
+	.LotusEnd:
 	db $FF
 
-Screen03:
+	Screen03:
 	incbin "images/ending/3/layer3.bin"
 	%StripeImageHeader(.SumoBrother, $07, $04, 0, $0000, 3)
 	dw "K"
 	dw $2824		;\ Green "."
 	dw "K"			;|
 	dw $2824		;/
-.SumoBrotherEnd:
+	.SumoBrotherEnd:
 	%StripeImageHeader(.MontyMole, $17, $07, 0, $0000, 3)
 	dw "CHOROPOO"
-.MontyMoleEnd:
+	.MontyMoleEnd:
 	%StripeImageHeader(.Pokey, $0F, $0E, 0, $0000, 3)
 	dw "SANBO"
-.PokeyEnd:
+	.PokeyEnd:
 	%StripeImageHeader(.BulletBill, $12, $19, 0, $0000, 3)
 	dw "KILLER"
-.BulletBillEnd:
+	.BulletBillEnd:
 	db $FF
 
-Screen04:
+	Screen04:
 	incbin "images/ending/4/layer3.bin"
 	%StripeImageHeader(.Rex, $11, $08, 0, $0000, 3)
 	dw "DORABON"
-.RexEnd:
+	.RexEnd:
 	%StripeImageHeader(.MegaMole, $03, $0F, 0, $0000, 3)
 	dw "INDY"
-.MegaMoleEnd:
+	.MegaMoleEnd:
 	%StripeImageHeader(.BanzaiBill, $11, $18, 0, $0000, 3)
 	dw "MAGNUM KILLER"
-.BanzaiBillEnd:
+	.BanzaiBillEnd:
 	db $FF
 
-Screen05:
+	Screen05:
 	incbin "images/ending/5/layer3.bin"
 	%StripeImageHeader(.DinoRhino, $05, $06, 0, $0000, 3)
 	dw "RAITA"
-.DinoRhinoEnd:
+	.DinoRhinoEnd:
 	%StripeImageHeader(.DinoTorch, $0E, $0C, 0, $0000, 3)
 	dw "CHIBI RAITA"
-.DinoTorchEnd:
+	.DinoTorchEnd:
 	%StripeImageHeader(.Koopas, $0E, $13, 0, $0000, 3)
 	dw "NOKO NOKO"
-.KoopasEnd:
+	.KoopasEnd:
 	db $FF
 
-Screen06:
+	Screen06:
 	incbin "images/ending/6/layer3.bin"
 	%StripeImageHeader(.SpikeTop, $02, $05, 0, $0000, 3)
 	dw "TOGEMET"
-.SpikeTopEnd:
+	.SpikeTopEnd:
 	%StripeImageHeader(.Swooper, $12, $05, 0, $0000, 3)
 	dw "BASA BASA"
-.SwooperEnd:
+	.SwooperEnd:
 	%StripeImageHeader(.BuzzyBeetle, $07, $11, 0, $0000, 3)
 	dw "MET"
-.BuzzyBeetleEnd:
+	.BuzzyBeetleEnd:
 	%StripeImageHeader(.Blargg, $13, $13, 0, $0000, 3)
 	dw "UNBABA"
-.BlarggEnd:
+	.BlarggEnd:
 	db $FF
 
-Screen07:
+	Screen07:
 	incbin "images/ending/7/layer3.bin"
 	%StripeImageHeader(.Blurp, $03, $04, 0, $0000, 3)
 	dw "BUKU BUKU"
-.BlurpEnd:
+	.BlurpEnd:
 	%StripeImageHeader(.Urchin, $17, $07, 0, $0000, 3)
 	dw "UNIRA"
-.UrchinEnd:
+	.UrchinEnd:
 	%StripeImageHeader(.PorcuPuffer, $08, $0D, 0, $0000, 3)
 	dw "FUGUMANNEN"
-.PorcuPufferEnd:
+	.PorcuPufferEnd:
 	%StripeImageHeader(.TorpedoTed, $15, $13, 0, $0000, 3)
 	dw "TORPEDO"
-.TorpedoTedEnd:
+	.TorpedoTedEnd:
 	%StripeImageHeader(.RipVanFish, $02, $19, 0, $0000, 3)
 	dw "  GOOSKA   "
-.RipVanFishEnd:
+	.RipVanFishEnd:
 	db $FF
 
-Screen08:
+	Screen08:
 	incbin "images/ending/8/layer3.bin"
 	%StripeImageHeader(.FishinBoo, $14, $06, 0, $0000, 3)
 	dw "SPOOK"
-.FishinBooEnd:
+	.FishinBooEnd:
 	%StripeImageHeader(.BooBuddies, $03, $07, 0, $0000, 3)
 	dw "TELESA"
-.BooBuddiesEnd:
+	.BooBuddiesEnd:
 	%StripeImageHeader(.BigBoo, $02, $10, 0, $0000, 3)
 	dw "ATOMIC TELESA"
-.BigBooEnd:
+	.BigBooEnd:
 	%StripeImageHeader(.Eeries, $14, $15, 0, $0000, 3)
 	dw "TELESAULS"
-.EeriesEnd:
+	.EeriesEnd:
 	db $FF
 
-Screen09:
+	Screen09:
 	incbin "images/ending/9/layer3.bin"
 	%StripeImageHeader(.Sparky, $0C, $03, 0, $0000, 3)
 	dw "KESERAN"
-.SparkyEnd:
+	.SparkyEnd:
 	%StripeImageHeader(.BonyBeetle, $13, $07, 0, $0000, 3)
 	dw "HONE MET"
-.BonyBeetleEnd:
+	.BonyBeetleEnd:
 	%StripeImageHeader(.DryBones, $04, $09, 0, $0000, 3)
 	dw "KARON"
-.DryBonesEnd:
+	.DryBonesEnd:
 	%StripeImageHeader(.Thwomp, $0F, $12, 0, $0000, 3)
 	dw "DOSUN"
-.ThwompEnd:
+	.ThwompEnd:
 	%StripeImageHeader(.Thwimp, $16, $15, 0, $0000, 3)
 	dw "COTON"
-.ThwimpEnd:
+	.ThwimpEnd:
 	%StripeImageHeader(.Hothead, $08, $17, 0, $0000, 3)
 	dw "PASARAN"
-.HotheadEnd:
+	.HotheadEnd:
 	db $FF
 
-Screen10:
+	Screen10:
 	incbin "images/ending/10/layer3.bin"
 	%StripeImageHeader(.Grinder, $10, $04, 0, $0000, 3)
 	dw "GARI GARI"
-.GrinderEnd:
+	.GrinderEnd:
 	%StripeImageHeader(.BallNChain, $07, $0D, 0, $0000, 3)
 	dw "GURU GURU"
-.BallNChainEnd:
+	.BallNChainEnd:
 	%StripeImageHeader(.Fishbone, $0D, $12, 0, $0000, 3)
 	dw "FISH BONE"
-.FishboneEnd:
+	.FishboneEnd:
 	db $FF
 
-Screen11:
+	Screen11:
 	incbin "images/ending/11/layer3.bin"
 	%StripeImageHeader(.Reznor, $0D, $0C, 0, $0000, 3)
 	dw "BUIBUI"
-.ReznorEnd:
+	.ReznorEnd:
 	db $FF
 
-Screen12:
+	Screen12:
 	incbin "images/ending/12/layer3.bin"
 	%StripeImageHeader(.MechaKoopa, $0B, $0C, 0, $0000, 3)
 	dw "MEKA KOOPA"
-.MechaKoopaEnd:
+	.MechaKoopaEnd:
 	db $FF
 
-Screen13:
+	Screen13:
 	incbin "images/ending/13/layer3.bin"
 	%StripeImageHeader(.Morton, $05, $09, 0, $0000, 3)
 	dw "MORTON"
-.MortonEnd:
+	.MortonEnd:
 	%StripeImageHeader(.Roy, $17, $09, 0, $0000, 3)
 	dw "ROY"
-.RoyEnd:
+	.RoyEnd:
 	%StripeImageHeader(.Bowser, $0E, $10, 0, $0000, 3)
 	dw "KOOPA"
-.BowserEnd:
+	.BowserEnd:
 	%StripeImageHeader(.Lemmy, $03, $12, 0, $0000, 3)
 	dw "LEMMY"
-.LemmyEnd:
+	.LemmyEnd:
 	%StripeImageHeader(.Wendy, $19, $12, 0, $0000, 3)
 	dw "WENDY"
-.WendyEnd:
+	.WendyEnd:
 	%StripeImageHeader(.Iggy, $05, $18, 0, $0000, 3)
 	dw "IGGY"
-.IggyEnd:
+	.IggyEnd:
 	%StripeImageHeader(.Larry, $17, $18, 0, $0000, 3)
 	dw "LARRY"
-.LarryEnd:
+	.LarryEnd:
 	%StripeImageHeader(.Ludwig, $0E, $1A, 0, $0000, 3)
 	dw "LUDWIG"
-.LudwigEnd:
+	.LudwigEnd:
 	db $FF
+
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	incbin "images/ending/1/layer3.bin"
+	%StripeImageHeader(.FishinLakituA, 21,02, 0, $0000, 3)
+	dw "LAKITU"
+	.FishinLakituAEnd:
+	%StripeImageHeader(.FishinLakituB, 20,03, 0, $0000, 3)
+	dw "PESCADOR"
+	.FishinLakituBEnd:
+	
+	%StripeImageHeader(.ParaBomb, 02,04, 0, $0000, 3)
+	dw "PARA-BOMBA"
+	.ParaBombEnd:
+	
+	%StripeImageHeader(.ParaGoomba, 05,11, 0, $0000, 3)
+	dw "PARA-GUMBOLA"
+	.ParaGoombaEnd:
+	
+	%StripeImageHeader(.Lakitu, 18,13, 0, $0000, 3)
+	dw "LAKITU"
+	.LakituEnd:
+	
+	%StripeImageHeader(.Spiny, 07,17, 0, $0000, 3)
+	dw "ESPETO"
+	.SpinyEnd:
+	
+	%StripeImageHeader(.Wiggler, 20,20, 0, $0000, 3)
+	dw "FLORAGARTA"
+	.WigglerEnd:
+	
+	%StripeImageHeader(.BobOmb, 13,25, 0, $0000, 3)
+	dw "BOB-BOMBA"
+	.BobOmbEnd:
+	
+	db $FF
+
+	Screen02:
+	incbin "images/ending/2/layer3.bin"
+	
+	%StripeImageHeader(.AmazingAccent, 01+4,03, 0, $0000, 3)
+	    dw "/"
+	.AmazingAccentEnd:
+	%StripeImageHeader(.BroAccent, 01+12,03, 0, $0000, 3)
+	            dw "~"
+	.BroAccentEnd:
+	%StripeImageHeader(.AmazingFlying, 01,04, 0, $0000, 3)
+	dw "INCRIVEL IRMaO"
+	.AmazingFlyingEnd:
+	%StripeImageHeader(.HammerBrother, 01,05, 0, $0000, 3)
+	dw "MARTELO VOADOR"
+	.HammerBrotherEnd:
+	
+	%StripeImageHeader(.SuperKoopa, 18,07, 0, $0000, 3)
+	dw "SUPERKOOPAS"
+	.SuperKoopaEnd:
+	
+	%StripeImageHeader(.Chargin, 24,18, 0, $0000, 3)
+	dw "TONI"
+	.CharginEnd:
+	%StripeImageHeader(.Chuck, 22,19, 0, $0000, 3)
+	dw "TROMBADA"
+	.ChuckEnd:
+	
+	%StripeImageHeader(.Jumping, 04,22, 0, $0000, 3)
+	dw "PULANTE"
+	.JumpingEnd:
+	%StripeImageHeader(.PirhanaPlant, 01,21, 0, $0000, 3)
+	dw "PLANTA PIRANHA"
+	.PirhanaPlantEnd:
+
+	%StripeImageHeader(.LotusAccent, 13+1,24, 0, $0000, 3)
+	 dw "/"
+	.LotusAccentEnd:
+	%StripeImageHeader(.VolcAccent, 13+13,24, 0, $0000, 3)
+	             dw "~"
+	.VolcAccentEnd:
+	%StripeImageHeader(.Lotus, 13,25, 0, $0000, 3)
+	dw "LOTUS-DO-VULCaO"
+	.LotusEnd:
+	
+	db $FF
+
+	Screen03:
+	incbin "images/ending/3/layer3.bin"
+	
+	%StripeImageHeader(.BroAccent, 02+3,03, 0, $0000, 3)
+	   dw "~"
+	.BroAccentEnd:
+	%StripeImageHeader(.SumoAccent, 02+9,03, 0, $0000, 3)
+	         dw "^"
+	.SumoAccentEnd:
+	%StripeImageHeader(.SumoBrother, 02,04, 0, $0000, 3)
+	dw "IRMaO SUMO"
+	.SumoBrotherEnd:
+	
+	%StripeImageHeader(.Monty, 23,06, 0, $0000, 3)
+	dw "MONTY"
+	.MontyEnd:
+	%StripeImageHeader(.Mole, 21,07, 0, $0000, 3)
+	dw "TOUPEIRAS"
+	.MoleEnd:
+
+	%StripeImageHeader(.Pokey, 14,14, 0, $0000, 3)
+	dw "CACTUBOLA"
+	.PokeyEnd:
+	
+	%StripeImageHeader(.BulletBill, 13,25, 0, $0000, 3)
+	dw "BILL BALA"
+	.BulletBillEnd:
+	
+	db $FF
+
+	Screen04:
+	incbin "images/ending/4/layer3.bin"
+	%StripeImageHeader(.Rex, 17,08, 0, $0000, 3)
+	dw "REX"
+	.RexEnd:
+
+	%StripeImageHeader(.Mega, 06,16, 0, $0000, 3)
+	dw "MONTY"
+	.MegaEnd:
+	%StripeImageHeader(.Mole, 05,17, 0, $0000, 3)
+	dw "GIGANTE"
+	.MoleEnd:
+
+	%StripeImageHeader(.BanzaiBill, 16,25, 0, $0000, 3)
+	dw "BILL BANZAI"
+	.BanzaiBillEnd:
+
+	db $FF
+
+	Screen05:
+	incbin "images/ending/5/layer3.bin"
+	%StripeImageHeader(.DinoRhino, 02,06, 0, $0000, 3)
+	dw "RINOSSAURO"
+	.DinoRhinoEnd:
+	%StripeImageHeader(.DinoTorch, 09,15, 0, $0000, 3)
+	dw "RINOMINI"
+	.DinoTorchEnd:
+	%StripeImageHeader(.Koopas, 16,25, 0, $0000, 3)
+	dw "KOOPAS"
+	.KoopasEnd:
+	db $FF
+
+	Screen06:
+	incbin "images/ending/6/layer3.bin"
+
+	%StripeImageHeader(.SpikeTop, 02,05, 0, $0000, 3)
+	dw "BESOUPETOS"
+	.SpikeTopEnd:
+
+	%StripeImageHeader(.SwooperAccent, 17+1,04, 0, $0000, 3)
+	 dw "/"
+	.SwooperAccentEnd:
+	%StripeImageHeader(.Swooper, 17,05, 0, $0000, 3)
+	dw "SUBITOS"
+	.SwooperEnd:
+
+	%StripeImageHeader(.BuzzyBeetle, 5,16, 0, $0000, 3)
+	dw "BESOUROS"
+	.BuzzyBeetleEnd:
+
+	%StripeImageHeader(.BlarggAccent, 17+5,18, 0, $0000, 3)
+	     dw "~"
+	.BlarggAccentEnd:
+	%StripeImageHeader(.Blargg, 17,19, 0, $0000, 3)
+	dw "BLARGaO"
+	.BlarggEnd:
+
+	db $FF
+
+	Screen07:
+	incbin "images/ending/7/layer3.bin"
+
+	%StripeImageHeader(.Blurp, 03,04, 0, $0000, 3)
+	dw "BLUB BLUBS"
+	.BlurpEnd:
+
+	%StripeImageHeader(.Urchin, 18,05, 0, $0000, 3)
+	dw "OURIcO"
+	.UrchinEnd:
+	%StripeImageHeader(.UrchinCedilla, 18+4,06, 0, $0000, 3)
+	    dw ";"
+	.UrchinCedillaEnd:
+
+	%StripeImageHeader(.PorcuPufferAccent, 07+3,12, 0, $0000, 3)
+	   dw "~"
+	.PorcuPufferAccentEnd:
+	%StripeImageHeader(.PorcuPuffer, 07,13, 0, $0000, 3)
+	dw "BALaO-CHEEP"
+	.PorcuPufferEnd:
+
+	%StripeImageHeader(.TorpedoTed, 18,18, 0, $0000, 3)
+	dw "TED TORPEDOS"
+	.TorpedoTedEnd:
+
+	%StripeImageHeader(.RipVanFish, 02,24, 0, $0000, 3)
+	dw "SONO-PEIXES"
+	.RipVanFishEnd:
+
+	db $FF
+
+	Screen08:
+	incbin "images/ending/8/layer3.bin"
+
+	%StripeImageHeader(.BooBuddies, 05,05, 0, $0000, 3)
+	dw "BUS"
+	.BooBuddiesEnd:
+
+	%StripeImageHeader(.FishinBoo, 17,06, 0, $0000, 3)
+	dw "BU PESCADOR"
+	.FishinBooEnd:
+
+	%StripeImageHeader(.BigBoo, 04,17, 0, $0000, 3)
+	dw "GRANDE BU"
+	.BigBooEnd:
+
+	%StripeImageHeader(.Eeries, 18,21, 0, $0000, 3)
+	dw "DINOBUS"
+	.EeriesEnd:
+
+	db $FF
+
+	Screen09:
+	incbin "images/ending/9/layer3.bin"
+
+	%StripeImageHeader(.Sparky, 11,03, 0, $0000, 3)
+	dw "FAGULHINHA"
+	.SparkyEnd:
+
+	%StripeImageHeader(.BonyBeetle, 18,07, 0, $0000, 3)
+	dw "BESOUROSSO"
+	.BonyBeetleEnd:
+
+	%StripeImageHeader(.DryBones, 02,09, 0, $0000, 3)
+	dw "QUEBRA-OSSOS"
+	.DryBonesEnd:
+
+	%StripeImageHeader(.Thwomp, 16,18, 0, $0000, 3)
+	dw "TUMBO"
+	.ThwompEnd:
+
+	%StripeImageHeader(.Thwimp, 22,21, 0, $0000, 3)
+	dw "TUMBIM"
+	.ThwimpEnd:
+
+	%StripeImageHeader(.HotheadAccent, 08+6,22, 0, $0000, 3)
+	      dw "~"
+	.HotheadAccentEnd:
+	%StripeImageHeader(.Hothead, 08,23, 0, $0000, 3)
+	dw "FAGULHaO"
+	.HotheadEnd:
+
+	db $FF
+
+	Screen10:
+	incbin "images/ending/10/layer3.bin"
+
+	%StripeImageHeader(.GrinderAccent, 16+4,04, 0, $0000, 3)
+	    dw "~"
+	.GrinderAccentEnd:
+	%StripeImageHeader(.Grinder, 16,05, 0, $0000, 3)
+	dw "SERRaO"
+	.GrinderEnd:
+
+	%StripeImageHeader(.BallNChain, 08,13, 0, $0000, 3)
+	dw "GIRA-CLAVA"
+	.BallNChainEnd:
+
+	%StripeImageHeader(.Fishbone, 13,18, 0, $0000, 3)
+	dw "ESPINHOSSOS"
+	.FishboneEnd:
+	
+	db $FF
+
+	Screen11:
+	incbin "images/ending/11/layer3.bin"
+
+	%StripeImageHeader(.Reznor, $0D, $0C, 0, $0000, 3)
+	dw "REZNOR"
+	.ReznorEnd:
+
+	db $FF
+
+	Screen12:
+	incbin "images/ending/12/layer3.bin"
+	%StripeImageHeader(.MechaKoopa, $0B, $0C, 0, $0000, 3)
+	dw "MECA-KOOPAS"
+	.MechaKoopaEnd:
+
+	db $FF
+
+	Screen13:
+	incbin "images/ending/13/layer3.bin"
+
+	%StripeImageHeader(.Morton1, 05,09, 0, $0000, 3)
+	dw "MORTON"
+	.Morton1End:
+
+	%StripeImageHeader(.Roy1, 23,09, 0, $0000, 3)
+	dw "ROY"
+	.Roy1End:
+
+	%StripeImageHeader(.Bowser, 13,16, 0, $0000, 3)
+	dw "BOWSER"
+	.BowserEnd:
+	%StripeImageHeader(.Lemmy2, 14,17, 0, $0000, 3)
+	dw "KUPA"
+	.Lemmy2End:
+
+	%StripeImageHeader(.Lemmy1, 02,18, 0, $0000, 3)
+	dw "LEMMY"
+	.Lemmy1End:
+
+	%StripeImageHeader(.Wendy1, 25,18, 0, $0000, 3)
+	dw "WENDY"
+	.Wendy1End:
+
+	%StripeImageHeader(.Iggy1, 06,24, 0, $0000, 3)
+	dw "IGGY"
+	.Iggy1End:
+
+	%StripeImageHeader(.Larry1, 22,24, 0, $0000, 3)
+	dw "LARRY"
+	.Larry1End:
+
+	%StripeImageHeader(.Ludwig1, 13,25, 0, $0000, 3)
+	dw "LUDWIG"
+	.Ludwig1End:
+
+	db $FF
+
+
+	SpecialWorld:
+	%StripeImageHeader(.Pumpkin, 08+2,20, 0, $0000, 3)
+	  dw "/"
+	.PumpkinEnd:
+	%StripeImageHeader(.Pumpkin2, 08,21, 0, $0000, 3)
+	dw "ABOBORA"
+	.Pumpkin2End:
+	dw $FFFF
+
+	%StripeImageHeader(.Pidget, 18,25, 0, $0000, 3)
+	dw "CORVAL"
+	.PidgetEnd:
+	dw $FFFF
+
+	%StripeImageHeader(.MaskKoopa, 15+1,24, 0, $0000, 3)
+	 dw "/"
+	.MaskKoopaEnd:
+	%StripeImageHeader(.MaskKoopa2, 15,25, 0, $0000, 3)
+	dw "MASCOOPAS"
+	.MaskKoopa2End:
+	.Unused1:
+	.Unused2:
+	.Unused3:
+	.Unused4:
+	.Unused5:
+	.Unused6:
+	.Unused7:
+	.Unused8:
+	.Unused9:
+	.Unused10:
+	dw $FFFF
 
 else
 	incbin "images/ending/1/layer3.bin"
 	%StripeImageHeader(.FishinLakitu, $12, $03, 0, $0000, 3)
 	dw "FISHIN'LAKITU"
-.FishinLakituEnd:
+	.FishinLakituEnd:
 	%StripeImageHeader(.ParaBomb, $02, $04, 0, $0000, 3)
 	dw "PARA-BOMB"
-.ParaBombEnd:
+	.ParaBombEnd:
 	%StripeImageHeader(.ParaGoomba, $07, $0B, 0, $0000, 3)
 	dw "PARA-GOOMBA"
-.ParaGoombaEnd:
+	.ParaGoombaEnd:
 	%StripeImageHeader(.Lakitu, $12, $0D, 0, $0000, 3)
 	dw "LAKITU"
-.LakituEnd:
+	.LakituEnd:
 	%StripeImageHeader(.Spiny, $08, $11, 0, $0000, 3)
 	dw "SPINY"
-.SpinyEnd:
+	.SpinyEnd:
 	%StripeImageHeader(.Wiggler, $17, $15, 0, $0000, 3)
 	dw "WIGGLER"
-.WigglerEnd:
+	.WigglerEnd:
 	%StripeImageHeader(.BobOmb, $0E, $19, 0, $0000, 3)
 	dw "BOB-OMB"
-.BobOmbEnd:
+	.BobOmbEnd:
 	db $FF
 
-Screen02:
+	Screen02:
 	incbin "images/ending/2/layer3.bin"
 	%StripeImageHeader(.AmazingFlying, $01, $04, 0, $0000, 3)
 	dw "AMAZING FLYIN'"
-.AmazingFlyingEnd:
+	.AmazingFlyingEnd:
 	%StripeImageHeader(.HammerBrother, $01, $05, 0, $0000, 3)
 	dw "HAMMER BROTHER"
-.HammerBrotherEnd:
+	.HammerBrotherEnd:
 	%StripeImageHeader(.SuperKoopa, $12, $07, 0, $0000, 3)
 	dw "SUPER KOOPA"
-.SuperKoopaEnd:
+	.SuperKoopaEnd:
 	%StripeImageHeader(.Chargin, $17, $12, 0, $0000, 3)
 	dw "CHARGIN'"
-.CharginEnd:
+	.CharginEnd:
 	%StripeImageHeader(.Chuck, $18, $13, 0, $0000, 3)
 	dw "CHUCK"
-.ChuckEnd:
+	.ChuckEnd:
 	%StripeImageHeader(.Jumping, $04, $15, 0, $0000, 3)
 	dw "JUMPING"
-.JumpingEnd:
+	.JumpingEnd:
 	%StripeImageHeader(.PirhanaPlant, $01, $16, 0, $0000, 3)
 	dw "PIRHANA PLANT"
-.PirhanaPlantEnd:
+	.PirhanaPlantEnd:
 	%StripeImageHeader(.Volcano, $10, $19, 0, $0000, 3)
 	dw "VOLCANO"
-.VolcanoEnd:
+	.VolcanoEnd:
 	%StripeImageHeader(.Lotus, $11, $1A, 0, $0000, 3)
 	dw "LOTUS"
-.LotusEnd:
+	.LotusEnd:
 	db $FF
 
-Screen03:
+	Screen03:
 	incbin "images/ending/3/layer3.bin"
 	%StripeImageHeader(.SumoBrother, $01, $04, 0, $0000, 3)
 	dw "SUMO BROTHER"
-.SumoBrotherEnd:
+	.SumoBrotherEnd:
 	%StripeImageHeader(.MontyMole, $15, $07, 0, $0000, 3)
 	dw "MONTY MOLE"
-.MontyMoleEnd:
+	.MontyMoleEnd:
 	%StripeImageHeader(.Pokey, $10, $0E, 0, $0000, 3)
 	dw "POKEY"
-.PokeyEnd:
+	.PokeyEnd:
 	%StripeImageHeader(.BulletBill, $0D, $19, 0, $0000, 3)
 	dw "BULLET BILL"
-.BulletBillEnd:
+	.BulletBillEnd:
 	db $FF
 
-Screen04:
+	Screen04:
 	incbin "images/ending/4/layer3.bin"
 	%StripeImageHeader(.Rex, $11, $08, 0, $0000, 3)
 	dw "REX"
-.RexEnd:
+	.RexEnd:
 	%StripeImageHeader(.MegaMole, $03, $10, 0, $0000, 3)
 	dw "MEGA MOLE"
-.MegaMoleEnd:
+	.MegaMoleEnd:
 	%StripeImageHeader(.BanzaiBill, $10, $19, 0, $0000, 3)
 	dw "BANZAI BILL"
-.BanzaiBillEnd:
+	.BanzaiBillEnd:
 	db $FF
 
-Screen05:
+	Screen05:
 	incbin "images/ending/5/layer3.bin"
 	%StripeImageHeader(.DinoRhino, $02, $06, 0, $0000, 3)
 	dw "DINO-RHINO"
-.DinoRhinoEnd:
+	.DinoRhinoEnd:
 	%StripeImageHeader(.DinoTorch, $09, $0F, 0, $0000, 3)
 	dw "DINO-TORCH"
-.DinoTorchEnd:
+	.DinoTorchEnd:
 	%StripeImageHeader(.Koopas, $10, $19, 0, $0000, 3)
 	dw "KOOPAS"
-.KoopasEnd:
+	.KoopasEnd:
 	db $FF
 
-Screen06:
+	Screen06:
 	incbin "images/ending/6/layer3.bin"
 	%StripeImageHeader(.SpikeTop, $02, $05, 0, $0000, 3)
 	dw "SPIKE TOP"
-.SpikeTopEnd:
+	.SpikeTopEnd:
 	%StripeImageHeader(.Swooper, $11, $05, 0, $0000, 3)
 	dw "SWOOPERS"
-.SwooperEnd:
+	.SwooperEnd:
 	%StripeImageHeader(.BuzzyBeetle, $03, $10, 0, $0000, 3)
 	dw "BUZZY BEETLE"
-.BuzzyBeetleEnd:
+	.BuzzyBeetleEnd:
 	%StripeImageHeader(.Blargg, $12, $13, 0, $0000, 3)
 	dw "BLARGG"
-.BlarggEnd:
+	.BlarggEnd:
 	db $FF
 
-Screen07:
+	Screen07:
 	incbin "images/ending/7/layer3.bin"
 	%StripeImageHeader(.Blurp, $04, $04, 0, $0000, 3)
 	dw "BLURPS"
-.BlurpEnd:
+	.BlurpEnd:
 	%StripeImageHeader(.Urchin, $12, $05, 0, $0000, 3)
 	dw "URCHIN"
-.UrchinEnd:
+	.UrchinEnd:
 	%StripeImageHeader(.PorcuPuffer, $07, $0D, 0, $0000, 3)
 	dw "PORCU-PUFFER"
-.PorcuPufferEnd:
+	.PorcuPufferEnd:
 	%StripeImageHeader(.TorpedoTed, $12, $12, 0, $0000, 3)
 	dw "TORPEDO TED"
-.TorpedoTedEnd:
+	.TorpedoTedEnd:
 	%StripeImageHeader(.RipVanFish, $02, $18, 0, $0000, 3)
 	dw "RIP VAN FISH"
-.RipVanFishEnd:
+	.RipVanFishEnd:
 	db $FF
 
-Screen08:
+	Screen08:
 	incbin "images/ending/8/layer3.bin"
 	%StripeImageHeader(.BooBuddies, $03, $05, 0, $0000, 3)
 	dw $7886	;\ Hex values draw the left and right " marks
 	dw "BOO"	;|
 	dw $3886	;|
 	dw " BUDDIES"	;/
-.BooBuddiesEnd:
+	.BooBuddiesEnd:
 	%StripeImageHeader(.FishinBoo, $12, $06, 0, $0000, 3)
 	dw "FISHIN'BOO"
-.FishinBooEnd:
+	.FishinBooEnd:
 	%StripeImageHeader(.BigBoo, $02, $11, 0, $0000, 3)
 	dw "THE BIG "
 	dw $7886	;\ Hex values draw the left and right " marks
 	dw "BOO"	;|
 	dw $3886	;/
-.BigBooEnd:
+	.BigBooEnd:
 	%StripeImageHeader(.Eeries, $13, $15, 0, $0000, 3)
 	dw "EERIES"
-.EeriesEnd:
+	.EeriesEnd:
 	db $FF
 
-Screen09:
+	Screen09:
 	incbin "images/ending/9/layer3.bin"
 	%StripeImageHeader(.Sparky, $0B, $03, 0, $0000, 3)
 	dw "LIL SPARKY"
-.SparkyEnd:
+	.SparkyEnd:
 	%StripeImageHeader(.BonyBeetle, $11, $07, 0, $0000, 3)
 	dw "BONY BEETLE"
-.BonyBeetleEnd:
+	.BonyBeetleEnd:
 	%StripeImageHeader(.DryBones, $02, $09, 0, $0000, 3)
 	dw "DRY BONES"
-.DryBonesEnd:
+	.DryBonesEnd:
 	%StripeImageHeader(.Thwomp, $0F, $12, 0, $0000, 3)
 	dw "THWOMP"
-.ThwompEnd:
+	.ThwompEnd:
 	%StripeImageHeader(.Thwimp, $16, $15, 0, $0000, 3)
 	dw "THWIMP"
-.ThwimpEnd:
+	.ThwimpEnd:
 	%StripeImageHeader(.Hothead, $09, $17, 0, $0000, 3)
 	dw "HOTHEAD"
-.HotheadEnd:
+	.HotheadEnd:
 	db $FF
 
-Screen10:
+	Screen10:
 	incbin "images/ending/10/layer3.bin"
 	%StripeImageHeader(.Grinder, $10, $04, 0, $0000, 3)
 	dw "GRINDER"
-.GrinderEnd:
+	.GrinderEnd:
 	%StripeImageHeader(.BallNChain, $07, $0D, 0, $0000, 3)
 	dw "BALL"
 	dw $7885		; Draws the backwards '
 	dw "N'CHAIN"
-.BallNChainEnd:
+	.BallNChainEnd:
 	%StripeImageHeader(.Fishbone, $0D, $12, 0, $0000, 3)
 	dw "FISHBONE"
-.FishboneEnd:
+	.FishboneEnd:
 	db $FF
 
-Screen11:
+	Screen11:
 	incbin "images/ending/11/layer3.bin"
 	%StripeImageHeader(.Reznor, $0D, $0C, 0, $0000, 3)
 	dw "REZNOR"
-.ReznorEnd:
+	.ReznorEnd:
 	db $FF
 
-Screen12:
+	Screen12:
 	incbin "images/ending/12/layer3.bin"
 	%StripeImageHeader(.MechaKoopa, $0B, $0C, 0, $0000, 3)
 	dw "MECHAKOOPAS"
-.MechaKoopaEnd:
+	.MechaKoopaEnd:
 	db $FF
 
-Screen13:
+	Screen13:
 	incbin "images/ending/13/layer3.bin"
 	%StripeImageHeader(.Morton1, $05, $09, 0, $0000, 3)
 	dw "MORTON"
-.Morton1End:
+	.Morton1End:
 	%StripeImageHeader(.Morton2, $04, $0A, 0, $0000, 3)
 	dw "KOOPA JR."
-.Morton2End:
+	.Morton2End:
 	%StripeImageHeader(.Roy1, $17, $09, 0, $0000, 3)
 	dw "ROY"
-.Roy1End:
+	.Roy1End:
 	%StripeImageHeader(.Roy2, $16, $0A, 0, $0000, 3)
 	dw "KOOPA"
-.Roy2End:
+	.Roy2End:
 	%StripeImageHeader(.Bowser, $0D, $10, 0, $0000, 3)
 	dw "BOWSER"
-.BowserEnd:
+	.BowserEnd:
 	%StripeImageHeader(.Lemmy1, $03, $12, 0, $0000, 3)
 	dw "LEMMY"
-.Lemmy1End:
+	.Lemmy1End:
 	%StripeImageHeader(.Lemmy2, $03, $13, 0, $0000, 3)
 	dw "KOOPA"
-.Lemmy2End:
+	.Lemmy2End:
 	%StripeImageHeader(.Wendy1, $19, $12, 0, $0000, 3)
 	dw "WENDY"
-.Wendy1End:
+	.Wendy1End:
 	%StripeImageHeader(.Wendy2, $18, $13, 0, $0000, 3)
 	dw "O.KOOPA"
-.Wendy2End:
+	.Wendy2End:
 	%StripeImageHeader(.Iggy1, $06, $18, 0, $0000, 3)
 	dw "IGGY"
-.Iggy1End:
+	.Iggy1End:
 	%StripeImageHeader(.Iggy2, $06, $19, 0, $0000, 3)
 	dw "KOOPA"
-.Iggy2End:
+	.Iggy2End:
 	%StripeImageHeader(.Larry1, $17, $18, 0, $0000, 3)
 	dw "LARRY"
-.Larry1End:
+	.Larry1End:
 	%StripeImageHeader(.Larry2, $17, $19, 0, $0000, 3)
 	dw "KOOPA"
-.Larry2End:
+	.Larry2End:
 	%StripeImageHeader(.Ludwig1, $0E, $19, 0, $0000, 3)
 	dw "LUDWIG"
-.Ludwig1End:
+	.Ludwig1End:
 	%StripeImageHeader(.Ludwig2, $0D, $1A, 0, $0000, 3)
 	dw "VON KOOPA"
-.Ludwig2End:
+	.Ludwig2End:
 	db $FF
 
-SpecialWorld:
-.Unused1:
+	SpecialWorld:
+	.Unused1:
 	dw $FFFF
 	%StripeImageHeader(.Pumpkin, $01, $16, 0, $0000, 3)
 	dw "PUMPKIN"
-.PumpkinEnd:
+	.PumpkinEnd:
 	dw $FFFF
 	%StripeImageHeader(.Pidget, $0D, $19, 0, $0000, 3)
 	dw "PIDGIT"
-.PidgetEnd:
+	.PidgetEnd:
 	dw $FFFF
-.Unused2:
+	.Unused2:
 	dw $FFFF
 	%StripeImageHeader(.MaskKoopa, $0E, $19, 0, $0000, 3)
 	dw "MASK KOOPAS"
-.MaskKoopaEnd:
+	.MaskKoopaEnd:
 	dw $FFFF
 
-.Unused3:
+	.Unused3:
 	dw $FFFF
-.Unused4:
+	.Unused4:
 	dw $FFFF
-.Unused5:
+	.Unused5:
 	dw $FFFF
-.Unused6:
+	.Unused6:
 	dw $FFFF
-.Unused7:
+	.Unused7:
 	dw $FFFF
-.Unused8:
+	.Unused8:
 	dw $FFFF
-.Unused9:
+	.Unused9:
 	dw $FFFF
-.Unused10:
+	.Unused10:
 	dw $FFFF
 endif
 cleartable
@@ -53232,602 +54441,844 @@ cleartable
 
 Main:
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
-Iggy:
-.Line1:
-db $52,$50,$00,$01
-db $59,$39
-db $52,$5A,$00,$01
-db $5B,$39
-db $52,$64,$00,$2F
-db $47,$39,$5A,$39,$4A,$39,$4B,$39,$5A,$39,$11,$39,$02,$39,$14,$39,$5D,$39,$50,$39,$09,$39,$5C,$39,$10,$39,$5D,$39,$08,$39,$01,$39,$09,$39,$84,$39,$14,$39,$6C,$39,$5F,$39,$65,$39,$61,$39,$77,$39
-.Line1End:
+	Iggy:
+	.Line1:
+	db $52,$50,$00,$01
+	db $59,$39
+	db $52,$5A,$00,$01
+	db $5B,$39
+	db $52,$64,$00,$2F
+	db $47,$39,$5A,$39,$4A,$39,$4B,$39,$5A,$39,$11,$39,$02,$39,$14,$39,$5D,$39,$50,$39,$09,$39,$5C,$39,$10,$39,$5D,$39,$08,$39,$01,$39,$09,$39,$84,$39,$14,$39,$6C,$39,$5F,$39,$65,$39,$61,$39,$77,$39
+	.Line1End:
+		db $FF
+	.Line2:
+	db $52,$92,$00,$01
+	db $5B,$39
+	db $52,$97,$00,$01
+	db $59,$39
+	db $52,$9B,$00,$01
+	db $59,$39
+	db $52,$A4,$00,$2F
+	db $0D,$39,$50,$39,$09,$39,$0D,$39,$5D,$39,$67,$39,$60,$39,$6A,$39,$0D,$39,$0E,$39,$15,$39,$5D,$39,$5F,$39,$65,$39,$61,$39,$14,$39,$19,$39,$54,$39,$02,$39,$10,$39,$5D,$39,$0D,$39,$19,$39,$07,$39
+	.Line2End:
+		db $FF
+	.Line3:
+	db $52,$D0,$00,$01
+	db $59,$39
+	db $52,$D3,$00,$01
+	db $59,$39
+	db $52,$E4,$00,$2D
+	db $12,$39,$08,$39,$57,$39,$0D,$39,$5D,$39,$52,$39,$04,$39,$19,$39,$77,$39,$0D,$39,$0A,$39,$06,$39,$0D,$39,$09,$39,$5D,$39,$64,$39,$5A,$39,$46,$39,$41,$39,$18,$39,$01,$39,$1E,$39,$18,$39
+	.Line3End:
+		db $FF
+	.Line4:
+	db $53,$05,$00,$01
+	db $59,$39
+	db $53,$06,$00,$01
+	db $59,$39
+	db $53,$09,$00,$01
+	db $59,$39
+	db $53,$24,$00,$17
+	db $0D,$39,$16,$39,$0D,$39,$0F,$39,$14,$39,$10,$39,$00,$39,$55,$39,$19,$39,$09,$39,$0D,$39,$78,$39
+	.Line4End:
+		db $FF
+
+	Morton:
+	.Line1:
+	db $52,$4C,$00,$01
+	db $59,$39
+	db $52,$53,$00,$01
+	db $5B,$39
+	db $52,$64,$00,$2F
+	db $67,$39,$60,$39,$6A,$39,$0D,$39,$0E,$39,$15,$39,$5D,$39,$12,$39,$15,$39,$21,$39,$1C,$39,$14,$39,$6C,$39,$5F,$39,$65,$39,$61,$39,$1D,$39,$5D,$39,$1E,$39,$7C,$39,$0F,$39,$06,$39,$10,$39,$5D,$39
+	.Line1End:
+		db $FF
+	.Line2:
+	db $52,$84,$00,$01
+	db $59,$39
+	db $52,$96,$00,$01
+	db $59,$39
+	db $52,$99,$00,$01
+	db $59,$39
+	db $52,$A4,$00,$2F
+	db $64,$39,$5A,$39,$46,$39,$41,$39,$18,$39,$01,$39,$1E,$39,$04,$39,$20,$39,$5D,$39,$0E,$39,$04,$39,$14,$39,$0B,$39,$04,$39,$01,$39,$14,$39,$5D,$39,$61,$39,$40,$39,$63,$39,$64,$39,$5A,$39,$43,$39
+	.Line2End:
+		db $FF
+	.Line3:
+	db $52,$C9,$00,$01
+	db $59,$39
+	db $52,$D2,$00,$01
+	db $59,$39
+	db $52,$D7,$00,$01
+	db $59,$39
+	db $52,$E4,$00,$2F
+	db $18,$39,$11,$39,$0A,$39,$0A,$39,$21,$39,$10,$39,$01,$39,$05,$39,$3F,$39,$07,$39,$14,$39,$08,$39,$51,$39,$5D,$39,$11,$39,$21,$39,$52,$39,$A7,$39,$46,$39,$04,$39,$19,$39,$0E,$39,$04,$39,$19,$39
+	.Line3End:
+		db $FF
+	.Line4:
+	db $53,$0B,$00,$01
+	db $5B,$39
+	db $53,$24,$00,$2F
+	db $03,$39,$10,$39,$01,$39,$56,$39,$04,$39,$3D,$39,$5D,$39,$79,$39,$5A,$39,$7B,$39,$16,$39,$1C,$39,$14,$39,$02,$39,$21,$39,$1C,$39,$01,$39,$1E,$39,$5D,$39,$01,$39,$04,$39,$12,$39,$3F,$39,$3D,$39
+	.Line4End:
+		db $FF
+
+	Lemmy:
+	.Line1:
+	db $52,$4D,$00,$01
+	db $59,$39
+	db $52,$54,$00,$01
+	db $5B,$39
+	db $52,$64,$00,$2F
+	db $67,$39,$60,$39,$6A,$39,$0D,$39,$0E,$39,$15,$39,$5D,$39,$08,$39,$21,$39,$15,$39,$21,$39,$1C,$39,$14,$39,$6C,$39,$5F,$39,$65,$39,$61,$39,$1D,$39,$5D,$39,$1E,$39,$7C,$39,$0F,$39,$06,$39,$10,$39
+	.Line1End:
+		db $FF
+	.Line2:
+	db $52,$A4,$00,$2F
+	db $54,$39,$7C,$39,$11,$39,$5D,$39,$16,$39,$11,$39,$01,$39,$51,$39,$78,$39,$5D,$39,$09,$39,$04,$39,$09,$39,$6C,$39,$5A,$39,$4A,$39,$15,$39,$5D,$39,$06,$39,$58,$39,$09,$39,$05,$39,$52,$39,$56,$39
+	.Line2End:
+		db $FF
+	.Line3:
+	db $52,$C9,$00,$01
+	db $59,$39
+	db $52,$E4,$00,$2F
+	db $1D,$39,$09,$39,$1D,$39,$5D,$39,$1A,$39,$11,$39,$55,$39,$1E,$39,$00,$39,$04,$39,$14,$39,$4A,$39,$48,$39,$65,$39,$7B,$39,$77,$39,$5D,$39,$11,$39,$7C,$39,$10,$39,$01,$39,$52,$39,$01,$39,$11,$39
+	.Line3End:
+		db $FF
+	.Line4:
+	db $53,$08,$00,$01
+	db $59,$39
+	db $53,$0C,$00,$01
+	db $59,$39
+	db $53,$12,$00,$01
+	db $59,$39
+	db $53,$24,$00,$27
+	db $09,$39,$0D,$39,$20,$39,$5D,$39,$11,$39,$21,$39,$52,$39,$0D,$39,$16,$39,$12,$39,$5D,$39,$52,$39,$56,$39,$14,$39,$10,$39,$00,$39,$5C,$39,$02,$39,$04,$39,$3F,$39
+	.Line4End:
+		db $FF
+
+	Ludwig:
+	.Line1:
+	db $52,$46,$00,$01
+	db $59,$39
+	db $52,$4D,$00,$01
+	db $5B,$39
+	db $52,$64,$00,$2F
+	db $1F,$39,$21,$39,$15,$39,$21,$39,$1C,$39,$14,$39,$6C,$39,$5F,$39,$65,$39,$61,$39,$1D,$39,$5D,$39,$52,$39,$21,$39,$11,$39,$04,$39,$5F,$39,$60,$39,$62,$39,$5A,$39,$5D,$39,$67,$39,$60,$39,$6A,$39
+	.Line1End:
+		db $FF
+	.Line2:
+	db $52,$A4,$00,$2F
+	db $0D,$39,$0E,$39,$15,$39,$5D,$39,$07,$39,$57,$39,$04,$39,$20,$39,$5D,$39,$19,$39,$1F,$39,$01,$39,$14,$39,$1D,$39,$55,$39,$12,$39,$15,$39,$01,$39,$7C,$39,$10,$39,$01,$39,$05,$39,$3F,$39,$3D,$39
+	.Line2End:
+		db $FF
+	.Line3:
+	db $52,$C5,$00,$01
+	db $59,$39
+	db $52,$CD,$00,$01
+	db $59,$39
+	db $52,$D1,$00,$01
+	db $59,$39
+	db $52,$D2,$00,$01
+	db $59,$39
+	db $52,$E4,$00,$2F
+	db $52,$39,$0C,$39,$77,$39,$11,$39,$04,$39,$52,$39,$01,$39,$11,$39,$5D,$39,$10,$39,$56,$39,$07,$39,$11,$39,$04,$39,$10,$39,$51,$39,$52,$39,$01,$39,$11,$39,$01,$39,$02,$39,$5D,$39,$17,$39,$09,$39
+	.Line3End:
+		db $FF
+	.Line4:
+	db $53,$04,$00,$01
+	db $59,$39
+	db $53,$15,$00,$01
+	db $59,$39
+	db $53,$16,$00,$01
+	db $59,$39
+	db $53,$24,$00,$2F
+	db $51,$39,$14,$39,$1D,$39,$55,$39,$3F,$39,$15,$39,$0D,$39,$09,$39,$10,$39,$1D,$39,$55,$39,$77,$39,$53,$39,$06,$39,$56,$39,$07,$39,$11,$39,$04,$39,$10,$39,$51,$39,$56,$39,$14,$39,$04,$39,$3D,$39
+	.Line4End:
+		db $FF
+
+	Roy:
+	.Line1:
+	db $52,$4B,$00,$01
+	db $59,$39
+	db $52,$4C,$00,$01
+	db $59,$39
+	db $52,$53,$00,$01
+	db $5B,$39
+	db $52,$64,$00,$2F
+	db $67,$39,$60,$39,$6A,$39,$0D,$39,$0E,$39,$15,$39,$5D,$39,$07,$39,$15,$39,$21,$39,$1C,$39,$14,$39,$6C,$39,$5F,$39,$65,$39,$61,$39,$77,$39,$1E,$39,$7C,$39,$0F,$39,$06,$39,$5D,$39,$1E,$39,$7C,$39
+	.Line1End:
+		db $FF
+	.Line2:
+	db $52,$8E,$00,$01
+	db $59,$39
+	db $52,$8F,$00,$01
+	db $59,$39
+	db $52,$94,$00,$01
+	db $59,$39
+	db $52,$95,$00,$01
+	db $59,$39
+	db $52,$A4,$00,$2F
+	db $11,$39,$5D,$39,$1D,$39,$55,$39,$77,$39,$53,$39,$06,$39,$56,$39,$07,$39,$11,$39,$04,$39,$10,$39,$51,$39,$0D,$39,$78,$39,$5D,$39,$0D,$39,$04,$39,$5D,$39,$07,$39,$14,$39,$08,$39,$51,$39,$14,$39
+	.Line2End:
+		db $FF
+	.Line3:
+	db $52,$CE,$00,$01
+	db $59,$39
+	db $52,$D5,$00,$01
+	db $59,$39
+	db $52,$D7,$00,$01
+	db $59,$39
+	db $52,$D9,$00,$01
+	db $59,$39
+	db $52,$E4,$00,$2F
+	db $7B,$39,$44,$39,$6C,$39,$4E,$39,$5A,$39,$11,$39,$02,$39,$15,$39,$5D,$39,$52,$39,$0C,$39,$14,$39,$6C,$39,$5A,$39,$4A,$39,$11,$39,$5D,$39,$64,$39,$63,$39,$6C,$39,$4C,$39,$10,$39,$01,$39,$7C,$39
+	.Line3End:
+		db $FF
+	.Line4:
+	db $53,$04,$00,$01
+	db $5B,$39
+	db $53,$09,$00,$01
+	db $59,$39
+	db $53,$13,$00,$01
+	db $59,$39
+	db $53,$17,$00,$01
+	db $59,$39
+	db $53,$24,$00,$2F
+	db $15,$39,$01,$39,$78,$39,$5D,$39,$0F,$39,$51,$39,$52,$39,$56,$39,$0D,$39,$0D,$39,$04,$39,$01,$39,$14,$39,$5D,$39,$15,$39,$09,$39,$19,$39,$55,$39,$15,$39,$09,$39,$19,$39,$55,$39,$5A,$39,$3F,$39
+	.Line4End:
+		db $FF
+
+	Wendy:
+	.Line1:
+	db $52,$47,$00,$01
+	db $59,$39
+	db $52,$4E,$00,$01
+	db $5B,$39
+	db $52,$64,$00,$2B
+	db $5D,$39,$5C,$39,$05,$39,$15,$39,$21,$39,$1C,$39,$14,$39,$6C,$39,$5F,$39,$65,$39,$61,$39,$77,$39,$0D,$39,$50,$39,$09,$39,$0D,$39,$67,$39,$60,$39,$6A,$39,$0D,$39,$0E,$39,$3F,$39
+	.Line1End:
+		db $FF
+	.Line2:
+	db $52,$8D,$00,$01
+	db $59,$39
+	db $52,$96,$00,$01
+	db $5B,$39
+	db $52,$A4,$00,$2D
+	db $5D,$39,$07,$39,$14,$39,$08,$39,$51,$39,$14,$39,$5D,$39,$0E,$39,$21,$39,$54,$39,$0F,$39,$0B,$39,$21,$39,$12,$39,$15,$39,$5D,$39,$5F,$39,$65,$39,$61,$39,$14,$39,$0D,$39,$12,$39,$14,$39
+	.Line2End:
+		db $FF
+	.Line3:
+	db $52,$C7,$00,$01
+	db $59,$39
+	db $52,$D2,$00,$01
+	db $59,$39
+	db $52,$D3,$00,$01
+	db $59,$39
+	db $52,$E4,$00,$2B
+	db $5D,$39,$01,$39,$55,$39,$05,$39,$0E,$39,$77,$39,$16,$39,$20,$39,$05,$39,$0D,$39,$1C,$39,$14,$39,$5D,$39,$D0,$39,$4D,$39,$04,$39,$00,$39,$56,$39,$20,$39,$09,$39,$01,$39,$78,$39
+	.Line3End:
+		db $FF
+	.Line4:
+	db $53,$07,$00,$01
+	db $59,$39
+	db $53,$0E,$00,$01
+	db $59,$39
+	db $53,$10,$00,$01
+	db $59,$39
+	db $53,$15,$00,$01
+	db $59,$39
+	db $53,$24,$00,$25
+	db $5D,$39,$01,$39,$0C,$39,$06,$39,$5D,$39,$67,$39,$60,$39,$6A,$39,$3F,$39,$5D,$39,$04,$39,$21,$39,$15,$39,$57,$39,$5D,$39,$FF,$39,$48,$39,$6B,$39,$3F,$39
+	.Line4End:
+		db $FF
+
+	Larry:
+	.Line1:
+	db $52,$4A,$00,$01
+	db $59,$39
+	db $52,$4F,$00,$01
+	db $5B,$39
+	db $52,$64,$00,$2D
+	db $0F,$39,$01,$39,$12,$39,$5D,$39,$08,$39,$01,$39,$07,$39,$14,$39,$6C,$39,$5F,$39,$65,$39,$61,$39,$77,$39,$0D,$39,$50,$39,$09,$39,$0D,$39,$3F,$39,$5D,$39,$14,$39,$07,$39,$0A,$39,$15,$39
+	.Line1End:
+		db $FF
+	.Line2:
+	db $52,$84,$00,$01
+	db $5B,$39
+	db $52,$89,$00,$01
+	db $59,$39
+	db $52,$95,$00,$01
+	db $5B,$39
+	db $52,$96,$00,$01
+	db $59,$39
+	db $52,$A4,$00,$2D
+	db $79,$39,$5A,$39,$7B,$39,$16,$39,$1C,$39,$04,$39,$5D,$39,$11,$39,$20,$39,$58,$39,$57,$39,$10,$39,$01,$39,$56,$39,$5D,$39,$5F,$39,$65,$39,$61,$39,$09,$39,$84,$39,$02,$39,$14,$39,$1A,$39
+	.Line2End:
+		db $FF
+	.Line3:
+	db $52,$C4,$00,$01
+	db $59,$39
+	db $52,$C5,$00,$01
+	db $59,$39
+	db $52,$C7,$00,$01
+	db $5B,$39
+	db $52,$D0,$00,$01
+	db $59,$39
+	db $52,$E4,$00,$2D
+	db $17,$39,$09,$39,$12,$39,$79,$39,$5A,$39,$7B,$39,$16,$39,$1C,$39,$77,$39,$0D,$39,$0A,$39,$06,$39,$0D,$39,$09,$39,$5D,$39,$07,$39,$14,$39,$51,$39,$84,$39,$02,$39,$55,$39,$EF,$39,$02,$39
+	.Line3End:
+		db $FF
+	.Line4:
+	db $53,$06,$00,$01
+	db $59,$39
+	db $53,$0F,$00,$01
+	db $59,$39
+	db $53,$13,$00,$01
+	db $59,$39
+	db $53,$14,$00,$01
+	db $59,$39
+	db $53,$24,$00,$2B
+	db $63,$39,$4C,$39,$64,$39,$12,$39,$18,$39,$01,$39,$58,$39,$77,$39,$11,$39,$55,$39,$1D,$39,$11,$39,$0A,$39,$07,$39,$11,$39,$04,$39,$10,$39,$51,$39,$56,$39,$14,$39,$04,$39,$3D,$39
+	.Line4End:
+		db $FF
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	cleartable
+	table "tables/fonts/standard_16bit_br.txt"
+
+	Iggy:
+	%StripeImageHeader(.Line1, $04, $13, 0, $0000, 3)
+	dw "Mario e Luigi derrotaram"
+	.Line1End:
 	db $FF
-.Line2:
-db $52,$92,$00,$01
-db $5B,$39
-db $52,$97,$00,$01
-db $59,$39
-db $52,$9B,$00,$01
-db $59,$39
-db $52,$A4,$00,$2F
-db $0D,$39,$50,$39,$09,$39,$0D,$39,$5D,$39,$67,$39,$60,$39,$6A,$39,$0D,$39,$0E,$39,$15,$39,$5D,$39,$5F,$39,$65,$39,$61,$39,$14,$39,$19,$39,$54,$39,$02,$39,$10,$39,$5D,$39,$0D,$39,$19,$39,$07,$39
-.Line2End:
+	%StripeImageHeader(.Line2, $04, $14, 0, $0000, 3)
+	dw "o maluco Iggy no castelo"
+	.Line2End:
 	db $FF
-.Line3:
-db $52,$D0,$00,$01
-db $59,$39
-db $52,$D3,$00,$01
-db $59,$39
-db $52,$E4,$00,$2D
-db $12,$39,$08,$39,$57,$39,$0D,$39,$5D,$39,$52,$39,$04,$39,$19,$39,$77,$39,$0D,$39,$0A,$39,$06,$39,$0D,$39,$09,$39,$5D,$39,$64,$39,$5A,$39,$46,$39,$41,$39,$18,$39,$01,$39,$1E,$39,$18,$39
-.Line3End:
+	%StripeImageHeader(.Line3, $04, $15, 0, $0000, 3)
+	dw "N# 1 e resgataram um"
+	.Line3End:
 	db $FF
-.Line4:
-db $53,$05,$00,$01
-db $59,$39
-db $53,$06,$00,$01
-db $59,$39
-db $53,$09,$00,$01
-db $59,$39
-db $53,$24,$00,$17
-db $0D,$39,$16,$39,$0D,$39,$0F,$39,$14,$39,$10,$39,$00,$39,$55,$39,$19,$39,$09,$39,$0D,$39,$78,$39
-.Line4End:
+	%StripeImageHeader(.Line4, $04, $16, 0, $0000, 3)
+	dw "amigo do Yoshi, ainda"
+	.Line4End:
+	db $FF
+	%StripeImageHeader(.Line5, $04, $17, 0, $0000, 3)
+	dw "preso dentro de um ovo."
+	.Line5End:
+	db $FF
+	%StripeImageHeader(.Line6, $04, $18, 0, $0000, 3)
+	dw "Juntos, eles ir@o partir"
+	.Line6End:
+	db $FF
+	%StripeImageHeader(.Line7, $04, $19, 0, $0000, 3)
+	dw "para uma regi@o em forma"
+	.Line7End:
+	db $FF
+	%StripeImageHeader(.Line8, $04, $1A, 0, $0000, 3)
+	dw "de rosquinha."
+	.Line8End:
 	db $FF
 
-Morton:
-.Line1:
-db $52,$4C,$00,$01
-db $59,$39
-db $52,$53,$00,$01
-db $5B,$39
-db $52,$64,$00,$2F
-db $67,$39,$60,$39,$6A,$39,$0D,$39,$0E,$39,$15,$39,$5D,$39,$12,$39,$15,$39,$21,$39,$1C,$39,$14,$39,$6C,$39,$5F,$39,$65,$39,$61,$39,$1D,$39,$5D,$39,$1E,$39,$7C,$39,$0F,$39,$06,$39,$10,$39,$5D,$39
-.Line1End:
+	Morton:
+	%StripeImageHeader(.Line1, $04, $13, 0, $0000, 3)
+	dw "O capanga Morton e seu"
+	.Line1End:
 	db $FF
-.Line2:
-db $52,$84,$00,$01
-db $59,$39
-db $52,$96,$00,$01
-db $59,$39
-db $52,$99,$00,$01
-db $59,$39
-db $52,$A4,$00,$2F
-db $64,$39,$5A,$39,$46,$39,$41,$39,$18,$39,$01,$39,$1E,$39,$04,$39,$20,$39,$5D,$39,$0E,$39,$04,$39,$14,$39,$0B,$39,$04,$39,$01,$39,$14,$39,$5D,$39,$61,$39,$40,$39,$63,$39,$64,$39,$5A,$39,$43,$39
-.Line2End:
+	%StripeImageHeader(.Line2, $04, $14, 0, $0000, 3)
+	dw "castelo agora s@o apenas"
+	.Line2End:
 	db $FF
-.Line3:
-db $52,$C9,$00,$01
-db $59,$39
-db $52,$D2,$00,$01
-db $59,$39
-db $52,$D7,$00,$01
-db $59,$39
-db $52,$E4,$00,$2F
-db $18,$39,$11,$39,$0A,$39,$0A,$39,$21,$39,$10,$39,$01,$39,$05,$39,$3F,$39,$07,$39,$14,$39,$08,$39,$51,$39,$5D,$39,$11,$39,$21,$39,$52,$39,$A7,$39,$46,$39,$04,$39,$19,$39,$0E,$39,$04,$39,$19,$39
-.Line3End:
+	%StripeImageHeader(.Line3, $04, $15, 0, $0000, 3)
+	dw "mem%rias. A pr%xima *rea"
+	.Line3End:
 	db $FF
-.Line4:
-db $53,$0B,$00,$01
-db $5B,$39
-db $53,$24,$00,$2F
-db $03,$39,$10,$39,$01,$39,$56,$39,$04,$39,$3D,$39,$5D,$39,$79,$39,$5A,$39,$7B,$39,$16,$39,$1C,$39,$14,$39,$02,$39,$21,$39,$1C,$39,$01,$39,$1E,$39,$5D,$39,$01,$39,$04,$39,$12,$39,$3F,$39,$3D,$39
-.Line4End:
+	%StripeImageHeader(.Line4, $04, $16, 0, $0000, 3)
+	dw "& o interior de um domo."
+	.Line4End:
+	db $FF
+	%StripeImageHeader(.Line5, $04, $17, 0, $0000, 3)
+	dw "Que armadilhas esperam"
+	.Line5End:
+	db $FF
+	%StripeImageHeader(.Line6, $04, $18, 0, $0000, 3)
+	dw "pelos irm@os nesse novo"
+	.Line6End:
+	db $FF
+	%StripeImageHeader(.Line7, $04, $19, 0, $0000, 3)
+	dw "mundo? E o que ser* da"
+	.Line7End:
+	db $FF
+	%StripeImageHeader(.Line8, $04, $1A, 0, $0000, 3)
+	dw "Princesa Cogumelo?"
+	.Line8End:
 	db $FF
 
-Lemmy:
-.Line1:
-db $52,$4D,$00,$01
-db $59,$39
-db $52,$54,$00,$01
-db $5B,$39
-db $52,$64,$00,$2F
-db $67,$39,$60,$39,$6A,$39,$0D,$39,$0E,$39,$15,$39,$5D,$39,$08,$39,$21,$39,$15,$39,$21,$39,$1C,$39,$14,$39,$6C,$39,$5F,$39,$65,$39,$61,$39,$1D,$39,$5D,$39,$1E,$39,$7C,$39,$0F,$39,$06,$39,$10,$39
-.Line1End:
+	Lemmy:
+	%StripeImageHeader(.Line1, $04, $13, 0, $0000, 3)
+	dw "Mario e Luigi est@o"
+	.Line1End:
 	db $FF
-.Line2:
-db $52,$A4,$00,$2F
-db $54,$39,$7C,$39,$11,$39,$5D,$39,$16,$39,$11,$39,$01,$39,$51,$39,$78,$39,$5D,$39,$09,$39,$04,$39,$09,$39,$6C,$39,$5A,$39,$4A,$39,$15,$39,$5D,$39,$06,$39,$58,$39,$09,$39,$05,$39,$52,$39,$56,$39
-.Line2End:
+	%StripeImageHeader(.Line2, $04, $14, 0, $0000, 3)
+	dw "aliviados por triunfarem"
+	.Line2End:
 	db $FF
-.Line3:
-db $52,$C9,$00,$01
-db $59,$39
-db $52,$E4,$00,$2F
-db $1D,$39,$09,$39,$1D,$39,$5D,$39,$1A,$39,$11,$39,$55,$39,$1E,$39,$00,$39,$04,$39,$14,$39,$4A,$39,$48,$39,$65,$39,$7B,$39,$77,$39,$5D,$39,$11,$39,$7C,$39,$10,$39,$01,$39,$52,$39,$01,$39,$11,$39
-.Line3End:
+	%StripeImageHeader(.Line3, $04, $15, 0, $0000, 3)
+	dw "sobre Lemmy no terceiro"
+	.Line3End:
 	db $FF
-.Line4:
-db $53,$08,$00,$01
-db $59,$39
-db $53,$0C,$00,$01
-db $59,$39
-db $53,$12,$00,$01
-db $59,$39
-db $53,$24,$00,$27
-db $09,$39,$0D,$39,$20,$39,$5D,$39,$11,$39,$21,$39,$52,$39,$0D,$39,$16,$39,$12,$39,$5D,$39,$52,$39,$56,$39,$14,$39,$10,$39,$00,$39,$5C,$39,$02,$39,$04,$39,$3F,$39
-.Line4End:
+	%StripeImageHeader(.Line4, $04, $16, 0, $0000, 3)
+	dw "castelo. A jornada est*"
+	.Line4End:
 	db $FF
-
-Ludwig:
-.Line1:
-db $52,$46,$00,$01
-db $59,$39
-db $52,$4D,$00,$01
-db $5B,$39
-db $52,$64,$00,$2F
-db $1F,$39,$21,$39,$15,$39,$21,$39,$1C,$39,$14,$39,$6C,$39,$5F,$39,$65,$39,$61,$39,$1D,$39,$5D,$39,$52,$39,$21,$39,$11,$39,$04,$39,$5F,$39,$60,$39,$62,$39,$5A,$39,$5D,$39,$67,$39,$60,$39,$6A,$39
-.Line1End:
+	%StripeImageHeader(.Line5, $04, $17, 0, $0000, 3)
+	dw "ficando cada vez mais"
+	.Line5End:
 	db $FF
-.Line2:
-db $52,$A4,$00,$2F
-db $0D,$39,$0E,$39,$15,$39,$5D,$39,$07,$39,$57,$39,$04,$39,$20,$39,$5D,$39,$19,$39,$1F,$39,$01,$39,$14,$39,$1D,$39,$55,$39,$12,$39,$15,$39,$01,$39,$7C,$39,$10,$39,$01,$39,$05,$39,$3F,$39,$3D,$39
-.Line2End:
+	%StripeImageHeader(.Line6, $04, $18, 0, $0000, 3)
+	dw "dif|cil. E ser* ainda"
+	.Line6End:
 	db $FF
-.Line3:
-db $52,$C5,$00,$01
-db $59,$39
-db $52,$CD,$00,$01
-db $59,$39
-db $52,$D1,$00,$01
-db $59,$39
-db $52,$D2,$00,$01
-db $59,$39
-db $52,$E4,$00,$2F
-db $52,$39,$0C,$39,$77,$39,$11,$39,$04,$39,$52,$39,$01,$39,$11,$39,$5D,$39,$10,$39,$56,$39,$07,$39,$11,$39,$04,$39,$10,$39,$51,$39,$52,$39,$01,$39,$11,$39,$01,$39,$02,$39,$5D,$39,$17,$39,$09,$39
-.Line3End:
+	%StripeImageHeader(.Line7, $04, $19, 0, $0000, 3)
+	dw "mais se n@o encontrar os"
+	.Line7End:
 	db $FF
-.Line4:
-db $53,$04,$00,$01
-db $59,$39
-db $53,$15,$00,$01
-db $59,$39
-db $53,$16,$00,$01
-db $59,$39
-db $53,$24,$00,$2F
-db $51,$39,$14,$39,$1D,$39,$55,$39,$3F,$39,$15,$39,$0D,$39,$09,$39,$10,$39,$1D,$39,$55,$39,$77,$39,$53,$39,$06,$39,$56,$39,$07,$39,$11,$39,$04,$39,$10,$39,$51,$39,$56,$39,$14,$39,$04,$39,$3D,$39
-.Line4End:
+	%StripeImageHeader(.Line8, $04, $1A, 0, $0000, 3)
+	dw "Bot_es Verde e Vermelho!"
+	.Line8End:
 	db $FF
 
-Roy:
-.Line1:
-db $52,$4B,$00,$01
-db $59,$39
-db $52,$4C,$00,$01
-db $59,$39
-db $52,$53,$00,$01
-db $5B,$39
-db $52,$64,$00,$2F
-db $67,$39,$60,$39,$6A,$39,$0D,$39,$0E,$39,$15,$39,$5D,$39,$07,$39,$15,$39,$21,$39,$1C,$39,$14,$39,$6C,$39,$5F,$39,$65,$39,$61,$39,$77,$39,$1E,$39,$7C,$39,$0F,$39,$06,$39,$5D,$39,$1E,$39,$7C,$39
-.Line1End:
+	Ludwig:
+	%StripeImageHeader(.Line1, $04, $13, 0, $0000, 3)
+	dw "Mario e Luigi deixaram"
+	.Line1End:
 	db $FF
-.Line2:
-db $52,$8E,$00,$01
-db $59,$39
-db $52,$8F,$00,$01
-db $59,$39
-db $52,$94,$00,$01
-db $59,$39
-db $52,$95,$00,$01
-db $59,$39
-db $52,$A4,$00,$2F
-db $11,$39,$5D,$39,$1D,$39,$55,$39,$77,$39,$53,$39,$06,$39,$56,$39,$07,$39,$11,$39,$04,$39,$10,$39,$51,$39,$0D,$39,$78,$39,$5D,$39,$0D,$39,$04,$39,$5D,$39,$07,$39,$14,$39,$08,$39,$51,$39,$14,$39
-.Line2End:
+	%StripeImageHeader(.Line2, $04, $14, 0, $0000, 3)
+	dw "o Ludwig pianinho." 
+	.Line2End:
 	db $FF
-.Line3:
-db $52,$CE,$00,$01
-db $59,$39
-db $52,$D5,$00,$01
-db $59,$39
-db $52,$D7,$00,$01
-db $59,$39
-db $52,$D9,$00,$01
-db $59,$39
-db $52,$E4,$00,$2F
-db $7B,$39,$44,$39,$6C,$39,$4E,$39,$5A,$39,$11,$39,$02,$39,$15,$39,$5D,$39,$52,$39,$0C,$39,$14,$39,$6C,$39,$5A,$39,$4A,$39,$11,$39,$5D,$39,$64,$39,$63,$39,$6C,$39,$4C,$39,$10,$39,$01,$39,$7C,$39
-.Line3End:
+	%StripeImageHeader(.Line3, $04, $15, 0, $0000, 3)
+	dw "Logo } frente est* o"
+	.Line3End:
 	db $FF
-.Line4:
-db $53,$04,$00,$01
-db $5B,$39
-db $53,$09,$00,$01
-db $59,$39
-db $53,$13,$00,$01
-db $59,$39
-db $53,$17,$00,$01
-db $59,$39
-db $53,$24,$00,$2F
-db $15,$39,$01,$39,$78,$39,$5D,$39,$0F,$39,$51,$39,$52,$39,$56,$39,$0D,$39,$0D,$39,$04,$39,$01,$39,$14,$39,$5D,$39,$15,$39,$09,$39,$19,$39,$55,$39,$15,$39,$09,$39,$19,$39,$55,$39,$5A,$39,$3F,$39
-.Line4End:
+	%StripeImageHeader(.Line4, $04, $16, 0, $0000, 3)
+	dw "Bosque da Ilus@o."
+	.Line4End:
+	db $FF
+	%StripeImageHeader(.Line5, $04, $17, 0, $0000, 3)
+	dw "Eles ter@o que resolver"
+	.Line5End:
+	db $FF
+	%StripeImageHeader(.Line6, $04, $18, 0, $0000, 3)
+	dw "o enigma desta floresta"
+	.Line6End:
+	db $FF
+	%StripeImageHeader(.Line7, $04, $19, 0, $0000, 3)
+	dw "misteriosa se quiserem"
+	.Line7End:
+	db $FF
+	%StripeImageHeader(.Line8, $04, $1A, 0, $0000, 3)
+	dw "escapar de l*!"
+	.Line8End:
 	db $FF
 
-Wendy:
-.Line1:
-db $52,$47,$00,$01
-db $59,$39
-db $52,$4E,$00,$01
-db $5B,$39
-db $52,$64,$00,$2B
-db $5D,$39,$5C,$39,$05,$39,$15,$39,$21,$39,$1C,$39,$14,$39,$6C,$39,$5F,$39,$65,$39,$61,$39,$77,$39,$0D,$39,$50,$39,$09,$39,$0D,$39,$67,$39,$60,$39,$6A,$39,$0D,$39,$0E,$39,$3F,$39
-.Line1End:
+	Roy:
+	%StripeImageHeader(.Line1, $04, $13, 0, $0000, 3)
+	dw "Mario e Luigi superaram"
+	.Line1End:
 	db $FF
-.Line2:
-db $52,$8D,$00,$01
-db $59,$39
-db $52,$96,$00,$01
-db $5B,$39
-db $52,$A4,$00,$2D
-db $5D,$39,$07,$39,$14,$39,$08,$39,$51,$39,$14,$39,$5D,$39,$0E,$39,$21,$39,$54,$39,$0F,$39,$0B,$39,$21,$39,$12,$39,$15,$39,$5D,$39,$5F,$39,$65,$39,$61,$39,$14,$39,$0D,$39,$12,$39,$14,$39
-.Line2End:
+	%StripeImageHeader(.Line2, $04, $14, 0, $0000, 3)
+	dw "a floresta e puseram um"
+	.Line2End:
 	db $FF
-.Line3:
-db $52,$C7,$00,$01
-db $59,$39
-db $52,$D2,$00,$01
-db $59,$39
-db $52,$D3,$00,$01
-db $59,$39
-db $52,$E4,$00,$2B
-db $5D,$39,$01,$39,$55,$39,$05,$39,$0E,$39,$77,$39,$16,$39,$20,$39,$05,$39,$0D,$39,$1C,$39,$14,$39,$5D,$39,$D0,$39,$4D,$39,$04,$39,$00,$39,$56,$39,$20,$39,$09,$39,$01,$39,$78,$39
-.Line3End:
+	%StripeImageHeader(.Line3, $04, $15, 0, $0000, 3)
+	dw "fim } tirania de Roy."
+	.Line3End:
 	db $FF
-.Line4:
-db $53,$07,$00,$01
-db $59,$39
-db $53,$0E,$00,$01
-db $59,$39
-db $53,$10,$00,$01
-db $59,$39
-db $53,$15,$00,$01
-db $59,$39
-db $53,$24,$00,$25
-db $5D,$39,$01,$39,$0C,$39,$06,$39,$5D,$39,$67,$39,$60,$39,$6A,$39,$3F,$39,$5D,$39,$04,$39,$21,$39,$15,$39,$57,$39,$5D,$39,$FF,$39,$48,$39,$6B,$39,$3F,$39
-.Line4End:
+	%StripeImageHeader(.Line4, $04, $16, 0, $0000, 3)
+	dw "Contudo, a perigosa e"
+	.Line4End:
+	db $FF
+	%StripeImageHeader(.Line5, $04, $17, 0, $0000, 3)
+	dw "deliciosa Ilha Chocolate"
+	.Line5End:
+	db $FF
+	%StripeImageHeader(.Line6, $04, $18, 0, $0000, 3)
+	dw "est* cheia de confus_es"
+	.Line6End:
+	db $FF
+	%StripeImageHeader(.Line7, $04, $19, 0, $0000, 3)
+	dw "e dinossauros."
+	.Line7End:
+	db $FF
+	%StripeImageHeader(.Line8, $04, $1A, 0, $0000, 3)
+	dw "Vamos em frente!"
+	.Line8End:
 	db $FF
 
-Larry:
-.Line1:
-db $52,$4A,$00,$01
-db $59,$39
-db $52,$4F,$00,$01
-db $5B,$39
-db $52,$64,$00,$2D
-db $0F,$39,$01,$39,$12,$39,$5D,$39,$08,$39,$01,$39,$07,$39,$14,$39,$6C,$39,$5F,$39,$65,$39,$61,$39,$77,$39,$0D,$39,$50,$39,$09,$39,$0D,$39,$3F,$39,$5D,$39,$14,$39,$07,$39,$0A,$39,$15,$39
-.Line1End:
+	Wendy:
+	%StripeImageHeader(.Line1, $04, $13, 0, $0000, 3)
+	dw "A capanga Wendy teve o"
+	.Line1End:
 	db $FF
-.Line2:
-db $52,$84,$00,$01
-db $5B,$39
-db $52,$89,$00,$01
-db $59,$39
-db $52,$95,$00,$01
-db $5B,$39
-db $52,$96,$00,$01
-db $59,$39
-db $52,$A4,$00,$2D
-db $79,$39,$5A,$39,$7B,$39,$16,$39,$1C,$39,$04,$39,$5D,$39,$11,$39,$20,$39,$58,$39,$57,$39,$10,$39,$01,$39,$56,$39,$5D,$39,$5F,$39,$65,$39,$61,$39,$09,$39,$84,$39,$02,$39,$14,$39,$1A,$39
-.Line2End:
+	%StripeImageHeader(.Line2, $04, $14, 0, $0000, 3)
+	dw "seu canto do cisne."
+	.Line2End:
 	db $FF
-.Line3:
-db $52,$C4,$00,$01
-db $59,$39
-db $52,$C5,$00,$01
-db $59,$39
-db $52,$C7,$00,$01
-db $5B,$39
-db $52,$D0,$00,$01
-db $59,$39
-db $52,$E4,$00,$2D
-db $17,$39,$09,$39,$12,$39,$79,$39,$5A,$39,$7B,$39,$16,$39,$1C,$39,$77,$39,$0D,$39,$0A,$39,$06,$39,$0D,$39,$09,$39,$5D,$39,$07,$39,$14,$39,$51,$39,$84,$39,$02,$39,$55,$39,$EF,$39,$02,$39
-.Line3End:
+	%StripeImageHeader(.Line3, $04, $15, 0, $0000, 3)
+	dw "Os irm@os v@o agora"
+	.Line3End:
 	db $FF
-.Line4:
-db $53,$06,$00,$01
-db $59,$39
-db $53,$0F,$00,$01
-db $59,$39
-db $53,$13,$00,$01
-db $59,$39
-db $53,$14,$00,$01
-db $59,$39
-db $53,$24,$00,$2B
-db $63,$39,$4C,$39,$64,$39,$12,$39,$18,$39,$01,$39,$58,$39,$77,$39,$11,$39,$55,$39,$1D,$39,$11,$39,$0A,$39,$07,$39,$11,$39,$04,$39,$10,$39,$51,$39,$56,$39,$14,$39,$04,$39,$3D,$39
-.Line4End:
+	%StripeImageHeader(.Line4, $04, $16, 0, $0000, 3)
+	dw "encarar um novo desafio:"
+	.Line4End:
+	db $FF
+	%StripeImageHeader(.Line5, $04, $17, 0, $0000, 3)
+	dw "Um barco afundado na"
+	.Line5End:
+	db $FF
+	%StripeImageHeader(.Line6, $04, $18, 0, $0000, 3)
+	dw "lagoa parece ser a chave"
+	.Line6End:
+	db $FF
+	%StripeImageHeader(.Line7, $04, $19, 0, $0000, 3)
+	dw "para entrar no Vale do"
+	.Line7End:
+	db $FF
+	%StripeImageHeader(.Line8, $04, $1A, 0, $0000, 3)
+	dw "Bowser. Boa sorte!"
+	.Line8End:
+	db $FF
+
+	Larry:
+	%StripeImageHeader(.Line1, $04, $13, 0, $0000, 3)
+	dw "Mario e Luigi derrotaram"
+	.Line1End:
+	db $FF
+	%StripeImageHeader(.Line2, $04, $14, 0, $0000, 3)
+	dw "o ]ltimo capanga, Larry!"
+	.Line2End:
+	db $FF
+	%StripeImageHeader(.Line3, $04, $15, 0, $0000, 3)
+	dw "S% o que resta agora &"
+	.Line3End:
+	db $FF
+	%StripeImageHeader(.Line4, $04, $16, 0, $0000, 3)
+	dw "salvar a princesa no"
+	.Line4End:
+	db $FF
+	%StripeImageHeader(.Line5, $04, $17, 0, $0000, 3)
+	dw "Castelo do Bowser."
+	.Line5End:
+	db $FF
+	%StripeImageHeader(.Line6, $04, $18, 0, $0000, 3)
+	dw "Ser* que eles conseguem"
+	.Line6End:
+	db $FF
+	%StripeImageHeader(.Line7, $04, $19, 0, $0000, 3)
+	dw "trazer a paz de volta }"
+	.Line7End:
+	db $FF
+	%StripeImageHeader(.Line8, $04, $1A, 0, $0000, 3)
+	dw "Terra dos Dinossauros?"
+	.Line8End:
+	BlankLine:
 	db $FF
 else
 			;                        |                        |                        |                        |                        |                        |                        |                        ;
-;%InsertCastleDestructionText("Mario  has  defeated the demented  Iggy Koopa  in castle  #1  and  rescued Yoshi's  friend  who  is still trapped in an egg. Together,    they    now travel to Donut Land.")
+	;%InsertCastleDestructionText("Mario  has  defeated the demented  Iggy Koopa  in castle  #1  and  rescued Yoshi's  friend  who  is still trapped in an egg. Together,    they    now travel to Donut Land.")
 			;                        |                        |                        |                        |                        |                        |                        |                        ;
-;%InsertCastleDestructionText("Morton   Koopa   Jr.  of castle  #2 is now just a memory. The next area is the  underground Vanilla Dome.   What traps await Mario in this new world? What   will   become  of  Princess Toadstool?")
+	;%InsertCastleDestructionText("Morton   Koopa   Jr.  of castle  #2 is now just a memory. The next area is the  underground Vanilla Dome.   What traps await Mario in this new world? What   will   become  of  Princess Toadstool?")
 			;                        |                        |                        |                        |                        |                        |                        |                        ;
-;%InsertCastleDestructionText("Mario has triumphed over Lemmy  Koopa  of  castle #3.  Mario's  quest   is starting  to  get   much more difficult.     Have you  found  the Red  and Green Switches yet?")
+	;%InsertCastleDestructionText("Mario has triumphed over Lemmy  Koopa  of  castle #3.  Mario's  quest   is starting  to  get   much more difficult.     Have you  found  the Red  and Green Switches yet?")
 			;                        |                        |                        |                        |                        |                        |                        |                        ;
-;%InsertCastleDestructionText("Ludwig von  Koopa's days of    composing    Koopa symphonies in castle  #4 are over.  The Forest of Illusion   lies   ahead. Mario must use his brain to solve  the puzzle  of this perplexing forest.")
+	;%InsertCastleDestructionText("Ludwig von  Koopa's days of    composing    Koopa symphonies in castle  #4 are over.  The Forest of Illusion   lies   ahead. Mario must use his brain to solve  the puzzle  of this perplexing forest.")
 			;                        |                        |                        |                        |                        |                        |                        |                        ;
-;%InsertCastleDestructionText("Mario   found   his  way through  the  Forest  of Illusion and  has put an end  to   Roy  Koopa  of castle  #5.   Onward  to the    dangerous    (but tasty) Chocolate Island!")
+	;%InsertCastleDestructionText("Mario   found   his  way through  the  Forest  of Illusion and  has put an end  to   Roy  Koopa  of castle  #5.   Onward  to the    dangerous    (but tasty) Chocolate Island!")
 			;                        |                        |                        |                        |                        |                        |                        |                        ;
-;%InsertCastleDestructionText("Wendy O. Koopa in castle #6  has  sung  her  last song.  Mario  must  meet the  challenge  that  is now before him.    There is a  sunken  ship  that appears to be  a gateway to the Valley of Bowser.")
+	;%InsertCastleDestructionText("Wendy O. Koopa in castle #6  has  sung  her  last song.  Mario  must  meet the  challenge  that  is now before him.    There is a  sunken  ship  that appears to be  a gateway to the Valley of Bowser.")
 			;                        |                        |                        |                        |                        |                        |                        |                        ;
-;%InsertCastleDestructionText("Mario has defeated Larry Koopa in castle #7.  All that is left is Bowser's Castle  where   Princess Toadstool is being held. Can Mario rescue her and restore     peace     to Dinosaur Land?")
+	;%InsertCastleDestructionText("Mario has defeated Larry Koopa in castle #7.  All that is left is Bowser's Castle  where   Princess Toadstool is being held. Can Mario rescue her and restore     peace     to Dinosaur Land?")
 			;                        |                        |                        |                        |                        |                        |                        |                        ;
 
-Iggy:
+	Iggy:
 	%StripeImageHeader(.Line1, $04, $13, 0, $0000, 3)
 	;dw "Mario  has  defeated the"
-db $0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$1F,$39,$1F,$39,$47,$39,$40,$39,$52,$39,$1F,$39,$1F,$39,$43,$39,$44,$39,$45,$39,$44,$39,$40,$39,$53,$39,$44,$39,$43,$39,$1F,$39,$53,$39,$47,$39,$44,$39
-.Line1End:
+	db $0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$1F,$39,$1F,$39,$47,$39,$40,$39,$52,$39,$1F,$39,$1F,$39,$43,$39,$44,$39,$45,$39,$44,$39,$40,$39,$53,$39,$44,$39,$43,$39,$1F,$39,$53,$39,$47,$39,$44,$39
+	.Line1End:
 	db $FF
 	%StripeImageHeader(.Line2, $04, $14, 0, $0000, 3)
 	;dw "demented  Iggy Koopa  in" 
-db $43,$39,$44,$39,$4C,$39,$44,$39,$4D,$39,$53,$39,$44,$39,$43,$39,$1F,$39,$1F,$39,$08,$39,$46,$39,$46,$39,$58,$39,$1F,$39,$0A,$39,$4E,$39,$4E,$39,$4F,$39,$40,$39,$1F,$39,$1F,$39,$48,$39,$4D,$39
-.Line2End:
+	db $43,$39,$44,$39,$4C,$39,$44,$39,$4D,$39,$53,$39,$44,$39,$43,$39,$1F,$39,$1F,$39,$08,$39,$46,$39,$46,$39,$58,$39,$1F,$39,$0A,$39,$4E,$39,$4E,$39,$4F,$39,$40,$39,$1F,$39,$1F,$39,$48,$39,$4D,$39
+	.Line2End:
 	db $FF
 	%StripeImageHeader(.Line3, $04, $15, 0, $0000, 3)
 	;dw "castle  #1  and  rescued"
-db $42,$39,$40,$39,$52,$39,$53,$39,$4B,$39,$44,$39,$1F,$39,$1F,$39,$5A,$39,$64,$39,$1F,$39,$1F,$39,$40,$39,$4D,$39,$43,$39,$1F,$39,$1F,$39,$51,$39,$44,$39,$52,$39,$42,$39,$54,$39,$44,$39,$43,$39
-.Line3End:
+	db $42,$39,$40,$39,$52,$39,$53,$39,$4B,$39,$44,$39,$1F,$39,$1F,$39,$5A,$39,$64,$39,$1F,$39,$1F,$39,$40,$39,$4D,$39,$43,$39,$1F,$39,$1F,$39,$51,$39,$44,$39,$52,$39,$42,$39,$54,$39,$44,$39,$43,$39
+	.Line3End:
 	db $FF
 	%StripeImageHeader(.Line4, $04, $16, 0, $0000, 3)
 	;dw "Yoshi's  friend  who  is"
-db $18,$39,$4E,$39,$52,$39,$47,$39,$48,$39,$5D,$39,$52,$39,$1F,$39,$1F,$39,$45,$39,$51,$39,$48,$39,$44,$39,$4D,$39,$43,$39,$1F,$39,$1F,$39,$56,$39,$47,$39,$4E,$39,$1F,$39,$1F,$39,$48,$39,$52,$39
-.Line4End:
+	db $18,$39,$4E,$39,$52,$39,$47,$39,$48,$39,$5D,$39,$52,$39,$1F,$39,$1F,$39,$45,$39,$51,$39,$48,$39,$44,$39,$4D,$39,$43,$39,$1F,$39,$1F,$39,$56,$39,$47,$39,$4E,$39,$1F,$39,$1F,$39,$48,$39,$52,$39
+	.Line4End:
 	db $FF
 	%StripeImageHeader(.Line5, $04, $17, 0, $0000, 3)
 	;dw "still trapped in an egg."
-db $52,$39,$53,$39,$48,$39,$4B,$39,$4B,$39,$1F,$39,$53,$39,$51,$39,$40,$39,$4F,$39,$4F,$39,$44,$39,$43,$39,$1F,$39,$48,$39,$4D,$39,$1F,$39,$40,$39,$4D,$39,$1F,$39,$44,$39,$46,$39,$46,$39,$1B,$39
-.Line5End:
+	db $52,$39,$53,$39,$48,$39,$4B,$39,$4B,$39,$1F,$39,$53,$39,$51,$39,$40,$39,$4F,$39,$4F,$39,$44,$39,$43,$39,$1F,$39,$48,$39,$4D,$39,$1F,$39,$40,$39,$4D,$39,$1F,$39,$44,$39,$46,$39,$46,$39,$1B,$39
+	.Line5End:
 	db $FF
 	%StripeImageHeader(.Line6, $04, $18, 0, $0000, 3)
 	;dw "Together,    they    now"
-db $13,$39,$4E,$39,$46,$39,$44,$39,$53,$39,$47,$39,$44,$39,$51,$39,$1D,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$53,$39,$47,$39,$44,$39,$58,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$4D,$39,$4E,$39,$56,$39
-.Line6End:
+	db $13,$39,$4E,$39,$46,$39,$44,$39,$53,$39,$47,$39,$44,$39,$51,$39,$1D,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$53,$39,$47,$39,$44,$39,$58,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$4D,$39,$4E,$39,$56,$39
+	.Line6End:
 	db $FF
 	%StripeImageHeader(.Line7, $04, $19, 0, $0000, 3)
 	;dw "travel to Donut Land."
-db $53,$39,$51,$39,$40,$39,$55,$39,$44,$39,$4B,$39,$1F,$39,$53,$39,$4E,$39,$1F,$39,$03,$39,$4E,$39,$4D,$39,$54,$39,$53,$39,$1F,$39,$0B,$39,$40,$39,$4D,$39,$43,$39,$1B,$39
-.Line7End:
-BlankLine:
+	db $53,$39,$51,$39,$40,$39,$55,$39,$44,$39,$4B,$39,$1F,$39,$53,$39,$4E,$39,$1F,$39,$03,$39,$4E,$39,$4D,$39,$54,$39,$53,$39,$1F,$39,$0B,$39,$40,$39,$4D,$39,$43,$39,$1B,$39
+	.Line7End:
+	BlankLine:
 	db $FF
 
-Morton:
+	Morton:
 	%StripeImageHeader(.Line1, $04, $13, 0, $0000, 3)
 	;dw "Morton   Koopa   Jr.  of"
-db $0C,$39,$4E,$39,$51,$39,$53,$39,$4E,$39,$4D,$39,$1F,$39,$1F,$39,$1F,$39,$0A,$39,$4E,$39,$4E,$39,$4F,$39,$40,$39,$1F,$39,$1F,$39,$1F,$39,$09,$39,$51,$39,$1B,$39,$1F,$39,$1F,$39,$4E,$39,$45,$39
-.Line1End:
+	db $0C,$39,$4E,$39,$51,$39,$53,$39,$4E,$39,$4D,$39,$1F,$39,$1F,$39,$1F,$39,$0A,$39,$4E,$39,$4E,$39,$4F,$39,$40,$39,$1F,$39,$1F,$39,$1F,$39,$09,$39,$51,$39,$1B,$39,$1F,$39,$1F,$39,$4E,$39,$45,$39
+	.Line1End:
 	db $FF
 	%StripeImageHeader(.Line2, $04, $14, 0, $0000, 3)
 	;dw "castle  #2 is now just a" 
-db $42,$39,$40,$39,$52,$39,$53,$39,$4B,$39,$44,$39,$1F,$39,$1F,$39,$5A,$39,$65,$39,$1F,$39,$48,$39,$52,$39,$1F,$39,$4D,$39,$4E,$39,$56,$39,$1F,$39,$49,$39,$54,$39,$52,$39,$53,$39,$1F,$39,$40,$39
-.Line2End:
+	db $42,$39,$40,$39,$52,$39,$53,$39,$4B,$39,$44,$39,$1F,$39,$1F,$39,$5A,$39,$65,$39,$1F,$39,$48,$39,$52,$39,$1F,$39,$4D,$39,$4E,$39,$56,$39,$1F,$39,$49,$39,$54,$39,$52,$39,$53,$39,$1F,$39,$40,$39
+	.Line2End:
 	db $FF
 	%StripeImageHeader(.Line3, $04, $15, 0, $0000, 3)
 	;dw "memory. The next area is"
-db $4C,$39,$44,$39,$4C,$39,$4E,$39,$51,$39,$58,$39,$1B,$39,$1F,$39,$13,$39,$47,$39,$44,$39,$1F,$39,$4D,$39,$44,$39,$57,$39,$53,$39,$1F,$39,$40,$39,$51,$39,$44,$39,$40,$39,$1F,$39,$48,$39,$52,$39
-.Line3End:
+	db $4C,$39,$44,$39,$4C,$39,$4E,$39,$51,$39,$58,$39,$1B,$39,$1F,$39,$13,$39,$47,$39,$44,$39,$1F,$39,$4D,$39,$44,$39,$57,$39,$53,$39,$1F,$39,$40,$39,$51,$39,$44,$39,$40,$39,$1F,$39,$48,$39,$52,$39
+	.Line3End:
 	db $FF
 	%StripeImageHeader(.Line4, $04, $16, 0, $0000, 3)
 	;dw "the  underground Vanilla"
-db $53,$39,$47,$39,$44,$39,$1F,$39,$1F,$39,$54,$39,$4D,$39,$43,$39,$44,$39,$51,$39,$46,$39,$51,$39,$4E,$39,$54,$39,$4D,$39,$43,$39,$1F,$39,$15,$39,$40,$39,$4D,$39,$48,$39,$4B,$39,$4B,$39,$40,$39
-.Line4End:
+	db $53,$39,$47,$39,$44,$39,$1F,$39,$1F,$39,$54,$39,$4D,$39,$43,$39,$44,$39,$51,$39,$46,$39,$51,$39,$4E,$39,$54,$39,$4D,$39,$43,$39,$1F,$39,$15,$39,$40,$39,$4D,$39,$48,$39,$4B,$39,$4B,$39,$40,$39
+	.Line4End:
 	db $FF
 	%StripeImageHeader(.Line5, $04, $17, 0, $0000, 3)
 	;dw "Dome.   What traps await"
-db $03,$39,$4E,$39,$4C,$39,$44,$39,$1B,$39,$1F,$39,$1F,$39,$1F,$39,$16,$39,$47,$39,$40,$39,$53,$39,$1F,$39,$53,$39,$51,$39,$40,$39,$4F,$39,$52,$39,$1F,$39,$40,$39,$56,$39,$40,$39,$48,$39,$53,$39
-.Line5End:
+	db $03,$39,$4E,$39,$4C,$39,$44,$39,$1B,$39,$1F,$39,$1F,$39,$1F,$39,$16,$39,$47,$39,$40,$39,$53,$39,$1F,$39,$53,$39,$51,$39,$40,$39,$4F,$39,$52,$39,$1F,$39,$40,$39,$56,$39,$40,$39,$48,$39,$53,$39
+	.Line5End:
 	db $FF
 	%StripeImageHeader(.Line6, $04, $18, 0, $0000, 3)
 	;dw "Mario in this new world?"
-db $0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$1F,$39,$48,$39,$4D,$39,$1F,$39,$53,$39,$47,$39,$48,$39,$52,$39,$1F,$39,$4D,$39,$44,$39,$56,$39,$1F,$39,$56,$39,$4E,$39,$51,$39,$4B,$39,$43,$39,$1E,$39
-.Line6End:
+	db $0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$1F,$39,$48,$39,$4D,$39,$1F,$39,$53,$39,$47,$39,$48,$39,$52,$39,$1F,$39,$4D,$39,$44,$39,$56,$39,$1F,$39,$56,$39,$4E,$39,$51,$39,$4B,$39,$43,$39,$1E,$39
+	.Line6End:
 	db $FF
 	%StripeImageHeader(.Line7, $04, $19, 0, $0000, 3)
 	;dw "What   will   become  of"
-db $16,$39,$47,$39,$40,$39,$53,$39,$1F,$39,$1F,$39,$1F,$39,$56,$39,$48,$39,$4B,$39,$4B,$39,$1F,$39,$1F,$39,$1F,$39,$41,$39,$44,$39,$42,$39,$4E,$39,$4C,$39,$44,$39,$1F,$39,$1F,$39,$4E,$39,$45,$39
-.Line7End:
+	db $16,$39,$47,$39,$40,$39,$53,$39,$1F,$39,$1F,$39,$1F,$39,$56,$39,$48,$39,$4B,$39,$4B,$39,$1F,$39,$1F,$39,$1F,$39,$41,$39,$44,$39,$42,$39,$4E,$39,$4C,$39,$44,$39,$1F,$39,$1F,$39,$4E,$39,$45,$39
+	.Line7End:
 	db $FF
 	%StripeImageHeader(.Line8, $04, $1A, 0, $0000, 3)
 	;dw "Princess Toadstool?"
-db $0F,$39,$51,$39,$48,$39,$4D,$39,$42,$39,$44,$39,$52,$39,$52,$39,$1F,$39,$13,$39,$4E,$39,$40,$39,$43,$39,$52,$39,$53,$39,$4E,$39,$4E,$39,$4B,$39,$1E,$39
-.Line8End:
+	db $0F,$39,$51,$39,$48,$39,$4D,$39,$42,$39,$44,$39,$52,$39,$52,$39,$1F,$39,$13,$39,$4E,$39,$40,$39,$43,$39,$52,$39,$53,$39,$4E,$39,$4E,$39,$4B,$39,$1E,$39
+	.Line8End:
 	db $FF
 
-Lemmy:
+	Lemmy:
 	%StripeImageHeader(.Line1, $04, $13, 0, $0000, 3)
 	;dw "Mario has triumphed over"
-db $0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$1F,$39,$47,$39,$40,$39,$52,$39,$1F,$39,$53,$39,$51,$39,$48,$39,$54,$39,$4C,$39,$4F,$39,$47,$39,$44,$39,$43,$39,$1F,$39,$4E,$39,$55,$39,$44,$39,$51,$39
-.Line1End:
+	db $0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$1F,$39,$47,$39,$40,$39,$52,$39,$1F,$39,$53,$39,$51,$39,$48,$39,$54,$39,$4C,$39,$4F,$39,$47,$39,$44,$39,$43,$39,$1F,$39,$4E,$39,$55,$39,$44,$39,$51,$39
+	.Line1End:
 	db $FF
 	%StripeImageHeader(.Line2, $04, $14, 0, $0000, 3)
 	;dw "Lemmy  Koopa  of  castle" 
-db $0B,$39,$44,$39,$4C,$39,$4C,$39,$58,$39,$1F,$39,$1F,$39,$0A,$39,$4E,$39,$4E,$39,$4F,$39,$40,$39,$1F,$39,$1F,$39,$4E,$39,$45,$39,$1F,$39,$1F,$39,$42,$39,$40,$39,$52,$39,$53,$39,$4B,$39,$44,$39
-.Line2End:
+	db $0B,$39,$44,$39,$4C,$39,$4C,$39,$58,$39,$1F,$39,$1F,$39,$0A,$39,$4E,$39,$4E,$39,$4F,$39,$40,$39,$1F,$39,$1F,$39,$4E,$39,$45,$39,$1F,$39,$1F,$39,$42,$39,$40,$39,$52,$39,$53,$39,$4B,$39,$44,$39
+	.Line2End:
 	db $FF
 	%StripeImageHeader(.Line3, $04, $15, 0, $0000, 3)
 	;dw "#3.  Mario's  quest   is"
-db $5A,$39,$66,$39,$1B,$39,$1F,$39,$1F,$39,$0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$5D,$39,$52,$39,$1F,$39,$1F,$39,$50,$39,$54,$39,$44,$39,$52,$39,$53,$39,$1F,$39,$1F,$39,$1F,$39,$48,$39,$52,$39
-.Line3End:
+	db $5A,$39,$66,$39,$1B,$39,$1F,$39,$1F,$39,$0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$5D,$39,$52,$39,$1F,$39,$1F,$39,$50,$39,$54,$39,$44,$39,$52,$39,$53,$39,$1F,$39,$1F,$39,$1F,$39,$48,$39,$52,$39
+	.Line3End:
 	db $FF
 	%StripeImageHeader(.Line4, $04, $16, 0, $0000, 3)
 	;dw "starting  to  get   much"
-db $52,$39,$53,$39,$40,$39,$51,$39,$53,$39,$48,$39,$4D,$39,$46,$39,$1F,$39,$1F,$39,$53,$39,$4E,$39,$1F,$39,$1F,$39,$46,$39,$44,$39,$53,$39,$1F,$39,$1F,$39,$1F,$39,$4C,$39,$54,$39,$42,$39,$47,$39
-.Line4End:
+	db $52,$39,$53,$39,$40,$39,$51,$39,$53,$39,$48,$39,$4D,$39,$46,$39,$1F,$39,$1F,$39,$53,$39,$4E,$39,$1F,$39,$1F,$39,$46,$39,$44,$39,$53,$39,$1F,$39,$1F,$39,$1F,$39,$4C,$39,$54,$39,$42,$39,$47,$39
+	.Line4End:
 	db $FF
 	%StripeImageHeader(.Line5, $04, $17, 0, $0000, 3)
 	;dw "more difficult.     Have"
-db $4C,$39,$4E,$39,$51,$39,$44,$39,$1F,$39,$43,$39,$48,$39,$45,$39,$45,$39,$48,$39,$42,$39,$54,$39,$4B,$39,$53,$39,$1B,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$07,$39,$40,$39,$55,$39,$44,$39
-.Line5End:
+	db $4C,$39,$4E,$39,$51,$39,$44,$39,$1F,$39,$43,$39,$48,$39,$45,$39,$45,$39,$48,$39,$42,$39,$54,$39,$4B,$39,$53,$39,$1B,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$07,$39,$40,$39,$55,$39,$44,$39
+	.Line5End:
 	db $FF
 	%StripeImageHeader(.Line6, $04, $18, 0, $0000, 3)
 	;dw "you  found  the Red  and"
-db $58,$39,$4E,$39,$54,$39,$1F,$39,$1F,$39,$45,$39,$4E,$39,$54,$39,$4D,$39,$43,$39,$1F,$39,$1F,$39,$53,$39,$47,$39,$44,$39,$1F,$39,$11,$39,$44,$39,$43,$39,$1F,$39,$1F,$39,$40,$39,$4D,$39,$43,$39
-.Line6End:
+	db $58,$39,$4E,$39,$54,$39,$1F,$39,$1F,$39,$45,$39,$4E,$39,$54,$39,$4D,$39,$43,$39,$1F,$39,$1F,$39,$53,$39,$47,$39,$44,$39,$1F,$39,$11,$39,$44,$39,$43,$39,$1F,$39,$1F,$39,$40,$39,$4D,$39,$43,$39
+	.Line6End:
 	db $FF
 	%StripeImageHeader(.Line7, $04, $19, 0, $0000, 3)
 	;dw "Green Switches yet?"
-db $06,$39,$51,$39,$44,$39,$44,$39,$4D,$39,$1F,$39,$12,$39,$56,$39,$48,$39,$53,$39,$42,$39,$47,$39,$44,$39,$52,$39,$1F,$39,$58,$39,$44,$39,$53,$39,$1E,$39
-.Line7End:
+	db $06,$39,$51,$39,$44,$39,$44,$39,$4D,$39,$1F,$39,$12,$39,$56,$39,$48,$39,$53,$39,$42,$39,$47,$39,$44,$39,$52,$39,$1F,$39,$58,$39,$44,$39,$53,$39,$1E,$39
+	.Line7End:
 	db $FF
 
-Ludwig:
+	Ludwig:
 	%StripeImageHeader(.Line1, $04, $13, 0, $0000, 3)
 	;dw "Ludwig von  Koopa's days"
-db $0B,$39,$54,$39,$43,$39,$56,$39,$48,$39,$46,$39,$1F,$39,$55,$39,$4E,$39,$4D,$39,$1F,$39,$1F,$39,$0A,$39,$4E,$39,$4E,$39,$4F,$39,$40,$39,$5D,$39,$52,$39,$1F,$39,$43,$39,$40,$39,$58,$39,$52,$39
-.Line1End:
+	db $0B,$39,$54,$39,$43,$39,$56,$39,$48,$39,$46,$39,$1F,$39,$55,$39,$4E,$39,$4D,$39,$1F,$39,$1F,$39,$0A,$39,$4E,$39,$4E,$39,$4F,$39,$40,$39,$5D,$39,$52,$39,$1F,$39,$43,$39,$40,$39,$58,$39,$52,$39
+	.Line1End:
 	db $FF
 	%StripeImageHeader(.Line2, $04, $14, 0, $0000, 3)
 	;dw "of    composing    Koopa" 
-db $4E,$39,$45,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$42,$39,$4E,$39,$4C,$39,$4F,$39,$4E,$39,$52,$39,$48,$39,$4D,$39,$46,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$0A,$39,$4E,$39,$4E,$39,$4F,$39,$40,$39
-.Line2End:
+	db $4E,$39,$45,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$42,$39,$4E,$39,$4C,$39,$4F,$39,$4E,$39,$52,$39,$48,$39,$4D,$39,$46,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$0A,$39,$4E,$39,$4E,$39,$4F,$39,$40,$39
+	.Line2End:
 	db $FF
 	%StripeImageHeader(.Line3, $04, $15, 0, $0000, 3)
 	;dw "symphonies in castle  #4"
-db $52,$39,$58,$39,$4C,$39,$4F,$39,$47,$39,$4E,$39,$4D,$39,$48,$39,$44,$39,$52,$39,$1F,$39,$48,$39,$4D,$39,$1F,$39,$42,$39,$40,$39,$52,$39,$53,$39,$4B,$39,$44,$39,$1F,$39,$1F,$39,$5A,$39,$67,$39
-.Line3End:
+	db $52,$39,$58,$39,$4C,$39,$4F,$39,$47,$39,$4E,$39,$4D,$39,$48,$39,$44,$39,$52,$39,$1F,$39,$48,$39,$4D,$39,$1F,$39,$42,$39,$40,$39,$52,$39,$53,$39,$4B,$39,$44,$39,$1F,$39,$1F,$39,$5A,$39,$67,$39
+	.Line3End:
 	db $FF
 	%StripeImageHeader(.Line4, $04, $16, 0, $0000, 3)
 	;dw "are over.  The Forest of"
-db $40,$39,$51,$39,$44,$39,$1F,$39,$4E,$39,$55,$39,$44,$39,$51,$39,$1B,$39,$1F,$39,$1F,$39,$13,$39,$47,$39,$44,$39,$1F,$39,$05,$39,$4E,$39,$51,$39,$44,$39,$52,$39,$53,$39,$1F,$39,$4E,$39,$45,$39
-.Line4End:
+	db $40,$39,$51,$39,$44,$39,$1F,$39,$4E,$39,$55,$39,$44,$39,$51,$39,$1B,$39,$1F,$39,$1F,$39,$13,$39,$47,$39,$44,$39,$1F,$39,$05,$39,$4E,$39,$51,$39,$44,$39,$52,$39,$53,$39,$1F,$39,$4E,$39,$45,$39
+	.Line4End:
 	db $FF
 	%StripeImageHeader(.Line5, $04, $17, 0, $0000, 3)
 	;dw "Illusion   lies   ahead."
-db $08,$39,$4B,$39,$4B,$39,$54,$39,$52,$39,$48,$39,$4E,$39,$4D,$39,$1F,$39,$1F,$39,$1F,$39,$4B,$39,$48,$39,$44,$39,$52,$39,$1F,$39,$1F,$39,$1F,$39,$40,$39,$47,$39,$44,$39,$40,$39,$43,$39,$1B,$39
-.Line5End:
+	db $08,$39,$4B,$39,$4B,$39,$54,$39,$52,$39,$48,$39,$4E,$39,$4D,$39,$1F,$39,$1F,$39,$1F,$39,$4B,$39,$48,$39,$44,$39,$52,$39,$1F,$39,$1F,$39,$1F,$39,$40,$39,$47,$39,$44,$39,$40,$39,$43,$39,$1B,$39
+	.Line5End:
 	db $FF
 	%StripeImageHeader(.Line6, $04, $18, 0, $0000, 3)
 	;dw "Mario must use his brain"
-db $0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$1F,$39,$4C,$39,$54,$39,$52,$39,$53,$39,$1F,$39,$54,$39,$52,$39,$44,$39,$1F,$39,$47,$39,$48,$39,$52,$39,$1F,$39,$41,$39,$51,$39,$40,$39,$48,$39,$4D,$39
-.Line6End:
+	db $0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$1F,$39,$4C,$39,$54,$39,$52,$39,$53,$39,$1F,$39,$54,$39,$52,$39,$44,$39,$1F,$39,$47,$39,$48,$39,$52,$39,$1F,$39,$41,$39,$51,$39,$40,$39,$48,$39,$4D,$39
+	.Line6End:
 	db $FF
 	%StripeImageHeader(.Line7, $04, $19, 0, $0000, 3)
 	;dw "to solve  the puzzle  of"
-db $53,$39,$4E,$39,$1F,$39,$52,$39,$4E,$39,$4B,$39,$55,$39,$44,$39,$1F,$39,$1F,$39,$53,$39,$47,$39,$44,$39,$1F,$39,$4F,$39,$54,$39,$59,$39,$59,$39,$4B,$39,$44,$39,$1F,$39,$1F,$39,$4E,$39,$45,$39
-.Line7End:
+	db $53,$39,$4E,$39,$1F,$39,$52,$39,$4E,$39,$4B,$39,$55,$39,$44,$39,$1F,$39,$1F,$39,$53,$39,$47,$39,$44,$39,$1F,$39,$4F,$39,$54,$39,$59,$39,$59,$39,$4B,$39,$44,$39,$1F,$39,$1F,$39,$4E,$39,$45,$39
+	.Line7End:
 	db $FF
 	%StripeImageHeader(.Line8, $04, $1A, 0, $0000, 3)
 	;dw "this perplexing forest."
-db $53,$39,$47,$39,$48,$39,$52,$39,$1F,$39,$4F,$39,$44,$39,$51,$39,$4F,$39,$4B,$39,$44,$39,$57,$39,$48,$39,$4D,$39,$46,$39,$1F,$39,$45,$39,$4E,$39,$51,$39,$44,$39,$52,$39,$53,$39,$1B,$39
-.Line8End:
+	db $53,$39,$47,$39,$48,$39,$52,$39,$1F,$39,$4F,$39,$44,$39,$51,$39,$4F,$39,$4B,$39,$44,$39,$57,$39,$48,$39,$4D,$39,$46,$39,$1F,$39,$45,$39,$4E,$39,$51,$39,$44,$39,$52,$39,$53,$39,$1B,$39
+	.Line8End:
 	db $FF
 
-Roy:
+	Roy:
 	%StripeImageHeader(.Line1, $04, $13, 0, $0000, 3)
 	;dw "Mario   found   his  way"
-db $0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$1F,$39,$1F,$39,$1F,$39,$45,$39,$4E,$39,$54,$39,$4D,$39,$43,$39,$1F,$39,$1F,$39,$1F,$39,$47,$39,$48,$39,$52,$39,$1F,$39,$1F,$39,$56,$39,$40,$39,$58,$39
-.Line1End:
+	db $0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$1F,$39,$1F,$39,$1F,$39,$45,$39,$4E,$39,$54,$39,$4D,$39,$43,$39,$1F,$39,$1F,$39,$1F,$39,$47,$39,$48,$39,$52,$39,$1F,$39,$1F,$39,$56,$39,$40,$39,$58,$39
+	.Line1End:
 	db $FF
 	%StripeImageHeader(.Line2, $04, $14, 0, $0000, 3)
 	;dw "through  the  Forest  of" 
-db $53,$39,$47,$39,$51,$39,$4E,$39,$54,$39,$46,$39,$47,$39,$1F,$39,$1F,$39,$53,$39,$47,$39,$44,$39,$1F,$39,$1F,$39,$05,$39,$4E,$39,$51,$39,$44,$39,$52,$39,$53,$39,$1F,$39,$1F,$39,$4E,$39,$45,$39
-.Line2End:
+	db $53,$39,$47,$39,$51,$39,$4E,$39,$54,$39,$46,$39,$47,$39,$1F,$39,$1F,$39,$53,$39,$47,$39,$44,$39,$1F,$39,$1F,$39,$05,$39,$4E,$39,$51,$39,$44,$39,$52,$39,$53,$39,$1F,$39,$1F,$39,$4E,$39,$45,$39
+	.Line2End:
 	db $FF
 	%StripeImageHeader(.Line3, $04, $15, 0, $0000, 3)
 	;dw "Illusion and  has put an"
-db $08,$39,$4B,$39,$4B,$39,$54,$39,$52,$39,$48,$39,$4E,$39,$4D,$39,$1F,$39,$40,$39,$4D,$39,$43,$39,$1F,$39,$1F,$39,$47,$39,$40,$39,$52,$39,$1F,$39,$4F,$39,$54,$39,$53,$39,$1F,$39,$40,$39,$4D,$39
-.Line3End:
+	db $08,$39,$4B,$39,$4B,$39,$54,$39,$52,$39,$48,$39,$4E,$39,$4D,$39,$1F,$39,$40,$39,$4D,$39,$43,$39,$1F,$39,$1F,$39,$47,$39,$40,$39,$52,$39,$1F,$39,$4F,$39,$54,$39,$53,$39,$1F,$39,$40,$39,$4D,$39
+	.Line3End:
 	db $FF
 	%StripeImageHeader(.Line4, $04, $16, 0, $0000, 3)
 	;dw "end  to   Roy  Koopa  of"
-db $44,$39,$4D,$39,$43,$39,$1F,$39,$1F,$39,$53,$39,$4E,$39,$1F,$39,$1F,$39,$1F,$39,$11,$39,$4E,$39,$58,$39,$1F,$39,$1F,$39,$0A,$39,$4E,$39,$4E,$39,$4F,$39,$40,$39,$1F,$39,$1F,$39,$4E,$39,$45,$39
-.Line4End:
+	db $44,$39,$4D,$39,$43,$39,$1F,$39,$1F,$39,$53,$39,$4E,$39,$1F,$39,$1F,$39,$1F,$39,$11,$39,$4E,$39,$58,$39,$1F,$39,$1F,$39,$0A,$39,$4E,$39,$4E,$39,$4F,$39,$40,$39,$1F,$39,$1F,$39,$4E,$39,$45,$39
+	.Line4End:
 	db $FF
 	%StripeImageHeader(.Line5, $04, $17, 0, $0000, 3)
 	;dw "castle  #5.   Onward  to"
-db $42,$39,$40,$39,$52,$39,$53,$39,$4B,$39,$44,$39,$1F,$39,$1F,$39,$5A,$39,$68,$39,$1B,$39,$1F,$39,$1F,$39,$1F,$39,$0E,$39,$4D,$39,$56,$39,$40,$39,$51,$39,$43,$39,$1F,$39,$1F,$39,$53,$39,$4E,$39
-.Line5End:
+	db $42,$39,$40,$39,$52,$39,$53,$39,$4B,$39,$44,$39,$1F,$39,$1F,$39,$5A,$39,$68,$39,$1B,$39,$1F,$39,$1F,$39,$1F,$39,$0E,$39,$4D,$39,$56,$39,$40,$39,$51,$39,$43,$39,$1F,$39,$1F,$39,$53,$39,$4E,$39
+	.Line5End:
 	db $FF
 	%StripeImageHeader(.Line6, $04, $18, 0, $0000, 3)
 	;dw "the    dangerous    (but"
-db $53,$39,$47,$39,$44,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$43,$39,$40,$39,$4D,$39,$46,$39,$44,$39,$51,$39,$4E,$39,$54,$39,$52,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$5B,$39,$41,$39,$54,$39,$53,$39
-.Line6End:
+	db $53,$39,$47,$39,$44,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$43,$39,$40,$39,$4D,$39,$46,$39,$44,$39,$51,$39,$4E,$39,$54,$39,$52,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$5B,$39,$41,$39,$54,$39,$53,$39
+	.Line6End:
 	db $FF
 	%StripeImageHeader(.Line7, $04, $19, 0, $0000, 3)
 	;dw "tasty) Chocolate Island!"
-db $53,$39,$40,$39,$52,$39,$53,$39,$58,$39,$5C,$39,$1F,$39,$02,$39,$47,$39,$4E,$39,$42,$39,$4E,$39,$4B,$39,$40,$39,$53,$39,$44,$39,$1F,$39,$08,$39,$52,$39,$4B,$39,$40,$39,$4D,$39,$43,$39,$1A,$39
-.Line7End:
+	db $53,$39,$40,$39,$52,$39,$53,$39,$58,$39,$5C,$39,$1F,$39,$02,$39,$47,$39,$4E,$39,$42,$39,$4E,$39,$4B,$39,$40,$39,$53,$39,$44,$39,$1F,$39,$08,$39,$52,$39,$4B,$39,$40,$39,$4D,$39,$43,$39,$1A,$39
+	.Line7End:
 	db $FF
 
-Wendy:
+	Wendy:
 	%StripeImageHeader(.Line1, $04, $13, 0, $0000, 3)
 	;dw "Wendy O. Koopa in castle"
-db $16,$39,$44,$39,$4D,$39,$43,$39,$58,$39,$1F,$39,$0E,$39,$1B,$39,$1F,$39,$0A,$39,$4E,$39,$4E,$39,$4F,$39,$40,$39,$1F,$39,$48,$39,$4D,$39,$1F,$39,$42,$39,$40,$39,$52,$39,$53,$39,$4B,$39,$44,$39
-.Line1End:
+	db $16,$39,$44,$39,$4D,$39,$43,$39,$58,$39,$1F,$39,$0E,$39,$1B,$39,$1F,$39,$0A,$39,$4E,$39,$4E,$39,$4F,$39,$40,$39,$1F,$39,$48,$39,$4D,$39,$1F,$39,$42,$39,$40,$39,$52,$39,$53,$39,$4B,$39,$44,$39
+	.Line1End:
 	db $FF
 	%StripeImageHeader(.Line2, $04, $14, 0, $0000, 3)
 	;dw "#6  has  sung  her  last" 
-db $5A,$39,$69,$39,$1F,$39,$1F,$39,$47,$39,$40,$39,$52,$39,$1F,$39,$1F,$39,$52,$39,$54,$39,$4D,$39,$46,$39,$1F,$39,$1F,$39,$47,$39,$44,$39,$51,$39,$1F,$39,$1F,$39,$4B,$39,$40,$39,$52,$39,$53,$39
-.Line2End:
+	db $5A,$39,$69,$39,$1F,$39,$1F,$39,$47,$39,$40,$39,$52,$39,$1F,$39,$1F,$39,$52,$39,$54,$39,$4D,$39,$46,$39,$1F,$39,$1F,$39,$47,$39,$44,$39,$51,$39,$1F,$39,$1F,$39,$4B,$39,$40,$39,$52,$39,$53,$39
+	.Line2End:
 	db $FF
 	%StripeImageHeader(.Line3, $04, $15, 0, $0000, 3)
 	;dw "song.  Mario  must  meet"
-db $52,$39,$4E,$39,$4D,$39,$46,$39,$1B,$39,$1F,$39,$1F,$39,$0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$1F,$39,$1F,$39,$4C,$39,$54,$39,$52,$39,$53,$39,$1F,$39,$1F,$39,$4C,$39,$44,$39,$44,$39,$53,$39
-.Line3End:
+	db $52,$39,$4E,$39,$4D,$39,$46,$39,$1B,$39,$1F,$39,$1F,$39,$0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$1F,$39,$1F,$39,$4C,$39,$54,$39,$52,$39,$53,$39,$1F,$39,$1F,$39,$4C,$39,$44,$39,$44,$39,$53,$39
+	.Line3End:
 	db $FF
 	%StripeImageHeader(.Line4, $04, $16, 0, $0000, 3)
 	;dw "the  challenge  that  is"
-db $53,$39,$47,$39,$44,$39,$1F,$39,$1F,$39,$42,$39,$47,$39,$40,$39,$4B,$39,$4B,$39,$44,$39,$4D,$39,$46,$39,$44,$39,$1F,$39,$1F,$39,$53,$39,$47,$39,$40,$39,$53,$39,$1F,$39,$1F,$39,$48,$39,$52,$39
-.Line4End:
+	db $53,$39,$47,$39,$44,$39,$1F,$39,$1F,$39,$42,$39,$47,$39,$40,$39,$4B,$39,$4B,$39,$44,$39,$4D,$39,$46,$39,$44,$39,$1F,$39,$1F,$39,$53,$39,$47,$39,$40,$39,$53,$39,$1F,$39,$1F,$39,$48,$39,$52,$39
+	.Line4End:
 	db $FF
 	%StripeImageHeader(.Line5, $04, $17, 0, $0000, 3)
 	;dw "now before him.    There"
-db $4D,$39,$4E,$39,$56,$39,$1F,$39,$41,$39,$44,$39,$45,$39,$4E,$39,$51,$39,$44,$39,$1F,$39,$47,$39,$48,$39,$4C,$39,$1B,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$13,$39,$47,$39,$44,$39,$51,$39,$44,$39
-.Line5End:
+	db $4D,$39,$4E,$39,$56,$39,$1F,$39,$41,$39,$44,$39,$45,$39,$4E,$39,$51,$39,$44,$39,$1F,$39,$47,$39,$48,$39,$4C,$39,$1B,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$13,$39,$47,$39,$44,$39,$51,$39,$44,$39
+	.Line5End:
 	db $FF
 	%StripeImageHeader(.Line6, $04, $18, 0, $0000, 3)
 	;dw "is a  sunken  ship  that"
-db $48,$39,$52,$39,$1F,$39,$40,$39,$1F,$39,$1F,$39,$52,$39,$54,$39,$4D,$39,$4A,$39,$44,$39,$4D,$39,$1F,$39,$1F,$39,$52,$39,$47,$39,$48,$39,$4F,$39,$1F,$39,$1F,$39,$53,$39,$47,$39,$40,$39,$53,$39
-.Line6End:
+	db $48,$39,$52,$39,$1F,$39,$40,$39,$1F,$39,$1F,$39,$52,$39,$54,$39,$4D,$39,$4A,$39,$44,$39,$4D,$39,$1F,$39,$1F,$39,$52,$39,$47,$39,$48,$39,$4F,$39,$1F,$39,$1F,$39,$53,$39,$47,$39,$40,$39,$53,$39
+	.Line6End:
 	db $FF
 	%StripeImageHeader(.Line7, $04, $19, 0, $0000, 3)
 	;dw "appears to be  a gateway"
-db $40,$39,$4F,$39,$4F,$39,$44,$39,$40,$39,$51,$39,$52,$39,$1F,$39,$53,$39,$4E,$39,$1F,$39,$41,$39,$44,$39,$1F,$39,$1F,$39,$40,$39,$1F,$39,$46,$39,$40,$39,$53,$39,$44,$39,$56,$39,$40,$39,$58,$39
-.Line7End:
+	db $40,$39,$4F,$39,$4F,$39,$44,$39,$40,$39,$51,$39,$52,$39,$1F,$39,$53,$39,$4E,$39,$1F,$39,$41,$39,$44,$39,$1F,$39,$1F,$39,$40,$39,$1F,$39,$46,$39,$40,$39,$53,$39,$44,$39,$56,$39,$40,$39,$58,$39
+	.Line7End:
 	db $FF
 	%StripeImageHeader(.Line8, $04, $1A, 0, $0000, 3)
 	;dw "to the Valley of Bowser."
-db $53,$39,$4E,$39,$1F,$39,$53,$39,$47,$39,$44,$39,$1F,$39,$15,$39,$40,$39,$4B,$39,$4B,$39,$44,$39,$58,$39,$1F,$39,$4E,$39,$45,$39,$1F,$39,$01,$39,$4E,$39,$56,$39,$52,$39,$44,$39,$51,$39,$1B,$39
-.Line8End:
+	db $53,$39,$4E,$39,$1F,$39,$53,$39,$47,$39,$44,$39,$1F,$39,$15,$39,$40,$39,$4B,$39,$4B,$39,$44,$39,$58,$39,$1F,$39,$4E,$39,$45,$39,$1F,$39,$01,$39,$4E,$39,$56,$39,$52,$39,$44,$39,$51,$39,$1B,$39
+	.Line8End:
 	db $FF
 
-Larry:
+	Larry:
 	%StripeImageHeader(.Line1, $04, $13, 0, $0000, 3)
 	;dw "Mario has defeated Larry"
-db $0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$1F,$39,$47,$39,$40,$39,$52,$39,$1F,$39,$43,$39,$44,$39,$45,$39,$44,$39,$40,$39,$53,$39,$44,$39,$43,$39,$1F,$39,$0B,$39,$40,$39,$51,$39,$51,$39,$58,$39
-.Line1End:
+	db $0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$1F,$39,$47,$39,$40,$39,$52,$39,$1F,$39,$43,$39,$44,$39,$45,$39,$44,$39,$40,$39,$53,$39,$44,$39,$43,$39,$1F,$39,$0B,$39,$40,$39,$51,$39,$51,$39,$58,$39
+	.Line1End:
 	db $FF
 	%StripeImageHeader(.Line2, $04, $14, 0, $0000, 3)
 	;dw "Koopa in castle #7.  All"
-db $0A,$39,$4E,$39,$4E,$39,$4F,$39,$40,$39,$1F,$39,$48,$39,$4D,$39,$1F,$39,$42,$39,$40,$39,$52,$39,$53,$39,$4B,$39,$44,$39,$1F,$39,$5A,$39,$6A,$39,$1B,$39,$1F,$39,$1F,$39,$00,$39,$4B,$39,$4B,$39
-.Line2End:
+	db $0A,$39,$4E,$39,$4E,$39,$4F,$39,$40,$39,$1F,$39,$48,$39,$4D,$39,$1F,$39,$42,$39,$40,$39,$52,$39,$53,$39,$4B,$39,$44,$39,$1F,$39,$5A,$39,$6A,$39,$1B,$39,$1F,$39,$1F,$39,$00,$39,$4B,$39,$4B,$39
+	.Line2End:
 	db $FF
 	%StripeImageHeader(.Line3, $04, $15, 0, $0000, 3)
 	;dw "that is left is Bowser's"
-db $53,$39,$47,$39,$40,$39,$53,$39,$1F,$39,$48,$39,$52,$39,$1F,$39,$4B,$39,$44,$39,$45,$39,$53,$39,$1F,$39,$48,$39,$52,$39,$1F,$39,$01,$39,$4E,$39,$56,$39,$52,$39,$44,$39,$51,$39,$5D,$39,$52,$39
-.Line3End:
+	db $53,$39,$47,$39,$40,$39,$53,$39,$1F,$39,$48,$39,$52,$39,$1F,$39,$4B,$39,$44,$39,$45,$39,$53,$39,$1F,$39,$48,$39,$52,$39,$1F,$39,$01,$39,$4E,$39,$56,$39,$52,$39,$44,$39,$51,$39,$5D,$39,$52,$39
+	.Line3End:
 	db $FF
 	%StripeImageHeader(.Line4, $04, $16, 0, $0000, 3)
 	;dw "Castle  where   Princess"
-db $02,$39,$40,$39,$52,$39,$53,$39,$4B,$39,$44,$39,$1F,$39,$1F,$39,$56,$39,$47,$39,$44,$39,$51,$39,$44,$39,$1F,$39,$1F,$39,$1F,$39,$0F,$39,$51,$39,$48,$39,$4D,$39,$42,$39,$44,$39,$52,$39,$52,$39
-.Line4End:
+	db $02,$39,$40,$39,$52,$39,$53,$39,$4B,$39,$44,$39,$1F,$39,$1F,$39,$56,$39,$47,$39,$44,$39,$51,$39,$44,$39,$1F,$39,$1F,$39,$1F,$39,$0F,$39,$51,$39,$48,$39,$4D,$39,$42,$39,$44,$39,$52,$39,$52,$39
+	.Line4End:
 	db $FF
 	%StripeImageHeader(.Line5, $04, $17, 0, $0000, 3)
 	;dw "Toadstool is being held."
-db $13,$39,$4E,$39,$40,$39,$43,$39,$52,$39,$53,$39,$4E,$39,$4E,$39,$4B,$39,$1F,$39,$48,$39,$52,$39,$1F,$39,$41,$39,$44,$39,$48,$39,$4D,$39,$46,$39,$1F,$39,$47,$39,$44,$39,$4B,$39,$43,$39,$1B,$39
-.Line5End:
+	db $13,$39,$4E,$39,$40,$39,$43,$39,$52,$39,$53,$39,$4E,$39,$4E,$39,$4B,$39,$1F,$39,$48,$39,$52,$39,$1F,$39,$41,$39,$44,$39,$48,$39,$4D,$39,$46,$39,$1F,$39,$47,$39,$44,$39,$4B,$39,$43,$39,$1B,$39
+	.Line5End:
 	db $FF
 	%StripeImageHeader(.Line6, $04, $18, 0, $0000, 3)
 	;dw "Can Mario rescue her and"
-db $02,$39,$40,$39,$4D,$39,$1F,$39,$0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$1F,$39,$51,$39,$44,$39,$52,$39,$42,$39,$54,$39,$44,$39,$1F,$39,$47,$39,$44,$39,$51,$39,$1F,$39,$40,$39,$4D,$39,$43,$39
-.Line6End:
+	db $02,$39,$40,$39,$4D,$39,$1F,$39,$0C,$39,$40,$39,$51,$39,$48,$39,$4E,$39,$1F,$39,$51,$39,$44,$39,$52,$39,$42,$39,$54,$39,$44,$39,$1F,$39,$47,$39,$44,$39,$51,$39,$1F,$39,$40,$39,$4D,$39,$43,$39
+	.Line6End:
 	db $FF
 	%StripeImageHeader(.Line7, $04, $19, 0, $0000, 3)
 	;dw "restore     peace     to"
-db $51,$39,$44,$39,$52,$39,$53,$39,$4E,$39,$51,$39,$44,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$4F,$39,$44,$39,$40,$39,$42,$39,$44,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$53,$39,$4E,$39
-.Line7End:
+	db $51,$39,$44,$39,$52,$39,$53,$39,$4E,$39,$51,$39,$44,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$4F,$39,$44,$39,$40,$39,$42,$39,$44,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$1F,$39,$53,$39,$4E,$39
+	.Line7End:
 	db $FF
 	%StripeImageHeader(.Line8, $04, $1A, 0, $0000, 3)
 	;dw "Dinosaur Land?"
-db $03,$39,$48,$39,$4D,$39,$4E,$39,$52,$39,$40,$39,$54,$39,$51,$39,$1F,$39,$0B,$39,$40,$39,$4D,$39,$43,$39,$1E,$39
-.Line8End:
+	db $03,$39,$48,$39,$4D,$39,$4E,$39,$52,$39,$40,$39,$54,$39,$51,$39,$1F,$39,$0B,$39,$40,$39,$4D,$39,$43,$39,$1E,$39
+	.Line8End:
 	db $FF
 endif
 cleartable
@@ -53844,11 +55295,20 @@ cleartable
 
 Main:
 	%StripeImageHeader(Bonus, $0A, $10, 0, $0000, 3)
-db $0B,$38,$18,$38,$17,$38,$1E,$38,$1C,$38,$28,$38,$FC,$38,$64,$28,$26,$38,$FC,$38,$FC,$38
-BonusEnd:
+	;dw "BONUS! *x  "
+	db $0B,$38,$18,$38,$17,$38,$1E,$38,$1C,$38,$28,$38,$FC,$38,$64,$28,$26,$38,$FC,$38,$FC,$38
+	BonusEnd:
+
 	%StripeImageHeader(TopHalf, $13, $0F, 0, $0000, 3)
-db $FC,$38,$FC,$38
-TopHalfEnd:
+	db $FC,$38,$FC,$38
+	TopHalfEnd:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR] Accents!
+	%StripeImageHeader(BonusAccent, $0B, $0F, 0, $0000, 3)
+	;dw "^"
+	db $4C,$38
+	BonusAccentEnd:
+endif
+Main_End:
 	db $FF
 cleartable
 namespace off
@@ -53885,14 +55345,24 @@ namespace SMW_TheEndScreenText
 
 cleartable
 Main:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00
+;[BR] dw "F I M"
+	%StripeImageHeader(TopHalf, $0E, $07, 0, $0000, 3)
+	db $C5,$20,$EF,$20,$EF,$60,$CC,$20
+	TopHalfEnd:
+	%StripeImageHeader(BottomHalf, $0E, $08, 0, $0000, 3)
+	db $D5,$20,$FF,$20,$FF,$60,$DC,$20
+	BottomHalfEnd:
+else
 	%StripeImageHeader(TopHalf, $0A, $07, 0, $0000, 3)
 	;dw "T H E  E N D"
-db $E3,$20,$FC,$20,$C7,$20,$FC,$20,$C4,$20,$FC,$20,$FC,$20,$C4,$20,$FC,$20,$CD,$20,$FC,$20,$C3,$20
-TopHalfEnd:
+	db $E3,$20,$FC,$20,$C7,$20,$FC,$20,$C4,$20,$FC,$20,$FC,$20,$C4,$20,$FC,$20,$CD,$20,$FC,$20,$C3,$20
+	TopHalfEnd:
 	%StripeImageHeader(BottomHalf, $0A, $08, 0, $0000, 3)
 	;dw "T H E  E N D"
-db $F3,$20,$FC,$20,$D7,$20,$FC,$20,$D4,$20,$FC,$20,$FC,$20,$D4,$20,$FC,$20,$DD,$20,$FC,$20,$D3,$20
-BottomHalfEnd:
+	db $F3,$20,$FC,$20,$D7,$20,$FC,$20,$D4,$20,$FC,$20,$FC,$20,$D4,$20,$FC,$20,$DD,$20,$FC,$20,$D3,$20
+	BottomHalfEnd:
+endif
 	db $FF
 cleartable
 namespace off
@@ -53951,14 +55421,25 @@ namespace SMW_QuitToTitleScreenText
 cleartable
 
 Main:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	table "tables/fonts/Overworld_menus_br.txt"
+	;                 (Label, XPos, YPos, Dir, RLE, Layer)
+	%StripeImageHeader(Continue, $06, $0E, 0, $0000, 3)
+	dw "CONTINUAR SEM SALVAR"
+	ContinueEnd:
+	%StripeImageHeader(End, $06, $10, 0, $0000, 3)
+	dw "SAIR SEM SALVAR"
+	EndEnd:
+else
 	%StripeImageHeader(Continue, $06, $0E, 0, $0000, 3)
 	;dw "CONTINUE WITHOUT SAVE"
 	db $2D,$39,$7A,$38,$79,$38,$2F,$39,$82,$38,$79,$38,$7B,$38,$73,$39,$FC,$38,$81,$38,$82,$38,$2F,$39,$84,$38,$7A,$38,$7B,$38,$2F,$39,$FC,$38,$31,$39,$71,$39,$80,$38,$73,$39
-ContinueEnd:
+	ContinueEnd:
 	%StripeImageHeader(End, $06, $10, 0, $0000, 3)
 	;dw "END WITHOUT SAVE"
 	db $73,$39,$79,$38,$7C,$38,$FC,$38,$81,$38,$82,$38,$2F,$39,$84,$38,$7A,$38,$7B,$38,$2F,$39,$FC,$38,$31,$39,$71,$39,$80,$38,$73,$39
-EndEnd:
+	EndEnd:
+endif
 	db $FF
 cleartable
 namespace off
@@ -53992,10 +55473,15 @@ SecondRow:						; Info: "MARIO       |  | TIME   @x  0"
 	dw $38FC,$38FC
 .ItemBox:
 	dw $384A,$38FC,$38FC,$784A
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+.Time:
+	dw $3C3C,$3C3D,$3C3E,$3C3F
+else
 .Blank2:
 	dw $38FC
 .Time:
 	dw $3C3D,$3C3E,$3C3F
+endif
 .Blank3:
 	dw $38FC,$38FC,$38FC
 .Coins:
@@ -58633,6 +60119,9 @@ Tiles:
 
 IggyTiles:
 	db $06,$02,$08
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR] Fix Iggy's hair 1
+	db $1A,$1B
+endif
 
 TileSize:
 	db $02,$00,$02,$00
@@ -58692,12 +60181,36 @@ CODE_01FEEE:
 	LDX.b !RAM_SMW_Misc_ScratchRAM05
 	CPX.b #$03
 	BNE.b CODE_01FF22
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR] Fix Iggy's hair 2
+	CMP.b #$1C
+	BEQ.b Hair_Turn
+	
+	CMP.b #$0C
+	BEQ.b Hair_Side
+	
+	CMP.b #$05
+	BCS.b CODE_01FF22
+	BRA.b +
+Hair_Side:
+	LSR
++:	
+	LSR
+	TAX
+	BRA.b ++
+
+Hair_Turn:	
+	LDX.b #$04
+++:
+	LDA.w IggyTiles,x
+	STA.w SMW_OAMBuffer[$40].Tile,y
+else
 	CMP.b #$05					;\ Note: If the current sprite is Iggy, then this will set the head graphic to Iggy's.
 	BCS.b CODE_01FF22				;| However, it won't change his hair to how you see it in the ending
 	LSR						;| To fix that, you'd have to rearrange some of the tiles in GFX 25 so that the Larry's hair tiles are 02 and 03, remove this LSR and use the free byte for IggyTiles.
 	TAX						;|
 	LDA.w IggyTiles,x				;|
 	STA.w SMW_OAMBuffer[$40].Tile,y			;/
+endif
 CODE_01FF22:
 	LDA.w SMW_OAMBuffer[$40].Tile,y
 	CMP.b #$4A
@@ -73133,6 +74646,11 @@ CODE_03ACEB:
 	LDA.b !RAM_SMW_Player_OnScreenPosYLo
 	CLC
 	ADC.w BlushYDisp,x
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br) != $00 ;[BR] Higher sprite if it's Luigi (SMW).
+	SEC
+	SBC.w !RAM_SMW_Player_CurrentCharacter
+	SBC.w !RAM_SMW_Player_CurrentCharacter
+endif
 	STA.w SMW_OAMBuffer[$40].YDisp,y
 if !Define_Global_ROMToAssemble&(!ROM_SMASW_U|!ROM_SMASW_E) != $00
 	LDA.w !RAM_SMW_Player_CurrentCharacter
@@ -73354,7 +74872,8 @@ CODE_03AE4B:
 Return03AE5A:
 	RTS
 
-DATA_03AE5B:
+PeachMessageDelayTable:
+; $03AE5B
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
 	db $08,$08,$00,$10,$08,$08,$00,$08
 	db $08,$08,$08,$08,$08,$00,$08,$08
@@ -73378,6 +74897,16 @@ elseif !Define_Global_ROMToAssemble&(!ROM_SMW_E1|!ROM_SMW_E2|!ROM_SMASW_E) != $0
 	db $05,$05,$05,$05,$05,$05,$05,$05
 	db $05,$05,$08,$05,$05,$05,$05,$05
 	db $05,$05,$05,$50
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	db $08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08
+	db $08,$08,$18
+	db $08,$08,$08,$08,$08,$18,$08,$08,$08,$08,$10,$08,$08,$08,$08,$08
+	db $08,$08,$08,$08,$08,$18
+	db $08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08
+	db $08,$08,$08,$08,$18
+	db $08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08
+	db $08,$08,$08,$08,$40
+	db $40
 else
 	db $08,$08,$08,$08,$08,$08,$18,$08
 	db $08,$08,$08,$08,$08,$08,$08,$08
@@ -73400,7 +74929,7 @@ DisplayMessage:
 	CPY.b #(MessageData_End-MessageData)/4
 	BEQ.b DoneDisplayingMessage
 	INC.w !RAM_SMW_NorSpr07C_PrincessPeach_CurrentLetterLo
-	LDA.w DATA_03AE5B,y
+	LDA.w PeachMessageDelayTable,y
 	STA.w !RAM_SMW_NorSpr07C_PrincessPeach_WaitBeforeDrawingNextLetter,x
 Return:
 	RTS
@@ -73417,9 +74946,11 @@ CODE_03AED0:
 	STA.w !RAM_SMW_NorSpr07C_PrincessPeach_SpawnFireworksTimer
 	RTS
 
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br) == $00 ;[BR]
 UNK_03AED8: ; unused?
 	db $00,$00,$94,$18,$18,$9C,$9C,$FF
 	db $00,$00,$52,$63,$63,$73,$73,$7F
+endif
 
 FadeText:
 	LDA.w !RAM_SMW_NorSpr07C_PrincessPeach_PhaseTimer,x
@@ -73570,6 +75101,110 @@ namespace SMW_NorSpr07C_PrincessPeach_Status08
 MessageData:
 if !Define_Global_ROMToAssemble&(!ROM_SMW_J) != $00
 	incbin "strings/PeachRescueMessage_SMW_J.bin"
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+cleartable
+	table "tables/fonts/RescueMessage_br.txt"
+.Line1:
+	db $18,$20 : dw "A"
+	
+	db $28,$20 : dw "a"
+	db $30,$20 : dw "v"
+	db $38,$20 : dw "e"
+	db $40,$20 : dw "n"
+	db $48,$20 : dw "t"
+	db $50,$20 : dw "u"
+	db $58,$20 : dw "r"
+	db $60,$20 : dw "a"
+	
+	db $70,$20 : dw "a"
+	db $78,$20 : dw "c"
+	db $80,$20 : dw "a"
+	db $88,$20 : dw "b"
+	db $90,$20 : dw "a"
+
+	db $A0,$20 : dw "a"	
+	db $A8,$20 : dw "q"
+	db $B0,$20 : dw "u"
+	db $B8,$20 : dw "i"
+	db $C0,$20 : dw "."
+.Line2:
+	db $18,$30 : dw "M"
+	db $20,$30 : dw "a"
+	db $28,$30 : dw "r"
+	db $30,$30 : dw "i"
+	db $38,$30 : dw "o"
+	db $40,$30 : dw ","
+
+	db $50,$30 : dw "L"
+	db $58,$30 : dw "u"
+	db $60,$30 : dw "i"	
+	db $68,$30 : dw "g"
+	db $70,$30 : dw "i"
+
+	db $80,$30 : dw "e"
+
+	db $90,$30 : dw "a"
+
+	db $A0,$30 : dw "P"
+	db $A8,$30 : dw "r"
+	db $B0,$30 : dw "i"
+	db $B8,$30 : dw "n"
+	db $C0,$30 : dw "c"
+	db $C8,$30 : dw "e"
+	db $D0,$30 : dw "s"
+	db $D8,$30 : dw "a"
+	db $E0,$30 : dw ","
+.Line3:
+	db $18,$40 : dw "j"
+	db $20,$40 : dw "u"
+	db $28,$40 : dw "n"
+	db $30,$40 : dw "t"
+	db $38,$40 : dw "o"
+
+	db $48,$40 : dw "c"
+	db $50,$40 : dw "o"	
+	db $58,$40 : dw "m"
+
+	db $68,$40 : dw "Y"
+	db $70,$40 : dw "o"
+	db $78,$40 : dw "s"
+	db $80,$40 : dw "h"
+	db $88,$40 : dw "i"
+	
+	db $98,$40 : dw "e"
+
+	db $A8,$40 : dw "a"
+	db $B0,$40 : dw "m"
+	db $B8,$40 : dw "i"
+	db $C0,$40 : dw "g"
+	db $C8,$40 : dw "o"
+	db $D0,$40 : dw "s"
+	db $D8,$40 : dw ","
+.Line4:
+	db $18,$50 : dw "i"
+	db $20,$50 : dw "r"
+	db $28,$50 : dw "4"
+	db $30,$50 : dw "o"
+
+	db $40,$50 : dw "e"
+	db $48,$50 : dw "n"	
+	db $50,$50 : dw "f"
+	db $58,$50 : dw "i"	
+	db $60,$50 : dw "m"
+
+	db $70,$50 : dw "t"
+	db $78,$50 : dw "i"
+	db $80,$50 : dw "r"
+	db $88,$50 : dw "a"
+	db $90,$50 : dw "r"
+
+	db $A0,$50 : dw "f"
+	db $A8,$50 : dw "E"
+	db $B0,$50 : dw "r"
+	db $B8,$50 : dw "i"
+	db $C0,$50 : dw "a"
+	db $C8,$50 : dw "s"
+	db $D0,$50 : dw "."
 else
 					;\ Info: This text is 84 characters long in the original SMW. Due to using sprites, the max would be 128, but that's if no other sprites are on screen.
 .Line1:					;|
@@ -103653,7 +105288,11 @@ LEVEL_L1_1E0:
 LEVEL_L1_126:
 	%SMW_InsertOriginalLevelData(126, SMW_U, LAYER_1)
 LEVEL_L1_125:
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR] "YOU ARE A SUPER PLAYER!"
+	%SMW_InsertOriginalLevelData(Level125_Funky_br, SMW_U, LAYER_1)
+else
 	%SMW_InsertOriginalLevelData(Level125_Funky_Main, SMW_J, LAYER_1)
+endif
 namespace off
 endmacro
 
@@ -104048,14 +105687,14 @@ endmacro
 macro INLINEDATATABLE_RT00_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $0F : !SMW_JBytes = $11 : !SMW_E1Bytes = $1D : !SMW_E2Bytes = $1B : !SMASW_UBytes = $04 : !SMASW_EBytes = $06 : !SMW_ARCADEBytes = $36
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 00)
 endmacro
 
 macro INLINEDATATABLE_RT01_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $13 : !SMW_JBytes = $12 : !SMW_E1Bytes = $00 : !SMW_E2Bytes = $00 : !SMASW_UBytes = $03 : !SMASW_EBytes = $02 : !SMW_ARCADEBytes = $03
-
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 ; LM: Lunar Magic inserts some custom code here:
 ; $00BA4E - JML to the VBlank routine. Used by the FastROM patch
 ; $00BA52 - JML to handle setting !REGISTER_EnableFastROM. Used by the FastROM patch
@@ -104066,70 +105705,70 @@ endmacro
 macro INLINEDATATABLE_RT02_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $0D : !SMW_JBytes = $0D : !SMW_E1Bytes = $0D : !SMW_E2Bytes = $0C : !SMASW_UBytes = $09 : !SMASW_EBytes = $19 : !SMW_ARCADEBytes = $0D
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 02)
 endmacro
 
 macro INLINEDATATABLE_RT03_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $1B : !SMW_JBytes = $1B : !SMW_E1Bytes = $4D : !SMW_E2Bytes = $4D : !SMASW_UBytes = $1B : !SMASW_EBytes = $2E : !SMW_ARCADEBytes = $1B
-	
+	!HACK_SMW_brBytes = $05 : !HACK_SMASW_brBytes = !HACK_SMW_brBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 03)
 endmacro
 
 macro INLINEDATATABLE_RT04_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $2D : !SMW_JBytes = $90 : !SMW_E1Bytes = $0B : !SMW_E2Bytes = $0B : !SMASW_UBytes = $6D : !SMASW_EBytes = $1D : !SMW_ARCADEBytes = $2D
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 04)
 endmacro
 
 macro INLINEDATATABLE_RT05_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $05 : !SMW_JBytes = $02 : !SMW_E1Bytes = $05 : !SMW_E2Bytes = $00 : !SMASW_UBytes = $05 : !SMASW_EBytes = $00 : !SMW_ARCADEBytes = $05
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 05)
 endmacro
 
 macro INLINEDATATABLE_RT06_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $0C : !SMW_JBytes = $00 : !SMW_E1Bytes = $06 : !SMW_E2Bytes = $06 : !SMASW_UBytes = $0C : !SMASW_EBytes = $06 : !SMW_ARCADEBytes = $0C
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 06)
 endmacro
 
 macro INLINEDATATABLE_RT07_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $18 : !SMW_JBytes = $0D : !SMW_E1Bytes = $11 : !SMW_E2Bytes = $0A : !SMASW_UBytes = $18 : !SMASW_EBytes = $0A : !SMW_ARCADEBytes = $18
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 07)
 endmacro
 
 macro INLINEDATATABLE_RT08_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $41 : !SMW_JBytes = $3E : !SMW_E1Bytes = $41 : !SMW_E2Bytes = $41 : !SMASW_UBytes = $41 : !SMASW_EBytes = $41 : !SMW_ARCADEBytes = $41
-
+	!HACK_SMW_brBytes = $30 : !HACK_SMASW_brBytes = !HACK_SMW_brBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 08)
 endmacro
 
 macro INLINEDATATABLE_RT09_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $44 : !SMW_JBytes = $26 : !SMW_E1Bytes = $44 : !SMW_E2Bytes = $44 : !SMASW_UBytes = $44 : !SMASW_EBytes = $44 : !SMW_ARCADEBytes = $44
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 09)
 endmacro
 
 macro INLINEDATATABLE_RT10_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $62 : !SMW_JBytes = $46 : !SMW_E1Bytes = $62 : !SMW_E2Bytes = $62 : !SMASW_UBytes = $62 : !SMASW_EBytes = $62 : !SMW_ARCADEBytes = $62
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 10)
 endmacro
 
 macro INLINEDATATABLE_RT11_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $1E : !SMW_JBytes = $05 : !SMW_E1Bytes = $24 : !SMW_E2Bytes = $30 : !SMASW_UBytes = $1E : !SMASW_EBytes = $30 : !SMW_ARCADEBytes = $1E
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 11)
 endmacro
 
@@ -104149,21 +105788,22 @@ macro INLINEDATATABLE_RT12_SMW_EmptySpace(Address)
 ; $03BE80 - Pre 2.53+ overworld expansion hijack - 16-bit level message pointer offsets
 ;           Post 2.53+ overworld expansion hijack - Initial level flags table
 !SMW_UBytes = $05FE : !SMW_JBytes = $05FE : !SMW_E1Bytes = $05FE : !SMW_E2Bytes = $05FE : !SMASW_UBytes = $05F0 : !SMASW_EBytes = $05F1 : !SMW_ARCADEBytes = $05FE
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 12)
 endmacro
 
 macro INLINEDATATABLE_RT13_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $54 : !SMW_JBytes = $72 : !SMW_E1Bytes = $54 : !SMW_E2Bytes = $54 : !SMASW_UBytes = $54 : !SMASW_EBytes = $54 : !SMW_ARCADEBytes = $54
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 13)
 endmacro
 
 macro INLINEDATATABLE_RT14_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $03A4 : !SMW_JBytes = $03AB : !SMW_E1Bytes = $03A4 : !SMW_E2Bytes = $03A4 : !SMASW_UBytes = $030F : !SMASW_EBytes = $03A2 : !SMW_ARCADEBytes = $03A4
-	
+	!HACK_SMW_brBytes = !SMW_UBytes
+	!HACK_SMASW_brBytes = !SMASW_UBytes-$80
 	%SMW_InsertOriginalFreespace(!ROMID, 14)
 endmacro
 
@@ -104184,63 +105824,63 @@ endif
 ;	     G = disable LM's global animations
 ;           ---- = Unused
 !SMW_UBytes = $0220 : !SMW_JBytes = $0220 : !SMW_E1Bytes = $0220 : !SMW_E2Bytes = $0220 : !SMASW_UBytes = $0232 : !SMASW_EBytes = $0232 : !SMW_ARCADEBytes = $0220
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 15)
 endmacro
 
 macro INLINEDATATABLE_RT16_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $024A : !SMW_JBytes = $0306 : !SMW_E1Bytes = $024A : !SMW_E2Bytes = $024A : !SMASW_UBytes = $023E : !SMASW_EBytes = $023E : !SMW_ARCADEBytes = $026B
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 16)
 endmacro
 
 macro INLINEDATATABLE_RT17_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $0342 : !SMW_JBytes = $0340 : !SMW_E1Bytes = $0342 : !SMW_E2Bytes = $0342 : !SMASW_UBytes = $02C2 : !SMASW_EBytes = $02C2 : !SMW_ARCADEBytes = $0342
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 17)
 endmacro
 
 macro INLINEDATATABLE_RT18_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $4F : !SMW_JBytes = $57 : !SMW_E1Bytes = $4F : !SMW_E2Bytes = $4F : !SMASW_UBytes = $5B : !SMASW_EBytes = $5B : !SMW_ARCADEBytes = $4F
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 18)
 endmacro
 
 macro INLINEDATATABLE_RT19_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $01E7 : !SMW_JBytes = $01E7 : !SMW_E1Bytes = $01E7 : !SMW_E2Bytes = $01C2 : !SMASW_UBytes = $01E7 : !SMASW_EBytes = $01C2 : !SMW_ARCADEBytes = $01E7
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 19)
 endmacro
 
 macro INLINEDATATABLE_RT20_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $1E : !SMW_JBytes = $1E : !SMW_E1Bytes = $1E : !SMW_E2Bytes = $1E : !SMASW_UBytes = $1E : !SMASW_EBytes = $1E : !SMW_ARCADEBytes = $1E
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 20)
 endmacro
 
 macro INLINEDATATABLE_RT21_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $5A : !SMW_JBytes = $048A : !SMW_E1Bytes = $5A : !SMW_E2Bytes = $4A : !SMASW_UBytes = $50 : !SMASW_EBytes = $40 : !SMW_ARCADEBytes = $84
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 21)
 endmacro
 
 macro INLINEDATATABLE_RT22_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $16 : !SMW_JBytes = $0114 : !SMW_E1Bytes = $16 : !SMW_E2Bytes = $16 : !SMASW_UBytes = $16 : !SMASW_EBytes = $16 : !SMW_ARCADEBytes = $16
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 22)
 endmacro
 
 macro INLINEDATATABLE_RT23_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $A0 : !SMW_JBytes = $A0 : !SMW_E1Bytes = $A0 : !SMW_E2Bytes = $A0 : !SMASW_UBytes = $A0 : !SMASW_EBytes = $A0 : !SMW_ARCADEBytes = $A0
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 23)
 endmacro
 
@@ -104267,21 +105907,21 @@ macro INLINEDATATABLE_RT24_SMW_EmptySpace(Address)
 ;           X = Bit 4 of the X position, for method 2
 ;           (X/Y are switched in vertical levels)
 !SMW_UBytes = $03BA : !SMW_JBytes = $03BA : !SMW_E1Bytes = $03BA : !SMW_E2Bytes = $03BA : !SMASW_UBytes = $03BA : !SMASW_EBytes = $03BA : !SMW_ARCADEBytes = $03BA
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 24)
 endmacro
 
 macro INLINEDATATABLE_RT25_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $47 : !SMW_JBytes = $4A : !SMW_E1Bytes = $47 : !SMW_E2Bytes = $47 : !SMASW_UBytes = $47 : !SMASW_EBytes = $47 : !SMW_ARCADEBytes = $47
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 25)
 endmacro
 
 macro INLINEDATATABLE_RT26_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $069C : !SMW_JBytes = $069F : !SMW_E1Bytes = $069C : !SMW_E2Bytes = $069C : !SMASW_UBytes = $069C : !SMASW_EBytes = $069C : !SMW_ARCADEBytes = $069C
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 26)
 endmacro
 
@@ -104300,105 +105940,108 @@ macro INLINEDATATABLE_RT27_SMW_EmptySpace(Address)
 ; $06FC00 - Extra Secondary Level Header data 1
 ; $06FE00 - Extra Secondary Level Header data 2
 !SMW_UBytes = $0AC7 : !SMW_JBytes = $0ACD : !SMW_E1Bytes = $0AC7 : !SMW_E2Bytes = $0AC7 : !SMASW_UBytes = $0AC7 : !SMASW_EBytes = $C7 : !SMW_ARCADEBytes = $0AC7
-	
+	!HACK_SMW_brBytes = !SMW_UBytes-$09C5
+	!HACK_SMASW_brBytes = !SMASW_UBytes-$09C5
 	%SMW_InsertOriginalFreespace(!ROMID, 27)
 endmacro
 
 macro INLINEDATATABLE_RT28_SMW_EmptySpace(Address)				; Note: This is a SMAS (PAL) exclusive routine macro
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $00 : !SMW_JBytes = $00 : !SMW_E1Bytes = $00 : !SMW_E2Bytes = $00 : !SMASW_UBytes = $00 : !SMASW_EBytes = $092E : !SMW_ARCADEBytes = $00
-
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 28)
 endmacro
 
 macro INLINEDATATABLE_RT29_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $13 : !SMW_JBytes = $13 : !SMW_E1Bytes = $13 : !SMW_E2Bytes = $13 : !SMASW_UBytes = $13 : !SMASW_EBytes = $13 : !SMW_ARCADEBytes = $13
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 29)
 endmacro
 
 macro INLINEDATATABLE_RT30_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $0487 : !SMW_JBytes = $0487 : !SMW_E1Bytes = $0487 : !SMW_E2Bytes = $0487 : !SMASW_UBytes = $0487 : !SMASW_EBytes = $0487 : !SMW_ARCADEBytes = $0487
-	
+	!HACK_SMW_brBytes = !SMW_UBytes-$03EF
+	!HACK_SMASW_brBytes = !SMASW_UBytes-$03EF
 	%SMW_InsertOriginalFreespace(!ROMID, 30)
 endmacro
 
 macro INLINEDATATABLE_RT31_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $DA : !SMW_JBytes = $E6 : !SMW_E1Bytes = $DA : !SMW_E2Bytes = $DA : !SMASW_UBytes = $DA : !SMASW_EBytes = $DA : !SMW_ARCADEBytes = $DA
-	
+	!HACK_SMW_brBytes = !SMW_UBytes-$1E
+	!HACK_SMASW_brBytes = !SMASW_UBytes-$1E
 	%SMW_InsertOriginalFreespace(!ROMID, 31)
 endmacro
 
 macro INLINEDATATABLE_RT32_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $0891 : !SMW_JBytes = $089A : !SMW_E1Bytes = $0891 : !SMW_E2Bytes = $0891 : !SMASW_UBytes = $0891 : !SMASW_EBytes = $0891 : !SMW_ARCADEBytes = $0894
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 32)
 endmacro
 
 macro INLINEDATATABLE_RT33_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $0370 : !SMW_JBytes = $0370 : !SMW_E1Bytes = $0370 : !SMW_E2Bytes = $0370 : !SMASW_UBytes = $0370 : !SMASW_EBytes = $0370 : !SMW_ARCADEBytes = $0370
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 33)
 endmacro
 
 macro INLINEDATATABLE_RT34_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $02F3 : !SMW_JBytes = $017E : !SMW_E1Bytes = $02F3 : !SMW_E2Bytes = $0265 : !SMASW_UBytes = $02F3 : !SMASW_EBytes = $0265 : !SMW_ARCADEBytes = $02F3
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 34)
 endmacro
 
 macro INLINEDATATABLE_RT35_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $16 : !SMW_JBytes = $16 : !SMW_E1Bytes = $16 : !SMW_E2Bytes = $16 : !SMASW_UBytes = $16 : !SMASW_EBytes = $16 : !SMW_ARCADEBytes = $16
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 35)
 endmacro
 
 macro INLINEDATATABLE_RT36_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $0191 : !SMW_JBytes = $0638 : !SMW_E1Bytes = $0191 : !SMW_E2Bytes = $017F : !SMASW_UBytes = $018E : !SMASW_EBytes = $017C : !SMW_ARCADEBytes = $0191
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 36)
 endmacro
 
 macro INLINEDATATABLE_RT37_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $91 : !SMW_JBytes = $13 : !SMW_E1Bytes = $91 : !SMW_E2Bytes = $91 : !SMASW_UBytes = $91 : !SMASW_EBytes = $91 : !SMW_ARCADEBytes = $6A
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 37)
 endmacro
 
 macro INLINEDATATABLE_RT38_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $21 : !SMW_JBytes = $21 : !SMW_E1Bytes = $21 : !SMW_E2Bytes = $21 : !SMASW_UBytes = $21 : !SMASW_EBytes = $21 : !SMW_ARCADEBytes = $21
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 38)
 endmacro
 
 macro INLINEDATATABLE_RT39_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $98 : !SMW_JBytes = $97 : !SMW_E1Bytes = $98 : !SMW_E2Bytes = $98 : !SMASW_UBytes = $98 : !SMASW_EBytes = $98 : !SMW_ARCADEBytes = $98
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 39)
 endmacro
 
 macro INLINEDATATABLE_RT40_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $01E0 : !SMW_JBytes = $01E0 : !SMW_E1Bytes = $01E0 : !SMW_E2Bytes = $01DA : !SMASW_UBytes = $01E0 : !SMASW_EBytes = $01DA : !SMW_ARCADEBytes = $01E0
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 40)
 endmacro
 
 macro INLINEDATATABLE_RT41_SMW_EmptySpace(Address)
 %InsertMacroAtXPosition(<Address>)
 !SMW_UBytes = $017E : !SMW_JBytes = $017E : !SMW_E1Bytes = $017E : !SMW_E2Bytes = $017E : !SMASW_UBytes = $017E : !SMASW_EBytes = $017E : !SMW_ARCADEBytes = $017E
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 41)
 endmacro
 
@@ -104414,7 +106057,7 @@ macro INLINEDATATABLE_RT42_SMW_EmptySpace(Address)
 ; $0DE1E0 - Extended Object 03 (Horizontal level mode 1C screen jump)
 ; $0DE1F0 - Routine that initializes $8A and $8B during level load.
 !SMW_UBytes = $017A : !SMW_JBytes = $017A : !SMW_E1Bytes = $017A : !SMW_E2Bytes = $017A : !SMASW_UBytes = $017A : !SMASW_EBytes = $017A : !SMW_ARCADEBytes = $017A
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 42)
 endmacro
 
@@ -104431,7 +106074,7 @@ macro INLINEDATATABLE_RT43_SMW_EmptySpace(Address)
 ; $0DF1C0 - Routine that handles the direct map16 objects
 ; $0DF290 - Routine that handles conditional map16
 !SMW_UBytes = $0276 : !SMW_JBytes = $0277 : !SMW_E1Bytes = $0276 : !SMW_E2Bytes = $0276 : !SMASW_UBytes = $0276 : !SMASW_EBytes = $0276 : !SMW_ARCADEBytes = $0276
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 43)
 endmacro
 
@@ -104445,7 +106088,7 @@ macro INLINEDATATABLE_RT44_SMW_EmptySpace(Address)
 ; $0DFF10 - Routine that handles vertical subscreen crossing in LM objects
 ; $0DFF50 - Standard Object 29 (Page 40-7F Direct Map16 Object)
 !SMW_UBytes = $0161 : !SMW_JBytes = $0315 : !SMW_E1Bytes = $0161 : !SMW_E2Bytes = $0161 : !SMASW_UBytes = $0161 : !SMASW_EBytes = $0161 : !SMW_ARCADEBytes = $0161
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 44)
 endmacro
 
@@ -104488,7 +106131,7 @@ endif
 ; $0EFD00 - Routine for handling the Background map16 pages.
 ; $0EFD50 - 24-bit Background map16 pointers
 !SMW_UBytes = $0F10 : !SMW_JBytes = $0F00 : !SMW_E1Bytes = $0F10 : !SMW_E2Bytes = $0F10 : !SMASW_UBytes = $0EE0 : !SMASW_EBytes = $0EE0 : !SMW_ARCADEBytes = $0F10
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 45)
 endmacro
 
@@ -104529,7 +106172,7 @@ endif
 ;	; Byte 9 = FastROM patch setting?
 ;	; Bytes 10-25 = Unknown
 !SMW_UBytes = $1070 : !SMW_JBytes = $1070 : !SMW_E1Bytes = $1070 : !SMW_E2Bytes = $1070 : !SMASW_UBytes = $1084 : !SMASW_EBytes = $1084 : !SMW_ARCADEBytes = $1070
-	
+	!HACK_SMW_brBytes = !SMW_UBytes : !HACK_SMASW_brBytes = !SMASW_UBytes
 	%SMW_InsertOriginalFreespace(!ROMID, 46)
 endmacro
 

@@ -6,10 +6,6 @@ macro SMAS_GameSpecificAssemblySettings()
 	!ROM_SMAS_E = $0800							;|
 	!ROM_SMAS_J1 = $1000							;|
 	!ROM_SMAS_J2 = $2000							;/
-
-	!ROM_HACK_SMAS_br = $4000					;|[BR] Define for the translation
-	!ROM_HACK_SMASW_br = $8000					;/
-	
 	!ROM_SMB1_U = $0001							;\ These defines should match the component ROM versions from the respective games' ROM Map files.
 	!ROM_SMB1_E = $0002							;|
 	!ROM_SMB1_J = $0004							;|
@@ -21,18 +17,28 @@ macro SMAS_GameSpecificAssemblySettings()
 	!ROM_SMB2U_J = $0004							;|
 	!ROM_SMB3_U = $0001							;|
 	!ROM_SMB3_E = $0002							;|
-	!ROM_SMB3_J = $0004							;/
+	!ROM_SMB3_J = $0004							;|
+	!ROM_SMW_U = $0001							;|
+	!ROM_SMW_J = $0002							;|
+	!ROM_SMW_E1 = $0004							;|
+	!ROM_SMW_E2 = $0008							;|
+	!ROM_SMW_ARCADE = $0010							;/
 
-!Define_Global_SMASGames = !SMASGames_SMB1|!SMASGames_SMBLL|!SMASGames_SMB2U|!SMASGames_SMB3		; Which games to assemble when generating a SMAS ROM.
+	!ROM_HACK_SMAS_br = $4000					;\[BR] Defines for the translation
+	!ROM_HACK_SMASW_br = $8000					;|
+	!ROM_HACK_SMW_br = $0020					;/
+
+!Define_Global_SMASGames = !SMASGames_SMB1|!SMASGames_SMBLL|!SMASGames_SMB2U|!SMASGames_SMB3|!SMASGames_SMW		; Which games to assemble when generating a SMAS ROM.
 	!SMASGames_None = $00
 	!SMASGames_SMB1 = $01
 	!SMASGames_SMBLL = $02
 	!SMASGames_SMB2U = $04
 	!SMASGames_SMB3 = $08
-	!SMASGames_SMW = $00
+	!SMASGames_SMW = $10
 
 !Define_SMAS_Global_DisableCopyDetection = !TRUE
-	%SetROMToAssembleForHack(SMAS_U, !ROMID)
+
+	%SetROMToAssembleForHack(SMASW_U, !ROMID)
 endmacro
 
 macro SMAS_LoadGameSpecificMainSNESFiles()
@@ -64,12 +70,27 @@ if !Define_Global_SMASGames&(!SMASGames_SMB3) != $00
 	incsrc ../../SMB3/Routine_Macros_SMB3.asm
 	incsrc ../../SMB3/SNES_Macros_SMB3.asm
 endif
+if !Define_Global_SMASGames&(!SMASGames_SMW) != $00
+
+	!Define_SMW_Global_UseIndividualPaletteFiles = !FALSE			; Set to !TRUE to use individual .tpl files for the global palettes. Otherwise, smw.pal will be inserted.
+
+	incsrc ../../SMW/Misc_Defines_SMW.asm
+	incsrc ../../SMW/RAM_Map_SMW.asm
+	incsrc ../../SMW/Routine_Macros_SMW.asm
+	incsrc ../../SMW/SNES_Macros_SMW.asm
+endif
 endmacro
 
 macro SMAS_LoadGameSpecificMainSPC700Files()
 	incsrc ../SPC700/ARAM_Map_SMAS.asm
 	incsrc ../Misc_Defines_SMAS.asm
 	incsrc ../SPC700/SPC700_Macros_SMAS.asm
+
+if !Define_Global_SMASGames&(!SMASGames_SMW) != $00
+	incsrc ../../SMW/SPC700/ARAM_Map_SMW.asm
+	incsrc ../../SMW/Misc_Defines_SMW.asm
+	incsrc ../../SMW/SPC700/SPC700_Macros_SMW.asm
+endif
 endmacro
 
 macro SMAS_LoadGameSpecificMainExtraHardwareFiles()
@@ -86,15 +107,15 @@ macro SMAS_GlobalAssemblySettings()
 	!Define_Global_CompatibleControllers = !Controller_StandardJoypad
 	!Define_Global_DisableROMMirroring = !FALSE
 	!Define_Global_CartridgeHeaderVersion = $00
-	!Define_Global_FixIncorrectChecksumHack = !FALSE
+	!Define_Global_FixIncorrectChecksumHack = !TRUE
 	!Define_Global_ROMFrameworkVer = 1
 	!Define_Global_ROMFrameworkSubVer = 0
 	!Define_Global_ROMFrameworkSubSubVer = 0
-	!Define_Global_AsarChecksum = $0000
+	!Define_Global_AsarChecksum = $F65E 					; The wrong checksum.
 	!Define_Global_LicenseeName = "Nintendo"
 	!Define_Global_DeveloperName = "Nintendo EAD"
-	!Define_Global_ReleaseDate = "August 11, 1993"
-	!Define_Global_BaseROMMD5Hash = "53c038150ba00d5f8d8574b4d36283f2"
+	!Define_Global_ReleaseDate = "December 1994"
+	!Define_Global_BaseROMMD5Hash = "7ecaf3e2e021c8a836041c85886f4594"
 
 	!Define_Global_MakerCode = "01"
 	!Define_Global_GameCode = "5M  "
@@ -102,17 +123,17 @@ macro SMAS_GlobalAssemblySettings()
 	!Define_Global_ExpansionFlashSize = !ExpansionMemorySize_0KB
 	!Define_Global_ExpansionRAMSize = !ExpansionMemorySize_0KB
 	!Define_Global_IsSpecialVersion = $00
-	!Define_Global_InternalName = "SUPER MARIO ALL_STARS"
+	!Define_Global_InternalName = "ALL_STARS + WORLD    "
 	!Define_Global_ROMLayout = !ROMLayout_LoROM
 	!Define_Global_ROMType = !ROMType_ROM_RAM_SRAM
 	!Define_Global_CustomChip = !Chip_None
-	!Define_Global_ROMSize = !ROMSize_2MB
+	!Define_Global_ROMSize = !ROMSize_2_5MB
 	!Define_Global_SRAMSize = !SRAMSize_8KB
 	!Define_Global_Region = !Region_NorthAmerica
 	!Define_Global_LicenseeID = $01
 	!Define_Global_VersionNumber = $00
 	!Define_Global_ChecksumCompliment = !Define_Global_Checksum^$FFFF
-	!Define_Global_Checksum = $AA5C
+	!Define_Global_Checksum = $D81B 					; The ACTUAL checksum.
 	!UnusedNativeModeVector1 = $FFFF
 	!UnusedNativeModeVector2 = $FFFF
 	!NativeModeCOPVector = SMAS_VBlankRoutine_EndofVBlank
@@ -138,74 +159,79 @@ macro SMAS_LoadROMMap()
 	%ROUTINE_SMAS_ResetToSMASTitleScreen($0080DE)
 	%ROUTINE_SMAS_CopyOfResetToSMASTitleScreen($008139)
 	%DATATABLE_SMAS_GameInitAndMainPointers($008194)
-	%ROUTINE_SMAS_GameMode08_LoadSelectedGame($0081A0)
-	%ROUTINE_SMAS_GameMode09_LoadGameDemo($00822B)
-	%ROUTINE_SMAS_VBlankRoutine($0082CE)
-	%ROUTINE_SMAS_IRQRoutine($008362)
-	%ROUTINE_SMAS_InitializeMostRAM($0083B6)
-	%ROUTINE_SMAS_UpdateVariousRegisters($00841A)
-	%ROUTINE_SMAS_InitializeCurrentGamemode($00849C)
-	%ROUTINE_SMAS_DMADataBlockToRAM($00866D)
-	%ROUTINE_SMAS_InitializeSelectedRAM($00868E)
-if !Define_Global_SMASGames&(!SMASGames_SMB1|!SMASGames_SMBLL|!SMASGames_SMB2U|!SMASGames_SMB3) != $00
-	%ROUTINE_SMAS_CheckWhichControllersArePluggedIn($0086B5)
+	%ROUTINE_SMAS_GameMode08_LoadSelectedGame($0081A3)
+	%ROUTINE_SMAS_GameMode09_LoadGameDemo($00822E)
+	%ROUTINE_SMAS_VBlankRoutine($008302)
+	%ROUTINE_SMAS_IRQRoutine($00839D)
+	%ROUTINE_SMAS_InitializeMostRAM($0083F8)
+	%ROUTINE_SMAS_UpdateVariousRegisters($00845C)
+	%ROUTINE_SMAS_InitializeCurrentGamemode($0084DE)
+	%ROUTINE_SMAS_DMADataBlockToRAM($0086B1)
+	%ROUTINE_SMAS_InitializeSelectedRAM($0086D2)
+if !Define_Global_SMASGames&(!SMASGames_SMB1|!SMASGames_SMBLL|!SMASGames_SMB2U|!SMASGames_SMB3|!SMASGames_SMW) != $00
+	%ROUTINE_SMAS_CheckWhichControllersArePluggedIn($0086F9)
 endif
-	%ROUTINE_SMAS_PollJoypadInputs($0086CC)
-	%ROUTINE_SMAS_ResetSpriteOAMRt($008719)
-	%ROUTINE_SMAS_CompressOAMTileSizeBuffer($008773)
-	%ROUTINE_SMAS_PlaySoundEffectsAndMusic($0087CC)
-	%ROUTINE_SMAS_TurnOffIO($00882E)
-	%DATATABLE_SMAS_GameModeSettings($00883D)
-	%ROUTINE_SMAS_UploadDataDuringVBlank($0088C3)
-	%ROUTINE_SMAS_LoadStripeImage($0089BA)
-	%ROUTINE_SMAS_GameMode07_InitializeSelectedGame($0089F1)
-	%ROUTINE_SMAS_UploadSMASSPCEngine($008A4F)
-	%ROUTINE_RT00_SMAS_UploadMainSampleData($008A8E)
-	%ROUTINE_SMAS_UploadRandomTitleScreenChatteringSample($008AE7)
+	%ROUTINE_SMAS_PollJoypadInputs($008710)
+	%ROUTINE_SMAS_ResetSpriteOAMRt($00875D)
+	%ROUTINE_SMAS_CompressOAMTileSizeBuffer($0087B7)
+	%ROUTINE_SMAS_PlaySoundEffectsAndMusic($008810)
+	%ROUTINE_SMAS_TurnOffIO($008872)
+	%DATATABLE_SMAS_GameModeSettings($008881)
+	%ROUTINE_SMAS_UploadDataDuringVBlank($008907)
+	%ROUTINE_SMAS_LoadStripeImage($0089F6)
+	%ROUTINE_SMAS_GameMode07_InitializeSelectedGame($008A2D)
+	%ROUTINE_SMAS_UploadSMASSPCEngine($008A8D)
+	%ROUTINE_RT00_SMAS_UploadMainSampleData($008ACC)
+	%ROUTINE_SMAS_UploadRandomTitleScreenChatteringSample($008B25)
 if !Define_Global_SMASGames&(!SMASGames_SMB1|!SMASGames_SMBLL) != $00
-	%ROUTINE_SMAS_UploadSMB1MusicBank($008B17)
+	%ROUTINE_SMAS_UploadSMB1MusicBank($008B55)
 endif
 if !Define_Global_SMASGames&(!SMASGames_SMB2U) != $00
-	%ROUTINE_SMAS_UploadSMB2UMusicBank($008B27)
+	%ROUTINE_SMAS_UploadSMB2UMusicBank($008B65)
 endif
 if !Define_Global_SMASGames&(!SMASGames_SMB3) != $00
-	%ROUTINE_SMAS_UploadSMB3LevelMusicBank($008B37)
-	%ROUTINE_RT00_SMB3_UploadMusicBank($008B47)
-	%ROUTINE_RT01_SMB3_UploadMusicBank($008B63)
+	%ROUTINE_SMAS_UploadSMB3LevelMusicBank($008B75)
 endif
-	%ROUTINE_SMAS_HandleSPCUploads($008BAC)
-	%ROUTINE_SMAS_VerifySaveDataIsValid($008C1B)
-	%DATATABLE_SMAS_PremadeSaveFileDataOffsets($008DD3)
-	%DATATABLE_SMAS_PremadeSaveFileData($008DE3)
+if !Define_Global_SMASGames&(!SMASGames_SMW) != $00
+	%ROUTINE_SMAS_UploadSMWSPCEngine($008B85)
+endif
+if !Define_Global_SMASGames&(!SMASGames_SMB3) != $00
+	%ROUTINE_RT00_SMB3_UploadMusicBank($008B98)
+	%ROUTINE_RT01_SMB3_UploadMusicBank($008BB4)
+endif
+	%ROUTINE_SMAS_HandleSPCUploads($008BFD)
+	%ROUTINE_SMAS_VerifySaveDataIsValid($008C6C)
+	%DATATABLE_SMAS_PremadeSaveFileDataOffsets($008D91)
+	%DATATABLE_SMAS_PremadeSaveFileData($008DA1)
 if !Define_Global_SMASGames&(!SMASGames_SMB1) != $00
-	%ROUTINE_SMB1_SaveGame($008F03)
+	%ROUTINE_SMB1_SaveGame($008EC1)
 endif
 if !Define_Global_SMASGames&(!SMASGames_SMBLL) != $00
-	%ROUTINE_SMBLL_SaveGame($0090AC)
+	%ROUTINE_SMBLL_SaveGame($00906A)
 endif
 if !Define_Global_SMASGames&(!SMASGames_SMB2U) != $00
-	%ROUTINE_SMB2U_SaveGame($009152)
-	%ROUTINE_SMB2U_UnknownRoutine($0091F9)
+	%ROUTINE_SMB2U_SaveGame($009110)
+	%ROUTINE_SMB2U_UnknownRoutine($0091B7)
 endif
 if !Define_Global_SMASGames&(!SMASGames_SMB3) != $00
-	%ROUTINE_SMB3_SaveGame($00922D)
+	%ROUTINE_SMB3_SaveGame($0091EB)
 endif
 if !Define_Global_SMASGames&(!SMASGames_SMB1|!SMASGames_SMBLL|!SMASGames_SMB2U) != $00
-	%ROUTINE_SMAS_StoreDataToSaveFileAndUpdateTempChecksum($0092F6)
+	%ROUTINE_SMAS_StoreDataToSaveFileAndUpdateTempChecksum($0092B4)
 endif
-	%ROUTINE_SMAS_DisplayRegionErrorMessage($009307)
-	%ROUTINE_SMAS_DisplayCopyDetectionErrorMessage(NULLROM)
+	%ROUTINE_SMAS_DisplayRegionErrorMessage($0092C5)
+	;%ROUTINE_SMAS_DisplayCopyDetectionErrorMessage($0094C7) ;[BR]
 if !Define_Global_SMASGames&(!SMASGames_SMB1|!SMASGames_SMBLL|!SMASGames_SMB3) != $00
-	%DATATABLE_SMAS_CircleHDMAData(NULLROM)
+		%DATATABLE_SMAS_CircleHDMAData(NULLROM)
 endif
-	%FREE_BYTES(NULLROM, 510-306, $FF)
-	%ROUTINE_SMAS_GameMode00_SplashAndTitleScreen($009B80)
-	%ROUTINE_SMAS_IntroProcessXX_InitializeAndFadeIntoSplashScreen($009C3A)
-	%ROUTINE_SMAS_IntroProcess02_ShowSplashScreen($009C8A)
-	%ROUTINE_SMAS_IntroProcessXX_FadeOutToAndInitializeTitleScreen($009CB5)
-	%ROUTINE_SMAS_IntroProcess05_CharacterChatterOnTitleScreen($009D5E)
-	%ROUTINE_SMAS_IntroProcess0B_Unknown($009DC6)
-	%ROUTINE_SMAS_IntroProcessXX_TurnOnTitleScreenLights($009E16)
+	;%FREE_BYTES($009940, 64, $FF)
+	%ROUTINE_SMAS_GameMode00_SplashAndTitleScreen($009980)
+	%ROUTINE_SMAS_IntroProcessXX_InitializeAndFadeIntoSplashScreen($009A39)
+	%ROUTINE_SMAS_IntroProcess02_ShowSplashScreen($009A89)
+	%ROUTINE_SMAS_IntroProcessXX_FadeOutToAndInitializeTitleScreen($009AB3)	;[BR]
+	%ROUTINE_SMAS_IntroProcess05_CharacterChatterOnTitleScreen(NULLROM)
+	%ROUTINE_SMAS_IntroProcess0B_Unknown(NULLROM)
+	%ROUTINE_SMAS_IntroProcessXX_TurnOnTitleScreenLights(NULLROM)
 	%ROUTINE_SMAS_IntroProcess1A_CharacterChatterOnTitleScreenAgain(NULLROM)
 	%ROUTINE_SMAS_IntroProcessXX_TurnOffTitleScreenLights(NULLROM)
 	%ROUTINE_SMAS_IntroProcessXX_PlayTitleScreenMusicOrPause(NULLROM)
@@ -227,10 +253,13 @@ endif
 	%ROUTINE_SMAS_LoadSaveFileData(NULLROM)
 	%ROUTINE_RT01_SMAS_GameMode02_GameSelectScreen(NULLROM)
 	%ROUTINE_SMAS_InitializeFileSelectMenuWindowBuffer(NULLROM)
+	%ROUTINE_SMAS_MakeFileSelectYoshiBlink(NULLROM)
+	%ROUTINE_SMAS_MakeFileSelectYoshiLick(NULLROM)
 	%ROUTINE_SMAS_DisplaySMB1FileSelectWindow(NULLROM)
 	%ROUTINE_SMAS_DisplaySMBLLFileSelectWindow(NULLROM)
 	%ROUTINE_SMAS_DisplaySMB2UFileSelectWindow(NULLROM)
 	%ROUTINE_SMAS_DisplaySMB3FileSelectWindow(NULLROM)
+	%ROUTINE_SMAS_DisplaySMWFileSelectWindow(NULLROM)
 	%ROUTINE_SMAS_BufferSaveFileDisplayInformation(NULLROM)
 	%ROUTINE_SMAS_BufferPlayerCountOnFile(NULLROM)
 	%ROUTINE_SMAS_BufferFileSelectWindow(NULLROM)
@@ -243,8 +272,9 @@ endif
 	%ROUTINE_SMAS_GameMode05_CloseEraseFileMenu(NULLROM)
 	%DATATABLE_RT00_SMAS_FileSelectMenuData(NULLROM)
 	%ROUTINE_SMAS_GameMode04_ShowEraseFileMenu(NULLROM)
+	%ROUTINE_SMAS_ClearSMWSaveData(NULLROM)
 	%DATATABLE_RT01_SMAS_FileSelectMenuData(NULLROM)
-	%ROUTINE_SMAS_HandleExtaTitleScreenMarioAndYoshiAnimation(NULLROM) ;[BR]
+	%ROUTINE_SMAS_HandleExtaTitleScreenMarioAndYoshiAnimation(NULLROM)
 	%ROUTINE_SMAS_HandleTitleScreenCharactersAnimation(NULLROM)
 	%ROUTINE_SMAS_InitializeTitleScreenTilemap(NULLROM)
 	%ROUTINE_SMAS_AnimateTitleScreenLuigi(NULLROM)
@@ -252,19 +282,20 @@ endif
 	%ROUTINE_SMAS_AnimateTitleScreenToad(NULLROM)
 	%ROUTINE_SMAS_AnimateTitleScreenBirdo(NULLROM)
 	%ROUTINE_SMAS_AnimateTitleScreenGoomba(NULLROM)
-	%ROUTINE_SMAS_AnimateTitleScreenBobOmb(NULLROM)
-	%ROUTINE_SMAS_AnimateTitleScreenSpiny(NULLROM)
 	%ROUTINE_SMAS_AnimateTitleScreenPidgit(NULLROM)
 	%ROUTINE_SMAS_AnimateTitleScreenMario(NULLROM)
 	%ROUTINE_SMAS_AnimateTitleScreenBowser(NULLROM)
+	%ROUTINE_SMAS_AnimateTitleScreenYoshi(NULLROM)
 	%ROUTINE_SMAS_WriteToTitleScreenBuffer(NULLROM)
 	%DATATABLE_SMAS_TitleScreenAnimationData(NULLROM)
 	%ROUTINE_SMAS_HandlTitleLogoShineAnimation(NULLROM)
-	%FREE_BYTES(NULLROM, 474-21, $FF) ;[BR]
+	%ROUTINE_SMAS_AnimateTitleScreenBobOmb(NULLROM)
+	;%FREE_BYTES(NULLROM, 18, $FF) ;[BR]
+		%ROUTINE_SMAS_DisplayCopyDetectionErrorMessage(NULLROM)
 if !Define_Global_SMASGames&(!SMASGames_SMBLL) != $00
 	%SMBLLBank00Macros(!BANK_00, !BANK_00)
 endif
-	%FREE_BYTES($00E5C4, 6652, $FF)
+	%FREE_BYTES(NULLROM, 6652-1287, $FF)
 %BANK_END(!BANK_00)
 
 ;#############################################################################################################
@@ -278,14 +309,10 @@ endif
 ;#############################################################################################################
 
 %BANK_START(!BANK_02)
-	%DATATABLE_SMAS_SplashScreenGFX($028000)
-	%DATATABLE_SMAS_TriangleTransitionalEffectGFX($029000)
-	%FREE_BYTES($029800, 2048, $00)
-	%DATATABLE_SMAS_TitleScreenTextGFX($02A000)
-	%DATATABLE_SMAS_TriangleTransitionalEffectTilemap($02C000)
-	%DATATABLE_SMAS_TitleScreenPalettes($02C800)
-	%FREE_BYTES($02CC00, 9216, $FF)
-	%DATATABLE_SMAS_GameSelectScreenTilemap($02F000)
+	%DATATABLE_SMAS_TitleScreenTextGFX($028000)
+if !Define_Global_SMASGames&(!SMASGames_SMW) != $00
+	%ROUTINE_RT01_SMW_UploadPlayerGFX($02A000)
+endif
 %BANK_END(!BANK_02)
 
 ;#############################################################################################################
@@ -324,6 +351,7 @@ endif
 if !Define_Global_SMASGames&(!SMASGames_SMB1) != $00
 	%SMB1Bank05Macros(!BANK_05, !BANK_05)
 endif
+	%DATATABLE_SMAS_SplashScreenGFX($05F000)
 %BANK_END(!BANK_05)
 
 ;#############################################################################################################
@@ -345,7 +373,9 @@ endif
 if !Define_Global_SMASGames&(!SMASGames_SMB3) != $00
 	%ROUTINE_RT02_SMB3_UploadMusicBank($07C000)
 endif
-	%FREE_BYTES(NULLROM, 5120, $FF)
+	%DATATABLE_SMAS_TriangleTransitionalEffectGFX($07E800)
+	%DATATABLE_SMAS_TriangleTransitionalEffectTilemap($07F000)
+	%DATATABLE_SMAS_TitleScreenPalettes($07F800)
 	%DATATABLE_RT00_SMAS_SPCEngine($07FC00)
 %BANK_END(!BANK_07)
 
@@ -377,7 +407,8 @@ endif
 if !Define_Global_SMASGames&(!SMASGames_SMB3) != $00
 	%ROUTINE_RT03_SMB3_UploadMusicBank($0C8000)
 endif
-	%FREE_BYTES($0CB475, 7051, $FF)
+	%FREE_BYTES($0CB475, 2955, $FF)
+	%DATATABLE_SMAS_GameSelectScreenTilemap($0CC000)
 if !Define_Global_SMASGames&(!SMASGames_SMB3) != $00
 	%DATATABLE_SMB3_Bank0CGraphics($0CD000)
 endif
@@ -465,10 +496,12 @@ if !Define_Global_SMASGames&(!SMASGames_SMB1|!SMASGames_SMBLL|!SMASGames_SMB2U) 
 	endif
 	if !Define_Global_SMASGames&(!SMASGames_SMB1) != $00
 		%SMB1Bank1AMacros(!BANK_1A, !BANK_1A)
-		%FREE_BYTES(NULLROM, 4096, $FF)
+		%FREE_BYTES(NULLROM, 4096/2, $FF) ;[BR]
+			%CUSTOMDATA_SMASW_TitleScreenCopyright(NULLROM)
 	elseif !Define_Global_SMASGames&(!SMASGames_SMBLL) != $00
 		%SMBLLBank1AMacros(!BANK_1A, !BANK_1A)
-		%FREE_BYTES(NULLROM, 4096, $FF)
+		%FREE_BYTES(NULLROM, 4096/2, $FF) ;[BR]
+			%CUSTOMDATA_SMASW_TitleScreenCopyright(NULLROM)
 	endif
 %BANK_END(!BANK_1A)
 endif
@@ -552,17 +585,10 @@ endif
 ;#############################################################################################################
 ;#############################################################################################################
 
-%BANK_START(!BANK_2B)
-	%DATATABLE_RT00_SMAS_BoxArtGFX($2B8000)
-%BANK_END(!BANK_2B)
-
-;#############################################################################################################
-;#############################################################################################################
-
-%BANK_START(!BANK_2C)
-	%DATATABLE_RT01_SMAS_BoxArtGFX($2C8000)
-	%DATATABLE_SMAS_FileSelectGFX($2CD800)
-%BANK_END(!BANK_2C)
+if !Define_Global_SMASGames&(!SMASGames_SMW) != $00
+	%SMWBank0CMacros(!BANK_2B, !BANK_2B)
+	%SMWBank0DMacros(!BANK_2C, !BANK_2C)
+endif
 
 ;#############################################################################################################
 ;#############################################################################################################
@@ -596,39 +622,34 @@ endif
 ;#############################################################################################################
 ;#############################################################################################################
 
-if !Define_Global_SMASGames&(!SMASGames_SMB3) != $00
+if !Define_Global_SMASGames&(!SMASGames_SMW) != $00
+	%SMWBank00Macros(!BANK_30, !BANK_30)
+	%SMWBank01Macros(!BANK_31, !BANK_31)
+	%SMWBank02Macros(!BANK_32, !BANK_32)
+	%SMWBank03Macros(!BANK_33, !BANK_33)
+	%SMWBank04Macros(!BANK_34, !BANK_34)
+	%SMWBank05Macros(!BANK_35, !BANK_35)
+	%SMWBank06Macros(!BANK_36, !BANK_36)
+	%SMWBank07Macros(!BANK_37, !BANK_37)
+else
 %BANK_START(!BANK_30)
-	%DATATABLE_SMB3_Bank40Graphics($308000)
+SMW_InitAndMainLoop_Main:
+	JMP.w ++
+
+SMW_InitAndMainLoop_NMIVector:
+	JMP.w +
+
+SMW_InitAndMainLoop_IRQVector:
++:
+	RTL
+
+++:
+	JML.l SMAS_ResetToSMASTitleScreen_Main
 %BANK_END(!BANK_30)
-
-%BANK_START(!BANK_31)
-	%DATATABLE_SMB3_Bank41Graphics($318000)
-%BANK_END(!BANK_31)
-
-%BANK_START(!BANK_32)
-	%DATATABLE_SMB3_Bank42Graphics($328000)
-%BANK_END(!BANK_32)
-
-%BANK_START(!BANK_33)
-	%DATATABLE_SMB3_Bank43Graphics($338000)
-%BANK_END(!BANK_33)
-
-%BANK_START(!BANK_34)
-	%DATATABLE_SMB3_Bank44Graphics($348000)
-%BANK_END(!BANK_34)
-
-%BANK_START(!BANK_35)
-	%DATATABLE_SMB3_Bank45Graphics($358000)
-%BANK_END(!BANK_35)
-
-%BANK_START(!BANK_36)
-	%DATATABLE_SMB3_Bank46Graphics($368000)
-%BANK_END(!BANK_36)
-
-%BANK_START(!BANK_37)
-	%DATATABLE_SMB3_Bank47Graphics($378000)
-%BANK_END(!BANK_37)
 endif
+
+;#############################################################################################################
+;#############################################################################################################
 
 %BANK_START(!BANK_38)
 if !Define_Global_SMASGames&(!SMASGames_SMB3) != $00
@@ -708,8 +729,7 @@ endif
 if !Define_Global_SMASGames&(!SMASGames_SMB3) != $00
 	%DATATABLE_RT01_SMB3_Bank3DGraphics($3DB000)
 endif
-	%FREE_BYTES($3DC000, 3072, $FF)
-	%DATATABLE_RT01_SMAS_TitleScreenGFX($3DCC00)
+	%DATATABLE_RT01_SMAS_TitleScreenGFX($3DC000)
 if !Define_Global_SMASGames&(!SMASGames_SMB3) != $00
 	%DATATABLE_RT02_SMB3_Bank3DGraphics($3DE000)
 endif
@@ -727,6 +747,62 @@ if !Define_Global_SMASGames&(!SMASGames_SMB3) != $00
 %BANK_START(!BANK_3F)
 	%DATATABLE_SMB3_Bank3FGraphics($3F8000)
 %BANK_END(!BANK_3F)
+
+%BANK_START(!BANK_40)
+	%DATATABLE_SMB3_Bank40Graphics($408000)
+%BANK_END(!BANK_40)
+
+%BANK_START(!BANK_41)
+	%DATATABLE_SMB3_Bank41Graphics($418000)
+%BANK_END(!BANK_41)
+
+%BANK_START(!BANK_42)
+	%DATATABLE_SMB3_Bank42Graphics($428000)
+%BANK_END(!BANK_42)
+
+%BANK_START(!BANK_43)
+	%DATATABLE_SMB3_Bank43Graphics($438000)
+%BANK_END(!BANK_43)
+
+%BANK_START(!BANK_44)
+	%DATATABLE_SMB3_Bank44Graphics($448000)
+%BANK_END(!BANK_44)
+
+%BANK_START(!BANK_45)
+	%DATATABLE_SMB3_Bank45Graphics($458000)
+%BANK_END(!BANK_45)
+
+%BANK_START(!BANK_46)
+	%DATATABLE_SMB3_Bank46Graphics($468000)
+%BANK_END(!BANK_46)
+
+%BANK_START(!BANK_47)
+	%DATATABLE_SMB3_Bank47Graphics($478000)
+%BANK_END(!BANK_47)
+endif
+
+;#############################################################################################################
+;#############################################################################################################
+
+%BANK_START(!BANK_48)
+	%DATATABLE_RT00_SMAS_BoxArtGFX($488000)
+%BANK_END(!BANK_48)
+
+;#############################################################################################################
+;#############################################################################################################
+
+%BANK_START(!BANK_49)
+	%DATATABLE_RT01_SMAS_BoxArtGFX($498000)
+	%DATATABLE_SMAS_FileSelectGFX($49D800)
+%BANK_END(!BANK_49)
+
+;#############################################################################################################
+;#############################################################################################################
+
+if !Define_Global_SMASGames&(!SMASGames_SMW) != $00
+	%SMWBank08Macros(!BANK_4A, !BANK_4D)
+	%SMWBank0EMacros(!BANK_4E, !BANK_4E)
+	%SMWBank0FMacros(!BANK_4F, !BANK_4F)
 endif
 
 ;#############################################################################################################

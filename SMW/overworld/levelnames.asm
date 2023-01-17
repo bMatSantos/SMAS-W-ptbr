@@ -94,6 +94,100 @@ if !Define_Global_ROMToAssemble == !ROM_SMW_J
 	dw $7105 ;136
 	dw $6F00 ;137
 	dw $6F00 ;138
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMW_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	dw SMW_CUSTOM_LevelNamesLong_Strings_None ;00
+	dw SMW_CUSTOM_LevelNamesLong_Strings_001
+	dw SMW_CUSTOM_LevelNamesLong_Strings_002
+	dw SMW_CUSTOM_LevelNamesLong_Strings_003
+	dw SMW_CUSTOM_LevelNamesLong_Strings_004
+	dw SMW_CUSTOM_LevelNamesLong_Strings_005
+	dw SMW_CUSTOM_LevelNamesLong_Strings_006
+	dw SMW_CUSTOM_LevelNamesLong_Strings_007
+	dw SMW_CUSTOM_LevelNamesLong_Strings_008
+	dw SMW_CUSTOM_LevelNamesLong_Strings_009
+	dw SMW_CUSTOM_LevelNamesLong_Strings_00A
+	dw SMW_CUSTOM_LevelNamesLong_Strings_00B
+	dw SMW_CUSTOM_LevelNamesLong_Strings_00C
+	dw SMW_CUSTOM_LevelNamesLong_Strings_00D
+	dw SMW_CUSTOM_LevelNamesLong_Strings_00E
+	dw SMW_CUSTOM_LevelNamesLong_Strings_00F
+	dw SMW_CUSTOM_LevelNamesLong_Strings_010
+	dw SMW_CUSTOM_LevelNamesLong_Strings_011
+	dw SMW_CUSTOM_LevelNamesLong_Strings_StarRoads ;12
+	dw SMW_CUSTOM_LevelNamesLong_Strings_013
+	dw SMW_CUSTOM_LevelNamesLong_Strings_014
+	dw SMW_CUSTOM_LevelNamesLong_Strings_015
+	dw SMW_CUSTOM_LevelNamesLong_Strings_StarRoads ;16
+	dw SMW_CUSTOM_LevelNamesLong_Strings_MortonsGarbage ;17
+	dw SMW_CUSTOM_LevelNamesLong_Strings_018
+	dw SMW_CUSTOM_LevelNamesLong_Strings_MortonsGarbage ;19
+	dw SMW_CUSTOM_LevelNamesLong_Strings_01A
+	dw SMW_CUSTOM_LevelNamesLong_Strings_01B
+	dw SMW_CUSTOM_LevelNamesLong_Strings_01C
+	dw SMW_CUSTOM_LevelNamesLong_Strings_01D
+	dw SMW_CUSTOM_LevelNamesLong_Strings_StarRoads ;1E
+	dw SMW_CUSTOM_LevelNamesLong_Strings_01F
+	dw SMW_CUSTOM_LevelNamesLong_Strings_020
+	dw SMW_CUSTOM_LevelNamesLong_Strings_021
+	dw SMW_CUSTOM_LevelNamesLong_Strings_022
+	dw SMW_CUSTOM_LevelNamesLong_Strings_023
+	dw SMW_CUSTOM_LevelNamesLong_Strings_024
+	dw SMW_CUSTOM_LevelNamesLong_Strings_101 ;25
+	dw SMW_CUSTOM_LevelNamesLong_Strings_102 ;26
+	dw SMW_CUSTOM_LevelNamesLong_Strings_103 ;27
+	dw SMW_CUSTOM_LevelNamesLong_Strings_104 ;28
+	dw SMW_CUSTOM_LevelNamesLong_Strings_105 ;29
+	dw SMW_CUSTOM_LevelNamesLong_Strings_106 ;2A
+	dw SMW_CUSTOM_LevelNamesLong_Strings_107 ;2B
+	dw SMW_CUSTOM_LevelNamesLong_Strings_StarRoads ;2C (Lv. 108)
+	dw SMW_CUSTOM_LevelNamesLong_Strings_109 ;2D
+	dw SMW_CUSTOM_LevelNamesLong_Strings_10A ;2E
+	dw SMW_CUSTOM_LevelNamesLong_Strings_10B ;2F
+	dw SMW_CUSTOM_LevelNamesLong_Strings_StarRoads ;30 (Lv. 10C)
+	dw SMW_CUSTOM_LevelNamesLong_Strings_10D ;31
+	dw SMW_CUSTOM_LevelNamesLong_Strings_10E ;32
+	dw SMW_CUSTOM_LevelNamesLong_Strings_10F ;33
+	dw SMW_CUSTOM_LevelNamesLong_Strings_110 ;34
+	dw SMW_CUSTOM_LevelNamesLong_Strings_111 ;35
+	dw SMW_CUSTOM_LevelNamesLong_Strings_None ;36 (Lv. 112)
+	dw SMW_CUSTOM_LevelNamesLong_Strings_113 ;37
+	dw SMW_CUSTOM_LevelNamesLong_Strings_114 ;38
+	dw SMW_CUSTOM_LevelNamesLong_Strings_115 ;39
+	dw SMW_CUSTOM_LevelNamesLong_Strings_116 ;3A
+	dw SMW_CUSTOM_LevelNamesLong_Strings_117 ;3B
+	dw SMW_CUSTOM_LevelNamesLong_Strings_118 ;3C
+	dw SMW_CUSTOM_LevelNamesLong_Strings_119 ;3D
+	dw SMW_CUSTOM_LevelNamesLong_Strings_11A ;3E
+	dw SMW_CUSTOM_LevelNamesLong_Strings_11B ;3F
+	dw SMW_CUSTOM_LevelNamesLong_Strings_11C ;40
+	dw SMW_CUSTOM_LevelNamesLong_Strings_11D ;41
+	dw SMW_CUSTOM_LevelNamesLong_Strings_11E ;42
+	dw SMW_CUSTOM_LevelNamesLong_Strings_11F ;43
+	dw SMW_CUSTOM_LevelNamesLong_Strings_120 ;44
+	dw SMW_CUSTOM_LevelNamesLong_Strings_121 ;45
+	dw SMW_CUSTOM_LevelNamesLong_Strings_122 ;46
+	dw SMW_CUSTOM_LevelNamesLong_Strings_123 ;47
+	dw SMW_CUSTOM_LevelNamesLong_Strings_StarRoads ;48 (Lv. 124)
+	dw SMW_CUSTOM_LevelNamesLong_Strings_125 ;49
+	dw SMW_CUSTOM_LevelNamesLong_Strings_126 ;4A
+	dw SMW_CUSTOM_LevelNamesLong_Strings_127 ;4B
+	dw SMW_CUSTOM_LevelNamesLong_Strings_128 ;4C
+	dw SMW_CUSTOM_LevelNamesLong_Strings_StarRoads ;4D (Lv. 129)
+	dw SMW_CUSTOM_LevelNamesLong_Strings_12A ;4E
+	dw SMW_CUSTOM_LevelNamesLong_Strings_12B ;4F
+	dw SMW_CUSTOM_LevelNamesLong_Strings_12C ;50
+	dw SMW_CUSTOM_LevelNamesLong_Strings_12D ;51
+	dw SMW_CUSTOM_LevelNamesLong_Strings_StarRoads ;52 (Lv. 12E)
+	dw SMW_CUSTOM_LevelNamesLong_Strings_StarRoads ;53 (Lv. 12F)
+	dw SMW_CUSTOM_LevelNamesLong_Strings_130 ;54
+	dw SMW_CUSTOM_LevelNamesLong_Strings_StarRoads ;55 (Lv. 131)
+	dw SMW_CUSTOM_LevelNamesLong_Strings_132 ;56
+	dw SMW_CUSTOM_LevelNamesLong_Strings_StarRoads ;57 (Lv. 133)
+	dw SMW_CUSTOM_LevelNamesLong_Strings_134 ;58
+	dw SMW_CUSTOM_LevelNamesLong_Strings_135 ;59
+	dw SMW_CUSTOM_LevelNamesLong_Strings_136 ;5A
+	dw SMW_CUSTOM_LevelNamesLong_Strings_StarRoads ;5B (Lv. 137)
+	dw SMW_CUSTOM_LevelNamesLong_Strings_StarRoads ;5C (Lv. 138)
 else
 	dw $0000 ;00
 	dw $0D72 ;01
@@ -132,60 +226,60 @@ else
 	dw $1621 ;22
 	dw $1623 ;23
 	dw $1622 ;24
-	dw $0340 ;101
-	dw $0124 ;102
-	dw $0123 ;103
-	dw $0110 ;104
-	dw $0121 ;105
-	dw $0122 ;106
-	dw $0D60 ;107
-	dw $02C0 ;108
-	dw $0D71 ;109
-	dw $0D83 ;10A
-	dw $0A72 ;10B
-	dw $02C0 ;10C
-	dw $1B00 ;10D
-	dw $1A00 ;10E
-	dw $19B4 ;10F
-	dw $0940 ;110
-	dw $1990 ;111
-	dw $0000 ;112
-	dw $19B3 ;113
-	dw $1960 ;114
-	dw $19B2 ;115
-	dw $19B1 ;116
-	dw $1670 ;117
-	dw $0D82 ;118
-	dw $0D84 ;119
-	dw $0D81 ;11A
-	dw $0F30 ;11B
-	dw $0540 ;11C
-	dw $1560 ;11D
-	dw $15A1 ;11E
-	dw $15A4 ;11F
-	dw $15A2 ;120
-	dw $1030 ;121
-	dw $1577 ;122
-	dw $15A3 ;123
-	dw $02C0 ;124
-	dw $000B ;125
-	dw $000A ;126
-	dw $0009 ;127
-	dw $0008 ;128
-	dw $02C0 ;129
-	dw $1C00 ;12A
-	dw $1D00 ;12B
-	dw $1E00 ;12C
-	dw $00E0 ;12D
-	dw $02C0 ;12E
-	dw $02C0 ;12F
-	dw $02D2 ;130
-	dw $02C0 ;131
-	dw $02D3 ;132
-	dw $02C0 ;133
-	dw $02D1 ;134
-	dw $02D4 ;135
-	dw $02D5 ;136
-	dw $02C0 ;137
-	dw $02C0 ;138
+	dw $0340 ;25- 101
+	dw $0124 ;26- 102
+	dw $0123 ;27- 103
+	dw $0110 ;28- 104
+	dw $0121 ;29- 105
+	dw $0122 ;2A- 106
+	dw $0D60 ;2B- 107
+	dw $02C0 ;2C- 108
+	dw $0D71 ;2D- 109
+	dw $0D83 ;2E- 10A
+	dw $0A72 ;2F- 10B
+	dw $02C0 ;30- 10C
+	dw $1B00 ;31- 10D
+	dw $1A00 ;32- 10E
+	dw $19B4 ;33- 10F
+	dw $0940 ;34- 110
+	dw $1990 ;35- 111
+	dw $0000 ;36- 112
+	dw $19B3 ;37- 113
+	dw $1960 ;38- 114
+	dw $19B2 ;39- 115
+	dw $19B1 ;3A- 116
+	dw $1670 ;3B- 117
+	dw $0D82 ;3C- 118
+	dw $0D84 ;3D- 119
+	dw $0D81 ;3E- 11A
+	dw $0F30 ;3F- 11B
+	dw $0540 ;40- 11C
+	dw $1560 ;41- 11D
+	dw $15A1 ;42- 11E
+	dw $15A4 ;43- 11F
+	dw $15A2 ;44- 120
+	dw $1030 ;45- 121
+	dw $1577 ;46- 122
+	dw $15A3 ;47- 123
+	dw $02C0 ;48- 124
+	dw $000B ;49- 125
+	dw $000A ;4A- 126
+	dw $0009 ;4B- 127
+	dw $0008 ;4C- 128
+	dw $02C0 ;4D- 129
+	dw $1C00 ;4E- 12A
+	dw $1D00 ;4F- 12B
+	dw $1E00 ;50- 12C
+	dw $00E0 ;51- 12D
+	dw $02C0 ;52- 12E
+	dw $02C0 ;53- 12F
+	dw $02D2 ;54- 130
+	dw $02C0 ;55- 131
+	dw $02D3 ;56- 132
+	dw $02C0 ;57- 133
+	dw $02D1 ;58- 134
+	dw $02D4 ;59- 135
+	dw $02D5 ;5A- 136
+	dw $02C0 ;5B- 137
+	dw $02C0 ;5C- 138
 endif

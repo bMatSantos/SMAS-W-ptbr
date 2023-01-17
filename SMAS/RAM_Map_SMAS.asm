@@ -28,8 +28,8 @@
 !RAM_SMAS_Global_ScratchRAM0F = $00000F
 
 ;[BR]
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
-!RAM_SMAS_Global_WarningDisplayTimer = $000012
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
+	!RAM_SMAS_Global_WarningDisplayTimer = $000012
 endif
 
 !RAM_SMAS_GameSelect_UnknownRAM000014 = $000014

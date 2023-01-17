@@ -40,7 +40,7 @@ endif
 if !Define_Global_ROMToAssemble&(!ROM_SMASW_E|!ROM_SMAS_E) != $00
 	BNE.b CODE_00803B
 	JMP.w SMAS_DisplayRegionErrorMessage_Main
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000
 	BEQ.b CODE_00803B
 	JMP.w SMAS_DisplayRegionErrorMessage_Main
 else
@@ -1094,7 +1094,7 @@ Main:
 	TXA
 	LSR
 	TAX
-	LDA.w DATA_00A996,x
+	LDA.w YoshiAnimationDelay,x
 	STA.w !RAM_SMAS_GameSelect_YoshiAnimationTimer
 	CMP.b #$80
 	BNE.b CODE_00A955
@@ -1102,6 +1102,19 @@ Main:
 CODE_00A955:
 	RTS
 
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+DATA_00A956:
+	dw $0385,$02C8,$0385,$0385
+
+DATA_00A95E:
+	dw $0386,$02C9,$0386,$0386
+
+DATA_00A966:
+	dw $0368,$02D8,$02CA,$036C
+
+DATA_00A96E:
+	dw $0369,$02D9,$02DA,$036D
+else
 DATA_00A956:
 	dw $0385,$0270,$0385,$0385
 
@@ -1113,6 +1126,7 @@ DATA_00A966:
 
 DATA_00A96E:
 	dw $0369,$0269,$0289,$036D
+endif
 
 DATA_00A976:
 	dw $039C,$039C,$039C,$036E
@@ -1126,7 +1140,8 @@ DATA_00A986:
 DATA_00A98E:
 	dw $039F,$039F,$039F,$037E
 
-DATA_00A996:
+YoshiAnimationDelay:
+; $00A996
 	db $02,$08,$08,$80
 namespace off
 endmacro
@@ -1313,7 +1328,7 @@ namespace SMAS_PauseMenuGFX
 %InsertMacroAtXPosition(<Address>)
 
 Main:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	incbin "Graphics/PauseMenuGFX_br.bin"
 else
 	incbin "Graphics/PauseMenuGFX.bin"
@@ -1335,7 +1350,7 @@ endmacro
 macro ROUTINE_SMAS_DisplayRegionErrorMessage(Address)
 namespace SMAS_DisplayRegionErrorMessage
 %InsertMacroAtXPosition(<Address>)
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR] freeing up space
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000 ;[BR] freeing up space
 table "Tables/Fonts/ErrorScreen.txt"
 
 RegionErrorText:
@@ -1454,7 +1469,7 @@ CODE_009417:
 	LDA.b #!ScreenDisplayRegister_MaxBrightness0F
 	STA.w !REGISTER_ScreenDisplayRegister
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	REP.b #$20
 	;[BR] Set up screen timer,
 	LDA.w #$0200
@@ -1469,7 +1484,7 @@ if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
 	LDA.b #$01
 endif
 CODE_009473:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	; and poll the inputs every frame.
 	JSR.w SMAS_PollJoypadInputs_Main
 endif
@@ -1479,8 +1494,8 @@ endif
 
 	INC.b !RAM_SMAS_Global_FrameCounter
 	LDA.b !RAM_SMAS_Global_FrameCounter
-	CMP.b #$18										; Note: Update palette every 24 frames.
-	BNE.b CODE_0094BF
+	CMP.b #$18								;\ Note: Update palette only every 24 frames.
+	BNE.b CODE_0094BF						;/
 
 	STZ.b !RAM_SMAS_Global_FrameCounter
 	STZ.w !REGISTER_CGRAMAddress
@@ -1515,14 +1530,13 @@ CODE_0094BF:
 	BIT.w !REGISTER_HVBlankFlagsAndJoypadStatus
 	BMI.b CODE_0094BF
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 ; [BR] Screen timer check
 	REP.b #$20
 	DEC.b !RAM_SMAS_Global_WarningDisplayTimer
 
 	LDA.b !RAM_SMAS_Global_WarningDisplayTimer
-	CMP.w #$0000									; Timer ran out?
-	BEQ.b +
+	BEQ.b +											; Timer ran out?
 	CMP.w #$01F0									; Is it too early for the input?
 	BCC.b ++
 
@@ -1558,7 +1572,7 @@ macro ROUTINE_SMAS_DisplayCopyDetectionErrorMessage(Address)
 namespace SMAS_DisplayCopyDetectionErrorMessage
 %InsertMacroAtXPosition(<Address>)
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	table "Tables/Fonts/ErrorScreen_BR.txt" ;[BR]
 else
 	table "Tables/Fonts/ErrorScreen.txt"
@@ -1633,11 +1647,11 @@ elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 
 .Line8:
 	dw "INFORMATION.             "
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 ; [BR] The Translation Splash
 ; Used here to warn about scalpers selling fan translations.
 	.Line1_A:	dw "                          "
-	.Line1:		dw "PT-BR 1.0                 "
+	.Line1:		dw "PT-BR 1.12                "
 
 	.LineT1_A:	dw "      ~                   "
 	.LineT1:	dw "TRADUcAO: BMATSANTOS      "
@@ -1717,12 +1731,21 @@ Main:
 	STY.w !REGISTER_VRAMAddressIncrementValue
 	LDA.w #$7FFF
 	STA.w SMAS_ErrorScreen_PaletteMirror[$0C].LowByte
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR] New palette for the +World version
+	LDA.w #$3F9F
+	STA.w SMAS_ErrorScreen_PaletteMirror[$0D].LowByte
+	LDA.w #$0B3F 
+	STA.w SMAS_ErrorScreen_PaletteMirror[$0E].LowByte
+	LDA.w #$021F 
+	STA.w SMAS_ErrorScreen_PaletteMirror[$0F].LowByte
+else
 	LDA.w #$7FF9
 	STA.w SMAS_ErrorScreen_PaletteMirror[$0D].LowByte
 	LDA.w #$7FD0
 	STA.w SMAS_ErrorScreen_PaletteMirror[$0E].LowByte
 	LDA.w #$6AE9
 	STA.w SMAS_ErrorScreen_PaletteMirror[$0F].LowByte
+endif
 	LDA.w #(!REGISTER_WriteToCGRAMPort&$0000FF<<8)+$00
 	STA.b DMA[$00].Parameters
 	LDA.w #!RAM_SMAS_ErrorScreen_PaletteMirror
@@ -1781,7 +1804,7 @@ elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	STA.w SMAS_ErrorScreen_TextTilemap[$14].Row+$08,x
 	LDA.w CopyDetectionText_Line8,x
 	STA.w SMAS_ErrorScreen_TextTilemap[$16].Row+$08,x
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 ;	Line positions by tile -           Ypos    Xpos*2
 	; Translation version
 	LDA.w CopyDetectionText_Line1_A,x
@@ -1839,7 +1862,7 @@ else
 endif
 	INX
 	INX
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	CPX.b #CopyDetectionText_Line1-CopyDetectionText_Line1_A
 else
 	CPX.b #CopyDetectionText_Line2-CopyDetectionText_Line1
@@ -1978,7 +2001,7 @@ Main:
 	PHB
 	PHK
 	PLB
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ; [BR] Restoring characters animations
+if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ; [BR] Restoring characters animations
 	DEC.w !RAM_SMAS_TitleScreen_AnimationTimer2
 	BNE +
 	JSR.w SMAS_AnimateTitleScreenBobOmb_Main
@@ -1994,7 +2017,7 @@ endif
 	JSR.w SMAS_AnimateTitleScreenBirdo_Tail
 	JSR.w SMAS_AnimateTitleScreenPidgit_Main
 	JSR.w SMAS_AnimateTitleScreenMario_HeadAndArm
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ; [BR]
+if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ; [BR]
 	LDA.w !RAM_SMAS_TitleScreen_BirdoEyesAnimationIndex
 	BMI.b +
 	JSR.w SMAS_AnimateTitleScreenBirdo_Eyes
@@ -2007,7 +2030,7 @@ CODE_00B75D:
 	DEC.w !RAM_SMAS_TitleScreen_AnimationTimer3
 	BNE.b CODE_00B76F
 	JSR.w SMAS_AnimateTitleScreenLuigi_Head
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ; [BR]
+if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ; [BR]
 	JSR.w SMAS_AnimateTitleScreenGoomba_Main
 endif
 	JSR.w SMAS_AnimateTitleScreenBowser_Main
@@ -2198,7 +2221,7 @@ macro ROUTINE_SMAS_AnimateTitleScreenBirdo(Address)
 namespace SMAS_AnimateTitleScreenBirdo
 %InsertMacroAtXPosition(<Address>)
 
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
+if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ; [BR]
 Eyes:										; Note: This animation only plays in the Japanese version.
 	LDA.b #SMAS_TitleScreenAnimationData_Main>>16
 	STA.b !RAM_SMAS_Global_ScratchRAM02
@@ -2209,7 +2232,11 @@ Eyes:										; Note: This animation only plays in the Japanese version.
 	TAX
 	LDA.w BirdoEyeFramePtrs,x
 	STA.b !RAM_SMAS_Global_ScratchRAM00
-	LDA.w #$0476
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ; [BR]
+	LDA.w #$0576
+else
+	LDA.w #$0476		; Note: Address to update on the buffer.
+endif
 	STA.b !RAM_SMAS_Global_ScratchRAM04
 	JSR.w SMAS_WriteToTitleScreenBuffer_Main
 	SEP.b #$30
@@ -2248,13 +2275,13 @@ endif
 	RTS
 
 Tail:
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
+if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ; [BR]
 	LDA.b #SMAS_TitleScreenAnimationData_Main>>16
 	STA.b !RAM_SMAS_Global_ScratchRAM02
 endif
 	REP.b #$30
 	LDA.w !RAM_SMAS_TitleScreen_BirdoTailAnimationIndex
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
+if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ; [BR]
 	AND.w #$0003
 endif
 	ASL
@@ -2280,7 +2307,7 @@ endif
 CODE_00B8BE:
 	RTS
 
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
+if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ; [BR]
 BirdoEyeFramePtrs:
 	dw SMAS_TitleScreenAnimationData_BirdoEyes_Frame00
 	dw SMAS_TitleScreenAnimationData_BirdoEyes_Frame01
@@ -3210,7 +3237,7 @@ Main:
 ; X position of 1st object
 if !Define_Global_ROMToAssemble&(!ROM_SMASW_E) != $00
 	LDA.b #$38
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	LDA.b #$18
 else
 	LDA.b #$48
@@ -3239,7 +3266,7 @@ if !Define_Global_ROMToAssemble&(!ROM_SMASW_E) != $00
 	LDA.w DATA_00A0EC,x
 else
 	TYA
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 ; [BR] Adjustment for 2nd row tiles
 	CMP.b #$1F
 	BMI.b +
@@ -3249,7 +3276,9 @@ if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
 endif
 	LSR
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E) != $00
-	ORA.b #$C0
+	ORA.b #$C0										; Note: index of the 1st tile.
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	ORA.b #$40
 else
 	ORA.b #$E0										; Note: index of the 1st tile.
 endif
@@ -3261,7 +3290,11 @@ else
 endif
 
 ; Property bytes
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	LDA.b #$23
+else
 	LDA.b #$22
+endif
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	STA.w SMAS_Global_OAMBuffer[$50].Prop,y
 else
@@ -3290,7 +3323,7 @@ endif
 ; Copyright length
 if !Define_Global_ROMToAssemble&(!ROM_SMASW_E) != $00
 	CPX.b #$0A
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	CPX.b #$0D
 else
 	CPX.b #$07
@@ -3301,6 +3334,8 @@ if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E) != $00
 	%INLINEROUTINE_SMAS_U_DrawTitleScreenLogo()
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	%INLINEROUTINE_SMAS_J_DrawTitleScreenLogo()
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	%INLINECUSTOM_SMASW_br_DrawTitleScreenLogo()
 else
 	%INLINEROUTINE_SMASW_DrawTitleScreenLogo()
 endif
@@ -3308,12 +3343,14 @@ namespace off
 endmacro
 
 ;--------------------------------------------------------------------
+; Note: Unlike the original SMAS, this routine has hardcoded data (except for the tile indexes).
 
 macro INLINEROUTINE_SMASW_DrawTitleScreenLogo()
 	PHB
 	PHK
 	PLB
 	REP.b #$10
+; "+" (plus sign)
 	LDA.b #$74
 	STA.w SMAS_Global_OAMBuffer[$00].XDisp
 	LDA.b #$3D
@@ -3324,16 +3361,17 @@ macro INLINEROUTINE_SMASW_DrawTitleScreenLogo()
 	STA.w SMAS_Global_OAMBuffer[$00].Prop
 	LDA.b #$02
 	STA.w SMAS_Global_OAMTileSizeBuffer[$00].Slot
+; "SUPER MARIO ALL-STARS" 16x16 sprites
 	LDY.w #$0004
 	LDX.w #$0001
-	LDA.b #$2A
-	STA.b !RAM_SMAS_Global_ScratchRAM00
-	LDA.b #$10
-	STA.b !RAM_SMAS_Global_ScratchRAM01
-	LDA.b #$20
-	STA.b !RAM_SMAS_Global_ScratchRAM02
-	LDA.b #$0A
-	STA.b !RAM_SMAS_Global_ScratchRAM03
+	LDA.b #$2A							;\ Leftmost X position
+	STA.b !RAM_SMAS_Global_ScratchRAM00	;/
+	LDA.b #$10							;\ Top Y position
+	STA.b !RAM_SMAS_Global_ScratchRAM01	;/
+	LDA.b #$20								;\ Total of sprites for this part
+	STA.b !RAM_SMAS_Global_ScratchRAM02		;/
+	LDA.b #$0A								;\ No. of sprites on 1st row
+	STA.b !RAM_SMAS_Global_ScratchRAM03		;/
 CODE_009F47:
 	LDA.b !RAM_SMAS_Global_ScratchRAM00
 	STA.w SMAS_Global_OAMBuffer[$00].XDisp,y
@@ -3345,10 +3383,10 @@ CODE_009F47:
 	STA.w SMAS_Global_OAMBuffer[$00].Prop,y
 	LDA.b #$02
 	STA.w SMAS_Global_OAMTileSizeBuffer[$00].Slot,x
-	LDA.b !RAM_SMAS_Global_ScratchRAM00
-	CLC
-	ADC.b #$10
-	STA.b !RAM_SMAS_Global_ScratchRAM00
+	LDA.b !RAM_SMAS_Global_ScratchRAM00	;\ X position increment
+	CLC									;|
+	ADC.b #$10							;|
+	STA.b !RAM_SMAS_Global_ScratchRAM00	;/
 	INY
 	INY
 	INY
@@ -3358,19 +3396,20 @@ CODE_009F47:
 	BEQ.b CODE_009F86
 	DEC.b !RAM_SMAS_Global_ScratchRAM03
 	BNE.b CODE_009F47
-	LDA.b #$2A
-	STA.b !RAM_SMAS_Global_ScratchRAM00
-	LDA.b !RAM_SMAS_Global_ScratchRAM01
-	CLC
-	ADC.b #$10
-	STA.b !RAM_SMAS_Global_ScratchRAM01
-	LDA.b #$0B
-	STA.b !RAM_SMAS_Global_ScratchRAM03
+										; "Line break":
+	LDA.b #$2A								;\ X position reset
+	STA.b !RAM_SMAS_Global_ScratchRAM00		;/
+	LDA.b !RAM_SMAS_Global_ScratchRAM01		;\ Y position increment
+	CLC										;|
+	ADC.b #$10								;|
+	STA.b !RAM_SMAS_Global_ScratchRAM01		;/
+	LDA.b #$0B								;\ New no. of sprites for the row
+	STA.b !RAM_SMAS_Global_ScratchRAM03		;/
 	BRA.b CODE_009F47
-
+; "SUPER MARIO ALL-STARS" 8x8 sprites
 CODE_009F86:
-	LDA.b #$2A
-	STA.b !RAM_SMAS_Global_ScratchRAM00
+	LDA.b #$2A							;\ Leftmost X position
+	STA.b !RAM_SMAS_Global_ScratchRAM00	;/
 CODE_009F8A:
 	LDA.b !RAM_SMAS_Global_ScratchRAM00
 	STA.w SMAS_Global_OAMBuffer[$00].XDisp,y
@@ -3381,10 +3420,10 @@ CODE_009F8A:
 	LDA.b #$20
 	STA.w SMAS_Global_OAMBuffer[$00].Prop,y
 	STZ.w SMAS_Global_OAMTileSizeBuffer[$00].Slot,x
-	LDA.b !RAM_SMAS_Global_ScratchRAM00
-	CLC
-	ADC.b #$08
-	STA.b !RAM_SMAS_Global_ScratchRAM00
+	LDA.b !RAM_SMAS_Global_ScratchRAM00		;\ X position increment
+	CLC										;|
+	ADC.b #$08								;|
+	STA.b !RAM_SMAS_Global_ScratchRAM00		;/
 	INY
 	INY
 	INY
@@ -3392,10 +3431,11 @@ CODE_009F8A:
 	INX
 	CPX.w #$0038
 	BNE.b CODE_009F8A
-	LDA.b #$62
-	STA.b !RAM_SMAS_Global_ScratchRAM00
-	LDA.b #$4C
-	STA.b !RAM_SMAS_Global_ScratchRAM01
+; "SUPER" sprites (16x16)
+	LDA.b #$62								;\ Leftmost X position
+	STA.b !RAM_SMAS_Global_ScratchRAM00		;/
+	LDA.b #$4C							;\ Y position
+	STA.b !RAM_SMAS_Global_ScratchRAM01	;/
 CODE_009FBB:
 	LDA.b !RAM_SMAS_Global_ScratchRAM00
 	STA.w SMAS_Global_OAMBuffer[$00].XDisp,y
@@ -3407,10 +3447,10 @@ CODE_009FBB:
 	STA.w SMAS_Global_OAMBuffer[$00].Prop,y
 	LDA.b #$02
 	STA.w SMAS_Global_OAMTileSizeBuffer[$00].Slot,x
-	LDA.b !RAM_SMAS_Global_ScratchRAM00
-	CLC
-	ADC.b #$10
-	STA.b !RAM_SMAS_Global_ScratchRAM00
+	LDA.b !RAM_SMAS_Global_ScratchRAM00		;\ X position increment
+	CLC										;|
+	ADC.b #$10								;|
+	STA.b !RAM_SMAS_Global_ScratchRAM00		;/
 	INY
 	INY
 	INY
@@ -3418,8 +3458,9 @@ CODE_009FBB:
 	INX
 	CPX.w #$003C
 	BNE.b CODE_009FBB
-	LDA.b #$32
-	STA.b !RAM_SMAS_Global_ScratchRAM00
+; "MARIO WORLD" 16x16 sprites
+	LDA.b #$32							;\ Leftmost X position
+	STA.b !RAM_SMAS_Global_ScratchRAM00	;/
 CODE_009FEA:
 	LDA.b !RAM_SMAS_Global_ScratchRAM00
 	STA.w SMAS_Global_OAMBuffer[$00].XDisp,y
@@ -3431,10 +3472,10 @@ CODE_009FEA:
 	STA.w SMAS_Global_OAMBuffer[$00].Prop,y
 	LDA.b #$02
 	STA.w SMAS_Global_OAMTileSizeBuffer[$00].Slot,x
-	LDA.b !RAM_SMAS_Global_ScratchRAM00
-	CLC
-	ADC.b #$10
-	STA.b !RAM_SMAS_Global_ScratchRAM00
+	LDA.b !RAM_SMAS_Global_ScratchRAM00		;\ X position increment
+	CLC										;|
+	ADC.b #$10								;|
+	STA.b !RAM_SMAS_Global_ScratchRAM00		;/
 	INY
 	INY
 	INY
@@ -3442,6 +3483,8 @@ CODE_009FEA:
 	INX
 	CPX.w #$0045
 	BNE.b CODE_009FEA
+; "MARIO WORLD" top row's 8x8 sprites.
+	; ScratchRAM00: Leftmost X position; ScratchRAM02: 1st tile index; ScratchRAM0A: Total of sprites.
 	LDA.b #$32
 	STA.b !RAM_SMAS_Global_ScratchRAM00
 	LDA.b #$B6
@@ -3456,6 +3499,7 @@ CODE_009FEA:
 	LDA.b #$04
 	STA.b !RAM_SMAS_Global_ScratchRAM0A
 	JSR.w CODE_00A087
+; "MARIO WORLD" right side's 8x8 sprites.
 	LDA.b #$C2
 	STA.w SMAS_Global_OAMBuffer[$00].XDisp,y
 	STA.w SMAS_Global_OAMBuffer[$01].XDisp,y
@@ -3515,15 +3559,17 @@ CODE_00A087:
 	RTS
 
 DATA_00A0B1:
-	db $00,$02,$04,$06,$08,$0A,$0C,$0E
-	db $70,$72,$20,$22,$24,$26,$28,$2A
-	db $2C,$2E,$90,$92,$94,$40,$42,$44
-	db $46,$48,$4A,$4C,$4E,$B0,$B2,$B4
-	db $60,$61,$62,$63,$64,$65,$66,$67
-	db $68,$69,$6A,$6B,$6C,$6D,$6E,$6F
-	db $D0,$D1,$D2,$D3,$D4,$84,$85,$76
-	db $78,$7A,$7C,$C6,$C8,$CA,$96,$98
-	db $9A,$9C,$CC,$CE
+	.Big_SuperMarioAllStars:
+	db $00,$02,$04,$06,$08,$0A,$0C,$0E,$70,$72
+	db $20,$22,$24,$26,$28,$2A,$2C,$2E,$90,$92,$94
+	db $40,$42,$44,$46,$48,$4A,$4C,$4E,$B0,$B2,$B4
+	.Small_SuperMarioAllStars:
+	db $60,$61,$62,$63,$64,$65,$66,$67,$68,$69,$6A,$6B,$6C,$6D,$6E,$6F
+	db $D0,$D1,$D2,$D3,$D4,$84,$85
+	.Big_Super:
+	db $76,$78,$7A,$7C
+	.Big_MarioWorld:
+	db $C6,$C8,$CA,$96,$98,$9A,$9C,$CC,$CE
 
 if !Define_Global_ROMToAssemble&(!ROM_SMASW_E) != $00
 ; Tile data for EU copyright
@@ -3890,7 +3936,7 @@ endif
 	STA.b !RAM_SMAS_Global_ScratchRAM02
 	LDX.b #$00
 CODE_00A9C5:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00
 	LDA.b !RAM_SMAS_Global_ScratchRAM00
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$36,x
 	LDA.b !RAM_SMAS_Global_ScratchRAM02
@@ -4019,7 +4065,7 @@ if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$36,x
 	LDA.b !RAM_SMAS_Global_ScratchRAM02
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$60,x
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$34,x
 	LDA.b !RAM_SMAS_Global_ScratchRAM02
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$5E,x
@@ -4032,7 +4078,7 @@ endif
 	INC.b !RAM_SMAS_Global_ScratchRAM02
 	INX
 	INX
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00
 	CPX.b #$12
 else
 	CPX.b #$10
@@ -4045,7 +4091,7 @@ if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	LDA.w #$031B
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$70
 else
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 ; [BR] "²"
 	LDA.w #$02C7
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$46
@@ -4056,13 +4102,13 @@ if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
 endif
 ; "Lost Levels"
 	LDX.b #$00
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E) != $00
+if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
 	LDA.w #$02E0
 else
 	LDA.w #$01F8
 endif
 CODE_00AA7B:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$8A,x
 else
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$8C,x
@@ -4070,7 +4116,7 @@ endif
 	INC
 	INX
 	INX
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00
 	CPX.b #$12
 else
 	CPX.b #$10
@@ -4249,7 +4295,7 @@ endif
 	LDX.b #$00
 CODE_00AB33:
 	LDA.b !RAM_SMAS_Global_ScratchRAM00
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$34,x
 	LDA.b !RAM_SMAS_Global_ScratchRAM02
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$5E,x
@@ -4263,9 +4309,9 @@ endif
 	INX
 	INX
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
-; + "USA"
+; Includes "USA"
 	CPX.b #$16
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00
 	CPX.b #$12
 else
 	CPX.b #$10
@@ -4415,7 +4461,7 @@ endif
 	LDX.b #$00
 CODE_00AC02:
 	LDA.b !RAM_SMAS_Global_ScratchRAM00
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$34,x
 	LDA.b !RAM_SMAS_Global_ScratchRAM02
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$5E,x
@@ -4428,7 +4474,7 @@ endif
 	INC.b !RAM_SMAS_Global_ScratchRAM02
 	INX
 	INX
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	CPX.b #$12
 else
 	CPX.b #$10
@@ -4594,14 +4640,23 @@ CODE_00AC99:
 	LDY.b #$00
 CODE_00ACA6:
 	LDA.b (!RAM_SMAS_Global_ScratchRAM00),y
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$32,y
+	CLC
+	ADC.w #$0010
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$5C,y
+else
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$34,y
 	CLC
 	ADC.w #$0010
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$5E,y
+endif
 	INY
 	INY
-	CPY.b #$18
+	;CPY.b #$18 (Total of tiles)
+	CPY.b #FileSelectWindowGameName_SMW_End-FileSelectWindowGameName_SMW
 	BNE.b CODE_00ACA6
+
 	STZ.w !RAM_SMAS_GameSelect_FileSelectWindowBufferIndexLo
 	REP.b #$10
 	LDX.w #$0000
@@ -4610,6 +4665,7 @@ CODE_00ACA6:
 	STA.b !RAM_SMAS_Global_ScratchRAM02
 	JSR.w CODE_00AD3F
 	SEP.b #$10
+
 	LDA.w #$7CF7
 	STA.w !RAM_SMAS_GameSelect_CurrentFileSelectMenuVRAMAddressLo
 	SEP.b #$20
@@ -4666,9 +4722,20 @@ CODE_00AD23:
 CODE_00AD3E:
 	RTS
 
+; Blank tiles
 CODE_00AD3F:
 	LDA.l !SRAM_SMW_MarioB_StartLocation-$02,x
 	BEQ.b CODE_00AD90
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	LDA.w #$02FF
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$C0,y
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$C2,y
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$C6,y
+	LDA.w #$029F
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EA,y
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EC,y
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$F0,y
+else
 	LDA.w #$02FF
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$BE,y
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$C0,y
@@ -4677,6 +4744,7 @@ CODE_00AD3F:
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$E8,y
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EA,y
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EE,y
+endif
 	LDA.l !SRAM_SMW_MarioB_StartLocation-$03,x
 	AND.w #$00FF
 	STZ.b !RAM_SMAS_Global_ScratchRAM00
@@ -4687,26 +4755,44 @@ CODE_00AD66:
 	INC.b !RAM_SMAS_Global_ScratchRAM00
 	BRA.b CODE_00AD66
 
+; Exit number
 CODE_00AD72:
 	INC
 	ORA.w #$0340
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$C4,y
+	ORA.w #$0010
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EE,y
+else
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$C2,y
 	ORA.w #$0010
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EC,y
+endif
 	LDA.b !RAM_SMAS_Global_ScratchRAM00
 	BEQ.b CODE_00AD90
 	INC
 	ORA.w #$0340
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$C2,y
+	ORA.w #$0010
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EC,y
+else
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$C0,y
 	ORA.w #$0010
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EA,y
+endif
+; "*96" star
 CODE_00AD90:
 	LDA.l !SRAM_SMW_MarioB_StartLocation-$03,x
 	AND.w #$00FF
 	CMP.w #$0060
 	BCC.b CODE_00ADA2
 	LDA.w #$039B
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EA,y
+else
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$E8,y
+endif
 CODE_00ADA2:
 	TXA
 	CLC
@@ -4720,10 +4806,17 @@ CODE_00ADA2:
 	BNE.b CODE_00AD3F
 	RTS
 
-FileSelectWindowGameName_SMW:
+FileSelectWindowGameName_SMW:		; Note: "Super Mario World"
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	dw $0300,$0301,$0302,$0303
+	dw $02CB,$02CC,$02CD,$02CE,$02CF
+	dw $0305,$0306,$0307,$0308
+else
 	dw $0300,$0301,$0302,$0303
 	dw $0304,$0305,$0306,$0307
 	dw $01C3,$01E3,$01B7,$01D7
+endif
+	.End:
 endif
 namespace off
 endmacro
@@ -4793,7 +4886,7 @@ CODE_00ADCE:
 	AND.w #$00FF
 	BEQ.b CODE_00ADFD
 	ORA.w #$0340
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$C2,x
 	ORA.w #$0010
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EC,x
@@ -4804,12 +4897,12 @@ else
 endif
 
 ; "W" for "World"
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
+if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
 	LDA.w #$02FD
 else
 	LDA.w #$02DF
 endif
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EE,x
 else
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EC,x
@@ -4818,10 +4911,12 @@ endif
 ; Empty tiles (to erase the "NEW" ones around the number)
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	LDA.w #$0351
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	LDA.w #$029F
 else
 	LDA.w #$02B0
 endif
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EA,x
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$F0,x
 	LDA.w #$02FF
@@ -4864,7 +4959,7 @@ CODE_00AE19:
 	AND.w #$00FF
 	BEQ.b CODE_00AE26
 	LDA.w #$039B
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EA,y
 else
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$E8,y
@@ -4899,7 +4994,7 @@ CODE_00AE3A:
 	INC
 	AND.w #$00FF
 	BEQ.b CODE_00AE77
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
 	ORA.w #$0340
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$C2,x
 	ORA.w #$0010
@@ -4912,7 +5007,7 @@ else
 endif
 
 ; "W" for "World"
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
+if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
 	LDA.w #$02FD
 else
 	LDA.w #$02DF
@@ -4920,12 +5015,12 @@ endif
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EA,x
 
 ; Hyphen
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
+if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
 	LDA.w #$02FE
 else
 	LDA.w #$02EF
 endif
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EE,x
 else
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$EC,x
@@ -4933,7 +5028,7 @@ endif
 
 ; Blank tiles (for both W and -)
 	LDA.w #$02FF
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$C0,x
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$C4,x
 else
@@ -4946,7 +5041,7 @@ endif
 	AND.w #$00FF
 	INC
 	ORA.w #$0340
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$C6,x
 	ORA.w #$0010
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$F0,x
@@ -5371,6 +5466,22 @@ Main:
 	STA.w DMA[$00].SizeLo
 	LDY.b #$01
 	STY.w !REGISTER_DMAEnable
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	LDY.b #$80
+	STY.w !REGISTER_VRAMAddressIncrementValue
+	LDA.w #$E800/2
+	STA.w !REGISTER_VRAMAddressLo
+	LDA.w #(!REGISTER_WriteToVRAMPortLo&$0000FF<<8)+$01
+	STA.w DMA[$00].Parameters
+	LDA.w #SMASW_CUSTOM_TitleScreenCopyright_Main
+	STA.w DMA[$00].SourceLo
+	LDY.b #SMASW_CUSTOM_TitleScreenCopyright_Main>>16
+	STY.w DMA[$00].SourceBank
+	LDA.w #SMASW_CUSTOM_TitleScreenCopyright_End-SMASW_CUSTOM_TitleScreenCopyright_Main
+	STA.w DMA[$00].SizeLo
+	LDY.b #$01
+	STY.w !REGISTER_DMAEnable
+endif
 	SEP.b #$20
 	LDA.b #$02
 	STA.w !RAM_SMAS_Global_MainScreenLayers
@@ -6124,7 +6235,7 @@ else
 endif
 	ASL
 	TAY
-	LDA.w DATA_00B1AD,y
+	LDA.w CursorPosTable,y
 	XBA
 	STA.l SMAS_Global_StripeImageUploadTable[$00].LowByte,x
 	INX
@@ -6151,13 +6262,15 @@ CODE_00B18F:
 	SEP.b #$20
 	RTS
 
-DATA_00B1AD:
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E) != $00
-	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR] Adjusting them for the bigger "FILE".
-		dw $7988,$7997,$7D87,$7D98
-	else
+CursorPosTable:
+; $00B1AD
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR] Adjusting them for the bigger "FILE".
+	dw $7988,$7997,$7D87,$7D98
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	dw $7988,$7994,$7D80,$7D8C
+	dw $7D9A
+elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E) != $00
 	dw $7989,$7998,$7D88,$7D99
-	endif
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	dw $7989,$7999,$7D87,$7D97
 else
@@ -6265,14 +6378,14 @@ Level:
 	XBA
 	LSR
 	LSR
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E) != $00
-	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $00 ;[BR]
 	ADC.w #$7D63
-	else
+elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E) != $00
 	ADC.w #$7D62
-	endif
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	ADC.w #$7D63
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	ADC.w #$7D60
 else
 	ADC.w #$797F
 endif
@@ -6311,17 +6424,17 @@ CODE_00B25B:
 	PLX
 	RTS
 
-; Where in VRAM do you overwrite the World number for each game
+; Where in VRAM do you overwrite the World number for SMB1-3
 ; (relative to File A)
 DATA_00B29F:
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E) != $00
-	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
-		dw $7972,$7D61,$7D71,$7962
-	else
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $00 ;[BR]
+	dw $7972,$7D61,$7D71,$7962
+elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E) != $00
 	dw $7971,$797F,$7D70,$7961
-	endif
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	dw $7971,$7D60,$7D6F,$7D7F
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	dw $7972,$797E,$7D6A,$7D76
 else
 	dw $7971,$797C,$7D69,$7D75
 endif
@@ -6330,6 +6443,8 @@ endif
 DATA_00B2A7:
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	dw $0351,$039B
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	dw $029F,$039B
 else
 	dw $02B0,$039B
 endif
@@ -6901,9 +7016,10 @@ endif
 	JSR.w CODE_00B679
 ;[BR] Instead of checking what game is the file from, this should be checking if the length value is different from the actual length.
 ; (Only works with the hardcoded stripe image up ahead.)
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	LDA.w SMAS_FileSelectMenuData_DATA_00B6EA,y
-	CMP.w #$0002
+	CMP.w #$000C
+	BEQ.b CODE_00B628
 else
 	LDA.w !RAM_SMAS_GameSelect_CursorPosIndex
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
@@ -6916,8 +7032,8 @@ if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 else
 	CMP.w #$0001
 endif
-endif
 	BNE.b CODE_00B628
+endif
 	PHY
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	INY
@@ -6948,6 +7064,10 @@ endif
 	STA.b !RAM_SMAS_Global_ScratchRAM00
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E) != $00
 	LDA.w #$000A
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) ;[BR]
+	LDA.w #$000C
+	SEC
+	SBC.w SMAS_FileSelectMenuData_DATA_00B6EA,y
 else
 	LDA.w #$0004
 endif
@@ -6975,9 +7095,10 @@ endif
 	JSR.w CODE_00B679
 ;[BR] Instead of checking what game is the file from, this should be checking if the length value is different from the actual length.
 ; (Only works with the hardcoded stripe image up ahead.)
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00
 	LDA.w SMAS_FileSelectMenuData_DATA_00B6EA,y
-	CMP.w #$0002
+	CMP.w #$000C
+	BEQ.b CODE_00B66A
 else
 	LDA.w !RAM_SMAS_GameSelect_CursorPosIndex
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
@@ -6990,8 +7111,8 @@ if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 else
 	CMP.w #$0001
 endif
-endif
 	BNE.b CODE_00B66A
+endif
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	INY
 	INY
@@ -7022,6 +7143,10 @@ endif
 	STA.b !RAM_SMAS_Global_ScratchRAM00
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E) != $00
 	LDA.w #$000A
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) ;[BR]
+	LDA.w #$000C
+	SEC
+	SBC.w SMAS_FileSelectMenuData_DATA_00B6EA,y
 else
 	LDA.w #$0004
 endif
@@ -8077,8 +8202,7 @@ namespace SMAS_InitializeFileSelectMenuWindowBuffer
 Main:
 	REP.b #$20
 	LDX.b #$80
-; Blank tiles for the window's empty space. 1 row = $2A bytes (21 tiles).
-	LDA.w #$02FF
+	LDA.w #$02FF							; Blank tiles for the window's empty space. 1 row = $2A bytes (21 tiles).
 CODE_00A675:
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer,x
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$80,x
@@ -8095,7 +8219,7 @@ CODE_00A675:
 	LDY.b !RAM_SMAS_GameSelect_CurrentlySelectedSaveFile
 	LDX.w FileSelectCursorPosTable,y
 	LDA.w #$034F
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$D8,x
 else
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$DA,x
@@ -8107,7 +8231,7 @@ CODE_00A69B:
 	LDA.w BlankFileText,x
 	CMP.w #$FFFF
 	BEQ.b CODE_00A6B3
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$DA,x
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$012E,x
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$0182,x
@@ -8127,7 +8251,7 @@ CODE_00A6B3:
 	LDX.b #$00
 	LDA.w #$0360
 CODE_00A6B8:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$C0,x
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$0114,x
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$0168,x
@@ -8147,7 +8271,7 @@ endif
 	LDX.w #$0000
 
 ; File letter
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
+if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
 	LDA.w #$02F5
 else
 	LDA.w #$025A
@@ -8155,12 +8279,12 @@ endif
 	STA.b !RAM_SMAS_Global_ScratchRAM00
 CODE_00A6D5:
 	LDA.b !RAM_SMAS_Global_ScratchRAM00
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$BA,x
 else
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$B8,x
 endif
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
+if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
 	INC.b !RAM_SMAS_Global_ScratchRAM00
 else
 	LDA.b !RAM_SMAS_Global_ScratchRAM00
@@ -8202,13 +8326,13 @@ endif
 ; "PRESS SELECT BUTTON" [BR]
 CODE_00A70D:
 	LDX.b #$00
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00 ; First tile index
 	LDA.w #$038C
 else
 	LDA.w #$038B
 endif
 CODE_00A712:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00 ; SELECT bar 2 tiles shorter.
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$0224,x
 	INC
 	INX
@@ -8269,33 +8393,30 @@ CODE_00A767:
 	INX
 	CPX.b #$0C
 	BNE.b CODE_00A767
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ; [BR] Quick fix for printing the correct letters.
-	LDA.w #$0399
-	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$0324
-	LDA.w #$037F
-	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$0328
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00 ; [BR] Quick fix for the letter T.
+	LDA.w #$038B
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$0322
 endif
 
-; Was Type B saved on the SRAM?
-	LDA.l !SRAM_SMAS_Global_ControllerTypeX
-	AND.w #$00FF
-	BEQ.b CODE_00A792
-; Then update B button label to "Dash"
-	LDA.w #$0368
-	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$0302
-	INC
-	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$0304
-	INC
-	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$0306
-; and print "B" below the icon
-	LDA.w #$0386
-	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$032A
-	INC
-	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$032C
+	LDA.l !SRAM_SMAS_Global_ControllerTypeX	;\ Was Type B saved on the SRAM?
+	AND.w #$00FF							;|
+	BEQ.b CODE_00A792						;/
+
+	LDA.w #$0368												;\ Then update B button label to "Dash"
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$0302		;|
+	INC															;|
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$0304		;|
+	INC															;|
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$0306		;/
+	LDA.w #$0386											;\ and print "B" below the icon
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$032A	;|
+	INC														;|
+	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$032C	;/
 CODE_00A792:
 	SEP.b #$20
 	RTS
 
+; Draw Yoshi
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 else
 if !Define_Global_SMASGames&(!SMASGames_SMW) != $00
@@ -8326,10 +8447,14 @@ endif
 endif
 
 BlankFileText:				;\ Info: "FILE   NEW"
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $00 ;[BR]
 	dw $02F0,$02F1,$02F2,$02F3,$02F4
 	dw $0351,$0351,$0351
-	dw $0370,$0371,$0372,$0373,$FFFF
+	dw $0370,$0371,$0372,$0371,$FFFF
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	dw $02F0,$02F1,$02F2,$02F3,$02F4
+	dw $029F,$029F,$029F
+	dw $0370,$0371,$0372,$0371,$FFFF
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	dw $02F2,$02F3,$02F4,$0351	;|
 	dw $0351,$0351,$0370,$0371	;|
@@ -9272,13 +9397,13 @@ namespace SMAS_GameSelectScreenTilemap
 %InsertMacroAtXPosition(<Address>)
 
 Main:
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U) != $00
-;[BR]
-	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
-		incbin "Tilemaps/GameSelectScreenTilemap_SMAS_br.bin"
-	else
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $00 ;[BR]
+	incbin "Tilemaps/GameSelectScreenTilemap_SMAS_br.bin"
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00
+	incbin "Tilemaps/GameSelectScreenTilemap_SMASW_br.bin"
+
+elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_U) != $00
 	incbin "Tilemaps/GameSelectScreenTilemap_SMAS_U.bin"
-	endif
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_E) != $00
 	incbin "Tilemaps/GameSelectScreenTilemap_SMAS_E.bin"
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
@@ -9307,6 +9432,10 @@ endif
 .ControllerEnd:
 
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+.Yoshi:
+	incbin "Graphics/FileSelectYoshiGFX_br.bin"
+.YoshiEnd:
 else
 .Yoshi:
 	incbin "Graphics/FileSelectYoshiGFX.bin"
@@ -9363,12 +9492,10 @@ namespace SMAS_TitleScreenGFX
 %InsertMacroAtXPosition(<Address>)
 
 Section1:
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
-	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
 	incbin "Graphics/TitleScreenCharactersGFX1_SMAS_fix.bin"
-	else
+elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	incbin "Graphics/TitleScreenCharactersGFX1_SMAS.bin"
-	endif
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_E) != $00
 	incbin "Graphics/TitleScreenCharactersGFX1_SMAS_E.bin"			; Note: The only difference between this file and the above is a single tile next to birdo's graphics is filled in differently.
 else
@@ -9452,13 +9579,13 @@ namespace SMAS_GameSelectScreenPalette
 Main:
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	incbin "Palettes/GameSelectScreenPalette_SMAS_J.bin"
-else
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $00
 ;[BR]
-	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
-		incbin "Palettes/GameSelectScreenPalette_SMAS_U.bin"
-	else
-		%InsertVersionExclusiveFile(incbin, Palettes/GameSelectScreenPalette_, !ROMID.bin, )
-	endif
+	incbin "Palettes/GameSelectScreenPalette_SMAS_U.bin"
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00
+	incbin "Palettes/GameSelectScreenPalette_SMASW_U.bin"
+else
+	%InsertVersionExclusiveFile(incbin, Palettes/GameSelectScreenPalette_, !ROMID.bin, )
 endif
 End:
 namespace off
@@ -9632,7 +9759,7 @@ namespace SMAS_ErrorMessageFontGFX
 Main:
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	incbin "Graphics/ErrorMessageFontGFX_SMAS_J.bin"
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	incbin "Graphics/ErrorMessageFontGFX_SMAS_br.bin"
 else
 	incbin "Graphics/ErrorMessageFontGFX_SMAS_U.bin"
@@ -9664,13 +9791,10 @@ namespace SMAS_TitleScreenTextGFX
 %InsertMacroAtXPosition(<Address>)
 
 Main:
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E) != $00
-	;[BR]
-	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
-		incbin "Graphics/TitleScreenTextGFX_SMAS_br.bin"
-	else
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000	;[BR]
+	incbin "Graphics/TitleScreenTextGFX_SMAS_br.bin"
+elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E) != $00		
 	incbin "Graphics/TitleScreenTextGFX_SMAS_U.bin"
-	endif
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	incbin "Graphics/TitleScreenTextGFX_SMAS_J.bin"
 else
@@ -9740,38 +9864,28 @@ DATA_00B459:									; Top border
 	dw $0388,$0389,$0389,$0389
 	dw $0389,$0389,$0389,$0389
 	dw $0389,$0389,$4388
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
-	DATA_00B46F:									; "|APAGAR   |"
-		dw $038A
-		dw $0396,$0382,$0396,$0381,$0396,$0395
-		dw $02FF,$02FF,$02FF
-		dw $438A
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00 ;[BR]
+	table "Tables/Fonts/FileSelect_br.txt"
 
-	DATA_00B485:									; "| ARQUIVO?|"
-		dw $038A,$02FF
-		dw $0396,$0395,$0398,$039A,$0399,$038B,$037F
-		dw $035F
-		dw $438A
+	DATA_00B46F:
+		dw $038A,"APAGAR   ",$438A
 
-	DATA_00B49B:									; |         |
-		dw $038A,$02FF,$02FF,$02FF
-		dw $02FF,$02FF,$02FF,$02FF
-		dw $02FF,$02FF,$438A
+	DATA_00B485:
+		dw $038A," ARQUIVO?",$438A
 
-	DATA_00B4B1:									; |  >NÃO   |
-		dw $038A,$02FF,$02FF,$034F
-		dw $036F,$0383,$037F
-		dw $02FF,$02FF,$02FF,$438A
+	DATA_00B49B:
+		dw $038A,"         ",$438A
 
-	DATA_00B4C7:									; |         |
-		dw $038A,$02FF,$02FF,$02FF
-		dw $02FF,$02FF,$02FF,$02FF
-		dw $02FF,$02FF,$438A
+	DATA_00B4B1:
+		dw $038A,"  >N~O   ",$438A
 
-	DATA_00B4DD:									; |   SIM   |
-		dw $038A,$02FF,$02FF,$02FF
-		dw $0397,$0399,$0394
-		dw $02FF,$02FF,$02FF,$438A
+	DATA_00B4C7:
+		dw $038A,"         ",$438A
+
+	DATA_00B4DD:
+		dw $038A,"   SIM   ",$438A
+
+	cleartable
 else
 	DATA_00B46F:									; "|ERASE    |"
 		dw $038A,$0383,$0395,$0396
@@ -9835,12 +9949,14 @@ endif
 ; In the Japanese versions, this happens with SMB3's, except both stripe images are included in this table.
 
 DATA_00B6E0:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $00 ;[BR]
 	dw $7971,$7D60,$7D70,$7961
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E) != $00
 	dw $7970,$797F,$7D6F,$7960
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	dw $7970,$7D60,$7D6E,$7D7E,$7960
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	dw $7971,$797D,$7D69,$7D75,$7963
 else
 	dw $7970,$797C,$7D68,$7D74,$7962
 endif
@@ -9852,6 +9968,8 @@ elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E) != $00
 	dw $000C,$0002,$000C,$000C
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
 	dw $000C,$000C,$000C,$0004,$0008
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ;[BR]
+	dw $000C,$0006,$000C,$000C,$000C
 else
 	dw $000C,$0008,$000C,$000C,$000C
 endif
@@ -9862,7 +9980,11 @@ endif
 
 DATA_00B6F4:
 	dw $0360,$0361,$0362,$0363,$02FF,$02FF
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $00
+	dw $0370,$0371,$0372,$0371,$02FF,$02FF
+else
 	dw $0370,$0371,$0372,$0373,$02FF,$02FF
+endif
 
 ;--------------------------------------------------------------------
 
@@ -9884,7 +10006,7 @@ DATA_00B714:
 	db $00,$01,$FF
 
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR] freeing up space
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000 ;[BR] freeing up space
 UNK_00B5ED:
 	db $07,$08,$09,$0A,$7F,$17,$18,$19
 	db $1A,$7F,$07,$08,$09,$0A,$0E,$17
@@ -10144,6 +10266,14 @@ BirdoEyes:
 .Frame01:
 	dw $01AC,$01AD,$0000
 	dw $0153,$01AE,$FFFF
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ; [BR]
+BirdoEyes:
+.Frame00:
+.Frame02:
+	dw $0152,$0153,$0154,$FFFF
+
+.Frame01:
+	dw $019F,$013D,$013E,$FFFF
 endif
 
 BirdoClaw:
@@ -10198,6 +10328,7 @@ if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_
 	dw $01A9,$01AA,$0000
 	dw $0159,$01AB,$FFFF
 else
+.Frame03:
 	dw $01AA,$01AB,$0000
 	dw $01AC,$01AD,$0000
 	dw $01AE,$FFFF
@@ -10220,7 +10351,7 @@ Goomba:
 	dw $01FB,$01FC,$0000
 	dw $01FD,$01FE,$01FF,$FFFF
 
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00
+if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2) != $00 || !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) != $00 ; [BR]
 BobOmb:
 .Frame00:
 .Frame03:
@@ -10417,7 +10548,7 @@ CODE_00AE96:
 
 ; Print 1P or 2P
 	LDA.w DATA_00AEC7,y
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$F2,x
 	INC
 	STA.w !RAM_SMAS_GameSelect_FileSelectWindowBuffer+$F4,x

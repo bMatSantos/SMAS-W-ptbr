@@ -1984,7 +1984,7 @@ CODE_119149:
 	LDY.w !RAM_SMB2U_Player_CurrentLifeCount
 	TYA
 	JSR.w CODE_1191B1
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	STY.w !RAM_SMB2U_SlotMachine_CoinAndLifeCounterStripeImageText+$2A+2
 	STA.w !RAM_SMB2U_SlotMachine_CoinAndLifeCounterStripeImageText+$2C+2
 	LDA.b #$15
@@ -1998,7 +1998,7 @@ endif
 	CPY.b #$BF
 	BNE.b CODE_11916A
 	LDA.b #$BD
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w !RAM_SMB2U_SlotMachine_CoinAndLifeCounterStripeImageText+$2A+2
 	LDA.b #$09
 CODE_11916A:
@@ -2913,7 +2913,7 @@ DATA_119B2A:
 
 if !Define_Global_ROMToAssemble&(!ROM_SMASW_E|!ROM_SMAS_E|!ROM_SMB2U_E) != $00
 	%FREE_BYTES(NULLROM, 15, $FF)
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000 ;[BR]
 	%FREE_BYTES(NULLROM, 2, $FF)
 endif
 
@@ -3351,13 +3351,13 @@ SMB2U_EndingPart2Layer1StripeImage:
 	db $FF,$14
 	
 	; "CONTRIBUTOR"
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	table "Tables/Fonts/Standard_Page1_br.txt"
 	
 	;             Layer,Map, X,Y, Dir, RLE, Size in bytes
-	%drawStripeHeader(0, 0, 20,03, 0, !FALSE, 2)
+	%SMAS_DrawStripeHeader(0, 0, 20,03, 0, !FALSE, 2)
 	db $F5,$15
-	%drawStripeHeader(0, 0, 10,04, 0, !FALSE, 12*2)
+	%SMAS_DrawStripeHeader(0, 0, 10,04, 0, !FALSE, 12*2)
 	dw "CONTRIBUIcAO"
 
 	cleartable
@@ -3628,7 +3628,7 @@ SMB2U_MariosNameStripeImage:
 
 SMB2U_PrincessNameStripeImage:
 	db $00,$CC,$00,$0F
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	db $D9,$15,$DB,$15,$D2,$15,$D7,$15,$CC,$15,$CE,$15,$DC,$15,$CA,$15
 else
 	db $D9,$15,$DB,$15,$D2,$15,$D7,$15,$CC,$15,$CE,$15,$DC,$15,$DC,$15
@@ -4275,7 +4275,7 @@ DATA_11B839:
 
 SMB2U_SlotMachineScreenStripeImage:
 	; "BONUS CHANCE" display
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	db $0C,$A9,$00,$1B
 	db $40,$08,$46,$08,$4A,$08,$4E,$08,$51,$08,$54,$08,$57,$08,$BD,$08
 	db $59,$08,$5B,$08,$5E,$08,$61,$08,$65,$08,$40,$48
@@ -4297,7 +4297,7 @@ if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
 	db $64,$08,$68,$08,$45,$48
 
 	;             Layer,Map, X,Y, Dir, RLE, Size in bytes
-	%drawStripeHeader(0, 3, 18,04, 0, !FALSE, 1*2)
+	%SMAS_DrawStripeHeader(0, 3, 18,04, 0, !FALSE, 1*2)
 	db $5D,$08
 else
 	db $0C,$A9,$00,$1B
@@ -4469,13 +4469,13 @@ DATA_11BBB8:
 
 
 DATA_11BBC6:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	table "Tables/Fonts/Standard_Page1_br.txt"
 	;			  Layer,Map, X,Y, Dir, RLE, Size in bytes
-	%drawStripeHeader(0, 3, 16,18, 0, !FALSE, 4*2)
+	%SMAS_DrawStripeHeader(0, 3, 16,18, 0, !FALSE, 4*2)
 	dw "x 1 "
 
-	%drawStripeHeader(0, 3, 08,22, 0, !FALSE, 16*2)
+	%SMAS_DrawStripeHeader(0, 3, 08,22, 0, !FALSE, 16*2)
 	dw "VIDAS EXTRAS** 1"
 
 	db $FF,$FF
@@ -4508,10 +4508,10 @@ DATA_11BC51:
 
 SMB2U_NoBonusTextStripeImage:
 ;$11BC58
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
-	%drawStripeHeader(0, 3, 06+12,19, 0, !FALSE, 2)
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
+	%SMAS_DrawStripeHeader(0, 3, 06+12,19, 0, !FALSE, 2)
 	            dw "^"
-	%drawStripeHeader(0, 3, 06,20, 0, !FALSE, 20*2)
+	%SMAS_DrawStripeHeader(0, 3, 06,20, 0, !FALSE, 20*2)
 	dw "    NENHUM BONUS    "
 else
 	db $0E,$86,$00,$27
@@ -4523,11 +4523,11 @@ endif
 
 SMB2U_PushButtonTextStripeImage:
 ;$11BC85
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	;             Layer,Map, X,Y, Dir, RLE, Size in bytes
-	%drawStripeHeader(0, 3, 09+13,19, 0, !FALSE, 2)
+	%SMAS_DrawStripeHeader(0, 3, 09+13,19, 0, !FALSE, 2)
 	             dw "~"
-	%drawStripeHeader(0, 3, 09,20, 0, !FALSE, 15*2)
+	%SMAS_DrawStripeHeader(0, 3, 09,20, 0, !FALSE, 15*2)
 	dw "APERTE UM BOTAO"
 else
 	db $0E,$8B,$00,$15
@@ -4543,8 +4543,8 @@ DATA_11BCA0:
 	db $FF
 
 DATA_11BCAF:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
-	%drawStripeHeader(0, 3, 09,19, 0, !TRUE, 14*2)
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
+	%SMAS_DrawStripeHeader(0, 3, 09,19, 0, !TRUE, 14*2)
 	db $BD,$09
 endif
 	db $0E,$86,$40,$26
@@ -4554,7 +4554,7 @@ endif
 
 SMB2U_SlotMachine_PayoutStripeImage:
 	db $0E,$89,$00,$1B
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	dw "  GANHOU  1VD "
 	cleartable
 else
@@ -4589,7 +4589,7 @@ DATA_11BCE6:
 
 	; " WORLD  ■-1"
 	db $04,$CA,$00,$15
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	table "Tables/Fonts/PureWhite_Page0_br.txt"
 	dw " MUNDO  "
 	cleartable
@@ -4621,15 +4621,15 @@ if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMB2U_J) != $00
 
 	db $0A,$A9,$00,$01
 	db $BD,$09
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	;             Layer,Map, X,Y, Dir, RLE, Size in bytes
-	%drawStripeHeader(0, 2, 08,17, 0, !FALSE, 2)
+	%SMAS_DrawStripeHeader(0, 2, 08,17, 0, !FALSE, 2)
 	db $BD,$09
 
-	%drawStripeHeader(0, 2, 08,19, 0, !FALSE, 2)
+	%SMAS_DrawStripeHeader(0, 2, 08,19, 0, !FALSE, 2)
 	db $BD,$09
 
-	%drawStripeHeader(0, 2, 08,21, 0, !FALSE, 2)
+	%SMAS_DrawStripeHeader(0, 2, 08,21, 0, !FALSE, 2)
 	db $BD,$09
 else
 	db $0A,$2A,$00,$01
@@ -4657,12 +4657,25 @@ endif
 
 ;--------------------------------------------------------------------
 
-DATA_11BD83:
-	db $0E,$89,$00,$1D
+SMB2U_SlotMachine_3CoinServiceStripeImage:
+; $11BD83
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
+	table "Tables/Fonts/StandardOrange_Page1_br.txt"
+	;             Layer,Map, X,Y, Dir, RLE, Size in bytes
+	%SMAS_DrawStripeHeader(0, 3, 09+11,19, 0, !FALSE, 2)
+	           dw "/"
+	%SMAS_DrawStripeHeader(0, 3, 09,20, 0, !FALSE, 15*2)
+	dw "3 MOEDAS GRATIS"
+	cleartable
+else
+	db $0E,$89,$00,$1D				; "3 COINS SERVICE"
 	db $C3,$01,$BD,$01,$CC,$01,$D8,$01,$D2,$01,$D7,$01,$DC,$01,$BD,$01
 	db $DC,$01,$CE,$01,$DB,$01,$DF,$01,$D2,$01,$CC,$01,$CE,$01
+endif
 
 	db $FF
+
+;--------------------------------------------------------------------
 
 DATA_11BDA6:				; Note: Ending (part 3) related stripe images.
 	dw SMB2U_StripeImageUploadTable[$00].LowByte
@@ -4992,7 +5005,7 @@ DATA_11C1D0:
 	dl SMB2U_SlotMachineScreenStripeImage
 	dl DATA_11C89A
 	dl DATA_11C927
-	dl DATA_11BD83
+	dl SMB2U_SlotMachine_3CoinServiceStripeImage
 
 SMB2U_CharacterSelectScreenStripeImage:
 ;$11C221
@@ -5144,16 +5157,16 @@ if !Define_Global_ROMToAssemble&(!ROM_SMASW_E|!ROM_SMAS_E|!ROM_SMB2U_E) != $00
 	db $0F,$C9,$1F,$89,$1F,$C9,$0F,$89,$0F,$C9,$1F,$89,$1F,$C9
 endif
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	table "Tables/Fonts/Standard_Page1_br.txt"
 	;			  Layer,Map, X,Y, Dir, RLE, Size in bytes
-	%drawStripeHeader(0, 0, 11,08, 0, !FALSE, 10*2)
+	%SMAS_DrawStripeHeader(0, 0, 11,08, 0, !FALSE, 10*2)
 	dw "POR FAVOR,"
 
-	%drawStripeHeader(0, 0, 12,10, 0, !FALSE, 7*2)
+	%SMAS_DrawStripeHeader(0, 0, 12,10, 0, !FALSE, 7*2)
 	dw "ESCOLHA"
 
-	%drawStripeHeader(0, 0, 09,12, 0, !FALSE, 14*2)
+	%SMAS_DrawStripeHeader(0, 0, 09,12, 0, !FALSE, 14*2)
 	dw "UMA PERSONAGEM"
 
 	cleartable
@@ -5255,27 +5268,27 @@ if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMB2U_J) != $00
 
 	db $07,$55,$00,$0F
 	db $FB,$1C,$FC,$1C,$EF,$1C,$F2,$1D,$F3,$1D,$F4,$1D,$F5,$1D,$F6,$1D
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	;             Layer,Map, X,Y, Dir, RLE, Size in bytes
-	%drawStripeHeader(0, 1, 21,22, 0, !FALSE, 6*2)
+	%SMAS_DrawStripeHeader(0, 1, 21,22, 0, !FALSE, 6*2)
 	db $CA,$1C,$CB,$1C,$CC,$1C,$CD,$1C,$CE,$1C,$CF,$1C
 
-	%drawStripeHeader(0, 1, 15,23, 0, !FALSE, 14*2)
+	%SMAS_DrawStripeHeader(0, 1, 15,23, 0, !FALSE, 14*2)
 	db $E0,$1C,$E1,$1C,$ED,$1C,$EE,$1C,$EF,$1C,$EF,$1C,$DA,$1C,$DB,$1C
 	db $DC,$1C,$DD,$1C,$DE,$1C,$DF,$1C,$E9,$1C,$EA,$1C
 
-	%drawStripeHeader(0, 1, 15,24, 0, !FALSE, 14*2)
+	%SMAS_DrawStripeHeader(0, 1, 15,24, 0, !FALSE, 14*2)
 	db $F0,$1C,$F1,$1C,$E4,$1C,$E5,$1C,$E4,$1C,$E2,$1C,$E3,$1C,$E4,$1C
 	db $E5,$1C,$E6,$1C,$E7,$1C,$E8,$1C,$F9,$1C,$FA,$1C
 
-	%drawStripeHeader(0, 1, 15,25, 0, !FALSE, 14*2)
+	%SMAS_DrawStripeHeader(0, 1, 15,25, 0, !FALSE, 14*2)
 	db $F6,$1C,$F6,$1C,$F6,$1C,$F5,$1C,$F2,$1C,$F2,$1C,$F4,$1C,$F6,$1C
 	db $F5,$1C,$F6,$1C,$F7,$1C,$F8,$1C,$FB,$1C,$FC,$1C
 
 	;Quick shadow fix
-	%drawStripeHeader(0, 1, 26,06, 0, !FALSE, 2)
+	%SMAS_DrawStripeHeader(0, 1, 26,06, 0, !FALSE, 2)
 	db $F3,$1C
-	%drawStripeHeader(0, 1, 07,21, 0, !FALSE, 2)
+	%SMAS_DrawStripeHeader(0, 1, 07,21, 0, !FALSE, 2)
 	db $F3,$DC
 else
 	db $06,$D2,$00,$09
@@ -5381,7 +5394,7 @@ endif
 	db $FF
 
 DATA_11C88D:								; Glich: All this does is corrupt some sprite graphics.
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000
 	db $68,$1E,$C0,$3A
 	db $FF,$00
 
@@ -5590,23 +5603,23 @@ SMB2U_BirdoAndGameOverStripeImage:
 	db $F1,$00,$F2,$00,$F3,$00
 
 	; "GAME OVER"
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	;             Layer,Map, X,Y, Dir, RLE, Size in bytes
-	%drawStripeHeader(0, 2, 13,12, 0, !FALSE, 2)
+	%SMAS_DrawStripeHeader(0, 2, 13,12, 0, !FALSE, 2)
 	db $CC,$08
 
-	%drawStripeHeader(0, 2, 10,13, 0, !FALSE, 12*2)
+	%SMAS_DrawStripeHeader(0, 2, 10,13, 0, !FALSE, 12*2)
 	db $C0,$08,$C1,$08,$C2,$08,$C3,$08,$C4,$08,$C5,$08,$C6,$08,$C7,$08
 	db $C8,$08,$C9,$08,$CA,$08,$CB,$08
 
-	%drawStripeHeader(0, 2, 10,14, 0, !FALSE, 12*2)
+	%SMAS_DrawStripeHeader(0, 2, 10,14, 0, !FALSE, 12*2)
 	db $D0,$08,$D1,$08,$D2,$08,$D3,$08,$D4,$08,$D5,$08,$D6,$08,$D7,$08
 	db $D8,$08,$D9,$08,$DA,$08,$DB,$08
 
-	%drawStripeHeader(0, 2, 10,15, 0, !FALSE, 3*2)
+	%SMAS_DrawStripeHeader(0, 2, 10,15, 0, !FALSE, 3*2)
 	db $CD,$08,$CE,$08,$CF,$08
 
-	%drawStripeHeader(0, 2, 18,15, 0, !FALSE, 4*2)
+	%SMAS_DrawStripeHeader(0, 2, 18,15, 0, !FALSE, 4*2)
 	db $DC,$08,$DD,$08,$DE,$08,$DF,$08
 else
 	db $09,$8B,$00,$01
@@ -5654,14 +5667,14 @@ if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMB2U_J) != $00
 	db $0A,$AB,$00,$11
 	db $70,$10,$71,$10,$72,$10,$73,$10,$74,$10,$FB,$15,$78,$10,$79,$10
 	db $77,$10
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	table "Tables/Fonts/Standard_Page1_br.txt"
 
-	%drawStripeHeader(0, 2, 10,17, 0, !FALSE, 9*2)
+	%SMAS_DrawStripeHeader(0, 2, 10,17, 0, !FALSE, 9*2)
 	dw "CONTINUAR"
-	%drawStripeHeader(0, 2, 10,19, 0, !FALSE, 16*2)
+	%SMAS_DrawStripeHeader(0, 2, 10,19, 0, !FALSE, 16*2)
 	dw "SALVAR&CONTINUAR"
-	%drawStripeHeader(0, 2, 10,21, 0, !FALSE, 11*2)
+	%SMAS_DrawStripeHeader(0, 2, 10,21, 0, !FALSE, 11*2)
 	dw "SALVAR&SAIR"
 
 	cleartable
@@ -5700,7 +5713,7 @@ DATA_11CAF9:
 DATA_11CAFB:
 	db $0F
 
-DATA_11CAFC:
+DATA_11CAFC:			; Note: Index for the "3 COINS SERVICE" stripe image.
 	db $1A
 
 ;--------------------------------------------------------------------
@@ -6119,7 +6132,7 @@ DATA_11D04C:
 if !Define_Global_ROMToAssemble&(!ROM_SMASW_E|!ROM_SMAS_E) != $00
 	%FREE_BYTES(NULLROM, 2, $FF)
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMB2U_J) != $00
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	%FREE_BYTES(NULLROM, 52-21, $FF)
 else
 	%FREE_BYTES(NULLROM, 52, $FF)
@@ -8919,7 +8932,7 @@ elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMB2U_J) != 
 else
 	%ROUTINE_SMB2U_ProcessTitleScreen(NULLROM)				; $128F48
 	
-	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR]
+	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000 ;[BR]
 	%FREE_BYTES(NULLROM, 7, $FF)
 	endif
 endif
@@ -9376,7 +9389,7 @@ CODE_1294BE:
 CODE_1294CE:
 	LDY.b #$00
 CODE_1294D0:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000 ;[BR]
 	LDA.b !RAM_SMB2U_Global_ScratchRAM00					; Optimization: Duplicated line of code.
 endif
 	LDA.b !RAM_SMB2U_Global_ScratchRAM00
@@ -9908,9 +9921,9 @@ CODE_12983B:
 
 if !Define_Global_ROMToAssemble&(!ROM_SMASW_E|!ROM_SMAS_E|!ROM_SMB2U_E) != $00
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMB2U_J) != $00
-%FREE_BYTES(NULLROM, 62, $FF)
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR]
-%FREE_BYTES(NULLROM, 66, $FF)
+	%FREE_BYTES(NULLROM, 62, $FF)
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000 ;[BR]
+	%FREE_BYTES(NULLROM, 66, $FF)
 endif
 
 ;--------------------------------------------------------------------
@@ -10321,9 +10334,9 @@ CODE_129AB4:
 
 if !Define_Global_ROMToAssemble&(!ROM_SMASW_E|!ROM_SMAS_E|!ROM_SMB2U_E) != $00
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMB2U_J) != $00
-%FREE_BYTES(NULLROM, 1, $FF)
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR]
-%FREE_BYTES(NULLROM, 25, $FF)
+	%FREE_BYTES(NULLROM, 1, $FF)
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000 ;[BR]
+	%FREE_BYTES(NULLROM, 25, $FF)
 endif
 
 ;--------------------------------------------------------------------
@@ -12248,7 +12261,7 @@ else
 	CPY.b #!Define_SMB2U_SpriteID_NorSpr12_Pidgit
 	BEQ.b CODE_12A791
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_E|!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMB2U_J) != $00
-	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR]
+	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000 ;[BR]
 		CPY.w !Define_SMB2U_SpriteID_NorSpr41_MagicCarpet					; Glitch: This should be a constant!
 	else
 	CPY.b #!Define_SMB2U_SpriteID_NorSpr41_MagicCarpet
@@ -13331,7 +13344,7 @@ CODE_12B5B9:
 	LDA.b #$7F
 	CPY.b #!Define_SMB2U_SpriteID_NorSpr05_RedSnifit
 	BEQ.b CODE_12B5F3
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000 ;[BR]
 	CPY.b #!Define_SMB2U_SpriteID_NorSpr05_RedSnifit			;\ Optimiztion: Duplicate check
 	BEQ.b CODE_12B5F3							;/
 endif
@@ -15187,10 +15200,12 @@ if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_J1) != $00
 	%FREE_BYTES(NULLROM, 16, $FF)
 	endif
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J2|!ROM_SMB2U_J) != $00
-%FREE_BYTES(NULLROM, 9, $FF)
+	%FREE_BYTES(NULLROM, 9, $FF)
 elseif !Define_Global_ROMToAssemble&(!ROM_SMASW_E|!ROM_SMAS_E|!ROM_SMB2U_E) != $00
 else
-%FREE_BYTES(NULLROM, 10, $FF)
+	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) == $0000
+	%FREE_BYTES(NULLROM, 10, $FF)
+	endif
 endif
 
 ;--------------------------------------------------------------------
@@ -16926,7 +16941,7 @@ CODE_12E456:
 if !Define_Global_ROMToAssemble&(!ROM_SMASW_E|!ROM_SMAS_E|!ROM_SMB2U_E) != $00
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMB2U_J) != $00
 %FREE_BYTES(NULLROM, 41, $FF)
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000 ;[BR]
 %FREE_BYTES(NULLROM, 9, $FF)
 endif
 
@@ -18092,7 +18107,7 @@ CODE_12EBA8:
 	LDA.w DATA_11B69F,x
 	CMP.b #$5A
 	BNE.b CODE_12EBBC
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000 ;[BR]
 	LDA.w DATA_11B69F,x							; Optimization: This table was loaded three instructions ago, and A hasn't changed...
 endif
 	LDY.w $0242
@@ -21195,17 +21210,15 @@ CODE_12FFF3:
 CODE_12FFF5:
 	RTS
 
-if !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_J1) != $00
-	if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
 	%FREE_BYTES(NULLROM, 14-3, $FF)
-	else
+elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_U|!ROM_SMAS_J1) != $00
 	%FREE_BYTES(NULLROM, 14, $FF)
-	endif
 elseif !Define_Global_ROMToAssemble&(!ROM_SMB2U_U|!ROM_SMB2U_J) != $00
-%FREE_BYTES(NULLROM, 37, $FF)
+	%FREE_BYTES(NULLROM, 37, $FF)
 elseif !Define_Global_ROMToAssemble&(!ROM_SMASW_E|!ROM_SMAS_E|!ROM_SMB2U_E) != $00
-else
-%FREE_BYTES(NULLROM, 10, $FF)
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMASW_br) == $0000 ;[BR]
+	%FREE_BYTES(NULLROM, 10, $FF)
 endif
 %BANK_END(<EndBank>)
 endmacro
@@ -21787,7 +21800,7 @@ SMB2U_UploadTitleScreenGraphics:
 	LDA.w #$2C00
 	JSR.w CODE_138AC4
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 ;[BR] GFX for the translation credits on top of the screen
 	LDA.w #SMB2U_TitleScreenTLCreditsGFX
 	STA.b !RAM_SMB2U_Global_ScratchRAM0D
@@ -21941,7 +21954,7 @@ SMB2U_UploadEndingPart3Graphics:
 	LDA.w #$2400
 	JSR.w CODE_138AC4
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	LDA.w #$3000
 else
 	LDA.w #$4000								; Optimization: The graphics file being loaded is 12 KB, not 16 KB.
@@ -21985,7 +21998,7 @@ CODE_138936:
 	LDA.w #$2400
 	JSR.w CODE_138AC4
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR] Freeing up space
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000 ;[BR] Freeing up space
 	LDA.w #SMB2U_UncompressedGFX_ShadedFont
 	STA.b !RAM_SMB2U_Global_ScratchRAM0D
 	LDX.b #SMB2U_UncompressedGFX_ShadedFont>>16
@@ -22134,7 +22147,7 @@ SMB2U_UploadWarpScreenGraphics:
 	LDA.w #$2C00
 	JSR.w CODE_138AC4
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 ;[BR] GFX for the translated WARP
 	LDA.w #SMB2U_WarpBRTitleGFX
 	STA.b !RAM_SMB2U_Global_ScratchRAM0D
@@ -22490,7 +22503,7 @@ SMB2U_BufferSlotMachineCoinAndLifeCounterText:
 .Main:
 ;$138D56
 	REP.b #$20
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR] Stripe image size
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR] Stripe image size
 	LDX.b #$30
 else
 	LDX.b #$2E
@@ -22861,7 +22874,7 @@ Albatoss_SpriteTileIndexTable:
 	db $C0,$C2
 	db $C4,$C6
 	db $C8,$CA
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR] Restoring the 8th frame pt.1: Adding the frame's indexes
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR] Restoring the 8th frame pt.1: Adding the frame's indexes
 	db $CC,$CE
 endif
 
@@ -23153,7 +23166,7 @@ CODE_1392A9:
 
 if !Define_Global_ROMToAssemble&(!ROM_SMASW_E|!ROM_SMAS_E|!ROM_SMB2U_E) != $00
 %FREE_BYTES(NULLROM, 80, $FF)
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 %FREE_BYTES(NULLROM, 77-3, $FF)
 else
 %FREE_BYTES(NULLROM, 77, $FF)
@@ -26802,7 +26815,7 @@ CODE_13E4D0:
 ;--------------------------------------------------------------------
 
 	%ROUTINE_SMB2U_BufferLayer3StarBGPaletteAnimationData(NULLROM)				; $13E4E0
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	%FREE_BYTES(NULLROM, 458-109, $FF)
 else
 	%FREE_BYTES(NULLROM, 458, $FF)
@@ -27131,7 +27144,7 @@ SMB2U_SetPointerForCastListSpriteData:
 SMB2U_DrawCastTextAndInitializeCastListRAM:
 .Main:
 ;$13E94B
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000	;[BR] Total of bytes
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000	;[BR] Total of bytes
 	LDX.b #$17
 else
 	LDX.b #$0F
@@ -27147,7 +27160,7 @@ CODE_13E94D:
 	STA.w SMB2U_OAMTileSizeBuffer[$11].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$12].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$13].Slot
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w SMB2U_OAMTileSizeBuffer[$14].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$15].Slot
 endif
@@ -27234,7 +27247,7 @@ SMB2U_EndingPart3State02_BeginScrollingUpwards:
 	STA.w SMB2U_OAMBuffer[$11].YDisp
 	STA.w SMB2U_OAMBuffer[$12].YDisp
 	STA.w SMB2U_OAMBuffer[$13].YDisp
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	STA.w SMB2U_OAMBuffer[$14].YDisp
 	STA.w SMB2U_OAMBuffer[$15].YDisp
 endif
@@ -27248,7 +27261,7 @@ endif
 	STA.w SMB2U_OAMBuffer[$11].YDisp
 	STA.w SMB2U_OAMBuffer[$12].YDisp
 	STA.w SMB2U_OAMBuffer[$13].YDisp
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w SMB2U_OAMBuffer[$14].YDisp
 	STA.w SMB2U_OAMBuffer[$15].YDisp
 endif
@@ -27268,7 +27281,7 @@ CODE_13E9FF:
 	JSR.w SMB2U_SetPointerForCastListSpriteData_Main
 
 	; Character's full data size in OAM - 1
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	LDY.b #$3B
 else
 	LDY.b #$2F
@@ -27307,7 +27320,7 @@ CODE_13EA0C:
 	STA.w SMB2U_OAMTileSizeBuffer[$19].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$1A].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$1B].Slot
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w SMB2U_OAMTileSizeBuffer[$1C].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$1D].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$1E].Slot
@@ -27326,7 +27339,7 @@ CODE_13EA6D:
 	LDA.b $3A
 	BNE.b CODE_13EABA
 	JSR.w SMB2U_SetPointerForCastListSpriteData_Main
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	LDY.b #$3B
 else
 	LDY.b #$2F
@@ -27350,7 +27363,7 @@ CODE_13EA7A:
 	STA.w SMB2U_OAMTileSizeBuffer[$29].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$2A].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$2B].Slot
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w SMB2U_OAMTileSizeBuffer[$2C].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$2D].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$2E].Slot
@@ -27369,7 +27382,7 @@ CODE_13EABA:
 	LDA.b $3B
 	BNE.b CODE_13EB0F
 	JSR.w SMB2U_SetPointerForCastListSpriteData_Main
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	LDY.b #$3B
 else
 	LDY.b #$2F
@@ -27393,7 +27406,7 @@ CODE_13EAC7:
 	STA.w SMB2U_OAMTileSizeBuffer[$39].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$3A].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$3B].Slot
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w SMB2U_OAMTileSizeBuffer[$3C].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$3D].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$3E].Slot
@@ -27473,7 +27486,7 @@ CODE_13EB72: ; Setup for Tryclyde's name objects
 	STA.w SMB2U_OAMBuffer[$45].YDisp
 	STA.w SMB2U_OAMBuffer[$46].YDisp
 	STA.w SMB2U_OAMBuffer[$47].YDisp
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w SMB2U_OAMBuffer[$48].YDisp
 	STA.w SMB2U_OAMBuffer[$49].YDisp
 	SBC.b #$07
@@ -27483,7 +27496,7 @@ CODE_13EB84:
 	LDA.w SMB2U_OAMBuffer[$14].YDisp				; When the object wraps around to the bottom of the border, stop moving
 	CMP.b #$F0
 	BEQ.b CODE_13EBC8
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	CMP.b #$F4
 	BEQ.b CODE_13EBC8
 endif
@@ -27516,7 +27529,7 @@ CODE_13EBB0:
 	STA.w SMB2U_OAMBuffer[$19].YDisp
 	STA.w SMB2U_OAMBuffer[$1A].YDisp
 	STA.w SMB2U_OAMBuffer[$1B].YDisp
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w SMB2U_OAMBuffer[$1C].YDisp
 	STA.w SMB2U_OAMBuffer[$1D].YDisp
 	SBC.b #$07
@@ -27562,7 +27575,7 @@ CODE_13EC08:
 	LDA.w SMB2U_OAMBuffer[$24].YDisp
 	CMP.b #$F0
 	BEQ.b CODE_13EC4E
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	CMP.b #$F4
 	BEQ.b CODE_13EC4E
 endif
@@ -27596,7 +27609,7 @@ CODE_13EC36:
 	STA.w SMB2U_OAMBuffer[$29].YDisp
 	STA.w SMB2U_OAMBuffer[$2A].YDisp
 	STA.w SMB2U_OAMBuffer[$2B].YDisp
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w SMB2U_OAMBuffer[$2C].YDisp
 	STA.w SMB2U_OAMBuffer[$2D].YDisp
 	SBC.b #$07
@@ -27643,7 +27656,7 @@ CODE_13EC8E:
 	LDA.w SMB2U_OAMBuffer[$34].YDisp
 	CMP.b #$F0
 	BEQ.b CODE_13EC54
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	CMP.b #$F4
 	BEQ.b CODE_13EC54
 endif
@@ -27691,7 +27704,7 @@ CODE_13ECD5:
 	STA.w SMB2U_OAMBuffer[$39].YDisp
 	STA.w SMB2U_OAMBuffer[$3A].YDisp
 	STA.w SMB2U_OAMBuffer[$3B].YDisp
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w SMB2U_OAMBuffer[$3C].YDisp
 	STA.w SMB2U_OAMBuffer[$3D].YDisp
 	SBC.b #$07
@@ -27725,7 +27738,7 @@ CODE_13ECF3:
 	STA.w SMB2U_OAMTileSizeBuffer[$45].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$46].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$47].Slot
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w SMB2U_OAMTileSizeBuffer[$48].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$49].Slot
 	STA.w SMB2U_OAMTileSizeBuffer[$4A].Slot
@@ -27744,7 +27757,7 @@ CODE_13ED3F:
 SMB2U_EndingPart3State04_InitializeWart:
 .Main:
 ;$13ED40
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	LDX.b #$43+$0C
 else
 	LDX.b #$43
@@ -27773,7 +27786,7 @@ CODE_13ED42:
 	STZ.w SMB2U_OAMTileSizeBuffer[$1E].Slot
 	STZ.w SMB2U_OAMTileSizeBuffer[$1F].Slot
 	STZ.w SMB2U_OAMTileSizeBuffer[$20].Slot
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STZ.w SMB2U_OAMTileSizeBuffer[$21].Slot
 	STZ.w SMB2U_OAMTileSizeBuffer[$22].Slot
 	STZ.w SMB2U_OAMTileSizeBuffer[$23].Slot
@@ -27878,7 +27891,7 @@ CODE_13EE20:
 	STA.w SMB2U_OAMBuffer[$1E].YDisp
 	STA.w SMB2U_OAMBuffer[$1F].YDisp
 	STA.w SMB2U_OAMBuffer[$20].YDisp
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w SMB2U_OAMBuffer[$21].YDisp
 	STA.w SMB2U_OAMBuffer[$22].YDisp
 	SBC.b #$08
@@ -29638,7 +29651,7 @@ CODE_13FBC2:
 	AND.w #$00FF
 	BEQ.b CODE_13FBDF
 	LDA.b !RAM_SMB2U_Global_FrameCounter
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR] Reducing flashing speed
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR] Reducing flashing speed
 	AND.w #$0009
 else
 	AND.w #$0003
@@ -30421,7 +30434,7 @@ DATA_14BFC0:
 DATA_14BFE0:
 	dw $3CA5,$7FFF,$1084,$356B,$45EF,$5673,$66F7,$777B,$0154,$021A,$2EDF,$1B5F,$7FF9,$7F54,$7EEB,$7E46
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 %FREE_BYTES(NULLROM, 512-216, $FF)
 else
 %FREE_BYTES(NULLROM, 512, $FF)
@@ -30466,7 +30479,7 @@ if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMB2U_J) != $00
 	db $60,$11,$35,$02,$98,$70,$11,$35,$02,$98,$80,$11,$35,$02,$A8,$40
 	db $11,$35,$02,$A8,$50,$11,$35,$02,$A8,$60,$11,$35,$02,$A8,$70,$11
 	db $35,$02,$A8,$80,$11,$35,$02
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	;    X,Y, Tile,Prop,Slot | X,Y, Tile,Prop,Slot
 	db $8C,$40,$04,$35,$00,  $9C,$40,$04,$35,$00	; World/Level numbers
 	db $AC,$50,$04,$35,$00,  $B4,$50,$04,$35,$00	; Life counter
@@ -30656,7 +30669,7 @@ else
 	db $58,$88,$01,$B5,$02,  $68,$88,$01,$B5,$02
 	db $78,$88,$01,$B5,$02,  $88,$88,$01,$B5,$02
 	db $98,$88,$01,$B5,$02,  $A8,$88,$01,$B5,$02
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	; "SAIR"
 	db $60,$60,$37,$35,$00,  $68,$60,$3C,$35,$00
 	db $6A,$60,$35,$35,$00,  $72,$60,$2E,$35,$00
@@ -30722,7 +30735,7 @@ DATA_14CCBD:
 
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMB2U_J) != $00
 	%FREE_BYTES(NULLROM, 10, $FF)
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000 ;[BR]
 	%FREE_BYTES(NULLROM, 11, $FF)
 endif
 	%ROUTINE_SMB2U_InitializeSlotMachineReelRAMForNewSpin(NULLROM)			; $14CD50
@@ -30833,7 +30846,7 @@ CODE_14D047:
 	LDX.b #$02
 	INC.w !RAM_SMB2U_SlotMachine_FlashingPaletteFrameCounter
 	LDA.w !RAM_SMB2U_SlotMachine_FlashingPaletteFrameCounter
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR] Reducing flashing speed.
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR] Reducing flashing speed.
 	AND.b #$08
 else
 	AND.b #$04
@@ -30891,7 +30904,7 @@ CODE_14D0C7:
 CODE_14D0CF:
 	LDX.b #$02
 	LDA.w !RAM_SMB2U_SlotMachine_FlashingPaletteFrameCounter
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR] Reducing flashing speed.
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR] Reducing flashing speed.
 	AND.b #$08
 else
 	AND.b #$04
@@ -31186,7 +31199,7 @@ CODE_14D2F7:
 ;--------------------------------------------------------------------
 
 DATA_14D2F8:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 ;[BR] Blank cursor tile
 	db $26,$25
 else
@@ -31206,7 +31219,7 @@ CODE_14D301:
 	BRA.b CODE_14D30C
 
 CODE_14D30A:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 ; Blank cursor tile
 	LDA.b #$25
 else
@@ -31859,7 +31872,7 @@ CODE_14DB8F:
 CODE_14DB90:
 	STZ.w !RAM_SMB2U_Level_UseVaseInteriorWindowHDMAFlag
 	STZ.w !RAM_SMB2U_Global_BlinkingCursorPos
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	; This loop fixes a visual bug where some of the PUSH START letters
 	; turned into pause menu tiles right before it showed up.
 	LDX.b #DATA_15D2F6_End-DATA_15D2F6-$01
@@ -31925,7 +31938,7 @@ CODE_14DBF5:
 	LDA.b #$25
 	STA.w $0794
 CODE_14DBFF:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	JSR.w CODE_14DC1B
 else
 	JSL.l CODE_14DC1B						; Glitch: This should be a JSR! The only reason this doesn't crash is because of
@@ -32095,7 +32108,7 @@ DATA_14DD82:
 	dw $CA36
 
 ;--------------------------------------------------------------------
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000 ;[BR]
 	%ROUTINE_SMB2U_InitializeEndingPauseMenuWindowHDMATable(NULLROM)				; $14DD8C
 endif
 ;--------------------------------------------------------------------
@@ -32151,7 +32164,7 @@ if !Define_Global_ROMToAssemble&(!ROM_SMASW_E|!ROM_SMAS_E|!ROM_SMB2U_E) != $00
 %FREE_BYTES(NULLROM, 22, $FF)
 elseif !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMB2U_J) != $00
 %FREE_BYTES(NULLROM, 59, $FF)
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000 ;[BR]
 %FREE_BYTES(NULLROM, 27, $FF)
 endif
 
@@ -32425,7 +32438,7 @@ CODE_14E0D6:
 	STY.b !RAM_SMB2U_Player_DuckingFlag
 	STY.b !RAM_SMB2U_Player_YSpeed
 	STY.b !RAM_SMB2U_Player_XSpeed
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000 ;[BR]
 	LDA.w $0D09								;\ Optimization: Junk
 	BNE.b CODE_14E0F2							;/
 CODE_14E0F2:
@@ -41579,7 +41592,7 @@ endif
 
 DATA_15D2F6:
 ;        X,Y,Tile,Prop |      X,Y,Tile,Prop
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	;APERTE
 	db $50,$C8,$C8,$30 : db $58,$C8,$DF,$30
 	db $60,$C8,$CC,$30 : db $68,$C8,$1F,$31
@@ -41609,7 +41622,7 @@ CODE_15D31C:
 	STA.w SMB2U_OAMBuffer[$40].XDisp,x
 	DEX
 	BPL.b CODE_15D31C
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	LDX.b #(DATA_15D2F6_End-DATA_15D2F6-$01)/4
 -:
 	STZ.w SMB2U_OAMTileSizeBuffer[$40].Slot,x
@@ -41732,7 +41745,7 @@ if !Define_Global_ROMToAssemble&(!ROM_SMB2U_E) != $00
 else
 	%FREE_BYTES(NULLROM, 1, $FF)
 endif
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 %FREE_BYTES(NULLROM, 3262-120, $FF)
 else
 %FREE_BYTES(NULLROM, 3262, $FF)
@@ -41793,9 +41806,9 @@ SMB2U_TitleScreenBorderStripeImage:
 	db $0F,$A4,$40,$2E
 	db $BE,$04
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 ;[BR] Visual fixes to the border
-	%drawStripeHeader(0, 3, 15,01, 0, !FALSE, 2*2)
+	%SMAS_DrawStripeHeader(0, 3, 15,01, 0, !FALSE, 2*2)
 	db $37,$04,$37,$44
 endif
 
@@ -41832,11 +41845,11 @@ endif
 	db $0C,$DA,$00,$05
 	db $20,$44,$1F,$44,$1E,$44
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
-	%drawStripeHeader(0, 3, 03,07, 0, !FALSE, 2*2)
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
+	%SMAS_DrawStripeHeader(0, 3, 03,07, 0, !FALSE, 2*2)
 	db $21,$04,$22,$04
 
-	%drawStripeHeader(0, 3, 27,07, 0, !FALSE, 2*2)
+	%SMAS_DrawStripeHeader(0, 3, 27,07, 0, !FALSE, 2*2)
 	db $22,$44,$21,$44
 else
 	db $0C,$E3,$00,$01
@@ -41852,11 +41865,11 @@ endif
 	db $0D,$1C,$C0,$1E
 	db $23,$44
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
-	%drawStripeHeader(0, 3, 02,17, 1, !TRUE, 7*2)
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
+	%SMAS_DrawStripeHeader(0, 3, 02,17, 1, !TRUE, 7*2)
 	db $01,$04
 
-	%drawStripeHeader(0, 3, 29,17, 1, !TRUE, 7*2)
+	%SMAS_DrawStripeHeader(0, 3, 29,17, 1, !TRUE, 7*2)
 	db $01,$44
 else
 	db $0E,$42,$C0,$0C
@@ -41938,7 +41951,7 @@ endif
 	db $0E,$DB,$80,$07
 	db $A3,$0C,$A5,$0C,$A7,$0C,$A9,$0C
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $0E,$DC,$80,$09
 	db $AA,$14,$AC,$14,$AE,$14,$B0,$14,$35,$04
 else
@@ -41961,8 +41974,8 @@ endif
 	db $0F,$30,$00,$07
 	db $33,$44,$32,$44,$31,$44,$30,$44
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
-	%drawStripeHeader(0, 3, 12,26, 0, !FALSE, 8*2)
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
+	%SMAS_DrawStripeHeader(0, 3, 12,26, 0, !FALSE, 8*2)
 	db $35,$04,$36,$04,$36,$04,$BE,$04,$BE,$04,$36,$44,$36,$44,$35,$44
 else
 	db $0F,$4F,$40,$03
@@ -42045,10 +42058,10 @@ else
 	db $46,$08,$47,$08,$46,$08,$47,$08,$55,$08,$BF,$00,$55,$08,$56,$08
 	db $55,$08,$55,$08
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 ;				  Layer,Map, X,Y, Dir, RLE, Size in bytes
 	; Translation credits
-	%drawStripeHeader(0, 3, 03,01, 0, !FALSE, 27*2)
+	%SMAS_DrawStripeHeader(0, 3, 03,01, 0, !FALSE, 27*2)
 	db $00,$06
 	db $01,$06,$02,$06,$03,$06,$04,$06,$05,$06,$06,$06,$07,$06,$08,$06
 	db $09,$06,$0A,$06,$0B,$06,$09,$06,$0D,$06,$0E,$06,$0F,$06,$BE,$04
@@ -42056,40 +42069,40 @@ if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
 	db $09,$06,$0F,$06
 	
 	; IRMÃOS MARIO
-	%drawStripeHeader(0, 3, 10,09, 0, !FALSE, 2*2)
+	%SMAS_DrawStripeHeader(0, 3, 10,09, 0, !FALSE, 2*2)
 	db $7F,$08,$5B,$08
 
-	%drawStripeHeader(0, 3, 04,10, 0, !FALSE, 24*2)
+	%SMAS_DrawStripeHeader(0, 3, 04,10, 0, !FALSE, 24*2)
 	db $67,$08,$64,$08,$59,$48,$59,$08,$5A,$08,$59,$48,$6A,$08,$6B,$08
 	db $59,$08,$59,$48,$59,$08,$59,$48,$BF,$00,$BF,$00
 	db $59,$08,$5A,$08,$59,$48,$59,$08,$59,$48,$64,$08,$59,$48,$67,$08
 	db $59,$08,$59,$48
 
-	%drawStripeHeader(0, 3, 04,11, 0, !FALSE, 24*2)
+	%SMAS_DrawStripeHeader(0, 3, 04,11, 0, !FALSE, 24*2)
 	db $5C,$08,$5C,$08,$5D,$08,$5C,$08,$5C,$08,$5D,$08,$5C,$08,$5D,$08
 	db $5C,$08,$5D,$08,$5C,$08,$6C,$08,$BF,$00,$BF,$00
 	db $5C,$08,$5C,$08,$5D,$08,$5C,$08,$5D,$08,$5C,$08,$5D,$08,$5C,$08
 	db $5C,$08,$5D,$08
 
-	%drawStripeHeader(0, 3, 04,12, 0, !FALSE, 24*2)
+	%SMAS_DrawStripeHeader(0, 3, 04,12, 0, !FALSE, 24*2)
 	db $5E,$08,$5E,$08,$65,$08,$5E,$08,$5E,$08,$5E,$08,$5E,$08,$5E,$08
 	db $5E,$08,$5E,$08,$6D,$08,$6E,$08,$BF,$00,$BF,$00
 	db $5E,$08,$5E,$08,$5E,$08,$5E,$08,$5E,$08,$5E,$08,$65,$08,$5E,$08
 	db $5E,$08,$5E,$08
 
-	%drawStripeHeader(0, 3, 04,13, 0, !FALSE, 24*2)
+	%SMAS_DrawStripeHeader(0, 3, 04,13, 0, !FALSE, 24*2)
 	db $5F,$08,$5F,$08,$66,$08,$5F,$08,$5F,$08,$5F,$08,$61,$08,$62,$08
 	db $5F,$08,$5F,$08,$B8,$08,$6F,$08,$BF,$00,$BF,$00
 	db $5F,$08,$5F,$08,$5F,$08,$61,$08,$62,$08,$5F,$08,$66,$08,$5F,$08
 	db $5F,$08,$5F,$08
 
-	%drawStripeHeader(0, 3, 04,14, 0, !FALSE, 24*2)
+	%SMAS_DrawStripeHeader(0, 3, 04,14, 0, !FALSE, 24*2)
 	db $60,$08,$60,$08,$60,$08,$60,$08,$60,$08,$60,$08,$60,$08,$63,$08
 	db $68,$08,$69,$08,$68,$08,$69,$08,$BF,$00,$BF,$00
 	db $60,$08,$60,$08,$60,$08,$60,$08,$63,$08,$60,$08,$60,$08,$60,$08
 	db $68,$08,$69,$08
 
-	%drawStripeHeader(0, 3, 04,15, 0, !FALSE, 24*2)
+	%SMAS_DrawStripeHeader(0, 3, 04,15, 0, !FALSE, 24*2)
 	db $55,$08,$55,$08,$55,$08,$55,$08,$55,$08,$55,$08,$55,$08,$55,$08
 	db $46,$08,$47,$08,$46,$08,$47,$08,$BF,$00,$BF,$00
 	db $55,$08,$55,$08,$55,$08,$55,$08,$55,$08,$55,$08,$55,$08,$55,$08
@@ -42198,9 +42211,9 @@ SMB2U_GameOverScreenBorderStripeImage:
 	db $0B,$A4,$40,$2E
 	db $BE,$04
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 ;[BR] Visual fixes to the border
-	%drawStripeHeader(0, 2, 15,01, 0, !FALSE, 2*2)
+	%SMAS_DrawStripeHeader(0, 2, 15,01, 0, !FALSE, 2*2)
 	db $37,$04,$37,$44
 endif
 
@@ -42236,11 +42249,11 @@ endif
 	db $08,$DA,$00,$05
 	db $20,$44,$1F,$44,$1E,$44
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
-	%drawStripeHeader(0, 2, 03,07, 0, !FALSE, 2*2)
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
+	%SMAS_DrawStripeHeader(0, 2, 03,07, 0, !FALSE, 2*2)
 	db $21,$04,$22,$04
 
-	%drawStripeHeader(0, 2, 27,07, 0, !FALSE, 2*2)
+	%SMAS_DrawStripeHeader(0, 2, 27,07, 0, !FALSE, 2*2)
 	db $22,$44,$21,$44
 else
 	db $08,$E3,$00,$01
@@ -42256,11 +42269,11 @@ endif
 	db $09,$1C,$C0,$1E
 	db $23,$44
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
-	%drawStripeHeader(0, 2, 02,17, 1, !TRUE, 7*2)
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
+	%SMAS_DrawStripeHeader(0, 2, 02,17, 1, !TRUE, 7*2)
 	db $01,$04
 
-	%drawStripeHeader(0, 2, 29,17, 1, !TRUE, 7*2)
+	%SMAS_DrawStripeHeader(0, 2, 29,17, 1, !TRUE, 7*2)
 	db $01,$44
 else
 	db $0A,$42,$C0,$0C
@@ -42342,7 +42355,7 @@ endif
 	db $0A,$DB,$80,$07
 	db $A3,$0C,$A5,$0C,$A7,$0C,$A9,$0C
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $0A,$DC,$80,$09
 	db $AA,$14,$AC,$14,$AE,$14,$B0,$14,$35,$04
 else
@@ -42365,8 +42378,8 @@ endif
 	db $0B,$30,$00,$07
 	db $33,$44,$32,$44,$31,$44,$30,$44
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
-	%drawStripeHeader(0, 2, 12,26, 0, !FALSE, 8*2)
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
+	%SMAS_DrawStripeHeader(0, 2, 12,26, 0, !FALSE, 8*2)
 	db $35,$04,$36,$04,$36,$04,$BE,$04,$BE,$04,$36,$44,$36,$44,$35,$44
 else
 	db $0B,$4F,$40,$03
@@ -42377,28 +42390,28 @@ endif
 
 SMB2U_WarpZoneScreenTextAndBirdo:
 ;$15E660
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	; "TRANSPORTE"
-	%drawStripeHeader(0, 3, 09,06, 0, !FALSE, 14*2)
+	%SMAS_DrawStripeHeader(0, 3, 09,06, 0, !FALSE, 14*2)
 	db $40,$08,$41,$08,$42,$08,$43,$08,$44,$08,$45,$08,$46,$08,$47,$08
 	db $48,$08,$49,$08,$4A,$08,$4B,$08,$4C,$08,$4D,$08
 	
-	%drawStripeHeader(0, 3, 09,07, 0, !FALSE, 14*2)
+	%SMAS_DrawStripeHeader(0, 3, 09,07, 0, !FALSE, 14*2)
 	db $50,$08,$51,$08,$52,$08,$53,$08,$54,$08,$55,$08,$56,$08,$57,$08
 	db $58,$08,$59,$08,$5A,$08,$5B,$08,$5C,$08,$5D,$08
 
-	%drawStripeHeader(0, 3, 09,08, 0, !FALSE, 14*2)
+	%SMAS_DrawStripeHeader(0, 3, 09,08, 0, !FALSE, 14*2)
 	db $60,$08,$61,$08,$62,$08,$63,$08,$64,$08,$65,$08,$66,$08,$67,$08
 	db $68,$08,$69,$08,$6A,$08,$6B,$08,$6C,$08,$6D,$08
 
 	; "Mundo"
-	%drawStripeHeader(0, 3, 09,14, 0, !FALSE, 6*2)
+	%SMAS_DrawStripeHeader(0, 3, 09,14, 0, !FALSE, 6*2)
 	db $C0,$08,$C1,$08,$C2,$08,$C3,$08,$C4,$08,$C5,$08
 
-	%drawStripeHeader(0, 3, 09,15, 0, !FALSE, 7*2)
+	%SMAS_DrawStripeHeader(0, 3, 09,15, 0, !FALSE, 7*2)
 	db $D0,$08,$D1,$08,$D2,$08,$D3,$08,$D4,$08,$D5,$08,$CD,$08
 
-	%drawStripeHeader(0, 3, 09,16, 0, !FALSE, 7*2)
+	%SMAS_DrawStripeHeader(0, 3, 09,16, 0, !FALSE, 7*2)
 	db $E0,$08,$E1,$08,$E2,$08,$E3,$08,$E4,$08,$E5,$08,$DD,$08
 else
 	; "WARP"
@@ -42482,7 +42495,7 @@ endif
 if !Define_Global_ROMToAssemble&(!ROM_SMASW_E|!ROM_SMAS_E|!ROM_SMB2U_E) != $00
 	%DATATABLE_SMB2U_LevelSpriteData(NULLROM)					; N/A
 	%FREE_BYTES(NULLROM, 1355, $FF)
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	%FREE_BYTES(NULLROM, 178-116, $FF)
 else
 	%FREE_BYTES(NULLROM, 178, $FF)
@@ -42496,7 +42509,7 @@ endmacro
 macro SMB2UBank16Macros(StartBank, EndBank)
 %BANK_START(<StartBank>)
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 ;$168000
 SMB2U_TitleScreenTLCreditsGFX:
 	incbin "Graphics/GFX_TitleScreenTLCredits.bin"
@@ -42517,7 +42530,7 @@ endif
 
 SMB2U_UncompressedGFX_Sprite_Global2:
 ;$16C000
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	incbin "Graphics/GFX_Sprite_Global2_br.bin"
 else
 	incbin "Graphics/GFX_Sprite_Global2.bin"
@@ -42533,7 +42546,7 @@ SMB2U_UncompressedGFX_Sprite_GrasslandEnemies:
 
 SMB2U_UncompressedGFX_Sprite_DynamicSprites:
 ;$16E000
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	incbin "Graphics/GFX_Sprite_DynamicSprites_fix.bin"
 else
 	incbin "Graphics/GFX_Sprite_DynamicSprites.bin"
@@ -42614,7 +42627,7 @@ SMB2U_UncompressedGFX_Sprite_Wart1:
 
 SMB2U_UncompressedGFX_Sprite_Wart2:
 ;$17F800
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	incbin "Graphics/GFX_Sprite_Wart2_fix.bin"
 else
 	incbin "Graphics/GFX_Sprite_Wart2.bin"
@@ -42659,7 +42672,7 @@ macro SMB2UBank19_00Macros(StartBank, EndBank)
 ;%BANK_START(<StartBank>)
 SMB2U_UncompressedGFX_TitleScreenBorder:
 ;$198000
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	incbin "Graphics/GFX_TitleScreenBorder_fix.bin"
 else
 	incbin "Graphics/GFX_TitleScreenBorder.bin"
@@ -42667,7 +42680,7 @@ endif
 
 SMB2U_UncompressedGFX_BonusChanceText:
 ;$198800
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	incbin "Graphics/GFX_BonusChanceText_br.bin"
 else
 	incbin "Graphics/GFX_BonusChanceText.bin"
@@ -42689,7 +42702,7 @@ SMB2U_UncompressedGFX_TitleScreenLogo:
 ;$19A000
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMB2U_J) != $00
 	incbin "Graphics/GFX_TitleScreenLogo_SMAS_J.bin"
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	incbin "Graphics/GFX_TitleScreenLogo_SMAS_br.bin"
 else
 	incbin "Graphics/GFX_TitleScreenLogo_SMAS_U.bin"
@@ -42705,7 +42718,7 @@ SMB2U_UncompressedGFX_Curtain:
 
 SMB2U_UncompressedGFX_EndingScreen2Tiles:
 ;$19C000
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	incbin "Graphics/GFX_EndingScreen2Tiles_fix.bin"
 else
 	incbin "Graphics/GFX_EndingScreen2Tiles.bin"
@@ -42721,7 +42734,7 @@ SMB2U_UncompressedGFX_Sprite_Global1:
 
 SMB2U_UncompressedGFX_GameOverTiles:
 ;$19F000
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	incbin "Graphics/GFX_GameOverTiles_br.bin"
 else
 	incbin "Graphics/GFX_GameOverTiles.bin"
@@ -42729,7 +42742,7 @@ endif
 
 SMB2U_UncompressedGFX_ShadedFont:
 ;$19F800
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	incbin "Graphics/GFX_ShadedFont_br.bin"
 else
 	incbin "Graphics/GFX_ShadedFont.bin"
@@ -42749,7 +42762,7 @@ PauseMenu:
 ;$1AE000
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMB2U_J) != $00
 	incbin "Graphics/GFX_PauseMenu_SMAS_J.bin"
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	incbin "Graphics/GFX_PauseMenu_SMAS_br.bin"
 else
 	incbin "Graphics/GFX_PauseMenu_SMAS_U.bin"
@@ -42766,7 +42779,7 @@ SMB2U_UncompressedGFX_Sprite_EndingScreen3:
 ;$1B8000
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMB2U_J) != $00
 	incbin "Graphics/GFX_Sprite_EndingScreen3_SMAS_J.bin"					; Note: Literally the only difference between these files is the color of toad's feet.
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	incbin "Graphics/GFX_Sprite_EndingScreen3_SMAS_br.bin"
 .End:
 else
@@ -42777,7 +42790,7 @@ SMB2U_UncompressedGFX_LevelPreviewBorder:
 ;$1BB000
 if !Define_Global_ROMToAssemble&(!ROM_SMAS_J1|!ROM_SMAS_J2|!ROM_SMB2U_J) != $00
 	incbin "Graphics/GFX_LevelPreviewBorder_SMAS_J.bin"
-elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+elseif !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	incbin "Graphics/GFX_LevelPreviewBorder_SMAS_br.bin"
 else
 	incbin "Graphics/GFX_LevelPreviewBorder_SMAS_U.bin"
@@ -42785,7 +42798,7 @@ endif
 
 SMB2U_UncompressedGFX_SlotMachineReels:
 ;$1BB800
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	incbin "Graphics/GFX_SlotMachineReels_br.bin"
 else
 	incbin "Graphics/GFX_SlotMachineReels.bin"
@@ -42903,7 +42916,7 @@ SMB2U_UncompressedGFX_FG_IceRock:
 
 SMB2U_UncompressedGFX_WarpZoneTiles:
 ;$1D8800
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	incbin "Graphics/GFX_WarpZoneTiles_br.bin"
 else
 	incbin "Graphics/GFX_WarpZoneTiles.bin"
@@ -44677,7 +44690,7 @@ macro DATATABLE_SMB2U_CastListOAMData(Address)
 namespace SMB2U_CastListOAMData
 %InsertMacroAtXPosition(<Address>)
 ;[BR] Added table for better readability.
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	table "Tables/Fonts/CastList_br.txt"
 else
 	table "Tables/Fonts/CastList.txt"
@@ -44685,7 +44698,7 @@ endif
 
 CastText:
 ;$14C564
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 ;        X, Y, Tile&Prop
 	db $33,$60 : dw "E"
 	db $3D,$60 : dw "L"
@@ -44736,7 +44749,7 @@ PtrLo:
 ; always be one row above the others.
 Mario:
 ;$14C5DA
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$D0,$00,$24,$58,$D0,$E9,$24
 	db $48,$F9,$20,$24,$58,$F9,$E9,$24
 	db $34,$F9 : dw " "
@@ -44757,7 +44770,7 @@ endif
 
 Luigi:
 ;$14C60A
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$D0,$02,$24,$58,$D0,$E9,$24
 	db $48,$F9,$22,$24,$58,$F9,$E9,$24
 	db $34,$F9 : dw " "
@@ -44778,7 +44791,7 @@ endif
 
 Peach:										; Note: Peach is referred to as "PRINCESS". It was changed to "PEACH" in the GBA version.
 ;$14C63A
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$D0,$04,$24,$58,$D0,$E9,$24
 	db $48,$F9,$24,$24,$58,$F9,$E9,$24
 	db $30,$F9 : dw "P" : db $38,$F9 : dw "R"
@@ -44799,7 +44812,7 @@ endif
 
 Toad:
 ;$14C66A
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$D0,$06,$24,$58,$D0,$E9,$24
 	db $48,$F9,$26,$24,$58,$F9,$E9,$24
 	db $30,$F9 : dw " " : db $38,$F9 : dw " "
@@ -44821,7 +44834,7 @@ endif
 ShyGuy:
 ;$14C69A
 	db $40,$D0,$E9,$24,$50,$D0,$E9,$24
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$F9,$08,$24,$50,$F9,$E9,$24
 	db $28,$F9 : dw "M" : db $30,$F9 : dw "A" : db $38,$F9 : dw "S"
 	db $40,$F9 : dw "C" : db $48,$F9 : dw "A"
@@ -44839,7 +44852,7 @@ endif
 
 Snifit:
 ;$14C6CA
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$D0,$E9,$24,$58,$D0,$E9,$24
 	db $48,$F9,$0A,$24,$58,$F9,$E9,$24
 	db $2C,$F9 : dw " " : db $34,$F9 : dw " "
@@ -44861,7 +44874,7 @@ endif
 
 Ninji:
 ;$14C6FA
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$D0,$E9,$24,$58,$D0,$E9,$24
 	db $48,$F9,$0C,$24,$58,$F9,$E9,$24
 	db $34,$F9 : dw " "
@@ -44881,7 +44894,7 @@ endif
 
 Beezo:
 ;$14C72A
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$D0,$E9,$24,$58,$D0,$E9,$24
 	db $48,$F9,$0E,$24,$58,$F9,$E9,$24
 	db $30,$F9 : dw "A" : db $38,$F9 : dw "S" : db $40,$F9 : dw "A"
@@ -44901,7 +44914,7 @@ endif
 
 Porcupo:
 ;$14C75A
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$D0,$E9,$24,$58,$D0,$E9,$24
 	db $48,$F9,$28,$24,$58,$F9,$E9,$24
 	db $34,$F9 : dw "P" : db $3C,$F9 : dw "O"
@@ -44922,7 +44935,7 @@ endif
 
 Tweeter:
 ;$14C78A
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$D0,$E9,$24,$58,$D0,$E9,$24
 	db $48,$F9,$2A,$24,$58,$F9,$E9,$24
 	db $34,$F9 : dw " "
@@ -44945,7 +44958,7 @@ endif
 BobOmb:
 ;$14C7BA
 	db $40,$D0,$E9,$24,$50,$D0,$E9,$24
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$F9,$2C,$24,$50,$F9,$E9,$24
 	db $2C,$F9 : dw "B" : db $34,$F9 : dw "O" : db $3C,$F9 : dw "B"
 	db $44,$F9 : dw "*"
@@ -44966,7 +44979,7 @@ Hoopster:									;\ Note: This enemy is referred to as "HOOPSTAR", which is a t
 ;$14C7EA									;| The Japanese language doesn't have an "ER" sound, so a common substitution to this is to use an "AR" sound.
 										;/ It's hard to say why this one enemy's name has this mistake, but Nintendo changed it to "HOOPSTER" in the GBA version.
 	db $40,$D0,$E9,$24,$50,$D0,$E9,$24
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$F9,$2E,$24,$50,$F9,$E9,$24
 	db $34,$F9 : dw "J" : db $3C,$F9 : dw "O" : db $44,$F9 : dw "A"
 	db $4C,$F9 : dw "N" : db $54,$F9 : dw "O"
@@ -44986,7 +44999,7 @@ endif
 Trouter:
 ;$14C81A
 	db $40,$D0,$E9,$24,$50,$D0,$E9,$24
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$F9,$40,$24,$50,$F9,$E9,$24
 	db $34,$F9 : dw "T" : db $3C,$F9 : dw "R" : db $44,$F9 : dw "U"
 	db $4C,$F9 : dw "T" : db $54,$F9 : dw "A"
@@ -45006,7 +45019,7 @@ endif
 Pidgit:
 ;$14C84A
 	db $40,$D0,$E9,$24,$50,$D0,$E9,$24
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$F9,$42,$24,$50,$F9,$E9,$24
 	db $30,$F9 : dw " "
 	db $38,$F9 : dw "C" : db $40,$F9 : dw "O" : db $48,$F9 : dw "R"
@@ -45026,7 +45039,7 @@ endif
 Panser:
 ;$14C87A
 	db $40,$D0,$E9,$24,$50,$D0,$E9,$24
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$F9,$44,$24,$50,$F9,$E9,$24
 	db $30,$F9 : dw "V" : db $38,$F9 : dw "I" : db $40,$F9 : dw "O"
 	db $48,$F9 : dw "L" : db $50,$F9 : dw "E"
@@ -45045,7 +45058,7 @@ endif
 Flurry:
 ;$14C8AA
 	db $40,$D0,$E9,$24,$50,$D0,$E9,$24
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$F9,$46,$24,$50,$F9,$E9,$24
 	db $30,$F9 : dw " "
 	db $38,$F9 : dw "F" : db $40,$F9 : dw "O"
@@ -45066,7 +45079,7 @@ endif
 Albatoss:
 ;$14C8DA
 	db $40,$D0,$E9,$24,$50,$D0,$E9,$24
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $40,$F9,$48,$24,$50,$F9,$4A,$24
 	db $30,$F9 : dw "A" : db $38,$F9 : dw "L"
 	db $40,$F9 : dw "B" : db $48,$F9 : dw "A"
@@ -45086,7 +45099,7 @@ endif
 Phanto:
 ;$14C90A
 	db $40,$D0,$E9,$24,$50,$D0,$E9,$24
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$F9,$64,$24,$58,$F9,$E9,$24
 	db $28,$F9 : dw "F" : db $30,$F9 : dw "A" : db $38,$F9 : dw "N"
 	db $40,$F9 : dw "T" : db $48,$F9 : dw "A" : db $50,$F9 : dw "S"
@@ -45105,7 +45118,7 @@ endif
 Spark:
 ;$14C93A
 	db $40,$D0,$E9,$24,$50,$D0,$E9,$24
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$F9,$66,$24,$58,$F9,$E9,$24
 	db $38,$F9 : dw "F" : db $40,$F9 : dw "A"
 	db $48,$F9 : dw "I" : db $50,$F9 : dw "S"
@@ -45125,7 +45138,7 @@ endif
 Subcon:
 ;$14C96A
 	db $40,$D0,$E9,$24,$50,$D0,$E9,$24
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$F9,$68,$24,$58,$F9,$E9,$24
 	db $30,$F9 : dw " " : db $38,$F9 : dw "S"
 	db $40,$F9 : dw "U" : db $48,$F9 : dw "B"
@@ -45144,7 +45157,7 @@ endif
 
 Pokey:
 ;$14C99A
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$D0,$60,$24,$50,$D0,$E9,$24
 	db $48,$F9,$62,$24,$50,$F9,$E9,$24
 	db $2C,$F9 : dw "C" : db $34,$F9 : dw "A" : db $3C,$F9 : dw "C"
@@ -45165,7 +45178,7 @@ endif
 
 Ostro:										; Note: This enemy is incorrectly referred to as "BIRDO". This was fixed in the GBA version.
 ;$14C9CA
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$D0,$6A,$24,$58,$D0,$E9,$24
 	db $48,$F9,$6C,$24,$58,$F9,$E9,$24
 	db $34,$F9 : dw "V" : db $3C,$F9 : dw "E" : db $44,$F9 : dw "Z"
@@ -45186,7 +45199,7 @@ endif
 
 Birdo:										; Note: This enemy is incorrectly referred to as "OSTRO". This was fixed in the GBA version.
 ;$14C9FA
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$D0,$6E,$24,$58,$D0,$E9,$24
 	db $48,$F9,$80,$24,$58,$F9,$E9,$24
 	db $34,$F9 : dw " " : db $3C,$F9 : dw "B"
@@ -45207,7 +45220,7 @@ endif
 
 Autobomb:
 ;$14CA2A
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$D0,$82,$24,$58,$D0,$E9,$24
 	db $48,$F9,$84,$24,$58,$F9,$E9,$24
 	db $30,$F9 : dw "T" : db $38,$F9 : dw "U" : db $40,$F9 : dw "R"
@@ -45227,7 +45240,7 @@ endif
 
 Cobrat:
 ;$14CA5A
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $48,$D0,$4C,$24,$58,$D0,$E9,$24
 	db $48,$F9,$4E,$24,$58,$F9,$E9,$24
 	db $30,$F9 : dw "S" : db $38,$F9 : dw "E" : db $40,$F9 : dw "R"
@@ -45247,7 +45260,7 @@ endif
 
 Mouser:
 ;$14CA8A
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $44,$D0,$86,$24,$4C,$D0,$87,$24
 	db $44,$F9,$89,$24,$4C,$F9,$8A,$24
 	db $30,$F9 : dw " "
@@ -45269,7 +45282,7 @@ endif
 
 FryGuy:
 ;$14CABA
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $40,$D0,$A8,$24,$50,$D0,$AA,$24
 	db $40,$F9,$AC,$24,$50,$F9,$AE,$24
 	db $30,$F9 : dw "F" : db $38,$F9 : dw "O"
@@ -45296,7 +45309,7 @@ Clawgrip:									;\ Note: This enemy is referred to as "CLAWGLIP", which is a t
 										;| That's why errors like this are common in Japanese to English translations.
 										;/ Nintendo changed it to "CLAWGRIP" in the GBA version.
 ;$14CAEA
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $40,$D0,$C0,$24,$50,$D0,$C2,$24
 	db $40,$F9,$C4,$24,$50,$F9,$C6,$24
 	db $30,$F9 : dw "G" : db $38,$F9 : dw "A" : db $40,$F9 : dw "R"
@@ -45317,7 +45330,7 @@ endif
 
 Tryclyde:									;\ Note: This enemy is referred to as "TRICLYDE", which is a typo
 ;$14CB1A									;/ I don't really have an explanation for this one, but Nintendo changed it to "TRYCLYDE" in the GBA version.
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $40,$D0,$8C,$24,$50,$D0,$8E,$24
 	db $40,$F9,$A0,$24,$50,$F9,$A2,$24
 	db $40,$F9,$A4,$24,$50,$F9,$A6,$24
@@ -45337,7 +45350,7 @@ else
 	db $30,$F9,$E9,$24,$30,$F9,$E9,$24
 endif
 TryclydesName:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $34,$D0 : dw "T" : db $3C,$D0 : dw "R"
 	db $44,$D0 : dw "I" : db $4C,$D0 : dw "B"
 	db $54,$D0 : dw "O" : db $5C,$D0 : dw "R"
@@ -45354,7 +45367,7 @@ endif
 
 Wart:
 ;$14CB6A
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $34,$D0,$00,$25,$44,$D0,$02,$25
 	db $4C,$D0,$03,$25,$34,$F9,$20,$25
 	db $44,$F9,$22,$25,$4C,$F9,$23,$25
@@ -45382,7 +45395,7 @@ cleartable
 
 TheEndTextTableIndexes:						; In order of the animation frame counter.
 ;$14CBAE
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	db $00,$04,$08,$0C,$14,$18,$20,$24
 	db $28,$30,$34,$38,$3C,$44,$48,$4C
 	db $50,$58,$5C,$60,$64,$68,$6C
@@ -45399,7 +45412,7 @@ endif
 
 TheEndText:
 ;$14CBD9
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	;   X, Y, Tile,OAM       X, Y, Tile,OAM						Table index
 	db $B0,$30,$40,$00											; $00
 	db $B0,$30,$41,$00											; $04
@@ -46008,7 +46021,7 @@ Main:
 	LDY.w !RAM_SMB2U_Player_CurrentLifeCount
 	TYA
 	JSR.w CODE_15A395
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	STY.w !RAM_SMB2U_SlotMachine_CoinAndLifeCounterStripeImageText+$2A+2
 	STA.w !RAM_SMB2U_SlotMachine_CoinAndLifeCounterStripeImageText+$2C+2
 	LDA.b #$15
@@ -46022,7 +46035,7 @@ endif
 	CPY.b #$BF
 	BNE.b CODE_15A313
 	LDA.b #$BD
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w !RAM_SMB2U_SlotMachine_CoinAndLifeCounterStripeImageText+$2A+2
 	LDA.b #$09
 CODE_15A313:
@@ -46295,10 +46308,10 @@ namespace SMB2U_CharacterSelectLifCounterStripeImage
 %InsertMacroAtXPosition(<Address>)
 
 Main:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 table "Tables/Fonts/Standard_Page1_br.txt"
 ;				  Layer,Map, X,Y, Dir, RLE, Size in bytes
-	%drawStripeHeader(0, 0, 08,24, 0, !FALSE, 16*2)
+	%SMAS_DrawStripeHeader(0, 0, 08,24, 0, !FALSE, 16*2)
 	dw "VIDAS EXTRAS** 0"
 	db $FF
 cleartable
@@ -46422,7 +46435,7 @@ namespace SMB2U_TitleScreenStoryTextStripeImages
 %InsertMacroAtXPosition(<Address>)
 
 cleartable
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	table "Tables/Fonts/Standard_Page1_br.txt"
 
 StoryHeader:
@@ -46445,7 +46458,7 @@ LinePtrsLo:
 	db DATA_15EAB9
 
 Main:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 DATA_15E861:
 	dw "EM UM  SONHO, MARIO,"
 
@@ -47437,7 +47450,7 @@ endif
 CODE_128FBE:
 	JSL.l SMB2U_WaitForVBlankRt_TitleWarpZoneAndGameOverScreen_Main
 	LDA.b !RAM_SMB2U_TitleScreen_ClearTitleScreenFlag
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR] Out of range dodging
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR] Out of range dodging
 	BEQ.b CODE_128FC6
 	BRL.w CODE_12900E
 else
@@ -47461,7 +47474,7 @@ CODE_128FD1:
 	; Update stripe header
 	LDA.b $14
 	STA.w SMB2U_StripeImageUploadTable[$00].LowByte
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w SMB2U_StripeImageUploadTable[$03].LowByte
 	STA.w SMB2U_StripeImageUploadTable[$06].LowByte
 endif
@@ -47483,7 +47496,7 @@ endif
 	STA.b $16
 
 	; Upload stripe data:
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	LDA.b #$BD
 	STA.w SMB2U_StripeImageUploadTable[$02].LowByte
 	LDA.b #$09
@@ -47546,7 +47559,7 @@ CODE_12900E:
 
 	; [BR] This upload seems redudant, since the write from
 	; previous code isn't reset nor overwritten in-between frames.
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000
 	LDA.b #$BD
 	STA.w SMB2U_StripeImageUploadTable[$02].LowByte
 	LDA.b #$09
@@ -47558,7 +47571,7 @@ endif
 	; Whenever Y position is greater than 8, edit length to $28
 	LDA.b $14							
 	CMP.b #$0D
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000
 	BNE.b CODE_129046
 	LDA.b $15
 	CMP.b #$E0
@@ -47646,7 +47659,7 @@ CODE_1290A9:
 	LDA.b #$0C
 	STA.w SMB2U_StripeImageUploadTable[$00].LowByte
 	; Byte 2
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 	LDA.b #$8C
 else
 	LDA.b #$8E
@@ -47655,7 +47668,7 @@ endif
 	; Byte 3
 	STZ.w SMB2U_StripeImageUploadTable[$01].LowByte
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	; Byte 4, length (accents don't count)
 	LDA.b #$0F
 	STA.w SMB2U_StripeImageUploadTable[$01].HighByte
@@ -47670,7 +47683,7 @@ endif
 CODE_1290BD:
 	REP.b #$20
 	LDA.l SMB2U_TitleScreenStoryTextStripeImages_StoryHeader,x
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 ; Accent check
 	CMP.w #$15F1 							;\ Value range of the accents on VRAM.
 	BCC.b + 								;| If outside of it, continue normally
@@ -47688,7 +47701,7 @@ if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
 endif
 	STA.w SMB2U_StripeImageUploadTable[$02].LowByte,y
 	SEP.b #$20
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	INX #2
 	INY #2
 
@@ -47702,7 +47715,7 @@ endif
 	
 	; End byte
 	LDA.b #$FF
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w SMB2U_StripeImageUploadTable[$02].LowByte,y
 else
 	STA.w SMB2U_StripeImageUploadTable[$07].LowByte
@@ -47752,7 +47765,7 @@ endif
 	STA.b !RAM_SMB2U_Global_ScratchRAM03						;/
 	; Table and tile index increments
 	LDY.b #$00
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) == $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) == $0000
 	LDX.b #$13
 else ;[BR]
 	LDX.b #$00
@@ -47761,7 +47774,7 @@ CODE_129113:
 	REP.b #$20
 	LDA.b [!RAM_SMB2U_Global_ScratchRAM03],y
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 ; Accent check
 	CMP.w #$15F1 							;\ Value range of the accents on VRAM.
 	BCC.b + 								;/ If outside of it, continue normally
@@ -47778,7 +47791,7 @@ endif
 	SEP.b #$20
 	INY
 	INY
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	INX #2
 	CPX.b #$28
 	BCC.b CODE_129113
@@ -47788,7 +47801,7 @@ else
 endif
 	; End byte
 	LDA.b #$FF
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000
 	STA.w SMB2U_StripeImageUploadTable[$02].LowByte,x
 else
 	STA.w SMB2U_StripeImageUploadTable[$02].LowByte,y
@@ -47904,7 +47917,7 @@ endif
 CODE_1291DA:
 	BRL.w CODE_128F50
 
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR]
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR]
 SMB2_DrawAccent:
 	PHA												; Save tile data
 	LDA.b !RAM_SMB2U_Global_ScratchRAM0A 			;\ Set up letter offset
@@ -49362,7 +49375,7 @@ Main:
 	INC.b $9F,x
 CODE_12B2AB:
 	LDA.b $9F,x
-if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br) != $0000 ;[BR] Restoring the 8th frame pt.2: Adjusting compare
+if !Define_Global_HackROMToAssemble&(!ROM_HACK_SMAS_br|!ROM_HACK_SMASW_br) != $0000 ;[BR] Restoring the 8th frame pt.2: Adjusting compare
 	CMP.b #$08
 else
 	CMP.b #$07

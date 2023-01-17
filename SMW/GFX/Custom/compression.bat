@@ -4282,5 +4282,6 @@ goto :EXIT
 
 :EXIT
 move GFX*.cbn "../../GFX/Custom/CompressedGFX"
+:: move GFX*.cbn "../../GFX/Custom/SMW_br" :: For the SMW_br project.
 goto :Begin
 exit

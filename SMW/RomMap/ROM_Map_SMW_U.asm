@@ -8,6 +8,9 @@ macro SMW_GameSpecificAssemblySettings()
 	!ROM_SMASW_U = $0100							;|
 	!ROM_SMASW_E = $0200							;/
 
+	!ROM_HACK_SMASW_br = $8000					;\[BR] Defines for the translation
+	!ROM_HACK_SMW_br = $0020					;/
+
 	!Define_SMW_Global_UseIndividualPaletteFiles = !FALSE			; Set to !TRUE to use individual .tpl files for the global palettes. Otherwise, smw.pal will be inserted.
 
 	%SetROMToAssembleForHack(SMW_U, !ROMID)
